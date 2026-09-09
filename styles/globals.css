@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Boogaloo&family=Caveat:wght@600;700&family=Unbounded:wght@600;700&display=swap');
+
 :root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#FCFBF8;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}
 
 /* ============================================================
@@ -6,7 +8,6 @@
    Fraunces/Karla type system, hand-drawn "teabag+mic" and
    "sofra" brand marks.
    ============================================================ */
-@import url('https://fonts.googleapis.com/css2?family=Boogaloo&family=Caveat:wght@600;700&family=Unbounded:wght@600;700&display=swap');
 /* NOTE: 'Strenuous' is not a Google Font and could not be fetched in this environment.
    Boogaloo (free, Google Fonts, 1960s/70s groovy display style) stands in for it below.
    Send the actual Strenuous .ttf/.otf files and this gets swapped in directly. */
