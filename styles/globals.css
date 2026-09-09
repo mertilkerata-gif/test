@@ -1237,3 +1237,15 @@ body > nav:first-of-type ~ nav {
   height: 40px !important;
   width: auto !important;
 }
+
+/* ── Hero düzeltme — final ── */
+section.hero {
+  min-height: auto !important;
+  padding: 0 !important;
+  display: block !important;
+  overflow: visible !important;
+}
+section.hero > .section-blob {
+  position: absolute !important;
+  pointer-events: none;
+}
