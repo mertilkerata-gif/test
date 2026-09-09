@@ -1230,3 +1230,10 @@ body > nav:first-of-type ~ nav {
     display: none !important;
   }
 }
+
+/* ── Nav logo büyüt ── */
+.nav-logo img,
+.nav-logo-img {
+  height: 40px !important;
+  width: auto !important;
+}

@@ -168,13 +168,13 @@ export default function Home() {
   <div class="highlights-track-wrap">
     <div class="highlights-track" id="highlightsTrack">
       <div class="highlight-card video" data-yt="aK_btqNLtE0">
-        <div class="highlight-thumb" src="">
+        <div class="highlight-thumb" style="background-image:url(/images/ep2.png);background-size:cover;background-position:center">
 <span class="highlight-tag">Video</span>
           <a class="highlight-yt-btn" href="#" target="_blank" rel="noopener" aria-label="YouTube’da izle" onclick="event.stopPropagation()"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31 31 0 000 12a31 31 0 00.5 5.8 3 3 0 002.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 002.1-2.1A31 31 0 0024 12a31 31 0 00-.5-5.8zM9.6 15.5V8.5L15.8 12z"/></svg></a>
           <div class="highlight-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
           <span class="highlight-dur">42:17</span>
         </div>
-        <div class="highlight-meta"><b>Biz Ne İş Yapıyoruz</b><span>Bölüm 24</span></div>
+        <div class="highlight-meta"><b>Yine Olsa Yine Yapardım</b><span>Bölüm 84</span></div>
       </div>
       <div class="highlight-card product">
         <div class="highlight-thumb" style="background:var(--cream-deep)">
@@ -195,13 +195,13 @@ export default function Home() {
         <div class="highlight-meta"><b>Demleme Kupası</b><span>₺290</span></div>
       </div>
       <div class="highlight-card video" data-yt="R_2epNt1xi4">
-        <div class="highlight-thumb" src="">
+        <div class="highlight-thumb" style="background-image:url(/images/ep4.png);background-size:cover;background-position:center">
 <span class="highlight-tag">Video</span>
           <a class="highlight-yt-btn" href="#" target="_blank" rel="noopener" aria-label="YouTube’da izle" onclick="event.stopPropagation()"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31 31 0 000 12a31 31 0 00.5 5.8 3 3 0 002.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 002.1-2.1A31 31 0 0024 12a31 31 0 00-.5-5.8zM9.6 15.5V8.5L15.8 12z"/></svg></a>
           <div class="highlight-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
           <span class="highlight-dur">38:05</span>
         </div>
-        <div class="highlight-meta"><b>Hangi İlin İnsanı Nasıl?</b><span>Bölüm 23</span></div>
+        <div class="highlight-meta"><b>Hangi İlin İnsanı Nasıl?</b><span>Bölüm 83</span></div>
       </div>
       <div class="highlight-card product">
         <div class="highlight-thumb" style="background:var(--cream-deep)">
@@ -220,13 +220,13 @@ export default function Home() {
         <div class="highlight-meta"><b>Sofra Tişörtü</b><span>₺450</span></div>
       </div>
       <div class="highlight-card video" data-yt="dsgQ1lz4hRU">
-        <div class="highlight-thumb" src="">
+        <div class="highlight-thumb" style="background-image:url(/images/ep1.png);background-size:cover;background-position:center">
 <span class="highlight-tag">Video</span>
           <a class="highlight-yt-btn" href="#" target="_blank" rel="noopener" aria-label="YouTube’da izle" onclick="event.stopPropagation()"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31 31 0 000 12a31 31 0 00.5 5.8 3 3 0 002.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 002.1-2.1A31 31 0 0024 12a31 31 0 00-.5-5.8zM9.6 15.5V8.5L15.8 12z"/></svg></a>
           <div class="highlight-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
           <span class="highlight-dur">51:33</span>
         </div>
-        <div class="highlight-meta"><b>Düğün Hazırlığı Zor İş</b><span>Bölüm 22</span></div>
+        <div class="highlight-meta"><b>Düğün Hazırlığı Zor İş</b><span>Bölüm 82</span></div>
       </div>
       <div class="highlight-card product">
         <div class="highlight-thumb" style="background:var(--cream-deep)">
