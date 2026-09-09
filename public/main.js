@@ -1361,14 +1361,6 @@
 })();
 
 
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Demleme",
-  "description": "Demleme; sohbetin, çayın ve hikâyenin yavaş yavaş demlendiği bir masa. YouTube bölümleri, canlı topluluk ve kendi mağazasıyla sofradaki konuşmaları taşıyan bir YouTube programı.",
-  "url": "https://claude.ai/code/artifact/0df3ac9c-f3bb-41ad-a166-7151886a8123",
-  "founder": { "@type": "Person", "name": "Garen" }
-}
 
 
 (function(){
