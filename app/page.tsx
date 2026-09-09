@@ -33,7 +33,7 @@ export default function Home() {
   <div class="section-blob" style="width:480px;height:480px;top:-180px;right:-140px;background:radial-gradient(circle,var(--butter) 0%,transparent 72%);position:absolute;pointer-events:none" aria-hidden="true"></div>
   <div class="section-blob" style="width:360px;height:360px;bottom:-160px;left:-120px;background:radial-gradient(circle,var(--lav) 0%,transparent 72%);opacity:.3;position:absolute;pointer-events:none" aria-hidden="true"></div>
 
-  <div style="max-width:var(--wrap);margin:0 auto;padding:40px var(--pad) 60px;position:relative;z-index:1">
+  <div>
 
     <!-- ÜSTTE LIVE BADGE -->
     <div style="margin-bottom:24px">
@@ -41,7 +41,7 @@ export default function Home() {
     </div>
 
     <!-- 3 KOLON GRID -->
-    <div class="hero-new-grid" style="display:grid;grid-template-columns:1fr auto 1fr;gap:48px;align-items:start">
+    <div class="hero-new-grid">
 
       <!-- SOL: Başlık + İstatistikler + CTA -->
       <div style="display:flex;flex-direction:column;gap:20px">

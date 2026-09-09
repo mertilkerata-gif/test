@@ -1184,17 +1184,7 @@ body, p, span, li, a, button, input, textarea, select {
   width: auto !important;
 }
 
-/* ── Hero düzeltme — final ── */
-section.hero {
-  min-height: auto !important;
-  padding: 0 !important;
-  display: block !important;
-  overflow: visible !important;
-}
-section.hero > .section-blob {
-  position: absolute !important;
-  pointer-events: none;
-}
+
 
 /* ── hero-new-grid responsive ── */
 @media (max-width: 1024px) {
@@ -1203,5 +1193,39 @@ section.hero > .section-blob {
 }
 @media (max-width: 680px) {
   .hero-new-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .hero-new-grid > div:nth-child(2) { display: none !important; }
+}
+
+/* ── HERO FINAL FIX ── */
+section#hero {
+  position: relative !important;
+  display: block !important;
+  min-height: 0 !important;
+  height: auto !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  align-items: unset !important;
+}
+section#hero > .section-blob {
+  position: absolute !important;
+  pointer-events: none !important;
+}
+.hero-new-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 280px 1fr !important;
+  gap: 40px !important;
+  align-items: start !important;
+  max-width: var(--wrap) !important;
+  margin: 0 auto !important;
+  padding: 40px var(--pad) 60px !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+@media (max-width: 1100px) {
+  .hero-new-grid { grid-template-columns: 1fr 220px !important; }
+  .hero-new-grid > div:nth-child(3) { display: none !important; }
+}
+@media (max-width: 680px) {
+  .hero-new-grid { grid-template-columns: 1fr !important; padding: 28px var(--pad) 40px !important; }
   .hero-new-grid > div:nth-child(2) { display: none !important; }
 }
