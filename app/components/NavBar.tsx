@@ -27,14 +27,14 @@ export default function NavBar() {
           <img
             src="/images/demleme-logo.png"
             alt="Demleme"
-            style={{height:'40px',width:'auto',display:'block',objectFit:'contain'}}
+            style={{height:'48px',width:'auto',display:'block',objectFit:'contain'}}
             onError={(e) => {
               e.currentTarget.style.display = 'none';
               const el = e.currentTarget.nextElementSibling as HTMLElement;
               if (el) el.style.display = 'block';
             }}
           />
-          <span style={{display:'none',fontFamily:"'Boogaloo',var(--font-display)",fontSize:'1.6rem',letterSpacing:'0.05em',color:'var(--ink)'}}>demleme</span>
+          <span style={{display:'none',fontFamily:"'Boogaloo',var(--font-display)",fontSize:'2rem',letterSpacing:'0.05em',color:'var(--ink)'}}>demleme</span>
         </a>
 
         <ul className="nav-links" style={{listStyle:'none',display:'flex',gap:'28px',margin:0,padding:0,alignItems:'center'}}>

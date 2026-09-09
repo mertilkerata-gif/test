@@ -1631,3 +1631,6 @@ section#hero [data-intro-linked] {
 @media (max-width: 900px) {
   .nav-hamburger { display: flex !important; }
 }
+
+/* ── LOGO BÜYÜT ── */
+.nav-logo img { height: 48px !important; width: auto !important; }
