@@ -1604,7 +1604,8 @@ section#hero [data-intro-linked] {
 /* ── LOGO BÜYÜT ── */
 .nav-logo img { height: 48px !important; width: auto !important; }
 
-/* ── HERO ANİMASYON OVERRIDE - Hızlı ve temiz ── */
+
+/* ── HERO ANİMASYONLARI - Sadece CSS, JS bağımsız ── */
 .hero-anim-badge,
 .hero-anim-logo,
 .hero-anim-eyebrow,
@@ -1612,54 +1613,24 @@ section#hero [data-intro-linked] {
 .hero-anim-stats,
 .hero-anim-cta,
 .hero-anim-follow {
-  animation-duration: .5s !important;
   animation-fill-mode: both !important;
   animation-timing-function: cubic-bezier(.16,.9,.2,1) !important;
   animation-name: heroFadeUp !important;
+  animation-duration: .6s !important;
+  opacity: 1 !important;
 }
-.hero-anim-badge { animation-delay: 0s !important; }
-.hero-anim-logo { animation-delay: .05s !important; }
-.hero-anim-eyebrow { animation-delay: .1s !important; }
-.hero-anim-h1 { animation-delay: .15s !important; }
-.hero-anim-stats { animation-delay: .22s !important; }
-.hero-anim-cta { animation-delay: .3s !important; }
-.hero-anim-follow { animation-delay: .38s !important; }
+.hero-anim-badge    { animation-delay: 0s !important; }
+.hero-anim-logo     { animation-delay: .05s !important; }
+.hero-anim-eyebrow  { animation-delay: .1s !important; }
+.hero-anim-h1       { animation-delay: .15s !important; }
+.hero-anim-stats    { animation-delay: .22s !important; }
+.hero-anim-cta      { animation-delay: .3s !important; }
+.hero-anim-follow   { animation-delay: .38s !important; }
 
-/* ══════════════════════════════════════
-   REVEAL - görünür (JS bekleme)
-══════════════════════════════════════ */
+/* .reveal ve .reveal-scale - CSS ile görünür, JS scroll ile animasyon güzel */
 .reveal,
 .reveal-scale {
-  opacity: 1;
-  transform: none;
-  filter: none;
-  transition: opacity .6s ease, transform .6s cubic-bezier(.16,.9,.2,1);
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
 }
-
-/* Hero grid boşluk fix - kesin */
-section#hero > div {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 40px 40px 60px;
-  box-sizing: border-box;
-}
-
-/* ── Hero animasyonları JS tarafından tetiklenir ── */
-.hero-anim-badge,
-.hero-anim-logo,
-.hero-anim-eyebrow,
-.hero-anim-h1,
-.hero-anim-stats,
-.hero-anim-cta,
-.hero-anim-follow {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity .5s ease, transform .5s cubic-bezier(.16,.9,.2,1);
-}
-.hero-anim-badge.visible { opacity: 1; transform: none; transition-delay: 0s; }
-.hero-anim-logo.visible { opacity: 1; transform: none; transition-delay: .05s; }
-.hero-anim-eyebrow.visible { opacity: 1; transform: none; transition-delay: .1s; }
-.hero-anim-h1.visible { opacity: 1; transform: none; transition-delay: .15s; }
-.hero-anim-stats.visible { opacity: 1; transform: none; transition-delay: .22s; }
-.hero-anim-cta.visible { opacity: 1; transform: none; transition-delay: .3s; }
-.hero-anim-follow.visible { opacity: 1; transform: none; transition-delay: .38s; }

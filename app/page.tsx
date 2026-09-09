@@ -74,6 +74,36 @@ export default function Home() {
           </div>
         </div>
 
+
+        <!-- Demlenme animasyonu - sol kolonda, mobilde de görünür -->
+        <div style="display:flex;align-items:center;gap:14px;padding:12px 16px;background:var(--cream-deep);border-radius:16px;">
+          <svg viewBox="0 0 80 100" width="56" height="70" style="flex-shrink:0">
+            <defs>
+              <linearGradient id="tg2" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0%" stop-color="#c0392b"/>
+                <stop offset="100%" stop-color="#e74c3c" stop-opacity="0.5"/>
+              </linearGradient>
+            </defs>
+            <path d="M28 12 Q30 6 32 12 Q34 18 36 12" fill="none" stroke="var(--ink)" stroke-width="1.5" stroke-linecap="round" opacity="0.4">
+              <animate attributeName="opacity" values="0.4;0;0.4" dur="2s" repeatCount="indefinite"/>
+            </path>
+            <path d="M42 8 Q44 2 46 8 Q48 14 50 8" fill="none" stroke="var(--ink)" stroke-width="1.5" stroke-linecap="round" opacity="0.3">
+              <animate attributeName="opacity" values="0.3;0;0.3" dur="2.5s" repeatCount="indefinite"/>
+            </path>
+            <path d="M18 18 Q15 55 17 82 L63 82 Q65 55 62 18 Z" fill="white" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/>
+            <clipPath id="cup2"><path d="M18 18 Q15 55 17 82 L63 82 Q65 55 62 18 Z"/></clipPath>
+            <rect x="16" y="18" width="48" height="65" fill="url(#tg2)" clip-path="url(#cup2)">
+              <animate attributeName="y" values="80;40" dur="3s" repeatCount="indefinite"/>
+              <animate attributeName="height" values="4;44" dur="3s" repeatCount="indefinite"/>
+            </rect>
+            <ellipse cx="40" cy="84" rx="28" ry="5" fill="none" stroke="var(--ink)" stroke-width="2"/>
+          </svg>
+          <div>
+            <p style="margin:0;font-size:.72rem;color:var(--rust);font-weight:700;letter-spacing:.06em">ŞU AN</p>
+            <p style="margin:0;font-size:.9rem;font-weight:600;color:var(--ink)">demleniyor...</p>
+          </div>
+        </div>
+
         <!-- CTAs -->
         <div style="display:flex;gap:12px;flex-wrap:wrap">
           <a href="#videos" class="btn btn-ink" style="display:inline-flex;align-items:center;gap:8px">
