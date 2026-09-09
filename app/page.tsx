@@ -31,7 +31,7 @@ export default function Home() {
   <div class="section-blob parallax" data-speed="-0.06" style="width:360px;height:360px;bottom:-160px;left:-120px;background:radial-gradient(circle,var(--lav) 0%,transparent 72%);opacity:.3" aria-hidden="true"></div>
 
   <!-- HERO 3 KOLON -->
-  <div className="hero-3col" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px;align-items:center;max-width:var(--wrap);margin:0 auto;padding:60px var(--pad) 48px;min-height:80vh">
+  <div className="hero-3col" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px;align-items:center;max-width:var(--wrap);margin:0 auto;padding:40px var(--pad) 48px">
 
     <!-- SOL: İstatistikler + Başlık + CTA -->
     <div class="hero-head reveal" style="display:flex;flex-direction:column;gap:20px">

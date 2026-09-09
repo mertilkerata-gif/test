@@ -1178,3 +1178,30 @@ body > nav:first-of-type ~ nav {
 [data-theme="dark"] .nav-logo img {
   filter: invert(1);
 }
+
+/* ── Hero mobil — içerik görünsün ── */
+@media (max-width: 900px) {
+  .hero-3col {
+    grid-template-columns: 1fr !important;
+    padding: 24px var(--pad) 40px !important;
+    gap: 24px !important;
+  }
+  .hero-3col > div:nth-child(2) {
+    display: flex !important;
+    justify-content: center;
+  }
+  .hero-3col > div:nth-child(2) > div {
+    width: 200px !important;
+    height: 200px !important;
+  }
+  .hero-3col > div:nth-child(3) {
+    display: none !important;
+  }
+  section.hero {
+    min-height: auto !important;
+    padding-top: 0 !important;
+  }
+  .hero-head-row {
+    padding: 0 !important;
+  }
+}
