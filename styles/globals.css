@@ -168,7 +168,7 @@ html.dark-mode .nav-logo-img{ filter:invert(1); }
 }
 
 /* ---------------- HERO ---------------- */
-.hero{ position:relative; padding:44px var(--pad) 80px; overflow:hidden; min-height:88vh; display:flex; align-items:center; }
+.hero{ position:relative; overflow:hidden; }
 /* real photo used as a scroll-parallax depth layer behind the hero copy --
    oversized + cropped by .hero's own overflow:hidden, with a soft cream
    vignette so headline/stat-card/glass illustration stay fully legible. */
@@ -1129,38 +1129,11 @@ body, p, span, li, a, button, input, textarea, select {
   }
 }
 
-/* ── Hero 3 kolon responsive ── */
-@media (max-width: 900px) {
-  .hero-3col {
-    grid-template-columns: 1fr !important;
-  }
-  .hero-3col > div:nth-child(2),
-  .hero-3col > div:nth-child(3) {
-    display: none !important;
-  }
-}
 
 /* ── Nav logo image ── */
 .nav-logo img {
   height: 24px;
   width: auto;
-}
-
-/* ── Hero mobil düzeltme ── */
-@media (max-width: 900px) {
-  section#hero {
-    padding-top: 0 !important;
-    min-height: auto !important;
-  }
-  .hero-head-row {
-    padding: 32px var(--pad) !important;
-  }
-}
-
-/* ── Nav: eski HTML nav gizle, sadece NavBar göster ── */
-nav.site-nav + nav,
-body > nav:first-of-type ~ nav {
-  display: none !important;
 }
 
 /* ── introLoader tamamen devre dışı ── */
@@ -1177,33 +1150,6 @@ body > nav:first-of-type ~ nav {
 /* Dark mode'da logo rengi tersle */
 [data-theme="dark"] .nav-logo img {
   filter: invert(1);
-}
-
-/* ── Hero mobil — içerik görünsün ── */
-@media (max-width: 900px) {
-  .hero-3col {
-    grid-template-columns: 1fr !important;
-    padding: 24px var(--pad) 40px !important;
-    gap: 24px !important;
-  }
-  .hero-3col > div:nth-child(2) {
-    display: flex !important;
-    justify-content: center;
-  }
-  .hero-3col > div:nth-child(2) > div {
-    width: 200px !important;
-    height: 200px !important;
-  }
-  .hero-3col > div:nth-child(3) {
-    display: none !important;
-  }
-  section.hero {
-    min-height: auto !important;
-    padding-top: 0 !important;
-  }
-  .hero-head-row {
-    padding: 0 !important;
-  }
 }
 
 /* ── Hero grid yeni versiyon ── */
@@ -1248,4 +1194,14 @@ section.hero {
 section.hero > .section-blob {
   position: absolute !important;
   pointer-events: none;
+}
+
+/* ── hero-new-grid responsive ── */
+@media (max-width: 1024px) {
+  .hero-new-grid { grid-template-columns: 1fr 1fr !important; gap: 32px !important; }
+  .hero-new-grid > div:nth-child(3) { display: none !important; }
+}
+@media (max-width: 680px) {
+  .hero-new-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .hero-new-grid > div:nth-child(2) { display: none !important; }
 }
