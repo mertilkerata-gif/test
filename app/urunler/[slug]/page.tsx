@@ -41,7 +41,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
         </div>
 
         {/* Ana içerik */}
-        <div style={{
+        <div className="product-detail-grid" style={{
           maxWidth:'var(--wrap)',margin:'0 auto',
           padding:'40px var(--pad)',
           display:'grid',

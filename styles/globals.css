@@ -1102,3 +1102,46 @@ html{ scrollbar-color:var(--rust) var(--cream); scrollbar-width:thin; }
     display: none !important;
   }
 }
+
+/* ── Demleme Font Override: Kodchasan body, Strenuous logo ── */
+body, p, span, li, a, button, input, textarea, select {
+  font-family: 'Kodchasan', var(--font-body), sans-serif !important;
+}
+.nav-logo-text {
+  font-family: 'Boogaloo', var(--font-display), sans-serif !important;
+  font-size: 1.5rem !important;
+  letter-spacing: 0.06em;
+}
+/* Logo PNG kullandığımızda text gizle */
+.nav-logo-img {
+  height: 28px;
+  width: auto;
+  display: block;
+}
+
+/* ── Ürün detay sayfası responsive ── */
+@media (max-width: 768px) {
+  .product-detail-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .product-detail-sticky {
+    position: static !important;
+  }
+}
+
+/* ── Hero 3 kolon responsive ── */
+@media (max-width: 900px) {
+  .hero-3col {
+    grid-template-columns: 1fr !important;
+  }
+  .hero-3col > div:nth-child(2),
+  .hero-3col > div:nth-child(3) {
+    display: none !important;
+  }
+}
+
+/* ── Nav logo image ── */
+.nav-logo img {
+  height: 24px;
+  width: auto;
+}

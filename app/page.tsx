@@ -79,41 +79,71 @@ export default function Home() {
 
 <!-- ============================================================ -->
 <section class="hero" id="hero">
-  <div class="hero-photo-layer parallax" data-speed="0.42" src="" aria-hidden="true"></div>
+  <!-- Parallax blobs -->
   <div class="section-blob parallax" data-speed="0.09" style="width:480px;height:480px;top:-180px;right:-140px;background:radial-gradient(circle,var(--butter) 0%,transparent 72%)" aria-hidden="true"></div>
   <div class="section-blob parallax" data-speed="-0.06" style="width:360px;height:360px;bottom:-160px;left:-120px;background:radial-gradient(circle,var(--lav) 0%,transparent 72%);opacity:.3" aria-hidden="true"></div>
-  <div class="hero-head-row">
-    <div class="hero-head reveal" data-intro-linked>
-      <span class="hero-live-badge"><span class="hero-live-dot" aria-hidden="true"></span>Yeni Bölüm Bugün Yayında</span>
-      <p class="eyebrow">Haftalık Sohbet Sofrası</p>
-      <h1 class="hero-cycle-head">
+
+  <!-- HERO 3 KOLON -->
+  <div className="hero-3col" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px;align-items:center;max-width:var(--wrap);margin:0 auto;padding:60px var(--pad) 48px;min-height:80vh">
+
+    <!-- SOL: İstatistikler + Başlık + CTA -->
+    <div class="hero-head reveal" data-intro-linked style="display:flex;flex-direction:column;gap:20px">
+      <span class="hero-live-badge" style="align-self:flex-start"><span class="hero-live-dot" aria-hidden="true"></span>Yeni Bölüm Bugün Yayında</span>
+
+      <!-- Logo PNG -->
+      <a href="/" style="display:block;margin-bottom:8px">
+        <img src="/images/demleme-logo.png" alt="Demleme" style="height:36px;width:auto;filter:var(--logo-filter,none)" />
+      </a>
+
+      <p class="eyebrow" style="font-family:'Kodchasan',sans-serif;font-size:.75rem;letter-spacing:.18em;color:var(--rust);margin:0">HAFTALIK SOHBET SOFRASI</p>
+
+      <h1 class="hero-cycle-head" style="font-family:'Boogaloo',var(--font-display);font-size:clamp(2.8rem,5vw,5rem);line-height:1.05;margin:0">
         <span class="hcl-line">İyi bir
           <span class="hero-cycle-slot" data-slot="a" aria-hidden="true">
-            <span class="hcs-icon is-active" data-i="0" style="color:var(--lav-deep)"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="16" cy="20" rx="11" ry="4.2"/><circle cx="6" cy="11" r="2.6"/><circle cx="16" cy="8" r="2.6"/><circle cx="26" cy="11" r="2.6"/><circle cx="16" cy="24.5" r="2.4"/><path d="M9 20c1.5-6 5-8 7-8M16 10.6c2 0 5.5 2 7 7.4M13.5 24c.8-2 1.6-2.2 2.5-2.2s1.7.2 2.5 2.2"/></svg></span>
-            <span class="hcs-icon" data-i="1" style="color:var(--green-deep)"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="7" r="4"/><path d="M7 24c0-6 2-10 6-10"/><path d="M13.5 15c2 .5 3 2 3.5 4.3"/><path d="M5 24h13"/><ellipse cx="18" cy="24" rx="6.5" ry="2.4"/><ellipse cx="17" cy="23.2" rx="2.6" ry="1.6" fill="currentColor" stroke="none" opacity=".18"/><circle cx="17.2" cy="23.2" r=".9" fill="currentColor" stroke="none"/><path d="M19 12c2.6-.8 5.2.4 5.6 3 .4 2.8-2.3 4.6-5 4"/><path d="M24 13.4c1-1.2 1-2.4 0-3.5"/></svg></span>
-            <span class="hcs-icon" data-i="2" style="color:var(--ink-fixed)"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22c0-3 2-5 5-5h14c3 0 5 2 5 5"/><path d="M9 17l2-5c.5-1.2 1.6-2 3-2h6c1 0 1.8.6 2 1.6l1 5.4"/><circle cx="9.5" cy="23.5" r="2.6"/><circle cx="23" cy="23.5" r="2.6"/><circle cx="12" cy="12.4" r="2.3"/><circle cx="19" cy="12.4" r="2.3"/><path d="M4 22h24"/></svg></span>
-            <span class="hcs-icon" data-i="3" style="color:var(--rust-deep)"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13" cy="9" r="4.4"/><path d="M8 27c0-6.5 2.5-11 8-11"/><path d="M16.5 17c3 .3 5 2 5.5 4.7"/><path d="M20 15.5c2.6-.8 5.4.4 5.8 3.2.4 3-2.6 5-5.6 4.3"/><path d="M22 12c1 1.3 1 2.6 0 3.8M25 12.6c.8 1.1.8 2.3 0 3.4"/></svg></span>
+            <span class="hcs-icon is-active" data-i="0" style="color:var(--lav-deep)"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><ellipse cx="16" cy="20" rx="11" ry="4.2"/><circle cx="6" cy="11" r="2.6"/><circle cx="16" cy="8" r="2.6"/><circle cx="26" cy="11" r="2.6"/><path d="M9 20c1.5-6 5-8 7-8M16 10.6c2 0 5.5 2 7 7.4"/></svg></span>
+            <span class="hcs-icon" data-i="1" style="color:var(--green-deep)"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="7" r="4"/><path d="M7 24c0-6 2-10 6-10M13.5 15c2 .5 3 2 3.5 4.3M5 24h13"/><ellipse cx="18" cy="24" rx="6.5" ry="2.4"/></svg></span>
+            <span class="hcs-icon" data-i="2" style="color:var(--ink-fixed)"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 22c0-3 2-5 5-5h14c3 0 5 2 5 5"/><path d="M9 17l2-5c.5-1.2 1.6-2 3-2h6c1 0 1.8.6 2 1.6l1 5.4"/><circle cx="9.5" cy="23.5" r="2.6"/><circle cx="23" cy="23.5" r="2.6"/></svg></span>
+            <span class="hcs-icon" data-i="3" style="color:var(--rust-deep)"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="13" cy="9" r="4.4"/><path d="M8 27c0-6.5 2.5-11 8-11"/></svg></span>
           </span>
           sohbet,
         </span>
-        <span class="hcl-line"><span class="script">zamanla</span>
+        <span class="hcl-line"><span class="script" style="font-family:'Caveat',cursive;color:var(--lav-deep)">zamanla</span>
           <span class="hero-cycle-slot" data-slot="b" aria-hidden="true">
-            <span class="hcs-icon" data-i="0" style="color:var(--lav-deep)"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="16" cy="20" rx="11" ry="4.2"/><circle cx="6" cy="11" r="2.6"/><circle cx="16" cy="8" r="2.6"/><circle cx="26" cy="11" r="2.6"/><circle cx="16" cy="24.5" r="2.4"/><path d="M9 20c1.5-6 5-8 7-8M16 10.6c2 0 5.5 2 7 7.4M13.5 24c.8-2 1.6-2.2 2.5-2.2s1.7.2 2.5 2.2"/></svg></span>
-            <span class="hcs-icon" data-i="1" style="color:var(--green-deep)"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="7" r="4"/><path d="M7 24c0-6 2-10 6-10"/><path d="M13.5 15c2 .5 3 2 3.5 4.3"/><path d="M5 24h13"/><ellipse cx="18" cy="24" rx="6.5" ry="2.4"/><ellipse cx="17" cy="23.2" rx="2.6" ry="1.6" fill="currentColor" stroke="none" opacity=".18"/><circle cx="17.2" cy="23.2" r=".9" fill="currentColor" stroke="none"/><path d="M19 12c2.6-.8 5.2.4 5.6 3 .4 2.8-2.3 4.6-5 4"/><path d="M24 13.4c1-1.2 1-2.4 0-3.5"/></svg></span>
-            <span class="hcs-icon" data-i="2" style="color:var(--ink-fixed)"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22c0-3 2-5 5-5h14c3 0 5 2 5 5"/><path d="M9 17l2-5c.5-1.2 1.6-2 3-2h6c1 0 1.8.6 2 1.6l1 5.4"/><circle cx="9.5" cy="23.5" r="2.6"/><circle cx="23" cy="23.5" r="2.6"/><circle cx="12" cy="12.4" r="2.3"/><circle cx="19" cy="12.4" r="2.3"/><path d="M4 22h24"/></svg></span>
-            <span class="hcs-icon is-active" data-i="3" style="color:var(--rust-deep)"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13" cy="9" r="4.4"/><path d="M8 27c0-6.5 2.5-11 8-11"/><path d="M16.5 17c3 .3 5 2 5.5 4.7"/><path d="M20 15.5c2.6-.8 5.4.4 5.8 3.2.4 3-2.6 5-5.6 4.3"/><path d="M22 12c1 1.3 1 2.6 0 3.8M25 12.6c.8 1.1.8 2.3 0 3.4"/></svg></span>
+            <span class="hcs-icon is-active" data-i="0" style="color:var(--lav-deep)"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><ellipse cx="16" cy="20" rx="11" ry="4.2"/><circle cx="6" cy="11" r="2.6"/><circle cx="16" cy="8" r="2.6"/><circle cx="26" cy="11" r="2.6"/></svg></span>
+            <span class="hcs-icon" data-i="1" style="color:var(--green-deep)"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="7" r="4"/><path d="M7 24c0-6 2-10 6-10M5 24h13"/></svg></span>
+            <span class="hcs-icon" data-i="2" style="color:var(--ink-fixed)"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 22c0-3 2-5 5-5h14c3 0 5 2 5 5"/></svg></span>
+            <span class="hcs-icon" data-i="3" style="color:var(--rust-deep)"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="13" cy="9" r="4.4"/></svg></span>
           </span>
           demlenir.
         </span>
       </h1>
-      <p class="hero-sub reveal" data-intro-linked>Demleme; çayın demlendiği kadar yavaş, sohbetin uzadığı kadar samimi bir masa. Her hafta yeni bir konuk, yeni bir hikâye — YouTube'da ve kendi mağazamızda.</p>
-      <div class="hero-ctas">
-        <a href="#videos" class="btn btn-ink">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+
+      <!-- İstatistikler -->
+      <div style="display:flex;flex-direction:column;gap:12px;margin:8px 0">
+        <div style="display:flex;align-items:baseline;gap:8px">
+          <span class="count-up" data-target="12000" style="font-family:'Boogaloo',var(--font-display);font-size:2.4rem;color:var(--ink);line-height:1">12.000</span>
+          <span style="font-family:'Kodchasan',sans-serif;font-size:.85rem;color:var(--ink-soft)">dinleyen</span>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:8px">
+          <span class="count-up" data-target="84" style="font-family:'Boogaloo',var(--font-display);font-size:2.4rem;color:var(--rust);line-height:1">84</span>
+          <span style="font-family:'Kodchasan',sans-serif;font-size:.85rem;color:var(--ink-soft)">bölüm yayında</span>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:8px">
+          <span class="count-up" data-target="200" style="font-family:'Boogaloo',var(--font-display);font-size:2.4rem;color:var(--green);line-height:1">200+</span>
+          <span style="font-family:'Kodchasan',sans-serif;font-size:.85rem;color:var(--ink-soft)">topluluk üyesi</span>
+        </div>
+      </div>
+
+      <!-- CTAs -->
+      <div class="hero-ctas" style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="#videos" class="btn btn-ink" style="font-family:'Kodchasan',sans-serif;font-weight:600">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M8 5v14l11-7z"/></svg>
           Son Bölümü İzle
         </a>
-        <a href="#shop" class="btn btn-outline">Mağazayı Gez</a>
+        <a href="/urunler" class="btn btn-outline" style="font-family:'Kodchasan',sans-serif;font-weight:600">Mağazayı Gez</a>
       </div>
+
+      <!-- Follow row -->
       <div class="hero-follow">
         <div class="hero-follow-avatars">
           <div class="avatar" style="background:var(--rust)">SB</div>
@@ -122,6 +152,60 @@ export default function Home() {
           <div class="avatar" style="background:var(--teal)">+</div>
         </div>
         <div class="hero-follow-text">12.000+ dinleyen<span>topluluğa katıl</span></div>
+      </div>
+    </div>
+
+    <!-- ORTA: Grafiker çay figürü -->
+    <div style="display:flex;align-items:center;justify-content:center;position:relative">
+      <div style="background:var(--cream-deep);border-radius:50%;width:340px;height:340px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.08)">
+        <img src="/images/cay-icon-blue.jpeg" alt="Çay ve mikrofon" style="width:65%;height:65%;object-fit:contain;mix-blend-mode:multiply" />
+      </div>
+      <!-- floating çay ikonu -->
+      <div style="position:absolute;top:-20px;right:-10px;background:var(--butter);border-radius:50%;width:72px;height:72px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.1);animation:float 3s ease-in-out infinite">
+        <img src="/images/cay-icon-green.jpeg" alt="Yeşil çay" style="width:60%;height:60%;object-fit:contain;mix-blend-mode:multiply" />
+      </div>
+    </div>
+
+    <!-- SAĞ: Çay demlenme figürü -->
+    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px">
+      <div style="position:relative;display:flex;flex-direction:column;align-items:center">
+        <img src="/images/cay-icen-figur.png" alt="Çay içen figür" style="width:280px;height:280px;object-fit:contain" />
+        <!-- demlenme animasyonu -->
+        <div style="margin-top:16px;width:120px;height:120px;position:relative">
+          <svg viewBox="0 0 120 120" style="width:100%;height:100%">
+            <defs>
+              <clipPath id="teaClip">
+                <rect x="30" y="20" width="60" height="80" rx="8"/>
+              </clipPath>
+              <linearGradient id="teaGrad" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0%" stop-color="#c0392b"/>
+                <stop offset="100%" stop-color="#e74c3c" stop-opacity="0.6"/>
+              </linearGradient>
+            </defs>
+            <!-- Bardak dış -->
+            <path d="M35 25 Q30 60 33 95 L87 95 Q90 60 85 25 Z" fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- Tabak -->
+            <ellipse cx="60" cy="96" rx="32" ry="6" fill="none" stroke="var(--ink)" stroke-width="2"/>
+            <!-- Demlenme fill animasyonu -->
+            <rect x="33" y="40" width="54" height="56" fill="url(#teaGrad)" clip-path="url(#teaClip)" style="transform-origin:bottom;animation:teaFill 3s ease-in-out infinite alternate">
+              <animate attributeName="y" values="90;40" dur="3s" repeatCount="indefinite"/>
+              <animate attributeName="height" values="6;56" dur="3s" repeatCount="indefinite"/>
+            </rect>
+            <!-- Buhar -->
+            <path d="M48 22 Q50 16 52 22 Q54 28 56 22" fill="none" stroke="var(--ink)" stroke-width="1.5" stroke-linecap="round" opacity="0.5">
+              <animate attributeName="opacity" values="0.5;0;0.5" dur="2s" repeatCount="indefinite"/>
+            </path>
+            <path d="M60 18 Q62 12 64 18 Q66 24 68 18" fill="none" stroke="var(--ink)" stroke-width="1.5" stroke-linecap="round" opacity="0.4">
+              <animate attributeName="opacity" values="0.4;0;0.4" dur="2.5s" repeatCount="indefinite"/>
+            </path>
+          </svg>
+        </div>
+        <p style="font-family:'Kodchasan',sans-serif;font-size:.85rem;color:var(--ink-soft);text-align:center;margin:0">demleniyor...</p>
+      </div>
+
+      <!-- Sofra ikonu -->
+      <div style="background:var(--lav);border-radius:20px;padding:20px;display:flex;align-items:center;justify-content:center">
+        <img src="/images/sofra-blue.png" alt="Sofra" style="width:120px;height:auto;object-fit:contain;mix-blend-mode:multiply" />
       </div>
     </div>
   </div>
@@ -323,7 +407,7 @@ export default function Home() {
   <div class="benkimim-grid">
     <div class="benkimim-photo-wrap reveal-scale">
       <div class="mk mk-icon-green benkimim-mark-float f1 parallax" data-speed="0.11"></div>
-      <div class="benkimim-photo"><img src="" alt="Demleme'yi demleyen"></div>
+      <div class="benkimim-photo"><img src="/images/garen-foto.png" alt="Garen — Demleme" style="width:100%;height:100%;object-fit:cover;object-position:top"></div>
       <div class="mk mk-sofra-teal benkimim-mark-float f2 parallax" data-speed="-0.13"></div>
     </div>
     <div class="benkimim-copy reveal">
