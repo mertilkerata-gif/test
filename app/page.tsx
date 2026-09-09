@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import NavBar from '@/app/components/NavBar';
 
 export const metadata: Metadata = {
   title: 'Demleme — İyi Bir Sohbet, Zamanla Demlenir.',
@@ -7,8 +8,10 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div
-      dangerouslySetInnerHTML={{
+    <>
+      <NavBar />
+      <div
+        dangerouslySetInnerHTML={{
         __html: `<div class="ticker-bar" aria-hidden="true">
   <div class="ticker-track">
     <span class="ticker-item">DEMLEME</span>
@@ -1965,5 +1968,6 @@ export default function Home() {
 </script>`
       }}
     />
+    </>
   );
 }
