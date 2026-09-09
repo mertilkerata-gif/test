@@ -32,7 +32,7 @@ export const products: Product[] = [
   },
   {
     id: 'p2',
-    slug: 'sofra-tisörtu',
+    slug: 'sofra-tisortu',
     name: 'Sofra Tişörtü',
     price: 450,
     priceDisplay: '₺450',
