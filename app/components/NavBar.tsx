@@ -59,12 +59,7 @@ export default function NavBar() {
             id="cartBtn"
             className="nav-icon-btn"
             aria-label="Sepetim"
-            onClick={() => {
-              // renderCartDrawer'ı main.js tetikler, biz sadece drawer'ı açıyoruz
-              const renderEvent = new Event('render-cart-drawer');
-              window.dispatchEvent(renderEvent);
-              openDrawer('cartDrawer');
-            }}
+
             style={{position:'relative',background:'none',border:'none',cursor:'pointer',padding:0,width:'29px',height:'29px',display:'flex',alignItems:'center',justifyContent:'center'}}
           >
             <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M7 8V6.5a5 5 0 0110 0V8h2.3a1 1 0 01.99.86l1.2 8.4A2 2 0 0119.52 20H4.48a2 2 0 01-1.97-2.74l1.2-8.4A1 1 0 014.7 8H7zm2 0h6V6.5a3 3 0 00-6 0V8z"/></svg>
@@ -84,7 +79,6 @@ export default function NavBar() {
             id="searchBtn"
             className="nav-icon-btn"
             aria-label="Ara"
-            onClick={() => openDrawer('searchOverlay')}
             style={{background:'none',border:'none',cursor:'pointer',display:'flex',alignItems:'center',justifyContent:'center',padding:0,width:'29px',height:'29px'}}
           >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" width="22" height="22"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>

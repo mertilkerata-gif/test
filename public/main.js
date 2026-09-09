@@ -1406,34 +1406,3 @@
   })();
 
 })();
-
-/* ── React NavBar ile köprü: render-cart-drawer event ── */
-(function(){
-  window.addEventListener('render-cart-drawer', function(){
-    var list = document.getElementById('cartList');
-    var foot = document.getElementById('cartFoot');
-    if(!list) return;
-    var cart = [];
-    try { cart = JSON.parse(localStorage.getItem('demleme-cart') || '[]'); } catch(e){}
-    list.innerHTML = '';
-    if(!cart.length){
-      list.innerHTML = '<p class="cart-empty" id="cartEmptyMsg">Sepetin boş — <a href="#shop">ürünlere göz at</a>.</p>';
-      if(foot) foot.hidden = true;
-      return;
-    }
-    cart.forEach(function(item){
-      var div = document.createElement('div');
-      div.className = 'cart-item';
-      div.innerHTML = '<div class="cart-item-icon" style="width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:var(--cream-deep);flex-shrink:0">'
-        + item.svgIcon + '</div>'
-        + '<div style="flex:1;min-width:0"><p style="margin:0;font-weight:600;font-size:.9rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + item.name + '</p>'
-        + '<p style="margin:4px 0 0;font-size:.82rem;color:var(--ink-soft)">' + item.priceDisplay + ' × ' + item.qty + '</p></div>'
-        + '<b style="font-size:.95rem;flex-shrink:0">₺' + (item.price * item.qty) + '</b>';
-      list.appendChild(div);
-    });
-    var total = cart.reduce(function(s,c){ return s + c.price * c.qty; }, 0);
-    var sub = document.getElementById('cartSubtotal');
-    if(sub) sub.textContent = '₺' + total;
-    if(foot) foot.hidden = false;
-  });
-})();
