@@ -115,7 +115,7 @@ p{margin:0;}
 
 /* ---------------- NAV ---------------- */
 .site-nav{
-  position:sticky; top:0; z-index:1000; display:flex; align-items:center; justify-content:space-between;
+  position:fixed; top:0; left:0; right:0; z-index:1000; display:flex; align-items:center; justify-content:space-between;
   padding:20px var(--pad); background:rgba(243,238,225,0); backdrop-filter:blur(0px); border-bottom:1px solid transparent;
   transition:background .45s var(--ease-premium, ease), backdrop-filter .45s var(--ease-premium, ease), border-color .35s, box-shadow .35s;
 }
@@ -212,7 +212,7 @@ html.dark-mode .nav-logo-img{ filter:invert(1); }
 @media (max-width:640px){ .hero-cycle-slot{ width:.78em; height:.78em; } }
 
 /* -------- ticker bar: thin scrolling strip above the nav -------- */
-.ticker-bar{ background:var(--ink-fixed); color:var(--cream-fixed); overflow:hidden; white-space:nowrap; position:relative; }
+.ticker-bar{ margin-top:72px; background:var(--ink-fixed); color:var(--cream-fixed); overflow:hidden; white-space:nowrap; position:relative; }
 .ticker-track{ display:inline-flex; width:max-content; animation:tickerScroll 30s linear infinite; will-change:transform; }
 .ticker-item{
   display:inline-flex; align-items:center; font-size:.68rem; font-weight:700; letter-spacing:.07em;
@@ -1482,7 +1482,7 @@ section#hero {
   align-items: start !important;
   max-width: 1200px !important;
   margin: 0 auto !important;
-  padding: 48px 40px 64px !important;
+  padding: 40px 40px 64px !important;
   position: relative !important;
   z-index: 1 !important;
   box-sizing: border-box !important;
@@ -1512,4 +1512,15 @@ section#hero [data-intro-linked] {
   opacity: 1 !important;
   transform: none !important;
   filter: none !important;
+}
+
+/* ── NAV FİXED DÜZELTME ── */
+.site-nav {
+  height: 72px !important;
+}
+.site-nav.scrolled {
+  background: rgba(243,238,225,.96) !important;
+  backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid var(--line) !important;
+  box-shadow: 0 2px 20px rgba(0,0,0,.08) !important;
 }
