@@ -1167,3 +1167,14 @@ body > nav:first-of-type ~ nav {
 #introLoader {
   display: none !important;
 }
+
+/* ── Nav logo PNG ── */
+.nav-logo img {
+  height: 32px !important;
+  width: auto !important;
+  object-fit: contain;
+}
+/* Dark mode'da logo rengi tersle */
+[data-theme="dark"] .nav-logo img {
+  filter: invert(1);
+}

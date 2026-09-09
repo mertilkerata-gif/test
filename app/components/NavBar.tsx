@@ -27,7 +27,7 @@ export default function NavBar() {
           <img 
             src="/images/demleme-logo.png" 
             alt="Demleme" 
-            style={{height:'26px',width:'auto',display:'block'}}
+            style={{height:'32px',width:'auto',display:'block',objectFit:'contain'}}
             onError={(e) => {
               e.currentTarget.style.display = 'none';
               const el = e.currentTarget.nextElementSibling as HTMLElement;
