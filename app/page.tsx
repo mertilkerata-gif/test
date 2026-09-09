@@ -581,24 +581,100 @@ export default function Home() {
 <!-- ============================================================ -->
 <!-- PRODUCT MODAL -->
 <div class="modal-backdrop" id="productModal" aria-hidden="true">
-  <div class="modal-box" role="dialog" aria-modal="true" aria-label="Ürün detayı">
-    <button class="modal-close" data-close="productModal" aria-label="Kapat">&times;</button>
-    <div class="modal-product">
-      <div class="modal-product-photo" id="productModalPhoto"></div>
-      <div class="modal-product-meta">
-        <p class="modal-eyebrow">Demleme Shop</p>
-        <h3 id="productModalName">Demleme Kupası</h3>
-        <p class="modal-product-price" id="productModalPrice">₺290</p>
-        <div class="modal-qty">
-          <button type="button" id="productQtyMinus" aria-label="Azalt">–</button>
-          <span id="productQtyVal">1</span>
-          <button type="button" id="productQtyPlus" aria-label="Arttır">+</button>
+  <div class="modal-box pm-box" role="dialog" aria-modal="true" aria-label="Ürün detayı">
+    <button class="modal-close pm-close" data-close="productModal" aria-label="Kapat">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+
+    <div class="pm-inner">
+      <!-- Sol: Görsel -->
+      <div class="pm-photo-col">
+        <div class="pm-photo-wrap" id="productModalPhoto">
+          <!-- JS tarafından doldurulur -->
         </div>
-        <button type="button" class="btn btn-ink modal-add-btn" id="productAddBtn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>
-          Sepete Ekle
-        </button>
-        <p class="modal-add-msg" id="productAddMsg" hidden>Sepete eklendi ✓</p>
+        <!-- Renk noktaları (dekoratif) -->
+        <div class="pm-color-dots" id="productModalColors"></div>
+        <!-- Güvence ikonları -->
+        <div class="pm-trust">
+          <div class="pm-trust-item">
+            <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 2l2 4h4l-3 3 1 4-4-3-4 3 1-4-3-3h4z" opacity=".4"/><circle cx="10" cy="10" r="8"/><path d="M7 10l2 2 4-4"/></svg>
+            <span>Orijinal ürün</span>
+          </div>
+          <div class="pm-trust-item">
+            <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h14v9a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/><path d="M1 7h18M8 7V4a2 2 0 014 0v3"/></svg>
+            <span>Ücretsiz kargo</span>
+          </div>
+          <div class="pm-trust-item">
+            <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2zm0 4v4l3 3"/></svg>
+            <span>14 gün iade</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sağ: Bilgi -->
+      <div class="pm-info-col">
+        <div class="pm-badges" id="productModalBadges"></div>
+
+        <h2 class="pm-name" id="productModalName">Demleme Kupası</h2>
+        <p class="pm-desc" id="productModalDesc"></p>
+
+        <!-- Rating -->
+        <div class="pm-rating">
+          <div class="pm-stars">
+            <svg viewBox="0 0 12 12" width="12" height="12" fill="#f39c12"><path d="M6 1l1.2 2.6H10L7.8 5.2l.8 2.8L6 6.4 3.4 8l.8-2.8L2 3.6h2.8z"/></svg>
+            <svg viewBox="0 0 12 12" width="12" height="12" fill="#f39c12"><path d="M6 1l1.2 2.6H10L7.8 5.2l.8 2.8L6 6.4 3.4 8l.8-2.8L2 3.6h2.8z"/></svg>
+            <svg viewBox="0 0 12 12" width="12" height="12" fill="#f39c12"><path d="M6 1l1.2 2.6H10L7.8 5.2l.8 2.8L6 6.4 3.4 8l.8-2.8L2 3.6h2.8z"/></svg>
+            <svg viewBox="0 0 12 12" width="12" height="12" fill="#f39c12"><path d="M6 1l1.2 2.6H10L7.8 5.2l.8 2.8L6 6.4 3.4 8l.8-2.8L2 3.6h2.8z"/></svg>
+            <svg viewBox="0 0 12 12" width="12" height="12" fill="#f39c12"><path d="M6 1l1.2 2.6H10L7.8 5.2l.8 2.8L6 6.4 3.4 8l.8-2.8L2 3.6h2.8z"/></svg>
+          </div>
+          <span class="pm-rating-text">4.9 · <span id="productModalReviews">47</span> değerlendirme</span>
+        </div>
+
+        <!-- Fiyat -->
+        <div class="pm-price-row">
+          <span class="pm-price" id="productModalPrice">₺290</span>
+          <span class="pm-stock-badge" id="productModalStock"></span>
+        </div>
+
+        <!-- Stok barı -->
+        <div class="pm-stock-bar" id="productModalStockBar" style="display:none">
+          <div class="pm-stock-fill" id="productModalStockFill"></div>
+        </div>
+        <p class="pm-stock-text" id="productModalStockText"></p>
+
+        <!-- Adet -->
+        <div class="pm-qty-row">
+          <div class="pm-qty">
+            <button type="button" class="pm-qty-btn" id="productQtyMinus" aria-label="Azalt">
+              <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M3 8h10"/></svg>
+            </button>
+            <span class="pm-qty-val" id="productQtyVal">1</span>
+            <button type="button" class="pm-qty-btn" id="productQtyPlus" aria-label="Arttır">
+              <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M8 3v10M3 8h10"/></svg>
+            </button>
+          </div>
+          <span class="pm-total" id="productModalTotal">₺290</span>
+        </div>
+
+        <!-- Butonlar -->
+        <div class="pm-actions">
+          <button type="button" class="pm-add-btn" id="productAddBtn">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>
+            <span id="productAddBtnText">Sepete Ekle</span>
+          </button>
+          <a class="pm-detail-btn" id="productModalDetailLink" href="#">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            Ürün Detayı
+          </a>
+        </div>
+
+        <p class="modal-add-msg" id="productAddMsg" hidden>✓ Sepete eklendi!</p>
+
+        <!-- Kargo notu -->
+        <div class="pm-shipping">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h11a2 2 0 012 2v3"/><rect x="9" y="11" width="14" height="10" rx="2"/><circle cx="12" cy="21" r="1"/><circle cx="20" cy="21" r="1"/></svg>
+          <span>2–4 iş günü teslimat · ₺200 üzeri <strong>ücretsiz kargo</strong></span>
+        </div>
       </div>
     </div>
   </div>

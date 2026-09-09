@@ -548,8 +548,43 @@
         }
         var nameTarget = document.getElementById('productModalName');
         var priceTarget = document.getElementById('productModalPrice');
-        if(nameTarget) nameTarget.textContent = nameEl ? nameEl.textContent : 'Ürün';
-        if(priceTarget) priceTarget.textContent = priceEl ? priceEl.textContent : '';
+        var nameText = nameEl ? nameEl.textContent : 'Ürün';
+        var priceText = priceEl ? priceEl.textContent : '';
+        if(nameTarget) nameTarget.textContent = nameText;
+        if(priceTarget) priceTarget.textContent = priceText;
+
+        // Yeni premium elemanlar
+        var descEl = document.getElementById('productModalDesc');
+        var cardDesc = card.querySelector('.product-desc, .highlight-desc');
+        if(descEl) descEl.textContent = cardDesc ? cardDesc.textContent : 'Sofranın tam ortasına layık, özenle üretilmiş Demleme ürünü.';
+
+        var badgesEl = document.getElementById('productModalBadges');
+        if(badgesEl) {
+          var badgeEl = card.querySelector('.limited-badge, .product-badge');
+          badgesEl.innerHTML = badgeEl
+            ? '<span class="pm-badge" style="background:var(--rust);color:#fff">' + badgeEl.textContent + '</span>'
+            : '<span class="pm-badge" style="background:rgba(39,174,96,.12);color:#27ae60">DEMLEME SHOP</span>';
+        }
+
+        var stockEl = document.getElementById('productModalStock');
+        if(stockEl) stockEl.textContent = 'Stokta';
+
+        var totalEl = document.getElementById('productModalTotal');
+        if(totalEl) totalEl.textContent = priceText;
+
+        var detailLink = document.getElementById('productModalDetailLink');
+        if(detailLink) {
+          var cardLink = card.querySelector('a[href*="/urunler/"]');
+          if(cardLink) detailLink.href = cardLink.href;
+        }
+
+        // Fotoğraf dairesi arka plan rengi - ürün rengine göre
+        if(modalPhoto) {
+          var bg = getComputedStyle(photoEl).backgroundColor;
+          modalPhoto.style.background = bg || 'var(--cream-deep)';
+          modalPhoto.style.boxShadow = '0 8px 32px rgba(0,0,0,.1)';
+        }
+
         var favBtnEl = card.querySelector('.fav-btn');
         currentProductId = favBtnEl ? favBtnEl.getAttribute('data-fav-id') : (nameEl ? nameEl.textContent : 'urun');
         productQty = 1;
@@ -557,6 +592,8 @@
         if(qtyVal) qtyVal.textContent = productQty;
         var addMsg = document.getElementById('productAddMsg');
         if(addMsg) addMsg.hidden = true;
+        var addBtn = document.getElementById('productAddBtn');
+        if(addBtn) addBtn.classList.remove('added');
         flipIntoModal(photoEl, 'productModal', '#productModalPhoto');
       });
     });
@@ -571,6 +608,12 @@
     qtyMinus.addEventListener('click', function(){
       productQty = Math.max(1, productQty - 1);
       qtyValEl.textContent = productQty;
+      var totalEl = document.getElementById('productModalTotal');
+      var priceTarget = document.getElementById('productModalPrice');
+      if(totalEl && priceTarget) {
+        var num = parseInt(priceTarget.textContent.replace(/[^0-9]/g,'')) || 0;
+        totalEl.textContent = '₺' + (num * productQty).toLocaleString('tr-TR');
+      }
     });
     qtyPlus.addEventListener('click', function(){
       productQty = Math.min(9, productQty + 1);
@@ -590,6 +633,20 @@
         price: priceTarget ? priceTarget.textContent : '',
         qty: productQty
       });
+      // Premium: btn animasyonu
+      var addBtnEl = document.getElementById('productAddBtn');
+      var addBtnText = document.getElementById('productAddBtnText');
+      if(addBtnEl) {
+        addBtnEl.classList.add('added');
+        addBtnEl.style.background = '#27ae60';
+        if(addBtnText) addBtnText.textContent = '✓ Sepete Eklendi!';
+        setTimeout(function(){
+          addBtnEl.classList.remove('added');
+          addBtnEl.style.background = '';
+          if(addBtnText) addBtnText.textContent = 'Sepete Ekle';
+          if(msg) msg.hidden = true;
+        }, 2000);
+      }
     });
   }
 
