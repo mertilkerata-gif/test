@@ -159,7 +159,7 @@ export default function Home() {
     <button type="button" class="sec-link" id="archiveBtn">Tümünü Gör
       <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </button>
-    <div class="highlights-photo parallax" data-speed="0.32" src="" aria-hidden="true"></div>
+    <div class="highlights-photo parallax" data-speed="0.32" style="background-image:url(/images/sofra-green.png);background-size:contain;background-repeat:no-repeat;background-position:center" aria-hidden="true"></div>
     <div class="highlights-nav-btns">
       <button class="btn-circle" id="highlightsPrev" aria-label="Önceki"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button>
       <button class="btn-circle" id="highlightsNext" aria-label="Sonraki"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button>
@@ -501,7 +501,7 @@ export default function Home() {
   <div class="footer-watermark parallax" data-speed="0.06"><div class="mk mk-sofra-rust"></div></div>
   <div class="footer-grid">
     <div class="footer-brand">
-      <a href="#hero" class="footer-logo"><img class="footer-logo-img" src="" alt="Demleme" width="150" height="24"></a>
+      <a href="#hero" class="footer-logo"><img class="footer-logo-img" src="/images/demleme-logo.png" alt="Demleme" width="150" height="24" style="height:32px;width:auto;object-fit:contain"></a>
       <p>İyi bir sohbet, iyi bir dünyaya katkı olsun.</p>
       <div class="footer-social">
         <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></a>
