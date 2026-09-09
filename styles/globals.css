@@ -1089,3 +1089,16 @@ html{ scrollbar-color:var(--rust) var(--cream); scrollbar-width:thin; }
     transition: border-color .25s, color .25s;
   }
 }
+
+/* ── Next.js fix: masaüstünde drawer gizli, sadece hamburger açınca görünür ── */
+@media (min-width: 901px) {
+  .nav-drawer {
+    display: none !important;
+  }
+  .nav-backdrop {
+    display: none !important;
+  }
+  .nav-hamburger {
+    display: none !important;
+  }
+}
