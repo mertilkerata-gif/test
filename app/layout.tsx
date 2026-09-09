@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import '../styles/globals.css';
+import GlobalModals from '@/app/components/GlobalModals';
 
 export const metadata: Metadata = {
   title: 'Demleme — İyi Bir Sohbet, Zamanla Demlenir.',
@@ -24,6 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         {children}
+        <GlobalModals />
         <Script src="/main.js" strategy="afterInteractive" />
       </body>
     </html>
