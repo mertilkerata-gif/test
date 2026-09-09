@@ -1624,3 +1624,22 @@ section#hero [data-intro-linked] {
 .hero-anim-stats { animation-delay: .22s !important; }
 .hero-anim-cta { animation-delay: .3s !important; }
 .hero-anim-follow { animation-delay: .38s !important; }
+
+/* ══════════════════════════════════════
+   REVEAL - CSS ile anında görünür
+   (JS çalışmadan önce sayfa boş görünmesin)
+══════════════════════════════════════ */
+.reveal,
+.reveal-scale {
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+/* Hero grid boşluk fix - kesin */
+section#hero > div {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 40px 60px;
+  box-sizing: border-box;
+}

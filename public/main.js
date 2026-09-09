@@ -1,4 +1,25 @@
 
+/* ── Reveal fix: tüm .reveal ve .reveal-scale elemanları anında görünür ── */
+(function(){
+  function showAll() {
+    var els = document.querySelectorAll('.reveal, .reveal-scale');
+    els.forEach(function(el) {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+      el.style.filter = 'none';
+      el.classList.add('in');
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', showAll);
+  } else {
+    showAll();
+  }
+  // 500ms sonra tekrar çalıştır (GSAP override'ı için)
+  setTimeout(showAll, 500);
+})();
+
+
 /* ---------- Rakam sayaç animasyonu ---------- */
 (function(){
   var targets = [
