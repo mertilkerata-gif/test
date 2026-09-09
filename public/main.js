@@ -1,4 +1,61 @@
 
+
+/* ── Hero animasyonları + istatistik sayaç ── */
+(function(){
+  function triggerHeroAnims() {
+    var classes = ['hero-anim-badge','hero-anim-logo','hero-anim-eyebrow',
+                   'hero-anim-h1','hero-anim-stats','hero-anim-cta','hero-anim-follow'];
+    classes.forEach(function(cls) {
+      var el = document.querySelector('.' + cls);
+      if(el) el.classList.add('visible');
+    });
+  }
+
+  function animateCount(el, target, suffix, delay) {
+    setTimeout(function(){
+      var start = 0;
+      var dur = 1500;
+      var startTime = null;
+      function step(ts) {
+        if(!startTime) startTime = ts;
+        var progress = Math.min((ts - startTime) / dur, 1);
+        var ease = 1 - Math.pow(1 - progress, 3);
+        var val = Math.floor(ease * target);
+        if(target >= 1000) {
+          el.textContent = Math.floor(val/1000) + '.' + String(val % 1000).padStart(3,'0') + '+';
+        } else {
+          el.textContent = val + (suffix || '');
+        }
+        if(progress < 1) requestAnimationFrame(step);
+        else el.textContent = target >= 1000 ? (target/1000).toFixed(0) + '.000+' : target + (suffix||'');
+      }
+      requestAnimationFrame(step);
+    }, delay);
+  }
+
+  function initStats() {
+    var stats = document.querySelectorAll('.hero-anim-stats span[style*="font-display"]');
+    var data = [
+      { target: 12000, suffix: '' },
+      { target: 84, suffix: '' },
+      { target: 200, suffix: '+' },
+    ];
+    stats.forEach(function(el, i) {
+      if(data[i]) animateCount(el, data[i].target, data[i].suffix, 300 + i*150);
+    });
+  }
+
+  if(document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function(){
+      setTimeout(triggerHeroAnims, 100);
+      setTimeout(initStats, 400);
+    });
+  } else {
+    setTimeout(triggerHeroAnims, 100);
+    setTimeout(initStats, 400);
+  }
+})();
+
 /* ── Reveal fix: tüm .reveal ve .reveal-scale elemanları anında görünür ── */
 (function(){
   function showAll() {

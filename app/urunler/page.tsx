@@ -12,7 +12,7 @@ export default function UrunlerPage() {
   return (
     <>
       <NavBar />
-      <main style={{minHeight:'100vh', background:'var(--cream)', paddingBottom:'80px'}}>
+      <main style={{minHeight:'100vh', background:'var(--cream)', paddingTop:'72px', paddingBottom:'80px'}}>
         <div style={{
           background:'var(--ink)',color:'var(--cream-fixed)',
           padding:'60px var(--pad) 48px',

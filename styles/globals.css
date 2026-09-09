@@ -1626,14 +1626,14 @@ section#hero [data-intro-linked] {
 .hero-anim-follow { animation-delay: .38s !important; }
 
 /* ══════════════════════════════════════
-   REVEAL - CSS ile anında görünür
-   (JS çalışmadan önce sayfa boş görünmesin)
+   REVEAL - görünür (JS bekleme)
 ══════════════════════════════════════ */
 .reveal,
 .reveal-scale {
-  opacity: 1 !important;
-  transform: none !important;
-  filter: none !important;
+  opacity: 1;
+  transform: none;
+  filter: none;
+  transition: opacity .6s ease, transform .6s cubic-bezier(.16,.9,.2,1);
 }
 
 /* Hero grid boşluk fix - kesin */
@@ -1643,3 +1643,23 @@ section#hero > div {
   padding: 40px 40px 60px;
   box-sizing: border-box;
 }
+
+/* ── Hero animasyonları JS tarafından tetiklenir ── */
+.hero-anim-badge,
+.hero-anim-logo,
+.hero-anim-eyebrow,
+.hero-anim-h1,
+.hero-anim-stats,
+.hero-anim-cta,
+.hero-anim-follow {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .5s ease, transform .5s cubic-bezier(.16,.9,.2,1);
+}
+.hero-anim-badge.visible { opacity: 1; transform: none; transition-delay: 0s; }
+.hero-anim-logo.visible { opacity: 1; transform: none; transition-delay: .05s; }
+.hero-anim-eyebrow.visible { opacity: 1; transform: none; transition-delay: .1s; }
+.hero-anim-h1.visible { opacity: 1; transform: none; transition-delay: .15s; }
+.hero-anim-stats.visible { opacity: 1; transform: none; transition-delay: .22s; }
+.hero-anim-cta.visible { opacity: 1; transform: none; transition-delay: .3s; }
+.hero-anim-follow.visible { opacity: 1; transform: none; transition-delay: .38s; }

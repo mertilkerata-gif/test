@@ -35,7 +35,7 @@ export default function GirisPage() {
   return (
     <>
       <NavBar />
-      <main style={{minHeight:'100vh',background:'var(--cream)',display:'flex',alignItems:'center',justifyContent:'center',padding:'40px var(--pad)'}}>
+      <main style={{minHeight:'100vh',background:'var(--cream)',paddingTop:'72px',display:'flex',alignItems:'center',justifyContent:'center',padding:'40px var(--pad)'}}>
         <div style={{width:'100%',maxWidth:'420px'}}>
           <div style={{textAlign:'center',marginBottom:'32px'}}>
             <span style={{fontFamily:'var(--font-display)',fontSize:'2rem',color:'var(--ink)'}}>demleme</span>
