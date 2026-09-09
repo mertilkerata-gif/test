@@ -1145,3 +1145,25 @@ body, p, span, li, a, button, input, textarea, select {
   height: 24px;
   width: auto;
 }
+
+/* ── Hero mobil düzeltme ── */
+@media (max-width: 900px) {
+  section#hero {
+    padding-top: 0 !important;
+    min-height: auto !important;
+  }
+  .hero-head-row {
+    padding: 32px var(--pad) !important;
+  }
+}
+
+/* ── Nav: eski HTML nav gizle, sadece NavBar göster ── */
+nav.site-nav + nav,
+body > nav:first-of-type ~ nav {
+  display: none !important;
+}
+
+/* ── introLoader tamamen devre dışı ── */
+#introLoader {
+  display: none !important;
+}

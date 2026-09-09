@@ -23,8 +23,18 @@ export default function NavBar() {
   return (
     <>
       <nav className="site-nav" id="siteNav">
-        <a href="/" className="nav-logo" style={{display:'flex',alignItems:'center'}}>
-          <img src="/images/demleme-logo.png" alt="Demleme" style={{height:'24px',width:'auto',display:'block'}} />
+        <a href="/" className="nav-logo" style={{display:'flex',alignItems:'center',textDecoration:'none'}}>
+          <img 
+            src="/images/demleme-logo.png" 
+            alt="Demleme" 
+            style={{height:'26px',width:'auto',display:'block'}}
+            onError={(e) => {
+              e.currentTarget.style.display = 'none';
+              const el = e.currentTarget.nextElementSibling as HTMLElement;
+              if (el) el.style.display = 'block';
+            }}
+          />
+          <span style={{display:'none',fontFamily:"'Boogaloo', var(--font-display)",fontSize:'1.5rem',letterSpacing:'0.05em',color:'var(--ink)'}}>demleme</span>
         </a>
         <ul className="nav-links" style={{listStyle:'none',display:'flex',gap:'28px',margin:0,padding:0,alignItems:'center'}}>
           <li><a href="/" style={{textDecoration:'none',color:'var(--ink)',fontWeight:600,fontSize:'.9rem'}}>Ana Sayfa</a></li>
