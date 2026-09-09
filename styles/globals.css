@@ -1196,40 +1196,6 @@ body, p, span, li, a, button, input, textarea, select {
   .hero-new-grid > div:nth-child(2) { display: none !important; }
 }
 
-/* ── HERO FINAL FIX ── */
-section#hero {
-  position: relative !important;
-  display: block !important;
-  min-height: 0 !important;
-  height: auto !important;
-  padding: 0 !important;
-  overflow: visible !important;
-  align-items: unset !important;
-}
-section#hero > .section-blob {
-  position: absolute !important;
-  pointer-events: none !important;
-}
-.hero-new-grid {
-  display: grid !important;
-  grid-template-columns: 1fr 280px 1fr !important;
-  gap: 40px !important;
-  align-items: start !important;
-  max-width: var(--wrap) !important;
-  margin: 0 auto !important;
-  padding: 40px var(--pad) 60px !important;
-  position: relative !important;
-  z-index: 1 !important;
-}
-@media (max-width: 1100px) {
-  .hero-new-grid { grid-template-columns: 1fr 220px !important; }
-  .hero-new-grid > div:nth-child(3) { display: none !important; }
-}
-@media (max-width: 680px) {
-  .hero-new-grid { grid-template-columns: 1fr !important; padding: 28px var(--pad) 40px !important; }
-  .hero-new-grid > div:nth-child(2) { display: none !important; }
-}
-
 /* ── PREMIUM QUICK-VIEW MODAL ── */
 .pm-box {
   max-width: 760px !important;
@@ -1496,4 +1462,54 @@ section#hero > .section-blob {
   .pm-photo-col { padding: 32px 24px 16px; }
   .pm-trust { display: none; }
   .pm-info-col { padding: 16px 24px 28px; max-height: none; }
+}
+
+/* ═══════════════════════════════════════════
+   HERO — KESIN DÜZELTME
+═══════════════════════════════════════════ */
+section#hero {
+  position: relative !important;
+  display: block !important;
+  min-height: 0 !important;
+  height: auto !important;
+  padding: 0 !important;
+  overflow: visible !important;
+}
+.hero-new-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 260px 280px !important;
+  gap: 48px !important;
+  align-items: start !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 48px 40px 64px !important;
+  position: relative !important;
+  z-index: 1 !important;
+  box-sizing: border-box !important;
+}
+@media (max-width: 1100px) {
+  .hero-new-grid {
+    grid-template-columns: 1fr 240px !important;
+    padding: 36px 28px 48px !important;
+    gap: 32px !important;
+  }
+  .hero-new-grid > div:nth-child(3) { display: none !important; }
+}
+@media (max-width: 700px) {
+  .hero-new-grid {
+    grid-template-columns: 1fr !important;
+    padding: 28px 20px 40px !important;
+    gap: 24px !important;
+  }
+  .hero-new-grid > div:nth-child(2),
+  .hero-new-grid > div:nth-child(3) { display: none !important; }
+}
+
+/* ── HERO REVEAL OVERRIDE — JS olmadan görünür ── */
+section#hero .reveal,
+section#hero .reveal-scale,
+section#hero [data-intro-linked] {
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
 }

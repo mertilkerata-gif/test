@@ -44,7 +44,7 @@ export default function Home() {
     <div class="hero-new-grid">
 
       <!-- SOL: Başlık + İstatistikler + CTA -->
-      <div style="display:flex;flex-direction:column;gap:20px">
+      <div class="hero-head reveal" data-intro-linked style="display:flex;flex-direction:column;gap:20px">
         <a href="/" style="display:block;text-decoration:none;margin-bottom:4px">
           <img src="/images/demleme-logo.png" alt="Demleme" style="height:36px;width:auto" />
         </a>
