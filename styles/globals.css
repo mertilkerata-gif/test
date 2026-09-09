@@ -1527,53 +1527,22 @@ section#hero [data-intro-linked] {
 
 /* ── HERO ANİMASYONLARI ── */
 @keyframes heroFadeUp {
-  from { opacity: 0; transform: translateY(40px); }
+  from { opacity: 0; transform: translateY(24px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 @keyframes heroFadeIn {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
-@keyframes countUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
 
-.hero-anim-badge {
-  animation: heroFadeIn .6s ease both;
-  animation-delay: .1s;
-}
-.hero-anim-logo {
-  animation: heroFadeUp .7s cubic-bezier(.16,.9,.2,1) both;
-  animation-delay: .2s;
-}
-.hero-anim-eyebrow {
-  animation: heroFadeUp .7s cubic-bezier(.16,.9,.2,1) both;
-  animation-delay: .3s;
-}
-.hero-anim-h1 {
-  animation: heroFadeUp .8s cubic-bezier(.16,.9,.2,1) both;
-  animation-delay: .4s;
-}
-.hero-anim-stats {
-  animation: heroFadeUp .8s cubic-bezier(.16,.9,.2,1) both;
-  animation-delay: .65s;
-}
-.hero-anim-cta {
-  animation: heroFadeUp .7s cubic-bezier(.16,.9,.2,1) both;
-  animation-delay: .85s;
-}
-.hero-anim-follow {
-  animation: heroFadeIn .7s ease both;
-  animation-delay: 1s;
-}
-.hero-stat-num {
-  display: inline-block;
-  animation: countUp .6s cubic-bezier(.16,.9,.2,1) both;
-}
-.hero-stat-num:nth-child(1) { animation-delay: .7s; }
-.hero-stat-num:nth-child(2) { animation-delay: .8s; }
-.hero-stat-num:nth-child(3) { animation-delay: .9s; }
+.hero-anim-badge { animation: heroFadeIn .5s ease both; }
+.hero-anim-logo { animation: heroFadeUp .55s cubic-bezier(.16,.9,.2,1) both; animation-delay: .05s; }
+.hero-anim-eyebrow { animation: heroFadeUp .55s cubic-bezier(.16,.9,.2,1) both; animation-delay: .1s; }
+.hero-anim-h1 { animation: heroFadeUp .6s cubic-bezier(.16,.9,.2,1) both; animation-delay: .15s; }
+.hero-anim-stats { animation: heroFadeUp .55s cubic-bezier(.16,.9,.2,1) both; animation-delay: .25s; }
+.hero-anim-cta { animation: heroFadeUp .5s cubic-bezier(.16,.9,.2,1) both; animation-delay: .35s; }
+.hero-anim-follow { animation: heroFadeIn .5s ease both; animation-delay: .45s; }
+.hero-stat-num { display: inline-block; }
 
 /* ── NAV İKON DÜZELTMELERİ ── */
 .nav-icons button,
@@ -1634,3 +1603,24 @@ section#hero [data-intro-linked] {
 
 /* ── LOGO BÜYÜT ── */
 .nav-logo img { height: 48px !important; width: auto !important; }
+
+/* ── HERO ANİMASYON OVERRIDE - Hızlı ve temiz ── */
+.hero-anim-badge,
+.hero-anim-logo,
+.hero-anim-eyebrow,
+.hero-anim-h1,
+.hero-anim-stats,
+.hero-anim-cta,
+.hero-anim-follow {
+  animation-duration: .5s !important;
+  animation-fill-mode: both !important;
+  animation-timing-function: cubic-bezier(.16,.9,.2,1) !important;
+  animation-name: heroFadeUp !important;
+}
+.hero-anim-badge { animation-delay: 0s !important; }
+.hero-anim-logo { animation-delay: .05s !important; }
+.hero-anim-eyebrow { animation-delay: .1s !important; }
+.hero-anim-h1 { animation-delay: .15s !important; }
+.hero-anim-stats { animation-delay: .22s !important; }
+.hero-anim-cta { animation-delay: .3s !important; }
+.hero-anim-follow { animation-delay: .38s !important; }

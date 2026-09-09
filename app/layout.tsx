@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import '../styles/globals.css';
 
 export const metadata: Metadata = {
   title: 'Demleme — İyi Bir Sohbet, Zamanla Demlenir.',
   description: 'Demleme; sohbetin, çayın ve hikâyenin yavaş yavaş demlendiği bir masa.',
-  themeColor: '#F7F3E9',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -18,9 +18,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           href="https://fonts.googleapis.com/css2?family=Kodchasan:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Boogaloo&family=Caveat:wght@600;700&family=Unbounded:wght@600;700&display=swap"
           rel="stylesheet"
         />
+        <Script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js" strategy="beforeInteractive" />
+        <Script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/ScrollTrigger.min.js" strategy="beforeInteractive" />
+        <Script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js" strategy="beforeInteractive" />
       </head>
       <body>
         {children}
+        <Script src="/main.js" strategy="afterInteractive" />
       </body>
     </html>
   );
