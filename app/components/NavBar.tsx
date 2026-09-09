@@ -51,27 +51,27 @@ export default function NavBar() {
             id="cartBtn"
             className="nav-icon-btn"
             aria-label="Sepetim"
-            style={{position:'relative',background:'none',border:'none',cursor:'pointer',display:'flex',alignItems:'center',justifyContent:'center'}}
+            style={{position:'relative',background:'none',border:'none',cursor:'pointer',padding:0,width:'29px',height:'29px',display:'flex',alignItems:'center',justifyContent:'center'}}
           >
-            <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M7 8V6.5a5 5 0 0110 0V8h2.3a1 1 0 01.99.86l1.2 8.4A2 2 0 0119.52 20H4.48a2 2 0 01-1.97-2.74l1.2-8.4A1 1 0 014.7 8H7zm2 0h6V6.5a3 3 0 00-6 0V8z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M7 8V6.5a5 5 0 0110 0V8h2.3a1 1 0 01.99.86l1.2 8.4A2 2 0 0119.52 20H4.48a2 2 0 01-1.97-2.74l1.2-8.4A1 1 0 014.7 8H7zm2 0h6V6.5a3 3 0 00-6 0V8z"/></svg>
             {count > 0 && (
               <span id="cartCount" style={{position:'absolute',top:'-6px',right:'-6px',background:'var(--rust)',color:'#fff',borderRadius:'50%',width:'17px',height:'17px',fontSize:'10px',display:'flex',alignItems:'center',justifyContent:'center',fontWeight:700}}>{count}</span>
             )}
           </button>
 
           {/* Favori */}
-          <button id="favBtn" className="nav-icon-btn" aria-label="Favorilerim" style={{background:'none',border:'none',cursor:'pointer',display:'flex',alignItems:'center',justifyContent:'center',position:'relative'}}>
+          <button id="favBtn" className="nav-icon-btn" aria-label="Favorilerim" style={{background:'none',border:'none',cursor:'pointer',display:'flex',alignItems:'center',justifyContent:'center',position:'relative',padding:0,width:'29px',height:'29px'}}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" width="22" height="22"><path d="M12 20s-7-4.35-9.5-8.5C.7 8 2 4.5 5.5 4 8 3.6 10 5 12 7.5 14 5 16 3.6 18.5 4 22 4.5 23.3 8 21.5 11.5 19 15.65 12 20 12 20z"/></svg>
             <span id="favCount" hidden style={{position:'absolute',top:'-6px',right:'-6px',background:'var(--lav-deep)',color:'#fff',borderRadius:'50%',width:'17px',height:'17px',fontSize:'10px',display:'flex',alignItems:'center',justifyContent:'center',fontWeight:700}}>0</span>
           </button>
 
           {/* Arama */}
-          <button id="searchBtn" className="nav-icon-btn" aria-label="Ara" style={{background:'none',border:'none',cursor:'pointer',display:'flex',alignItems:'center',justifyContent:'center'}}>
+          <button id="searchBtn" className="nav-icon-btn" aria-label="Ara" style={{background:'none',border:'none',cursor:'pointer',display:'flex',alignItems:'center',justifyContent:'center',padding:0,width:'29px',height:'29px'}}>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" width="22" height="22"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
           </button>
 
           {/* Dark mode */}
-          <button className="theme-toggle" id="themeToggle" aria-label="Karanlık mod" type="button" style={{background:'none',border:'none',cursor:'pointer',display:'flex',alignItems:'center',justifyContent:'center'}}>
+          <button className="theme-toggle" id="themeToggle" aria-label="Karanlık mod" type="button" style={{background:'none',border:'none',cursor:'pointer',display:'flex',alignItems:'center',justifyContent:'center',padding:0,width:'29px',height:'29px'}}>
             <svg className="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" width="22" height="22"><circle cx="12" cy="12" r="4.5"/><path d="M12 3v2M12 19v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M3 12h2M19 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>
             <svg className="moon" viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
           </button>

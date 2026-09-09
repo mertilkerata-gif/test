@@ -1524,3 +1524,110 @@ section#hero [data-intro-linked] {
   border-bottom: 1px solid var(--line) !important;
   box-shadow: 0 2px 20px rgba(0,0,0,.08) !important;
 }
+
+/* ── HERO ANİMASYONLARI ── */
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes heroFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-anim-badge {
+  animation: heroFadeIn .6s ease both;
+  animation-delay: .1s;
+}
+.hero-anim-logo {
+  animation: heroFadeUp .7s cubic-bezier(.16,.9,.2,1) both;
+  animation-delay: .2s;
+}
+.hero-anim-eyebrow {
+  animation: heroFadeUp .7s cubic-bezier(.16,.9,.2,1) both;
+  animation-delay: .3s;
+}
+.hero-anim-h1 {
+  animation: heroFadeUp .8s cubic-bezier(.16,.9,.2,1) both;
+  animation-delay: .4s;
+}
+.hero-anim-stats {
+  animation: heroFadeUp .8s cubic-bezier(.16,.9,.2,1) both;
+  animation-delay: .65s;
+}
+.hero-anim-cta {
+  animation: heroFadeUp .7s cubic-bezier(.16,.9,.2,1) both;
+  animation-delay: .85s;
+}
+.hero-anim-follow {
+  animation: heroFadeIn .7s ease both;
+  animation-delay: 1s;
+}
+.hero-stat-num {
+  display: inline-block;
+  animation: countUp .6s cubic-bezier(.16,.9,.2,1) both;
+}
+.hero-stat-num:nth-child(1) { animation-delay: .7s; }
+.hero-stat-num:nth-child(2) { animation-delay: .8s; }
+.hero-stat-num:nth-child(3) { animation-delay: .9s; }
+
+/* ── NAV İKON DÜZELTMELERİ ── */
+.nav-icons button,
+.nav-icons a {
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  width: 29px !important;
+  height: 29px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer;
+  color: var(--ink);
+  position: relative;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  flex-shrink: 0;
+}
+.nav-icons button svg,
+.nav-icons a svg {
+  width: 20px !important;
+  height: 20px !important;
+  display: block;
+}
+/* Sepet badge */
+.nav-icons button span[style*="background:'var(--rust)'"],
+#cartCount {
+  position: absolute !important;
+  top: -5px !important;
+  right: -5px !important;
+  width: 16px !important;
+  height: 16px !important;
+  font-size: 9px !important;
+  border-radius: 50% !important;
+  background: var(--rust) !important;
+  color: #fff !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  pointer-events: none;
+}
+/* Hamburger mobilde göster, masaüstünde gizle */
+.nav-hamburger {
+  display: none !important;
+  background: none !important;
+  border: none !important;
+  width: 29px !important;
+  height: 29px !important;
+  padding: 0 !important;
+  cursor: pointer !important;
+}
+@media (max-width: 900px) {
+  .nav-hamburger { display: flex !important; }
+}

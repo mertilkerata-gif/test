@@ -36,7 +36,7 @@ export default function Home() {
   <div>
 
     <!-- ÜSTTE LIVE BADGE -->
-    <div style="margin-bottom:24px">
+    <div class="hero-anim-badge" style="margin-bottom:24px">
       <span class="hero-live-badge"><span class="hero-live-dot"></span>Yeni Bölüm Bugün Yayında</span>
     </div>
 
@@ -45,19 +45,19 @@ export default function Home() {
 
       <!-- SOL: Başlık + İstatistikler + CTA -->
       <div class="hero-head reveal" data-intro-linked style="display:flex;flex-direction:column;gap:20px">
-        <a href="/" style="display:block;text-decoration:none;margin-bottom:4px">
+        <a href="/" class="hero-anim-logo" style="display:block;text-decoration:none;margin-bottom:4px">
           <img src="/images/demleme-logo.png" alt="Demleme" style="height:36px;width:auto" />
         </a>
-        <p style="font-size:.72rem;letter-spacing:.18em;color:var(--rust);margin:0;font-weight:700">HAFTALIK SOHBET SOFRASI</p>
+        <p class="hero-anim-eyebrow" style="font-size:.72rem;letter-spacing:.18em;color:var(--rust);margin:0;font-weight:700">HAFTALIK SOHBET SOFRASI</p>
 
-        <h1 class="hero-cycle-head" style="font-family:var(--font-display);font-size:clamp(3rem,5vw,5.5rem);line-height:1.0;margin:0">
+        <h1 class="hero-cycle-head hero-anim-h1" style="font-family:var(--font-display);font-size:clamp(3rem,5vw,5.5rem);line-height:1.0;margin:0">
           <span style="display:block">İyi bir</span>
           <span style="display:block;color:var(--lav-deep);font-family:'Caveat',cursive;font-size:clamp(3.5rem,6vw,6rem)">zamanla</span>
           <span style="display:block">demlenir.</span>
         </h1>
 
         <!-- İstatistikler -->
-        <div style="display:flex;flex-direction:column;gap:10px;padding:20px;background:var(--paper);border-radius:16px;box-shadow:var(--shadow-sm)">
+        <div class="hero-anim-stats" style="display:flex;flex-direction:column;gap:10px;padding:20px;background:var(--paper);border-radius:16px;box-shadow:var(--shadow-sm)">
           <div style="display:flex;align-items:center;gap:12px">
             <span style="font-family:var(--font-display);font-size:2rem;font-weight:700;color:var(--rust);line-height:1">12.000+</span>
             <span style="font-size:.85rem;color:var(--ink-soft)">dinleyen</span>
@@ -765,6 +765,60 @@ export default function Home() {
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/split-type@0.3.4/umd/index.min.js"></script>
 <script>
+
+/* ---------- Rakam sayaç animasyonu ---------- */
+(function(){
+  var targets = [
+    { el: null, target: 12000, suffix: '.000+', prefix: '' },
+    { el: null, target: 84, suffix: '', prefix: '' },
+    { el: null, target: 200, suffix: '+', prefix: '' },
+  ];
+  var statNums = document.querySelectorAll('.hero-stat-num');
+  statNums.forEach(function(el, i) {
+    if(!targets[i]) return;
+    targets[i].el = el;
+    targets[i].originalText = el.textContent;
+  });
+  
+  function animateCount(obj) {
+    if(!obj.el) return;
+    var start = 0;
+    var end = obj.target;
+    var duration = 1800;
+    var startTime = null;
+    function step(ts) {
+      if(!startTime) startTime = ts;
+      var progress = Math.min((ts - startTime) / duration, 1);
+      var ease = 1 - Math.pow(1 - progress, 3);
+      var val = Math.floor(ease * end);
+      if(i === 0) {
+        obj.el.textContent = val >= 1000 
+          ? Math.floor(val/1000) + '.' + String(val % 1000).padStart(3,'0') + '+'
+          : val + '+';
+      } else {
+        obj.el.textContent = val + (obj.suffix || '');
+      }
+      if(progress < 1) requestAnimationFrame(step);
+      else obj.el.textContent = obj.originalText;
+    }
+    setTimeout(function(){ requestAnimationFrame(step); }, 700 + i * 100);
+  }
+  
+  // IntersectionObserver ile hero görününce başlat
+  var statsBox = document.querySelector('.hero-anim-stats');
+  if(statsBox && 'IntersectionObserver' in window) {
+    var observed = false;
+    var obs = new IntersectionObserver(function(entries) {
+      if(entries[0].isIntersecting && !observed) {
+        observed = true;
+        targets.forEach(function(t, i) { animateCount(t); });
+        obs.disconnect();
+      }
+    }, { threshold: 0.3 });
+    obs.observe(statsBox);
+  }
+})();
+
 (function(){
   "use strict";
 
