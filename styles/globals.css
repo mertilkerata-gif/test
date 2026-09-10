@@ -1155,9 +1155,9 @@ body, p, span, li, a, button, input, textarea, select {
 /* ── Hero grid yeni versiyon ── */
 .hero-new-grid {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: 48px;
-  align-items: start;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 56px;
+  align-items: center;
 }
 @media (max-width: 1024px) {
   .hero-new-grid {
@@ -1189,7 +1189,7 @@ body, p, span, li, a, button, input, textarea, select {
 /* ── hero-new-grid responsive ── */
 @media (max-width: 1024px) {
   .hero-new-grid { grid-template-columns: 1fr 1fr !important; gap: 32px !important; }
-  .hero-new-grid > div:nth-child(3) { display: none !important; }
+  /* orta kolon kaldırıldı */
 }
 @media (max-width: 680px) {
   .hero-new-grid { grid-template-columns: 1fr !important; gap: 24px !important; }

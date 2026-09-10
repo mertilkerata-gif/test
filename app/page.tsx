@@ -125,16 +125,6 @@ export default function Home() {
         </div>
       </div>
 
-      <!-- ORTA: Büyük çay dairesi -->
-      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding-top:10px">
-        <div style="width:min(280px,100%);aspect-ratio:1;border-radius:50%;background:var(--cream-deep);display:flex;align-items:center;justify-content:center;position:relative;box-shadow:0 12px 48px rgba(0,0,0,.10);flex-shrink:0">
-          <img src="/images/cay-icon-blue.jpeg" alt="Çay figürü" style="width:65%;height:65%;object-fit:contain;mix-blend-mode:multiply" />
-          <div style="position:absolute;top:-8px;right:-8px;width:64px;height:64px;border-radius:50%;background:var(--butter);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.14)">
-            <img src="/images/cay-icon-green.jpeg" alt="" style="width:60%;height:60%;object-fit:contain;mix-blend-mode:multiply" />
-          </div>
-        </div>
-      </div>
-
       <!-- SAĞ: Çay içen figür + büyük bardak animasyonu -->
       <div style="display:flex;flex-direction:column;align-items:center;gap:16px;padding-top:10px">
         <!-- Figür -->
