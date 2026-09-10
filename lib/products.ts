@@ -14,7 +14,7 @@ export interface Product {
   badge?: string;
   color: string;
   accentColor: string;
-  images: string[]; // placeholder paths
+  images: string[];
   reviews: { name: string; rating: number; comment: string; date: string }[];
   faq: { q: string; a: string }[];
   svgIcon: string;
@@ -31,10 +31,10 @@ export const products: Product[] = [
     stock: 27,
     limited: true,
     badge: 'Sınırlı Üretim',
-    color: '#c0392b',
-    accentColor: '#e74c3c',
+    color: '#b5451b',
+    accentColor: '#e07048',
     description: 'Her çayı ritüele dönüştüren, el yapımı seramik kupa. Demleme logolu, sıcak dokunuşlu.',
-    longDescription: 'Sofranın vazgeçilmezi olacak bu kupa, Türkiye\'nin en iyi seramik ustalarından biriyle iş birliği yapılarak tasarlandı. Klasik Türk çay bardağı formundan ilham alıp modern bir yoruma kavuşturuldu. Her kupa tek tek elle şekillendirilip, yüksek ısıda fırınlanıyor — bu yüzden her birinde küçük, benzersiz dokunuşlar bulabilirsiniz. Demleme logosu ise kabartma tekniğiyle işleniyor.',
+    longDescription: 'Sofranın vazgeçilmezi olacak bu kupa, Türkiye\'nin en iyi seramik ustalarından biriyle iş birliği yapılarak tasarlandı. Klasik Türk çay bardağı formundan ilham alıp modern bir yoruma kavuşturuldu. Her kupa tek tek elle şekillendirilip, yüksek ısıda fırınlanıyor. Demleme logosu ise kabartma tekniğiyle işleniyor.',
     details: ['El yapımı seramik', '300ml kapasite', 'Bulaşık makinesine uygun', 'Kutulu özel teslimat', 'Kabartma logo detayı', 'Kurşunsuz sır'],
     specs: [
       { label: 'Malzeme', value: 'El yapımı seramik' },
@@ -55,7 +55,15 @@ export const products: Product[] = [
       { q: 'Hediye paketi mevcut mu?', a: 'Evet, sipariş notuna "hediye paketi" yazarsanız özel kutuda gönderilir.' },
     ],
     images: ['/images/cay-icon-blue.jpeg'],
-    svgIcon: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 22h30v18a10 10 0 01-10 10H24a10 10 0 01-10-10V22z"/><path d="M44 26h4a6 6 0 010 12h-4"/><path d="M20 14c1-3 3-3 4-6M30 14c1-3 3-3 4-6"/></svg>`,
+    svgIcon: `<svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 30 Q20 54 22 66 L58 66 Q60 54 58 30 Z" fill="currentColor" opacity="0.12"/>
+  <path d="M22 30 Q20 54 22 66 L58 66 Q60 54 58 30 Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="none"/>
+  <path d="M58 38 L64 38 Q72 38 72 48 Q72 58 64 58 L58 58" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  <path d="M22 30 L58 30" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  <path d="M30 20 Q31 14 34 18 Q37 22 38 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none" opacity="0.5"/>
+  <path d="M42 18 Q43 12 46 16 Q49 20 50 14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none" opacity="0.5"/>
+  <ellipse cx="40" cy="30" rx="10" ry="2.5" fill="currentColor" opacity="0.15"/>
+</svg>`,
   },
   {
     id: 'p2',
@@ -66,10 +74,10 @@ export const products: Product[] = [
     category: 'Giyim',
     stock: 48,
     limited: false,
-    color: '#6c3483',
-    accentColor: '#9b59b6',
+    color: '#5b3a8c',
+    accentColor: '#8b6bbf',
     description: '"Sofraya herkes davetli" yazılı oversize tişört. %100 organik pamuk, unisex kalıp.',
-    longDescription: 'Demleme\'nin ruhunu taşıyan bu tişört, masaya oturmanın davetini veriyor. 280g/m² ağır organik pamuktan üretilen oversize kalıbı, hem rahat hem de şık. Baskılar su bazlı boyalarla yapılıyor — çevre dostu ve uzun ömürlü. Her yıkamada biraz daha yumuşayan bir kumaş hissi var.',
+    longDescription: 'Demleme\'nin ruhunu taşıyan bu tişört, masaya oturmanın davetini veriyor. 280g/m² ağır organik pamuktan üretilen oversize kalıbı, hem rahat hem de şık. Baskılar su bazlı boyalarla yapılıyor — çevre dostu ve uzun ömürlü.',
     details: ['%100 organik pamuk, 280g/m²', 'Oversize unisex kalıp', 'XS – 2XL beden seçeneği', 'Su bazlı çevre dostu baskı', 'Krem & siyah renk seçeneği', 'GOTS sertifikalı'],
     specs: [
       { label: 'Materyal', value: '%100 Organik pamuk' },
@@ -85,11 +93,16 @@ export const products: Product[] = [
       { name: 'Elif M.', rating: 4, comment: 'Güzel ama kargo biraz geç geldi.', date: '2 ay önce' },
     ],
     faq: [
-      { q: 'Beden nasıl seçmeliyim?', a: 'Oversize kalıp olduğu için bir beden küçük almanızı öneririz. Beden tablosu ürün fotoğraflarında mevcut.' },
+      { q: 'Beden nasıl seçmeliyim?', a: 'Oversize kalıp olduğu için bir beden küçük almanızı öneririz.' },
       { q: 'Yıkamada solar mı?', a: 'Su bazlı baskılar düşük ısıda ve ters çevrilerek yıkandığında uzun yıllar dayanır.' },
     ],
     images: [],
-    svgIcon: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8l20 0M18 8c-5 2-10 6-12 12l8 4V52h28V24l8-4c-2-6-7-10-12-12"/><circle cx="28" cy="18" r="4"/></svg>`,
+    svgIcon: `<svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M28 14 L52 14 L52 14 C56 14 62 18 65 24 L72 28 L64 38 L58 34 L58 66 L22 66 L22 34 L16 38 L8 28 L15 24 C18 18 24 14 28 14 Z" fill="currentColor" opacity="0.12" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M28 14 Q30 22 40 22 Q50 22 52 14" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+  <text x="40" y="50" text-anchor="middle" font-size="7" fill="currentColor" font-family="serif" opacity="0.7">sofraya</text>
+  <text x="40" y="59" text-anchor="middle" font-size="7" fill="currentColor" font-family="serif" opacity="0.7">herkes davetli</text>
+</svg>`,
   },
   {
     id: 'p3',
@@ -100,10 +113,10 @@ export const products: Product[] = [
     category: 'Kırtasiye',
     stock: 62,
     limited: false,
-    color: '#27ae60',
-    accentColor: '#2ecc71',
+    color: '#2a7a4b',
+    accentColor: '#4aad70',
     description: 'Sofrada doğan fikirleri, tarifleri, anları yazmak için. Noktalı iç sayfa, sert kapak.',
-    longDescription: 'Demleme\'nin her bölümünde olduğu gibi, iyi fikirler iyi ortamlarda doğar. Bu defter, sohbet sırasında aklına gelen o muhteşem fikri ya da masanın tarifini kayıt altına almak için tasarlandı. 90g noktalı iç kağıt, ince çizgi ve grafik çizimler için ideal. El işi deri şerit yer tutucusu her zaman sayfanı bulmanı sağlar.',
+    longDescription: 'Demleme\'nin her bölümünde olduğu gibi, iyi fikirler iyi ortamlarda doğar. Bu defter, sohbet sırasında aklına gelen o muhteşem fikri ya da masanın tarifini kayıt altına almak için tasarlandı.',
     details: ['A5 format (14.8 × 21cm)', '160 sayfa noktalı iç kağıt, 90g', 'Sert kapak, yuvarlak köşe', 'El işi deri yer tutucu şerit', 'İç cep sayfası', 'Lay-flat spiral bağlama'],
     specs: [
       { label: 'Format', value: 'A5 (14.8 × 21cm)' },
@@ -121,7 +134,18 @@ export const products: Product[] = [
       { q: 'Dolma kalem uyumlu mu?', a: 'Evet, 90g kağıt dolma kalem için uygundur, geçirme yapmaz.' },
     ],
     images: [],
-    svgIcon: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="12" y="8" width="36" height="48" rx="3"/><line x1="20" y1="20" x2="44" y2="20"/><line x1="20" y1="28" x2="44" y2="28"/><line x1="20" y1="36" x2="36" y2="36"/><line x1="10" y1="8" x2="10" y2="56" stroke-width="4"/></svg>`,
+    svgIcon: `<svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="18" y="10" width="44" height="58" rx="4" fill="currentColor" opacity="0.1" stroke="currentColor" stroke-width="2"/>
+  <rect x="14" y="10" width="8" height="58" rx="3" fill="currentColor" opacity="0.25" stroke="currentColor" stroke-width="1.5"/>
+  <line x1="28" y1="24" x2="54" y2="24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+  <line x1="28" y1="32" x2="54" y2="32" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+  <line x1="28" y1="40" x2="44" y2="40" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+  <circle cx="31" cy="48" r="1.5" fill="currentColor" opacity="0.4"/>
+  <circle cx="36" cy="48" r="1.5" fill="currentColor" opacity="0.4"/>
+  <circle cx="41" cy="48" r="1.5" fill="currentColor" opacity="0.4"/>
+  <path d="M52 58 L62 48 L66 52 L56 62 Z" fill="currentColor" opacity="0.5"/>
+  <path d="M62 48 L65 45 L67 47 L64 50 Z" fill="currentColor" opacity="0.8"/>
+</svg>`,
   },
   {
     id: 'p4',
@@ -133,10 +157,10 @@ export const products: Product[] = [
     stock: 15,
     limited: true,
     badge: 'Çok Satan',
-    color: '#d4a017',
-    accentColor: '#f39c12',
+    color: '#9a6f1a',
+    accentColor: '#d4a435',
     description: 'Sofranın tam ortasına layık. İki kişilik seramik çay seti; demlik ve iki fincanla.',
-    longDescription: 'İki kişilik bu sohbet için tasarlandı. Küçük ama kaliteli demlik, ısıyı uzun süre tutar; eşleşen iki fincan ise tam kucak boyu. Tümü el yapımı, Türkiye\'de üretilmiş. Bir kutuda geliyor — ister kendin kullan, ister hediye et. Mavi ve Yeşil renk seçenekleri mevcut.',
+    longDescription: 'İki kişilik bu sohbet için tasarlandı. Küçük ama kaliteli demlik, ısıyı uzun süre tutar; eşleşen iki fincan ise tam kucak boyu. Tümü el yapımı, Türkiye\'de üretilmiş.',
     details: ['El yapımı seramik, Türkiye üretimi', '600ml demlik', '2 × 150ml fincan', 'Hediyelik ahşap kutu', 'Isı koruyucu çift cidar demlik', 'Kurşunsuz, gıdaya uygun sır'],
     specs: [
       { label: 'İçerik', value: '1 demlik + 2 fincan' },
@@ -153,12 +177,19 @@ export const products: Product[] = [
       { name: 'Emre A.', rating: 4, comment: 'Güzel ürün, fiyatına değer.', date: '1 ay önce' },
     ],
     faq: [
-      { q: 'Renk seçimi nasıl yapılır?', a: 'Sipariş notuna "mavi" veya "yeşil" yazmanız yeterli. Belirtilmezse mavi gönderilir.' },
-      { q: 'Demlik ocağa konur mu?', a: 'Hayır, sadece demlenmiş çay için kullanılır, doğrudan ısıya koymayın.' },
-      { q: 'Garanti var mı?', a: 'Üretim hatası durumunda 30 gün içinde ücretsiz değiştirme yapıyoruz.' },
+      { q: 'Renk seçimi nasıl yapılır?', a: 'Sipariş notuna "mavi" veya "yeşil" yazmanız yeterli.' },
+      { q: 'Demlik ocağa konur mu?', a: 'Hayır, sadece demlenmiş çay için kullanılır.' },
     ],
     images: ['/images/cay-icon-blue.jpeg', '/images/cay-icon-green.jpeg'],
-    svgIcon: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 24h26v14a12 12 0 01-12 12H28a12 12 0 01-12-12V24z"/><path d="M42 28h5a7 7 0 010 14h-5"/><ellipse cx="29" cy="16" rx="10" ry="4"/></svg>`,
+    svgIcon: `<svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M20 28 Q18 50 20 62 L52 62 Q54 50 52 28 Z" fill="currentColor" opacity="0.12" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M52 36 L58 35 Q67 34 67 45 Q67 56 58 55 L52 54" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  <ellipse cx="36" cy="28" rx="12" ry="3.5" fill="currentColor" opacity="0.2" stroke="currentColor" stroke-width="1.5"/>
+  <path d="M30 16 Q31 11 33 14 Q35 18 37 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.45"/>
+  <path d="M40 14 Q41 9 43 12 Q45 16 47 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.45"/>
+  <circle cx="61" cy="68" r="6" fill="currentColor" opacity="0.12" stroke="currentColor" stroke-width="1.5"/>
+  <circle cx="72" cy="68" r="6" fill="currentColor" opacity="0.12" stroke="currentColor" stroke-width="1.5"/>
+</svg>`,
   },
   {
     id: 'p5',
@@ -169,10 +200,10 @@ export const products: Product[] = [
     category: 'Dekor',
     stock: 33,
     limited: false,
-    color: '#16a085',
-    accentColor: '#1abc9c',
+    color: '#1a6e6e',
+    accentColor: '#2aafaf',
     description: 'En sevdiğin bölümün kapak tasarımı. 30×40cm baskı, mat kuşe kağıt.',
-    longDescription: 'Demleme\'nin en çok izlenen bölümlerinin özel tasarım posterleri. Mat kuşe kağıda baskı, asılmaya hazır. Her bölümün kendine özgü renk paleti ve tipografisi var. Sipariş sırasında hangi bölümü istediğini belirt — biz de özel baskı yapıp göndeririz.',
+    longDescription: 'Demleme\'nin en çok izlenen bölümlerinin özel tasarım posterleri. Mat kuşe kağıda baskı, asılmaya hazır. Her bölümün kendine özgü renk paleti ve tipografisi var.',
     details: ['30×40cm format', '200g mat kuşe kağıt', 'Siparişe özel bölüm baskısı', 'Çerçevesiz gönderim', 'Sert karton tüp ile koruma', 'Tüm bölümler mevcut'],
     specs: [
       { label: 'Boyut', value: '30 × 40cm' },
@@ -190,7 +221,15 @@ export const products: Product[] = [
       { q: 'Kaç günde gelir?', a: 'Baskı + kargo toplam 3-5 iş günü.' },
     ],
     images: [],
-    svgIcon: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="10" y="8" width="44" height="48" rx="2"/><rect x="16" y="14" width="32" height="20" rx="1"/><line x1="16" y1="40" x2="48" y2="40"/><line x1="16" y1="48" x2="36" y2="48"/></svg>`,
+    svgIcon: `<svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="14" y="8" width="52" height="64" rx="3" fill="currentColor" opacity="0.1" stroke="currentColor" stroke-width="2"/>
+  <rect x="20" y="14" width="40" height="26" rx="2" fill="currentColor" opacity="0.18" stroke="currentColor" stroke-width="1.5"/>
+  <circle cx="30" cy="24" r="5" fill="currentColor" opacity="0.3"/>
+  <path d="M26 36 L36 24 L44 32 L50 26 L60 36 Z" fill="currentColor" opacity="0.25"/>
+  <line x1="20" y1="48" x2="60" y2="48" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+  <line x1="20" y1="56" x2="48" y2="56" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+  <line x1="20" y1="63" x2="38" y2="63" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.35"/>
+</svg>`,
   },
   {
     id: 'p6',
@@ -201,10 +240,10 @@ export const products: Product[] = [
     category: 'Mutfak',
     stock: 80,
     limited: false,
-    color: '#1a5276',
-    accentColor: '#2980b9',
+    color: '#1c4f7a',
+    accentColor: '#3182c8',
     description: '4\'lü ahşap kupa altlığı seti. Lazerle işlenmiş Demleme logosu.',
-    longDescription: 'Masanı tamamlayan bu 4\'lü set, doğal ahşaptan lazer kesim ve baskı ile üretiliyor. Her altlık 10×10cm boyutunda, 8mm kalınlığında kayın ağacından. Altında kaydırmaz kauçuk taban var. Demleme logolu — sofranın sessiz bir parçası.',
+    longDescription: 'Masanı tamamlayan bu 4\'lü set, doğal ahşaptan lazer kesim ve baskı ile üretiliyor. Her altlık 10×10cm boyutunda, 8mm kalınlığında kayın ağacından.',
     details: ['4\'lü set', 'Doğal kayın ağacı, 8mm', '10×10cm boyut', 'Lazer baskı logo', 'Kaydırmaz kauçuk taban', 'Hediye kutusunda'],
     specs: [
       { label: 'Malzeme', value: 'Doğal kayın ağacı' },
@@ -220,7 +259,16 @@ export const products: Product[] = [
       { q: 'Islak silinebilir mi?', a: 'Evet, nemli bez ile silebilirsiniz. Uzun süre ıslatmayın.' },
     ],
     images: [],
-    svgIcon: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="32" cy="32" r="20"/><circle cx="32" cy="32" r="12"/><circle cx="32" cy="32" r="4"/></svg>`,
+    svgIcon: `<svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="10" y="10" width="26" height="26" rx="5" fill="currentColor" opacity="0.15" stroke="currentColor" stroke-width="1.8"/>
+  <rect x="44" y="10" width="26" height="26" rx="5" fill="currentColor" opacity="0.15" stroke="currentColor" stroke-width="1.8"/>
+  <rect x="10" y="44" width="26" height="26" rx="5" fill="currentColor" opacity="0.15" stroke="currentColor" stroke-width="1.8"/>
+  <rect x="44" y="44" width="26" height="26" rx="5" fill="currentColor" opacity="0.15" stroke="currentColor" stroke-width="1.8"/>
+  <circle cx="23" cy="23" r="5" fill="currentColor" opacity="0.35"/>
+  <circle cx="57" cy="23" r="5" fill="currentColor" opacity="0.35"/>
+  <circle cx="23" cy="57" r="5" fill="currentColor" opacity="0.35"/>
+  <circle cx="57" cy="57" r="5" fill="currentColor" opacity="0.35"/>
+</svg>`,
   },
   {
     id: 'p7',
@@ -231,10 +279,10 @@ export const products: Product[] = [
     category: 'Diğer',
     stock: 999,
     limited: false,
-    color: '#7d3c98',
-    accentColor: '#9b59b6',
+    color: '#6b3080',
+    accentColor: '#a050c0',
     description: 'Sevdiklerine Demleme\'den bir şey almak istiyorsan, hediye kartı tam sana göre.',
-    longDescription: 'Ne alacağını bilemiyorsan, seçimi onlara bırak. ₺200\'den ₺1000\'e kadar istediğin tutarda dijital hediye kartı. Anında e-posta ile iletilir, 1 yıl geçerlidir, tüm ürünlerde kullanılabilir.',
+    longDescription: 'Ne alacağını bilemiyorsan, seçimi onlara bırak. ₺200\'den ₺1000\'e kadar istediğin tutarda dijital hediye kartı. Anında e-posta ile iletilir, 1 yıl geçerlidir.',
     details: ['₺200 – ₺1000 arası tutar', 'Anında dijital teslimat', '1 yıl geçerlilik süresi', 'Tüm ürünlerde kullanılabilir', 'Kişiselleştirilmiş mesaj eklenebilir'],
     specs: [
       { label: 'Teslimat', value: 'Dijital (e-posta)' },
@@ -248,7 +296,14 @@ export const products: Product[] = [
       { q: 'Bakiye kalırsa ne olur?', a: 'Kalan bakiye bir sonraki alışverişte kullanılabilir.' },
     ],
     images: [],
-    svgIcon: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="8" y="18" width="48" height="28" rx="4"/><line x1="8" y1="30" x2="56" y2="30"/><line x1="20" y1="40" x2="36" y2="40"/></svg>`,
+    svgIcon: `<svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="8" y="22" width="64" height="40" rx="6" fill="currentColor" opacity="0.1" stroke="currentColor" stroke-width="2"/>
+  <line x1="8" y1="36" x2="72" y2="36" stroke="currentColor" stroke-width="1.8" opacity="0.4"/>
+  <path d="M40 22 L40 16 Q40 10 34 10 Q28 10 28 16 Q28 22 34 22 Z" fill="currentColor" opacity="0.2" stroke="currentColor" stroke-width="1.5"/>
+  <path d="M40 22 L40 16 Q40 10 46 10 Q52 10 52 16 Q52 22 46 22 Z" fill="currentColor" opacity="0.2" stroke="currentColor" stroke-width="1.5"/>
+  <rect x="18" y="47" width="20" height="6" rx="3" fill="currentColor" opacity="0.25"/>
+  <rect x="18" y="56" width="32" height="4" rx="2" fill="currentColor" opacity="0.15"/>
+</svg>`,
   },
 ];
 
