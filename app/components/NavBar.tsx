@@ -58,7 +58,7 @@ export default function NavBar() {
           <span style={{display:'none',fontFamily:"'Boogaloo',var(--font-display)",fontSize:'2rem',letterSpacing:'0.05em',color:'var(--ink)'}}>demleme</span>
         </a>
 
-        <ul className="nav-links" style={{listStyle:'none',display:'flex',gap:'28px',margin:0,padding:0,alignItems:'center'}}>
+        <ul className="nav-links" style={{listStyle:'none',gap:'28px',margin:0,padding:0,alignItems:'center'}}>
           <li><a href="/" style={{textDecoration:'none',color:'var(--ink)',fontWeight:600,fontSize:'.9rem'}}>Ana Sayfa</a></li>
           <li><a href="/#videos" style={{textDecoration:'none',color:'var(--ink)',fontWeight:600,fontSize:'.9rem'}}>YouTube</a></li>
           <li><a href="/urunler" style={{textDecoration:'none',color:'var(--ink)',fontWeight:600,fontSize:'.9rem'}}>Ürünler</a></li>
