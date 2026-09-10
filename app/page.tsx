@@ -298,7 +298,7 @@ export default function Home() {
   </div>
   <div class="shop-row-wrap">
     <div class="shop-track" id="shopTrack">
-      <div class="product-card reveal">
+      <div class="product-card reveal" data-slug="demleme-kupasi" style="cursor:pointer">
         <button class="fav-btn" data-fav-id="p1" aria-label="Favorilere ekle" type="button"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.35-9.5-8.5C.7 8 2 4.5 5.5 4 8 3.6 10 5 12 7.5 14 5 16 3.6 18.5 4 22 4.5 23.3 8 21.5 11.5 19 15.65 12 20 12 20z"/></svg></button>
         <div class="product-photo zoomable" style="background:var(--cream-deep)">
           <span class="limited-badge">Sınırlı Üretim</span>
@@ -311,7 +311,7 @@ export default function Home() {
           <span class="stock-note">Stokta son 27 adet</span>
         </div>
       </div>
-      <div class="product-card reveal">
+      <div class="product-card reveal" data-slug="sofra-tisortu" style="cursor:pointer">
         <button class="fav-btn" data-fav-id="p2" aria-label="Favorilere ekle" type="button"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.35-9.5-8.5C.7 8 2 4.5 5.5 4 8 3.6 10 5 12 7.5 14 5 16 3.6 18.5 4 22 4.5 23.3 8 21.5 11.5 19 15.65 12 20 12 20z"/></svg></button>
         <div class="product-photo zoomable" style="background:var(--cream-deep)">
           <svg viewBox="0 0 64 64" fill="none" stroke="var(--ink)" stroke-width="2"><path d="M20 10h24l6 12-18 34-18-34z"/><path d="M26 10l6 12 6-12M20 22h24"/></svg>
@@ -319,7 +319,7 @@ export default function Home() {
         <p class="product-name">Sofra Tişörtü</p>
         <p class="product-price">₺450</p>
       </div>
-      <div class="product-card reveal">
+      <div class="product-card reveal" data-slug="demleme-defteri" style="cursor:pointer">
         <button class="fav-btn" data-fav-id="p3" aria-label="Favorilere ekle" type="button"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.35-9.5-8.5C.7 8 2 4.5 5.5 4 8 3.6 10 5 12 7.5 14 5 16 3.6 18.5 4 22 4.5 23.3 8 21.5 11.5 19 15.65 12 20 12 20z"/></svg></button>
         <div class="product-photo zoomable" style="background:var(--cream-deep)">
           <span class="product-tag">Yeni</span>
@@ -328,7 +328,7 @@ export default function Home() {
         <p class="product-name">Demleme Defteri</p>
         <p class="product-price">₺180</p>
       </div>
-      <div class="product-card reveal">
+      <div class="product-card reveal" data-slug="mini-cay-seti" style="cursor:pointer">
         <button class="fav-btn" data-fav-id="p4" aria-label="Favorilere ekle" type="button"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.35-9.5-8.5C.7 8 2 4.5 5.5 4 8 3.6 10 5 12 7.5 14 5 16 3.6 18.5 4 22 4.5 23.3 8 21.5 11.5 19 15.65 12 20 12 20z"/></svg></button>
         <div class="product-photo zoomable" style="background:var(--cream-deep)">
           <svg viewBox="0 0 64 64" fill="none" stroke="var(--ink)" stroke-width="2"><rect x="16" y="24" width="32" height="24" rx="3"/><path d="M48 30h4a5 5 0 010 10h-4M22 24V16a10 10 0 0120 0v8"/></svg>
@@ -336,7 +336,7 @@ export default function Home() {
         <p class="product-name">Mini Çay Seti</p>
         <p class="product-price">₺620</p>
       </div>
-      <div class="product-card reveal">
+      <div class="product-card reveal" data-slug="bolum-posteri" style="cursor:pointer">
         <button class="fav-btn" data-fav-id="p5" aria-label="Favorilere ekle" type="button"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.35-9.5-8.5C.7 8 2 4.5 5.5 4 8 3.6 10 5 12 7.5 14 5 16 3.6 18.5 4 22 4.5 23.3 8 21.5 11.5 19 15.65 12 20 12 20z"/></svg></button>
         <div class="product-photo zoomable" style="background:var(--cream-deep)">
           <svg viewBox="0 0 64 64" fill="none" stroke="var(--ink)" stroke-width="2"><rect x="12" y="10" width="40" height="44" rx="2"/><path d="M20 24h24M20 32h24M20 40h14"/></svg>
@@ -344,7 +344,7 @@ export default function Home() {
         <p class="product-name">Bölüm Posteri</p>
         <p class="product-price">₺220</p>
       </div>
-      <div class="product-card reveal">
+      <div class="product-card reveal" data-slug="kupa-altligi-seti" style="cursor:pointer">
         <button class="fav-btn" data-fav-id="p6" aria-label="Favorilere ekle" type="button"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.35-9.5-8.5C.7 8 2 4.5 5.5 4 8 3.6 10 5 12 7.5 14 5 16 3.6 18.5 4 22 4.5 23.3 8 21.5 11.5 19 15.65 12 20 12 20z"/></svg></button>
         <div class="product-photo zoomable" style="background:var(--cream-deep)">
           <svg viewBox="0 0 64 64" fill="none" stroke="var(--ink)" stroke-width="2"><circle cx="32" cy="32" r="18"/><path d="M32 20v12l8 6"/></svg>
@@ -352,7 +352,7 @@ export default function Home() {
         <p class="product-name">Kupa Altlığı Seti</p>
         <p class="product-price">₺140</p>
       </div>
-      <div class="product-card reveal">
+      <div class="product-card reveal" data-slug="hediye-karti" style="cursor:pointer">
         <button class="fav-btn" data-fav-id="p7" aria-label="Favorilere ekle" type="button"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.35-9.5-8.5C.7 8 2 4.5 5.5 4 8 3.6 10 5 12 7.5 14 5 16 3.6 18.5 4 22 4.5 23.3 8 21.5 11.5 19 15.65 12 20 12 20z"/></svg></button>
         <div class="product-photo zoomable" style="background:var(--cream-deep)">
           <svg viewBox="0 0 64 64" fill="none" stroke="var(--ink)" stroke-width="2"><rect x="8" y="18" width="48" height="30" rx="4"/><circle cx="32" cy="33" r="8"/><path d="M14 24h4M46 42h4"/></svg>
@@ -531,11 +531,24 @@ export default function Home() {
   <div class="footer-watermark parallax" data-speed="0.06"><div class="mk mk-sofra-rust"></div></div>
   <div class="footer-grid">
     <div class="footer-brand">
-      <a href="#hero" class="footer-logo"><img class="footer-logo-img" src="/images/demleme-logo.png" alt="Demleme" width="150" height="24" style="height:32px;width:auto;object-fit:contain"></a>
+      <a href="#hero" class="footer-logo"><img class="footer-logo-img" src="/images/demleme-logo.png" alt="Demleme" width="150" height="24" style="height:52px;width:auto;object-fit:contain"></a>
       <p>İyi bir sohbet, iyi bir dünyaya katkı olsun.</p>
       <div class="footer-social">
-        <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></a>
-        <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1"/></svg></a>
+        <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M23 7s-.3-2-1.2-2.8c-1.1-1.2-2.4-1.2-3-1.3C16.2 2.8 12 2.8 12 2.8s-4.2 0-6.8.2c-.6.1-1.9.1-3 1.3C1.3 5 1 7 1 7S.7 9.1.7 11.2v2c0 2.1.3 4.2.3 4.2S1.3 19.4 2.2 20c1.1 1.2 2.6 1.1 3.3 1.2C7.6 21.4 12 21.4 12 21.4s4.2 0 6.8-.2c.6-.1 1.9-.1 3-1.3.9-.8 1.2-2.8 1.2-2.8s.3-2.1.3-4.2v-2C23.3 9.1 23 7 23 7zM9.7 15.5V8.4l8.1 3.6-8.1 3.5z"/></svg>
+        </a>
+        <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor"/></svg>
+        </a>
+        <a href="https://tiktok.com" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+        </a>
+        <a href="https://open.spotify.com" target="_blank" rel="noopener" aria-label="Spotify" title="Spotify">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.6 14.4c-.2.3-.6.4-.9.2-2.5-1.5-5.7-1.9-9.4-1-.4.1-.7-.1-.8-.5-.1-.4.1-.7.5-.8 4.1-.9 7.6-.5 10.4 1.1.3.2.4.6.2 1zm1.2-2.8c-.2.4-.7.5-1.1.3-2.9-1.8-7.2-2.3-10.6-1.2-.4.1-.9-.1-1-.5-.1-.4.1-.9.5-1 3.8-1.2 8.6-.6 11.9 1.4.4.2.5.7.3 1zm.1-2.8C14.4 8.9 8.8 8.7 5.6 9.7c-.5.2-1-.2-1.1-.7-.2-.5.2-1 .7-1.1 3.7-1.1 9.8-.9 13.6 1.4.5.3.6.9.3 1.4-.3.4-.9.6-1.3.3z"/></svg>
+        </a>
+        <a href="#" target="_blank" rel="noopener" aria-label="Podcast" title="Podcast">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><circle cx="12" cy="11" r="4"/><path d="M12 15v4M8 19h8"/><path d="M5 11a7 7 0 0014 0" stroke-linecap="round"/></svg>
+        </a>
       </div>
     </div>
     <div class="footer-col">

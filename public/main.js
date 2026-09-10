@@ -1406,3 +1406,15 @@
   })();
 
 })();
+
+/* ── Ürün kartları → detay sayfası yönlendirme ── */
+(function(){
+  document.querySelectorAll('.product-card[data-slug]').forEach(function(card){
+    card.addEventListener('click', function(e){
+      // fav-btn veya sepet butonuna tıklanmışsa yönlendirme
+      if(e.target.closest('.fav-btn') || e.target.closest('.add-to-cart-btn')) return;
+      var slug = card.getAttribute('data-slug');
+      if(slug) window.location.href = '/urunler/' + slug;
+    });
+  });
+})();
