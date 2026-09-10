@@ -524,24 +524,25 @@ export default function Home() {
 </section>
 
 
-{/* ── Scroll Indicator ── */}
 <aside id="scroll-indicator" aria-hidden="true" style="position:fixed;right:28px;top:50%;transform:translateY(-50%);z-index:999;display:flex;flex-direction:column;align-items:center;gap:0;pointer-events:none">
-  <div id="si-line-top" style="width:1px;height:60px;background:linear-gradient(to bottom,transparent,var(--rust-deep,#8b3a1a));margin-bottom:8px;transition:height 0.4s"></div>
-  {[
-    {num:"01",label:"VİDEOLAR",sec:"videos"},
-    {num:"02",label:"BEN KİMİM",sec:"benkimim"},
-    {num:"03",label:"SOFRADA",sec:"shop"},
-    {num:"04",label:"SOFRADA",sec:"shop"},
-  ].map((item,i)=>(
-    <div key={i} className="si-dot-wrap" data-target={item.sec} style={{display:"flex",flexDirection:"column",alignItems:"center",gap:0}}>
-      <div className={"si-dot si-dot-"+item.num} style={{width:28,height:28,borderRadius:"50%",border:"1px solid var(--rust-deep,#8b3a1a)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"0.55rem",fontWeight:700,color:"var(--rust-deep,#8b3a1a)",letterSpacing:"0.02em",transition:"all 0.3s",background:"transparent"}}>
-        {item.num}
-      </div>
-      {i < 3 && <div style={{width:1,height:32,background:"var(--rust-deep,#8b3a1a)",opacity:0.25}}></div>}
-    </div>
-  ))}
-  <div style={{marginTop:8,writingMode:"vertical-rl",textOrientation:"mixed",fontSize:"0.6rem",fontWeight:700,letterSpacing:"0.12em",color:"var(--rust-deep,#8b3a1a)",opacity:0.7,textTransform:"uppercase"}}>SOFRADA</div>
-  <div id="si-line-bot" style={{width:1,height:40,background:"linear-gradient(to bottom,var(--rust-deep,#8b3a1a),transparent)",marginTop:8,transition:"height 0.4s"}}></div>
+  <div style="width:1px;height:60px;background:linear-gradient(to bottom,transparent,#8b3a1a);margin-bottom:8px"></div>
+  <div class="si-dot-wrap">
+    <div class="si-dot" id="si-01" style="width:28px;height:28px;border-radius:50%;border:1px solid #8b3a1a;display:flex;align-items:center;justify-content:center;font-size:0.55rem;font-weight:700;color:#8b3a1a;transition:all 0.3s;background:transparent">01</div>
+    <div style="width:1px;height:32px;background:#8b3a1a;opacity:0.25"></div>
+  </div>
+  <div class="si-dot-wrap">
+    <div class="si-dot" id="si-02" style="width:28px;height:28px;border-radius:50%;border:1px solid #8b3a1a;display:flex;align-items:center;justify-content:center;font-size:0.55rem;font-weight:700;color:#8b3a1a;transition:all 0.3s;background:transparent">02</div>
+    <div style="width:1px;height:32px;background:#8b3a1a;opacity:0.25"></div>
+  </div>
+  <div class="si-dot-wrap">
+    <div class="si-dot" id="si-03" style="width:28px;height:28px;border-radius:50%;border:1px solid #8b3a1a;display:flex;align-items:center;justify-content:center;font-size:0.55rem;font-weight:700;color:#8b3a1a;transition:all 0.3s;background:transparent">03</div>
+    <div style="width:1px;height:32px;background:#8b3a1a;opacity:0.25"></div>
+  </div>
+  <div class="si-dot-wrap">
+    <div class="si-dot" id="si-04" style="width:28px;height:28px;border-radius:50%;border:1px solid #8b3a1a;display:flex;align-items:center;justify-content:center;font-size:0.55rem;font-weight:700;color:#8b3a1a;transition:all 0.3s;background:transparent">04</div>
+  </div>
+  <div style="margin-top:8px;writing-mode:vertical-rl;font-size:0.6rem;font-weight:700;letter-spacing:0.12em;color:#8b3a1a;opacity:0.7;text-transform:uppercase">SOFRADA</div>
+  <div style="width:1px;height:40px;background:linear-gradient(to bottom,#8b3a1a,transparent);margin-top:8px"></div>
 </aside>
 
 <footer>
