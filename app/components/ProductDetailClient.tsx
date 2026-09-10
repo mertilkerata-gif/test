@@ -10,19 +10,19 @@ const Star = ({ filled }: { filled: boolean }) => (
   </svg>
 );
 
-function AnimatedIcon({ svgIcon, color }: { svgIcon: string; color: string }) {
-  const [frame, setFrame] = useState(0);
+/* Dönen + sallanan ikon animasyonu */
+function LiveIcon({ svgIcon, color }: { svgIcon: string; color: string }) {
+  const [tick, setTick] = useState(0);
   useEffect(() => {
-    const t = setInterval(() => setFrame(f => f + 1), 2000);
+    const t = setInterval(() => setTick(n => n + 1), 2400);
     return () => clearInterval(t);
   }, []);
   return (
     <div style={{
-      width: '60%', height: '60%',
-      color,
-      filter: `drop-shadow(0 12px 40px ${color}55)`,
-      transition: 'transform .6s cubic-bezier(.34,1.56,.64,1)',
-      transform: frame % 2 === 0 ? 'scale(1) rotate(-2deg)' : 'scale(1.06) rotate(2deg)',
+      width: '58%', height: '58%', color,
+      filter: `drop-shadow(0 16px 48px ${color}55)`,
+      transition: 'transform .8s cubic-bezier(.34,1.56,.64,1)',
+      transform: tick % 2 === 0 ? 'scale(1) rotate(-3deg)' : 'scale(1.08) rotate(3deg)',
     }} dangerouslySetInnerHTML={{ __html: svgIcon }} />
   );
 }
@@ -33,8 +33,9 @@ export default function ProductDetailClient({ product: p, related }: { product: 
   const [selectedVariant, setSelectedVariant] = useState(0);
   const [selectedSize, setSelectedSize] = useState('M');
   const [mounted, setMounted] = useState(false);
+  const [imgHovered, setImgHovered] = useState(false);
 
-  useEffect(() => { setTimeout(() => setMounted(true), 50); }, []);
+  useEffect(() => { const t = setTimeout(() => setMounted(true), 60); return () => clearTimeout(t); }, []);
 
   const avgRating = p.reviews.length
     ? p.reviews.reduce((s, r) => s + r.rating, 0) / p.reviews.length : 5;
@@ -46,6 +47,37 @@ export default function ProductDetailClient({ product: p, related }: { product: 
 
   return (
     <main style={{ background: 'var(--cream)', minHeight: '100vh', paddingTop: '72px' }}>
+      <style>{`
+        @keyframes floatBadge {
+          0%,100% { transform:translateY(0); }
+          50%      { transform:translateY(-5px); }
+        }
+        @keyframes ringPulse {
+          0%   { transform:scale(1);   opacity:.22; }
+          70%  { transform:scale(1.35);opacity:0; }
+          100% { transform:scale(1.35);opacity:0; }
+        }
+        @keyframes slideUp {
+          from { opacity:0; transform:translateY(28px); }
+          to   { opacity:1; transform:translateY(0); }
+        }
+        @keyframes slideRight {
+          from { opacity:0; transform:translateX(-28px); }
+          to   { opacity:1; transform:translateX(0); }
+        }
+        @keyframes tabIn {
+          from { opacity:0; transform:translateY(10px); }
+          to   { opacity:1; transform:translateY(0); }
+        }
+        @keyframes spin-slow {
+          from { transform:rotate(0deg); }
+          to   { transform:rotate(360deg); }
+        }
+        @keyframes countUp {
+          from { opacity:0; transform:scale(.7); }
+          to   { opacity:1; transform:scale(1); }
+        }
+      `}</style>
 
       {/* BREADCRUMB */}
       <div style={{ background: 'var(--ink)', padding: '12px var(--pad)' }}>
@@ -61,7 +93,7 @@ export default function ProductDetailClient({ product: p, related }: { product: 
       {/* ANA GRID */}
       <div style={{
         maxWidth: '1200px', margin: '0 auto',
-        padding: '52px var(--pad) 80px',
+        padding: '48px var(--pad) 80px',
         display: 'grid',
         gridTemplateColumns: '1fr 1fr',
         gap: '64px',
@@ -69,33 +101,55 @@ export default function ProductDetailClient({ product: p, related }: { product: 
       }} className="pd-grid">
 
         {/* SOL: Görsel */}
-        <div style={{ position: 'sticky', top: '88px' }} className="pd-img-col">
+        <div style={{
+          position: 'sticky', top: '88px',
+          animation: mounted ? 'slideRight .65s cubic-bezier(.16,.9,.2,1) both' : 'none',
+        }} className="pd-img-col">
 
-          {/* Ana görsel */}
-          <div style={{
-            borderRadius: '28px',
-            background: `linear-gradient(145deg, color-mix(in srgb, ${p.color} 8%, var(--cream-deep)) 0%, color-mix(in srgb, ${p.color} 20%, var(--cream)) 100%)`,
-            aspectRatio: '1',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            position: 'relative', overflow: 'hidden',
-            boxShadow: `0 32px 80px -12px ${p.color}30, 0 0 0 1px ${p.color}15`,
-            opacity: mounted ? 1 : 0,
-            transform: mounted ? 'none' : 'translateY(20px)',
-            transition: 'opacity .6s ease, transform .6s cubic-bezier(.16,.9,.2,1)',
-          }}>
-            {/* Halkalar */}
-            {[75, 88].map((pct, i) => (
+          {/* Ana görsel kutusu */}
+          <div
+            onMouseEnter={() => setImgHovered(true)}
+            onMouseLeave={() => setImgHovered(false)}
+            style={{
+              borderRadius: '28px',
+              background: `linear-gradient(145deg,
+                color-mix(in srgb, ${p.color} 8%, var(--cream-deep)) 0%,
+                color-mix(in srgb, ${p.color} 20%, var(--cream)) 100%)`,
+              aspectRatio: '1',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              position: 'relative', overflow: 'hidden',
+              boxShadow: imgHovered
+                ? `0 40px 100px -16px ${p.color}45, 0 0 0 1.5px ${p.color}30`
+                : `0 24px 60px -12px ${p.color}25, 0 0 0 1px ${p.color}12`,
+              transition: 'box-shadow .4s',
+              cursor: 'default',
+            }}
+          >
+            {/* Dönen dış halka */}
+            {[72, 86].map((pct, i) => (
               <div key={i} style={{
                 position: 'absolute',
                 width: `${pct}%`, height: `${pct}%`,
                 borderRadius: '50%',
-                border: `1px solid ${p.color}${i === 0 ? '20' : '10'}`,
-                animation: `spin-slow ${20 + i * 10}s linear infinite`,
+                border: `1px dashed ${p.color}${i === 0 ? '25' : '12'}`,
+                animation: `spin-slow ${25 + i * 15}s linear infinite${i === 1 ? ' reverse' : ''}`,
               }} />
             ))}
 
-            {/* Animasyonlu ikon */}
-            <AnimatedIcon svgIcon={p.svgIcon} color={p.color} />
+            {/* Pulse hale — hover'da */}
+            {imgHovered && (
+              <div style={{
+                position: 'absolute',
+                width: '70%', height: '70%',
+                borderRadius: '50%',
+                border: `2px solid ${p.color}`,
+                animation: 'ringPulse 1.2s ease-out infinite',
+                pointerEvents: 'none',
+              }} />
+            )}
+
+            {/* Ürün ikonu */}
+            <LiveIcon svgIcon={p.svgIcon} color={p.color} />
 
             {/* Badge */}
             {p.badge && (
@@ -104,7 +158,8 @@ export default function ProductDetailClient({ product: p, related }: { product: 
                 background: p.color, color: '#fff',
                 fontSize: '.68rem', fontWeight: 800, letterSpacing: '.12em',
                 padding: '7px 16px', borderRadius: '40px',
-                boxShadow: `0 4px 20px ${p.color}55`,
+                boxShadow: `0 6px 24px ${p.color}60`,
+                animation: 'floatBadge 2.5s ease-in-out infinite',
               }}>{p.badge.toUpperCase()}</div>
             )}
 
@@ -112,78 +167,73 @@ export default function ProductDetailClient({ product: p, related }: { product: 
             {p.stock < 30 && (
               <div style={{
                 position: 'absolute', bottom: '16px', left: '16px', right: '16px',
-                background: 'rgba(10,10,10,.82)',
+                background: 'rgba(8,8,8,.84)',
                 backdropFilter: 'blur(20px)',
                 borderRadius: '14px', padding: '12px 18px',
                 display: 'flex', alignItems: 'center', gap: '12px',
               }}>
-                <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ff4a4a', flexShrink: 0, boxShadow: '0 0 10px #ff4a4a' }} />
+                <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ff4a4a', flexShrink: 0, boxShadow: '0 0 10px #ff4a4a', animation: 'heroLivePulse 1.6s infinite' }} />
                 <div style={{ flex: 1 }}>
-                  <div style={{ height: '3px', background: 'rgba(255,255,255,.12)', borderRadius: '2px', overflow: 'hidden', marginBottom: '6px' }}>
-                    <div style={{ height: '100%', width: `${Math.min(p.stock * 3, 100)}%`, background: 'linear-gradient(90deg,#ff4a4a,#ff8800)', borderRadius: '2px' }} />
+                  <div style={{ height: '3px', background: 'rgba(255,255,255,.12)', borderRadius: '2px', marginBottom: '6px' }}>
+                    <div style={{ height: '100%', width: `${Math.min(p.stock * 3, 100)}%`, background: `linear-gradient(90deg,#ff4a4a,#ff8800)`, borderRadius: '2px' }} />
                   </div>
-                  <span style={{ color: '#fff', fontSize: '.72rem', fontWeight: 600 }}>Stokta yalnızca {p.stock} adet kaldı</span>
+                  <span style={{ color: '#fff', fontSize: '.72rem', fontWeight: 600 }}>Son {p.stock} adet kaldı!</span>
                 </div>
               </div>
             )}
           </div>
 
-          {/* Sosyal kanıt */}
+          {/* Sosyal kanıt kartı */}
           <div style={{
-            marginTop: '16px', padding: '16px 20px',
+            marginTop: '14px', padding: '14px 18px',
             background: 'var(--paper)', borderRadius: '18px',
             border: '1px solid var(--line)',
-            display: 'flex', alignItems: 'center', gap: '16px',
-            opacity: mounted ? 1 : 0,
-            transform: mounted ? 'none' : 'translateY(10px)',
-            transition: 'opacity .6s ease .15s, transform .6s cubic-bezier(.16,.9,.2,1) .15s',
+            display: 'flex', alignItems: 'center', gap: '14px',
+            animation: mounted ? 'slideUp .6s cubic-bezier(.16,.9,.2,1) .2s both' : 'none',
           }}>
             <div style={{ display: 'flex' }}>
-              {['#b5451b','#2a7a4b','#5b3a8c','#1a6e6e'].map((c, i) => (
+              {[p.color,'#2a7a4b','#5b3a8c','#1a6e6e'].map((c, i) => (
                 <div key={i} style={{
-                  width: '32px', height: '32px', borderRadius: '50%',
+                  width: '30px', height: '30px', borderRadius: '50%',
                   background: c, border: '2.5px solid var(--cream)',
-                  marginLeft: i > 0 ? '-10px' : 0,
+                  marginLeft: i > 0 ? '-9px' : 0,
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   color: '#fff', fontSize: '.6rem', fontWeight: 800,
-                }}>
-                  {['SB','EK','MY','AT'][i]}
-                </div>
+                }}>{['SB','EK','MY','AT'][i]}</div>
               ))}
             </div>
             <div>
               <div style={{ display: 'flex', gap: '2px', marginBottom: '3px' }}>
                 {[1,2,3,4,5].map(i => <Star key={i} filled={i <= Math.round(avgRating)} />)}
               </div>
-              <p style={{ fontSize: '.76rem', color: 'var(--ink-soft)', margin: 0 }}>
+              <p style={{ fontSize: '.75rem', color: 'var(--ink-soft)', margin: 0 }}>
                 <strong style={{ color: 'var(--ink)' }}>{47 + p.reviews.length} kişi</strong> satın aldı
               </p>
             </div>
             <div style={{ marginLeft: 'auto', textAlign: 'right' as const }}>
-              <div style={{ fontSize: '1.1rem', fontWeight: 800, fontFamily: 'var(--font-display)', color: 'var(--ink)' }}>{avgRating.toFixed(1)}</div>
+              <div style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem', fontWeight: 800, color: 'var(--ink)', animation: 'countUp .5s .4s both' }}>{avgRating.toFixed(1)}</div>
               <div style={{ fontSize: '.65rem', color: 'var(--ink-faint)' }}>/ 5.0</div>
             </div>
           </div>
 
           {/* Güvence ikonları */}
           <div style={{
-            display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '10px', marginTop: '12px',
-            opacity: mounted ? 1 : 0,
-            transition: 'opacity .6s ease .25s',
+            display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '10px', marginTop: '10px',
+            animation: mounted ? 'slideUp .6s cubic-bezier(.16,.9,.2,1) .3s both' : 'none',
           }}>
             {[
-              { svg: <svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 5h14l-1 10H4L3 5z"/><path d="M7 5V3.5a3 3 0 016 0V5"/></svg>, t: 'Güvenli Ödeme', s: 'SSL + 3D Secure' },
-              { svg: <svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 8h14M7 12l-3 5h12l-3-5"/><path d="M5 8V5a2 2 0 014 0v3M11 8V5a2 2 0 014 0v3"/></svg>, t: 'Ücretsiz Kargo', s: '₺200 üzeri' },
-              { svg: <svg viewBox="0 0 20 20" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M10 2l2 4 4.5.7-3.2 3.2.7 4.6L10 12.5l-4 2 .7-4.6L3.5 6.7 8 6z"/></svg>, t: '14 Gün İade', s: 'Koşulsuz' },
-            ].map((b, i) => (
-              <div key={i} style={{
+              { icon: '🔒', t: 'Güvenli', s: 'SSL + 3D' },
+              { icon: '🚚', t: 'Ücretsiz', s: '₺200 üzeri' },
+              { icon: '↩️', t: '14 Gün', s: 'Koşulsuz iade' },
+            ].map(b => (
+              <div key={b.t} style={{
                 background: 'var(--paper)', borderRadius: '14px',
-                padding: '14px 10px', textAlign: 'center' as const,
+                padding: '12px 8px', textAlign: 'center' as const,
                 border: '1px solid var(--line)',
-                color: p.color,
+                transition: 'transform .2s, box-shadow .2s',
               }}>
-                {b.svg}
-                <p style={{ fontWeight: 700, fontSize: '.7rem', margin: '6px 0 2px', color: 'var(--ink)' }}>{b.t}</p>
+                <div style={{ fontSize: '1.2rem', marginBottom: '4px' }}>{b.icon}</div>
+                <p style={{ fontWeight: 700, fontSize: '.7rem', margin: '0 0 2px', color: 'var(--ink)' }}>{b.t}</p>
                 <p style={{ fontSize: '.65rem', color: 'var(--ink-faint)', margin: 0 }}>{b.s}</p>
               </div>
             ))}
@@ -192,16 +242,14 @@ export default function ProductDetailClient({ product: p, related }: { product: 
 
         {/* SAĞ: Bilgi */}
         <div style={{
-          display: 'flex', flexDirection: 'column', gap: '24px',
-          opacity: mounted ? 1 : 0,
-          transform: mounted ? 'none' : 'translateX(20px)',
-          transition: 'opacity .6s ease .1s, transform .6s cubic-bezier(.16,.9,.2,1) .1s',
+          display: 'flex', flexDirection: 'column', gap: '22px',
+          animation: mounted ? 'slideUp .65s cubic-bezier(.16,.9,.2,1) .1s both' : 'none',
         }} className="pd-info-col">
 
           {/* Kategori + rating */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' as const }}>
             <span style={{
-              background: `${p.color}15`, color: p.color,
+              background: `${p.color}18`, color: p.color,
               fontSize: '.65rem', fontWeight: 800, letterSpacing: '.14em',
               padding: '5px 14px', borderRadius: '40px',
             }}>{p.category.toUpperCase()}</span>
@@ -213,9 +261,9 @@ export default function ProductDetailClient({ product: p, related }: { product: 
               }}>{p.badge}</span>
             )}
             {p.reviews.length > 0 && (
-              <div style={{ display: 'flex', alignItems: 'center', gap: '5px', marginLeft: 'auto' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '4px', marginLeft: 'auto' }}>
                 {[1,2,3,4,5].map(i => <Star key={i} filled={i <= Math.round(avgRating)} />)}
-                <span style={{ fontSize: '.76rem', color: 'var(--ink-soft)' }}>({p.reviews.length})</span>
+                <span style={{ fontSize: '.75rem', color: 'var(--ink-soft)' }}>({p.reviews.length})</span>
               </div>
             )}
           </div>
@@ -238,16 +286,16 @@ export default function ProductDetailClient({ product: p, related }: { product: 
           </div>
 
           {/* Fiyat */}
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: '14px' }}>
+          <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px' }}>
             <span style={{
               fontFamily: 'var(--font-display)',
-              fontSize: 'clamp(2rem, 3.5vw, 2.6rem)',
+              fontSize: 'clamp(2rem,3.5vw,2.6rem)',
               fontWeight: 800, color: 'var(--ink)',
             }}>{p.priceDisplay}</span>
             <span style={{
               fontSize: '.78rem', color: '#2a7a4b', fontWeight: 700,
-              display: 'flex', alignItems: 'center', gap: '4px',
               background: '#2a7a4b15', padding: '4px 10px', borderRadius: '20px',
+              display: 'flex', alignItems: 'center', gap: '4px',
             }}>
               <svg viewBox="0 0 12 12" width="10" height="10" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><path d="M1 6l3.5 3.5L11 2"/></svg>
               Stokta
@@ -266,9 +314,9 @@ export default function ProductDetailClient({ product: p, related }: { product: 
                   background: v.color, border: 'none', cursor: 'pointer',
                   outline: selectedVariant === i ? `3px solid ${v.color}` : '3px solid transparent',
                   outlineOffset: '4px',
-                  boxShadow: `0 3px 10px ${v.color}50`,
-                  transition: 'transform .2s, outline .2s',
-                  transform: selectedVariant === i ? 'scale(1.15)' : 'scale(1)',
+                  boxShadow: `0 4px 14px ${v.color}60`,
+                  transition: 'transform .25s cubic-bezier(.34,1.56,.64,1), outline .2s',
+                  transform: selectedVariant === i ? 'scale(1.18)' : 'scale(1)',
                 }} />
               ))}
             </div>
@@ -279,17 +327,18 @@ export default function ProductDetailClient({ product: p, related }: { product: 
             <div>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px' }}>
                 <p style={{ fontSize: '.72rem', fontWeight: 800, letterSpacing: '.12em', color: 'var(--ink-faint)', margin: 0 }}>BEDEN</p>
-                <a href="#" style={{ fontSize: '.75rem', color: p.color, textDecoration: 'none', fontWeight: 600 }}>Beden tablosu →</a>
+                <a href="#" style={{ fontSize: '.75rem', color: p.color, textDecoration: 'none', fontWeight: 600 }}>Tablo →</a>
               </div>
               <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' as const }}>
-                {['XS', 'S', 'M', 'L', 'XL', '2XL'].map(s => (
+                {['XS','S','M','L','XL','2XL'].map(s => (
                   <button key={s} onClick={() => setSelectedSize(s)} type="button" style={{
                     padding: '9px 18px', borderRadius: '10px', cursor: 'pointer',
                     fontFamily: 'var(--font-body)', fontSize: '.85rem', fontWeight: 700,
                     background: selectedSize === s ? 'var(--ink)' : 'var(--paper)',
                     color: selectedSize === s ? '#fff' : 'var(--ink)',
                     border: `1.5px solid ${selectedSize === s ? 'var(--ink)' : 'var(--line)'}`,
-                    transition: 'all .15s',
+                    transition: 'all .18s cubic-bezier(.34,1.56,.64,1)',
+                    transform: selectedSize === s ? 'scale(1.06)' : 'scale(1)',
                   }}>{s}</button>
                 ))}
               </div>
@@ -299,7 +348,7 @@ export default function ProductDetailClient({ product: p, related }: { product: 
           {/* Adet + Sepet */}
           <QtySelector product={p} />
 
-          {/* Kargo bilgisi */}
+          {/* Kargo */}
           <div style={{
             display: 'flex', gap: '12px', alignItems: 'center',
             padding: '14px 18px', background: 'var(--paper)',
@@ -311,134 +360,136 @@ export default function ProductDetailClient({ product: p, related }: { product: 
               <circle cx="12" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
             </svg>
             <p style={{ fontSize: '.82rem', color: 'var(--ink-soft)', margin: 0, lineHeight: 1.6 }}>
-              Bugün sipariş ver, <strong style={{ color: p.color }}>Çarşamba–Perşembe</strong> teslim al · 2–4 iş günü
+              Bugün sipariş ver, <strong style={{ color: p.color }}>2–4 iş günü</strong> içinde teslim al
             </p>
           </div>
 
           {/* TABS */}
           <div style={{ borderTop: '1px solid var(--line)', paddingTop: '28px' }}>
             <div style={{ display: 'flex', borderBottom: '1px solid var(--line)', marginBottom: '24px', overflowX: 'auto' as const }}>
-              {([
-                ['aciklama', 'Açıklama'],
-                ['ozellikler', 'Özellikler'],
-                ['yorumlar', `Yorumlar (${p.reviews.length})`],
-                ['sss', 'SSS'],
-              ] as const).map(([key, label]) => (
-                <button key={key} onClick={() => setActiveTab(key as typeof activeTab)} type="button" style={{
-                  padding: '10px 18px', background: 'none', border: 'none',
-                  borderBottom: `2.5px solid ${activeTab === key ? p.color : 'transparent'}`,
-                  cursor: 'pointer', fontWeight: activeTab === key ? 700 : 400,
-                  color: activeTab === key ? 'var(--ink)' : 'var(--ink-faint)',
-                  fontSize: '.82rem', whiteSpace: 'nowrap' as const, transition: 'all .2s',
-                  fontFamily: 'var(--font-body)',
-                }}>{label}</button>
-              ))}
+              {(['aciklama','ozellikler',`yorumlar`,`sss`] as const).map((key) => {
+                const labels: Record<string,string> = { aciklama:'Açıklama', ozellikler:'Özellikler', yorumlar:`Yorumlar (${p.reviews.length})`, sss:'SSS' };
+                return (
+                  <button key={key} onClick={() => setActiveTab(key)} type="button" style={{
+                    padding: '10px 18px', background: 'none', border: 'none',
+                    borderBottom: `2.5px solid ${activeTab === key ? p.color : 'transparent'}`,
+                    cursor: 'pointer', fontWeight: activeTab === key ? 700 : 400,
+                    color: activeTab === key ? 'var(--ink)' : 'var(--ink-faint)',
+                    fontSize: '.82rem', whiteSpace: 'nowrap' as const,
+                    transition: 'color .2s, border-color .2s',
+                    fontFamily: 'var(--font-body)',
+                  }}>{labels[key]}</button>
+                );
+              })}
             </div>
 
-            {activeTab === 'aciklama' && (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                <p style={{ color: 'var(--ink-soft)', lineHeight: 1.8, fontSize: '.93rem', margin: 0 }}>{p.longDescription}</p>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
-                  {p.details.map((d, i) => (
-                    <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '9px', fontSize: '.84rem', color: 'var(--ink-soft)' }}>
-                      <div style={{ width: '20px', height: '20px', borderRadius: '50%', background: `${p.color}15`, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        <svg viewBox="0 0 10 10" width="8" height="8" fill="none" stroke={p.color} strokeWidth="2.5" strokeLinecap="round"><path d="M1.5 5l2.5 2.5 5-5"/></svg>
+            <div style={{ animation: 'tabIn .3s ease both' }} key={activeTab}>
+              {activeTab === 'aciklama' && (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                  <p style={{ color: 'var(--ink-soft)', lineHeight: 1.8, fontSize: '.93rem', margin: 0 }}>{p.longDescription}</p>
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
+                    {p.details.map((d, i) => (
+                      <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '9px', fontSize: '.84rem', color: 'var(--ink-soft)' }}>
+                        <div style={{ width: '20px', height: '20px', borderRadius: '50%', background: `${p.color}15`, flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                          <svg viewBox="0 0 10 10" width="8" height="8" fill="none" stroke={p.color} strokeWidth="2.5" strokeLinecap="round"><path d="M1.5 5l2.5 2.5 5-5"/></svg>
+                        </div>
+                        {d}
                       </div>
-                      {d}
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {activeTab === 'ozellikler' && (
+                <div>
+                  {p.specs.map((s, i) => (
+                    <div key={i} style={{
+                      display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                      padding: '13px 0',
+                      borderBottom: i < p.specs.length - 1 ? '1px solid var(--line)' : 'none',
+                    }}>
+                      <span style={{ fontSize: '.84rem', color: 'var(--ink-faint)', fontWeight: 600 }}>{s.label}</span>
+                      <span style={{ fontSize: '.84rem', color: 'var(--ink)' }}>{s.value}</span>
                     </div>
                   ))}
                 </div>
-              </div>
-            )}
+              )}
 
-            {activeTab === 'ozellikler' && (
-              <div>
-                {p.specs.map((s, i) => (
-                  <div key={i} style={{
-                    display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-                    padding: '13px 0',
-                    borderBottom: i < p.specs.length - 1 ? '1px solid var(--line)' : 'none',
-                  }}>
-                    <span style={{ fontSize: '.84rem', color: 'var(--ink-faint)', fontWeight: 600 }}>{s.label}</span>
-                    <span style={{ fontSize: '.84rem', color: 'var(--ink)', fontWeight: 500 }}>{s.value}</span>
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {activeTab === 'yorumlar' && (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                {p.reviews.length === 0 && (
-                  <p style={{ color: 'var(--ink-faint)', textAlign: 'center' as const, padding: '40px 0' }}>Henüz yorum yok.</p>
-                )}
-                {p.reviews.length > 0 && (
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '20px', padding: '18px 20px', background: 'var(--paper)', borderRadius: '16px', border: '1px solid var(--line)', marginBottom: '8px' }}>
-                    <div style={{ textAlign: 'center' as const }}>
-                      <div style={{ fontFamily: 'var(--font-display)', fontSize: '3rem', fontWeight: 800, color: 'var(--ink)', lineHeight: 1 }}>{avgRating.toFixed(1)}</div>
-                      <div style={{ display: 'flex', gap: '2px', justifyContent: 'center', margin: '4px 0' }}>
-                        {[1,2,3,4,5].map(i => <Star key={i} filled={i <= Math.round(avgRating)} />)}
-                      </div>
-                      <div style={{ fontSize: '.7rem', color: 'var(--ink-faint)' }}>{p.reviews.length} yorum</div>
-                    </div>
-                    <div style={{ flex: 1 }}>
-                      {[5,4,3,2,1].map(n => {
-                        const count = p.reviews.filter(r => r.rating === n).length;
-                        return (
-                          <div key={n} style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
-                            <span style={{ fontSize: '.68rem', color: 'var(--ink-faint)', width: '8px' }}>{n}</span>
-                            <div style={{ flex: 1, height: '5px', background: 'var(--cream-deep)', borderRadius: '3px', overflow: 'hidden' }}>
-                              <div style={{ height: '100%', width: `${p.reviews.length ? (count/p.reviews.length)*100 : 0}%`, background: p.color, borderRadius: '3px', transition: 'width 1s ease' }} />
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </div>
-                )}
-                {p.reviews.map((r, i) => (
-                  <div key={i} style={{ padding: '18px', background: 'var(--paper)', borderRadius: '16px', border: '1px solid var(--line)' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '10px' }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                        <div style={{ width: '36px', height: '36px', borderRadius: '50%', background: p.color, color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: '.85rem', flexShrink: 0 }}>{r.name[0]}</div>
-                        <div>
-                          <div style={{ fontWeight: 700, fontSize: '.85rem', color: 'var(--ink)' }}>{r.name}</div>
-                          <div style={{ display: 'flex', gap: '2px', marginTop: '2px' }}>{[1,2,3,4,5].map(i => <Star key={i} filled={i <= r.rating} />)}</div>
+              {activeTab === 'yorumlar' && (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                  {p.reviews.length === 0 && (
+                    <p style={{ color: 'var(--ink-faint)', textAlign: 'center' as const, padding: '40px 0' }}>Henüz yorum yok.</p>
+                  )}
+                  {p.reviews.length > 0 && (
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '20px', padding: '16px 20px', background: 'var(--paper)', borderRadius: '16px', border: '1px solid var(--line)', marginBottom: '8px' }}>
+                      <div style={{ textAlign: 'center' as const }}>
+                        <div style={{ fontFamily: 'var(--font-display)', fontSize: '3rem', fontWeight: 800, color: 'var(--ink)', lineHeight: 1 }}>{avgRating.toFixed(1)}</div>
+                        <div style={{ display: 'flex', gap: '2px', justifyContent: 'center', margin: '4px 0' }}>
+                          {[1,2,3,4,5].map(i => <Star key={i} filled={i <= Math.round(avgRating)} />)}
                         </div>
+                        <div style={{ fontSize: '.7rem', color: 'var(--ink-faint)' }}>{p.reviews.length} yorum</div>
                       </div>
-                      <span style={{ fontSize: '.7rem', color: 'var(--ink-faint)' }}>{r.date}</span>
+                      <div style={{ flex: 1 }}>
+                        {[5,4,3,2,1].map(n => {
+                          const count = p.reviews.filter(r => r.rating === n).length;
+                          return (
+                            <div key={n} style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+                              <span style={{ fontSize: '.68rem', color: 'var(--ink-faint)', width: '8px' }}>{n}</span>
+                              <div style={{ flex: 1, height: '5px', background: 'var(--cream-deep)', borderRadius: '3px', overflow: 'hidden' }}>
+                                <div style={{ height: '100%', width: `${p.reviews.length ? (count/p.reviews.length)*100 : 0}%`, background: p.color, borderRadius: '3px', transition: 'width 1s ease' }} />
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
                     </div>
-                    <p style={{ margin: 0, fontSize: '.88rem', color: 'var(--ink-soft)', lineHeight: 1.65 }}>{r.comment}</p>
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {activeTab === 'sss' && (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                {p.faq.map((f, i) => (
-                  <div key={i} style={{ border: '1px solid var(--line)', borderRadius: '14px', overflow: 'hidden' }}>
-                    <button onClick={() => setOpenFaq(openFaq === i ? null : i)} type="button" style={{
-                      width: '100%', padding: '14px 18px',
-                      background: openFaq === i ? `${p.color}08` : 'var(--paper)',
-                      border: 'none', cursor: 'pointer',
-                      display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-                      textAlign: 'left' as const, gap: '12px', fontFamily: 'var(--font-body)',
-                    }}>
-                      <span style={{ fontWeight: 600, fontSize: '.88rem', color: 'var(--ink)' }}>{f.q}</span>
-                      <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke={p.color} strokeWidth="2"
-                        style={{ flexShrink: 0, transform: openFaq === i ? 'rotate(180deg)' : 'none', transition: 'transform .2s' }}>
-                        <path d="M3 6l5 5 5-5"/>
-                      </svg>
-                    </button>
-                    {openFaq === i && (
-                      <div style={{ padding: '0 18px 16px', background: `${p.color}05` }}>
-                        <p style={{ margin: 0, fontSize: '.86rem', color: 'var(--ink-soft)', lineHeight: 1.7 }}>{f.a}</p>
+                  )}
+                  {p.reviews.map((r, i) => (
+                    <div key={i} style={{ padding: '16px', background: 'var(--paper)', borderRadius: '16px', border: '1px solid var(--line)', animation: `tabIn .3s ${i*0.06}s both` }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                          <div style={{ width: '34px', height: '34px', borderRadius: '50%', background: p.color, color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: '.85rem', flexShrink: 0 }}>{r.name[0]}</div>
+                          <div>
+                            <div style={{ fontWeight: 700, fontSize: '.85rem', color: 'var(--ink)' }}>{r.name}</div>
+                            <div style={{ display: 'flex', gap: '2px' }}>{[1,2,3,4,5].map(i => <Star key={i} filled={i <= r.rating} />)}</div>
+                          </div>
+                        </div>
+                        <span style={{ fontSize: '.7rem', color: 'var(--ink-faint)' }}>{r.date}</span>
                       </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            )}
+                      <p style={{ margin: 0, fontSize: '.88rem', color: 'var(--ink-soft)', lineHeight: 1.65 }}>{r.comment}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {activeTab === 'sss' && (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  {p.faq.map((f, i) => (
+                    <div key={i} style={{ border: '1px solid var(--line)', borderRadius: '14px', overflow: 'hidden', transition: 'box-shadow .2s', boxShadow: openFaq === i ? `0 4px 24px ${p.color}18` : 'none' }}>
+                      <button onClick={() => setOpenFaq(openFaq === i ? null : i)} type="button" style={{
+                        width: '100%', padding: '14px 18px',
+                        background: openFaq === i ? `${p.color}08` : 'var(--paper)',
+                        border: 'none', cursor: 'pointer',
+                        display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                        textAlign: 'left' as const, gap: '12px', fontFamily: 'var(--font-body)',
+                        transition: 'background .2s',
+                      }}>
+                        <span style={{ fontWeight: 600, fontSize: '.88rem', color: 'var(--ink)' }}>{f.q}</span>
+                        <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke={p.color} strokeWidth="2"
+                          style={{ flexShrink: 0, transform: openFaq === i ? 'rotate(180deg)' : 'none', transition: 'transform .25s' }}>
+                          <path d="M3 6l5 5 5-5"/>
+                        </svg>
+                      </button>
+                      {openFaq === i && (
+                        <div style={{ padding: '0 18px 16px', background: `${p.color}05`, animation: 'tabIn .2s ease' }}>
+                          <p style={{ margin: 0, fontSize: '.86rem', color: 'var(--ink-soft)', lineHeight: 1.7 }}>{f.a}</p>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -451,28 +502,28 @@ export default function ProductDetailClient({ product: p, related }: { product: 
               Bunları da beğenebilirsin
             </h2>
             <a href="/urunler" style={{ color: p.color, textDecoration: 'none', fontSize: '.82rem', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '4px' }}>
-              Tümünü gör
-              <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              Tümü <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
             </a>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(200px,1fr))', gap: '14px' }}>
-            {related.map(r => (
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(190px,1fr))', gap: '14px' }}>
+            {related.map((r, i) => (
               <a key={r.id} href={`/urunler/${r.slug}`} style={{
                 background: 'rgba(255,255,255,.05)',
                 border: '1px solid rgba(255,255,255,.08)',
                 borderRadius: '18px', overflow: 'hidden',
                 textDecoration: 'none', display: 'flex', flexDirection: 'column',
-                transition: 'all .25s',
+                transition: 'all .3s cubic-bezier(.34,1.56,.64,1)',
+                animation: `slideUp .5s ${i*0.07}s both`,
               }}
-                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,.1)'; (e.currentTarget as HTMLElement).style.transform = 'translateY(-4px)'; }}
-                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,.05)'; (e.currentTarget as HTMLElement).style.transform = ''; }}
+                onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'rgba(255,255,255,.1)'; el.style.transform = 'translateY(-5px) scale(1.02)'; }}
+                onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'rgba(255,255,255,.05)'; el.style.transform = ''; }}
               >
-                <div style={{ background: `${r.color}20`, padding: '28px', display: 'flex', alignItems: 'center', justifyContent: 'center', aspectRatio: '1' }}>
+                <div style={{ background: `${r.color}22`, padding: '28px', display: 'flex', alignItems: 'center', justifyContent: 'center', aspectRatio: '1' }}>
                   <span style={{ color: r.color, width: '64px', height: '64px', display: 'block', filter: `drop-shadow(0 4px 16px ${r.color}50)` }}
                     dangerouslySetInnerHTML={{ __html: r.svgIcon }} />
                 </div>
                 <div style={{ padding: '14px 16px 18px' }}>
-                  <p style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '.92rem', margin: '0 0 4px', color: 'var(--cream-fixed)' }}>{r.name}</p>
+                  <p style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '.9rem', margin: '0 0 4px', color: 'var(--cream-fixed)' }}>{r.name}</p>
                   <p style={{ color: r.accentColor, fontWeight: 700, fontSize: '.88rem', margin: 0 }}>{r.priceDisplay}</p>
                 </div>
               </a>
@@ -482,7 +533,6 @@ export default function ProductDetailClient({ product: p, related }: { product: 
       </div>
 
       <style>{`
-        @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         @media (max-width: 768px) {
           .pd-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
           .pd-img-col { position: static !important; top: auto !important; }
