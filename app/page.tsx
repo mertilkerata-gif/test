@@ -365,7 +365,7 @@ export default function Home() {
 </section>
 
 <!-- ============================================================ -->
-<div class="zag-divider zag--zigzag" style="background:var(--ink-fixed)"></div>
+
 
 
 <section class="shop-sec" id="shop" data-secnum="03">
