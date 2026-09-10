@@ -7,7 +7,7 @@ const CATEGORIES = ['Tümü', 'Mutfak', 'Giyim', 'Kırtasiye', 'Dekor', 'Diğer'
 
 function useInView(threshold = 0.12) {
   const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
@@ -34,35 +34,13 @@ function ProductCard({ p, index }: { p: Product; index: number }) {
 
   return (
     <>
-      <style>{`
-        @keyframes cardIn {
-          from { opacity:0; transform:translateY(36px) scale(.97); }
-          to   { opacity:1; transform:translateY(0) scale(1); }
-        }
-        @keyframes shimmer {
-          0%   { transform:translateX(-100%) rotate(25deg); }
-          100% { transform:translateX(250%) rotate(25deg); }
-        }
-        @keyframes rippleOut {
-          from { transform:scale(0); opacity:.35; }
-          to   { transform:scale(4); opacity:0; }
-        }
-        @keyframes floatIcon {
-          0%,100% { transform:translateY(0) rotate(-1deg); }
-          50%     { transform:translateY(-8px) rotate(1deg); }
-        }
-        @keyframes haloGrow {
-          from { transform:scale(1); opacity:.18; }
-          to   { transform:scale(1.5); opacity:0; }
-        }
-      `}</style>
       <div
         ref={ref}
         onClick={handleClick}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
         style={{
-          animation: visible ? `cardIn .6s cubic-bezier(.16,.9,.2,1) ${delay}s both` : 'none',
+          animation: `cardIn .6s cubic-bezier(.16,.9,.2,1) ${delay}s both`,
           opacity: visible ? undefined : 0,
           borderRadius: '22px',
           overflow: 'hidden',
@@ -240,6 +218,28 @@ export default function ProductGrid({ products }: { products: Product[] }) {
 
   return (
     <div>
+      <style>{`
+        @keyframes cardIn {
+          from { opacity:0; transform:translateY(32px) scale(.97); }
+          to   { opacity:1; transform:translateY(0) scale(1); }
+        }
+        @keyframes shimmer {
+          0%   { transform:translateX(-100%) rotate(25deg); }
+          100% { transform:translateX(250%) rotate(25deg); }
+        }
+        @keyframes rippleOut {
+          from { transform:scale(0); opacity:.35; }
+          to   { transform:scale(4); opacity:0; }
+        }
+        @keyframes floatIcon {
+          0%,100% { transform:translateY(0) rotate(-1deg); }
+          50%     { transform:translateY(-8px) rotate(1deg); }
+        }
+        @keyframes haloGrow {
+          from { transform:scale(1); opacity:.18; }
+          to   { transform:scale(1.5); opacity:0; }
+        }
+      `}</style>
       {/* Filtre + sıralama */}
       <div style={{ marginBottom: '32px' }}>
         <div style={{
