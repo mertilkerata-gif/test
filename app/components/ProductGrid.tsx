@@ -166,63 +166,67 @@ export default function ProductGrid({ products }: { products: Product[] }) {
   return (
     <div>
       {/* Filtre + sıralama */}
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        gap: '12px',
-        marginBottom: '40px',
-        flexWrap: 'wrap' as const,
-      }}>
-        {/* Kategori filtreleri */}
-        <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' as const, flex: 1 }}>
+      <div style={{ marginBottom: '32px' }}>
+        {/* Kategori filtreleri - yatay scroll */}
+        <div style={{
+          display: 'flex',
+          gap: '8px',
+          overflowX: 'auto' as const,
+          paddingBottom: '12px',
+          marginBottom: '12px',
+          WebkitOverflowScrolling: 'touch' as any,
+          scrollbarWidth: 'none' as any,
+          msOverflowStyle: 'none' as any,
+        }}>
           {CATEGORIES.map(cat => (
             <button
               key={cat}
               onClick={() => setActiveFilter(cat)}
               style={{
-                padding: '8px 18px',
+                padding: '9px 20px',
                 borderRadius: '40px',
                 border: `1.5px solid ${activeFilter === cat ? 'var(--ink)' : 'var(--line)'}`,
                 background: activeFilter === cat ? 'var(--ink)' : 'var(--paper)',
                 color: activeFilter === cat ? '#fff' : 'var(--ink-soft)',
-                fontSize: '.82rem',
+                fontSize: '.85rem',
                 fontWeight: 600,
                 cursor: 'pointer',
                 fontFamily: 'var(--font-body)',
                 transition: 'all .2s',
                 whiteSpace: 'nowrap' as const,
+                flexShrink: 0,
               }}
             >{cat}</button>
           ))}
         </div>
 
-        {/* Sıralama */}
-        <select
-          value={sortBy}
-          onChange={e => setSortBy(e.target.value as typeof sortBy)}
-          style={{
-            padding: '8px 16px',
-            borderRadius: '12px',
-            border: '1.5px solid var(--line)',
-            background: 'var(--paper)',
-            color: 'var(--ink)',
-            fontSize: '.82rem',
-            fontWeight: 600,
-            cursor: 'pointer',
-            fontFamily: 'var(--font-body)',
-            outline: 'none',
-          }}
-        >
-          <option value="varsayilan">Önerilen</option>
-          <option value="fiyat-artan">Fiyat: Düşük → Yüksek</option>
-          <option value="fiyat-azalan">Fiyat: Yüksek → Düşük</option>
-        </select>
+        {/* Sıralama + ürün sayısı */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <p style={{ fontSize: '.8rem', color: 'var(--ink-faint)', margin: 0, fontWeight: 600 }}>
+            {filtered.length} ürün
+          </p>
+          <select
+            value={sortBy}
+            onChange={e => setSortBy(e.target.value as typeof sortBy)}
+            style={{
+              padding: '8px 14px',
+              borderRadius: '10px',
+              border: '1.5px solid var(--line)',
+              background: 'var(--paper)',
+              color: 'var(--ink)',
+              fontSize: '.82rem',
+              fontWeight: 600,
+              cursor: 'pointer',
+              fontFamily: 'var(--font-body)',
+              outline: 'none',
+            }}
+          >
+            <option value="varsayilan">Önerilen</option>
+            <option value="fiyat-artan">En Ucuz</option>
+            <option value="fiyat-azalan">En Pahalı</option>
+          </select>
+        </div>
       </div>
-
-      {/* Ürün sayısı */}
-      <p style={{ fontSize: '.8rem', color: 'var(--ink-faint)', marginBottom: '24px', fontWeight: 600 }}>
-        {filtered.length} ürün
-      </p>
 
       {/* Grid */}
       <div style={{

@@ -17,43 +17,37 @@ export default function UrunlerPage() {
         {/* Hero banner */}
         <div style={{
           background: 'var(--ink)',
-          padding: '56px var(--pad) 52px',
+          padding: 'clamp(32px,6vw,56px) var(--pad) clamp(28px,5vw,48px)',
           position: 'relative',
           overflow: 'hidden',
         }}>
-          {/* Dekoratif arka plan */}
-          <div style={{
-            position: 'absolute', inset: 0, opacity: .04,
-            backgroundImage: 'radial-gradient(circle at 20% 50%, #fff 1px, transparent 1px), radial-gradient(circle at 80% 20%, #fff 1px, transparent 1px)',
-            backgroundSize: '40px 40px',
-          }} />
           <div style={{ maxWidth: 'var(--wrap)', margin: '0 auto', position: 'relative' }}>
-            <p style={{ fontFamily: 'var(--font-mark)', fontSize: '.72rem', letterSpacing: '.2em', opacity: .45, margin: '0 0 14px', color: 'var(--cream-fixed)' }}>
+            <p style={{ fontFamily: 'var(--font-mark)', fontSize: '.68rem', letterSpacing: '.2em', opacity: .45, margin: '0 0 10px', color: 'var(--cream-fixed)' }}>
               DEMLEME SHOP
             </p>
             <h1 style={{
               fontFamily: 'var(--font-display)',
-              fontSize: 'clamp(2.2rem, 6vw, 4.5rem)',
-              margin: '0 0 16px',
+              fontSize: 'clamp(1.8rem, 6vw, 4rem)',
+              margin: '0 0 10px',
               lineHeight: 1.05,
               color: 'var(--cream-fixed)',
             }}>
               Sofra <span style={{ color: '#e07048' }}>Mağazası</span>
             </h1>
-            <p style={{ opacity: .6, fontSize: '1rem', maxWidth: '440px', margin: 0, color: 'var(--cream-fixed)', lineHeight: 1.7 }}>
-              Sohbete değer katan, sofraya yakışan — el yapımı, özenle seçilmiş ürünler.
+            <p style={{ opacity: .6, fontSize: '.9rem', margin: 0, color: 'var(--cream-fixed)', lineHeight: 1.6 }}>
+              El yapımı, sofraya yakışan ürünler.
             </p>
 
-            {/* Küçük istatistikler */}
-            <div style={{ display: 'flex', gap: '32px', marginTop: '32px', flexWrap: 'wrap' as const }}>
+            {/* İstatistikler — yatay, sığışık */}
+            <div style={{ display: 'flex', gap: '20px', marginTop: '20px', borderTop: '1px solid rgba(255,255,255,.1)', paddingTop: '16px' }}>
               {[
-                { n: '7', l: 'özgün ürün' },
-                { n: '200+', l: 'mutlu alışveriş' },
-                { n: '4.9', l: 'ortalama puan' },
+                { n: '7', l: 'ürün' },
+                { n: '200+', l: 'alışveriş' },
+                { n: '4.9★', l: 'puan' },
               ].map(s => (
-                <div key={s.l}>
-                  <div style={{ fontFamily: 'var(--font-display)', fontSize: '1.6rem', fontWeight: 800, color: '#e07048' }}>{s.n}</div>
-                  <div style={{ fontSize: '.72rem', color: 'rgba(243,238,225,.5)', fontWeight: 600, letterSpacing: '.06em' }}>{s.l.toUpperCase()}</div>
+                <div key={s.l} style={{ display: 'flex', alignItems: 'baseline', gap: '5px' }}>
+                  <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem', fontWeight: 800, color: '#e07048' }}>{s.n}</span>
+                  <span style={{ fontSize: '.7rem', color: 'rgba(243,238,225,.45)', fontWeight: 600 }}>{s.l}</span>
                 </div>
               ))}
             </div>
