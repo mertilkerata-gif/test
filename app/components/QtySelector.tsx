@@ -52,7 +52,7 @@ export default function QtySelector({ product }: { product: Product }) {
           <>✓ Sepete Eklendi</>
         ) : (
           <>
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/>
             </svg>
             Sepete Ekle — {qty > 1 ? `${qty} adet · ₺${(product.price * qty).toLocaleString('tr')}` : product.priceDisplay}
