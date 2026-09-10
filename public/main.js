@@ -1472,3 +1472,59 @@
   }
   waitAndStart(30); // max 3 saniye bekle
 })();
+
+/* ── Hero istatistik sayaç animasyonu ── */
+(function(){
+  function countUp(el, target, suffix, duration) {
+    var start = 0;
+    var startTime = null;
+    var isFloat = target >= 1000;
+
+    function step(timestamp) {
+      if(!startTime) startTime = timestamp;
+      var progress = Math.min((timestamp - startTime) / duration, 1);
+      // ease out cubic
+      var ease = 1 - Math.pow(1 - progress, 3);
+      var current = Math.floor(ease * target);
+      
+      if(isFloat) {
+        // 12000 → "12.000+"
+        el.textContent = current.toLocaleString('tr-TR') + (progress >= 1 ? suffix : '');
+      } else {
+        el.textContent = current + (progress >= 1 ? suffix : '');
+      }
+
+      if(progress < 1) {
+        requestAnimationFrame(step);
+      }
+    }
+    requestAnimationFrame(step);
+  }
+
+  function startStats() {
+    var stats = document.getElementById('hero-stats');
+    if(!stats) return;
+
+    var obs = new IntersectionObserver(function(entries) {
+      if(entries[0].isIntersecting) {
+        obs.disconnect();
+        // Staggered başlatma
+        setTimeout(function(){ countUp(document.getElementById('stat-dinleyen'), 12000, '+', 1800); }, 0);
+        setTimeout(function(){ countUp(document.getElementById('stat-bolum'), 84, '', 1400); }, 200);
+        setTimeout(function(){ countUp(document.getElementById('stat-topluluk'), 200, '+', 1600); }, 400);
+      }
+    }, { threshold: 0.5 });
+
+    obs.observe(stats);
+  }
+
+  // Element hazır olana kadar bekle
+  function waitStats(tries) {
+    if(document.getElementById('hero-stats')) {
+      startStats();
+    } else if(tries > 0) {
+      setTimeout(function(){ waitStats(tries - 1); }, 100);
+    }
+  }
+  waitStats(20);
+})();

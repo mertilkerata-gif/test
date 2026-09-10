@@ -50,20 +50,20 @@ export default function Home() {
         <span id="tw-line3" style="display:block;min-height:1.05em"></span>
       </h1>
 
-      <!-- İstatistikler — yatay, tek satır -->
-      <div style="display:flex;gap:32px;align-items:center;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+      <!-- İstatistikler — yatay, sayaç animasyonlu -->
+      <div id="hero-stats" style="display:flex;gap:32px;align-items:center;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
         <div>
-          <div style="font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:var(--rust);line-height:1">12.000+</div>
+          <div id="stat-dinleyen" style="font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:var(--rust);line-height:1">0</div>
           <div style="font-size:.72rem;color:var(--ink-faint);font-weight:600;letter-spacing:.05em">DİNLEYEN</div>
         </div>
         <div style="width:1px;height:36px;background:var(--line)"></div>
         <div>
-          <div style="font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:var(--green);line-height:1">84</div>
+          <div id="stat-bolum" style="font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:var(--green);line-height:1">0</div>
           <div style="font-size:.72rem;color:var(--ink-faint);font-weight:600;letter-spacing:.05em">BÖLÜM</div>
         </div>
         <div style="width:1px;height:36px;background:var(--line)"></div>
         <div>
-          <div style="font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:var(--lav-deep);line-height:1">200+</div>
+          <div id="stat-topluluk" style="font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:var(--lav-deep);line-height:1">0</div>
           <div style="font-size:.72rem;color:var(--ink-faint);font-weight:600;letter-spacing:.05em">TOPLULUK</div>
         </div>
       </div>
