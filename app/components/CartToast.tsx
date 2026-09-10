@@ -263,7 +263,7 @@ export default function CartToast() {
                 <strong>Ücretsiz kargo kazandın!</strong>
               </div>
             )}
-            <button type="button" style={{
+            <button type="button" onClick={() => { window.location.href = '/odeme'; }} style={{
               width: '100%', padding: '16px',
               background: 'var(--ink)', color: '#fff',
               border: 'none', borderRadius: '14px',
