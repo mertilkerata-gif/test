@@ -106,9 +106,9 @@ export default function Home() {
 
         <!-- CTAs -->
         <div style="display:flex;gap:12px;flex-wrap:wrap">
-          <a href="#videos" class="btn btn-ink" style="display:inline-flex;align-items:center;gap:8px">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M8 5v14l11-7z"/></svg>
-            Son Bölümü İzle
+          <a href="https://youtube.com/@demleme" target="_blank" rel="noopener" class="btn btn-ink" style="display:inline-flex;align-items:center;gap:8px">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31 31 0 000 12a31 31 0 00.5 5.8 3 3 0 002.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 002.1-2.1A31 31 0 0024 12a31 31 0 00-.5-5.8zM9.6 15.5V8.5L15.8 12z"/></svg>
+            YouTube'da İzle
           </a>
           <a href="/urunler" class="btn btn-outline">Mağazayı Gez</a>
         </div>
