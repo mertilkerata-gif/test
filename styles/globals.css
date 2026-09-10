@@ -1534,3 +1534,8 @@ body, p, span, li, a, button, input, textarea, select {
 /* ── Highlights section başlığı büyük ── */
 .highlights-head { padding: 0 var(--pad) 32px; max-width: var(--wrap); margin: 0 auto; width: 100%; }
 .highlights-sec .split-heading { font-size: clamp(1.8rem, 3.5vw, 2.8rem) !important; }
+
+/* ── Quiz + Poll yan yana grid ── */
+.quiz-poll-grid { display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:start; }
+.quiz-poll-grid > section { margin:0 !important; padding-left:0 !important; padding-right:0 !important; }
+@media (max-width:900px) { .quiz-poll-grid { grid-template-columns:1fr !important; } }

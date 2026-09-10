@@ -304,7 +304,9 @@ export default function Home() {
 
 <!-- ============================================================ -->
 <div class="zag-divider zag--wave" style="background:#ECE6E7"></div>
-<section class="quiz-sec">
+<section style="padding:80px var(--pad);background:var(--cream-deep)">
+  <div style="max-width:var(--wrap);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start" class="quiz-poll-grid">
+    <section class="quiz-sec">
   <div class="section-blob parallax" data-speed="0.09" style="width:380px;height:380px;top:-110px;left:-100px;background:radial-gradient(circle,var(--paper) 0%,transparent 72%);opacity:.3" aria-hidden="true"></div>
   <div class="quiz-card reveal-scale">
     <p class="eyebrow">Küçük Bir Test</p>
@@ -339,18 +341,7 @@ export default function Home() {
     </div>
   </div>
 </section>
-
-<!-- ============================================================ -->
-
-
-<!-- ============================================================ -->
-<div class="zag-divider zag--scallop" style="background:#EFE6EC"></div>
-
-
-<!-- ============================================================ -->
-(poll) -->
-<div class="zag-divider zag--wave" style="background:var(--cream)"></div>
-<section class="topluluk-sec" style="padding-top:70px; padding-bottom:70px; background:var(--cream)">
+    <section class="topluluk-sec" style="padding-top:70px; padding-bottom:70px; background:var(--cream)">
   <div class="section-blob parallax" data-speed="0.06" style="width:320px;height:320px;top:-90px;right:-80px;background:radial-gradient(circle,var(--lav) 0%,transparent 72%);opacity:.2" aria-hidden="true"></div>
   <div class="poll-card reveal">
     <p class="eyebrow">Sıradaki Bölüm</p>
@@ -363,6 +354,23 @@ export default function Home() {
     <p class="poll-note" id="pollNote">Oy ver, sonucu hemen gör.</p>
   </div>
 </section>
+  </div>
+  <style>.quiz-poll-grid @media(max-width:900px){grid-template-columns:1fr!important}</style>
+</section>
+
+
+
+<!-- ============================================================ -->
+
+
+<!-- ============================================================ -->
+<div class="zag-divider zag--scallop" style="background:#EFE6EC"></div>
+
+
+<!-- ============================================================ -->
+(poll) -->
+<div class="zag-divider zag--wave" style="background:var(--cream)"></div>
+
 
 <!-- ============================================================ -->
 
