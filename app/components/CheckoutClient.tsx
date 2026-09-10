@@ -195,9 +195,17 @@ export default function CheckoutClient() {
                 <input style={inputStyle} value={adresBilgi} onChange={e=>setAdresBilgi(e.target.value)} placeholder="Ev, İş, vb." />
               </div>
 
-              <button style={btnPrimary}
-                disabled={!ad||!soyad||!tel||!email||!adres||!il||!ilce}
-                onClick={() => setStep('kargo')}
+              <button style={{
+                ...btnPrimary,
+                opacity: (!ad||!soyad||!tel||!email||!adres||!il||!ilce) ? 0.5 : 1,
+              }}
+                onClick={() => {
+                  if(!ad||!soyad||!tel||!email||!adres||!il||!ilce){
+                    alert('Lütfen tüm zorunlu alanları doldurun.');
+                    return;
+                  }
+                  setStep('kargo');
+                }}
               >
                 Kargoya Geç →
               </button>
