@@ -1528,3 +1528,35 @@
   }
   waitStats(20);
 })();
+
+// ── Scroll Indicator ──
+(function(){
+  var sections = [
+    {sec:"hero",   dot:"01"},
+    {sec:"videos", dot:"02"},
+    {sec:"benkimim",dot:"03"},
+    {sec:"shop",   dot:"04"},
+  ];
+
+  function getActive(){
+    var scrollY = window.scrollY + window.innerHeight * 0.4;
+    var active = 0;
+    sections.forEach(function(s,i){
+      var el = document.getElementById(s.sec);
+      if(el && el.getBoundingClientRect().top + window.scrollY <= scrollY) active = i;
+    });
+    return active;
+  }
+
+  function update(){
+    var a = getActive();
+    document.querySelectorAll('.si-dot').forEach(function(d,i){
+      if(i===a) d.classList.add('active');
+      else d.classList.remove('active');
+    });
+  }
+
+  window.addEventListener('scroll', update, {passive:true});
+  window.addEventListener('load', update);
+  update();
+})();

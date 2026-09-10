@@ -1539,3 +1539,15 @@ body, p, span, li, a, button, input, textarea, select {
 .quiz-poll-grid { display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:start; }
 .quiz-poll-grid > section { margin:0 !important; padding-left:0 !important; padding-right:0 !important; }
 @media (max-width:900px) { .quiz-poll-grid { grid-template-columns:1fr !important; } }
+
+/* ── Scroll Indicator ── */
+#scroll-indicator { display:none; }
+@media (min-width:900px) { #scroll-indicator { display:flex; } }
+
+.si-dot { cursor:pointer; pointer-events:all; }
+.si-dot.active {
+  background: var(--rust-deep,#8b3a1a) !important;
+  color: var(--cream,#faf6f1) !important;
+  box-shadow: 0 0 0 4px rgba(139,58,26,0.15);
+  transform: scale(1.15);
+}

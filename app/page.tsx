@@ -28,7 +28,7 @@ export default function Home() {
 </div>
 
 <!-- ============================================================ -->
-<section class="hero" id="hero" style="min-height:92vh;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;padding:80px var(--pad) 60px">
+<section class="hero" id="hero" data-secnum="00" style="min-height:92vh;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;padding:80px var(--pad) 60px">
 
   <!-- Dekoratif arka plan blobs -->
   <div style="position:absolute;width:500px;height:500px;top:-100px;right:-80px;background:radial-gradient(circle,var(--butter) 0%,transparent 65%);pointer-events:none;opacity:.55" aria-hidden="true"></div>
@@ -151,7 +151,7 @@ export default function Home() {
 
 <!-- ============================================================ -->
 <!-- AUTO-ROTATING HIGHLIGHTS (videos + shop, otomatik dönen şerit) -->
-<section class="highlights-sec" id="videos">
+<section class="highlights-sec" id="videos" data-secnum="01">
   <div class="highlights-head reveal">
     <span class="sec-num" aria-hidden="true">01</span>
     <div class="highlights-head-text">
@@ -522,6 +522,27 @@ export default function Home() {
     </form>
   </div>
 </section>
+
+
+{/* ── Scroll Indicator ── */}
+<aside id="scroll-indicator" aria-hidden="true" style="position:fixed;right:28px;top:50%;transform:translateY(-50%);z-index:999;display:flex;flex-direction:column;align-items:center;gap:0;pointer-events:none">
+  <div id="si-line-top" style="width:1px;height:60px;background:linear-gradient(to bottom,transparent,var(--rust-deep,#8b3a1a));margin-bottom:8px;transition:height 0.4s"></div>
+  {[
+    {num:"01",label:"VİDEOLAR",sec:"videos"},
+    {num:"02",label:"BEN KİMİM",sec:"benkimim"},
+    {num:"03",label:"SOFRADA",sec:"shop"},
+    {num:"04",label:"SOFRADA",sec:"shop"},
+  ].map((item,i)=>(
+    <div key={i} className="si-dot-wrap" data-target={item.sec} style={{display:"flex",flexDirection:"column",alignItems:"center",gap:0}}>
+      <div className={"si-dot si-dot-"+item.num} style={{width:28,height:28,borderRadius:"50%",border:"1px solid var(--rust-deep,#8b3a1a)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"0.55rem",fontWeight:700,color:"var(--rust-deep,#8b3a1a)",letterSpacing:"0.02em",transition:"all 0.3s",background:"transparent"}}>
+        {item.num}
+      </div>
+      {i < 3 && <div style={{width:1,height:32,background:"var(--rust-deep,#8b3a1a)",opacity:0.25}}></div>}
+    </div>
+  ))}
+  <div style={{marginTop:8,writingMode:"vertical-rl",textOrientation:"mixed",fontSize:"0.6rem",fontWeight:700,letterSpacing:"0.12em",color:"var(--rust-deep,#8b3a1a)",opacity:0.7,textTransform:"uppercase"}}>SOFRADA</div>
+  <div id="si-line-bot" style={{width:1,height:40,background:"linear-gradient(to bottom,var(--rust-deep,#8b3a1a),transparent)",marginTop:8,transition:"height 0.4s"}}></div>
+</aside>
 
 <footer>
   <div class="footer-watermark parallax" data-speed="0.06"><div class="mk mk-sofra-rust"></div></div>
