@@ -252,7 +252,7 @@ html.dark-mode .nav-logo-img{ filter:invert(1); }
 @media (max-width:640px){ .highlights-photo{ width:88px; height:60px; } }
 @media (prefers-reduced-motion: reduce){ .highlights-photo{ translate:none !important; } }
 .highlights-track-wrap{ max-width:100%; -webkit-mask-image:linear-gradient(90deg,transparent,black 6%,black 94%,transparent); mask-image:linear-gradient(90deg,transparent,black 6%,black 94%,transparent); }
-.highlights-track{ display:flex; gap:20px; padding:0 var(--pad) 8px; overflow-x:auto; scroll-snap-type:x proximity; scrollbar-width:none; }
+.highlights-track{ display:flex; gap:24px; padding:0 var(--pad) 16px; overflow-x:auto; scroll-snap-type:x proximity; scrollbar-width:none; }
 .highlights-track::-webkit-scrollbar{ display:none; }
 @media (prefers-reduced-motion: reduce){ .highlights-track{ scroll-behavior:auto; } }
 /* True scroll-linked horizontal panel scroll (desktop, motion-enabled only -- see script.js):
@@ -267,13 +267,13 @@ html.dark-mode .nav-logo-img{ filter:invert(1); }
 .highlights-sec[data-hscroll] .highlights-nav-btns{ display:none; }
 
 .highlight-card{
-  position:relative; flex:0 0 278px; scroll-snap-align:start; border-radius:12px; overflow:hidden;
-  box-shadow:var(--shadow-md); background:var(--paper); perspective:900px;
-  transition:transform .45s var(--ease-premium, cubic-bezier(.22,1,.36,1)), box-shadow .45s ease;
+  position:relative; flex:0 0 360px; scroll-snap-align:start; border-radius:20px; overflow:hidden;
+  box-shadow:0 4px 24px rgba(0,0,0,.10); background:var(--paper); perspective:900px;
+  transition:transform .5s cubic-bezier(.22,1,.36,1), box-shadow .5s ease;
 }
-@media (max-width:900px){ .highlight-card{ flex:0 0 min(62vw, 340px); } }
-@media (max-width:640px){ .highlight-card{ flex:0 0 min(80vw, 320px); } }
-.highlight-card:hover{ transform:translateY(-9px) scale(1.015); box-shadow:var(--shadow-lg); z-index:3; }
+@media (max-width:900px){ .highlight-card{ flex:0 0 min(80vw, 360px); } }
+@media (max-width:640px){ .highlight-card{ flex:0 0 min(88vw, 340px); } }
+.highlight-card:hover{ transform:translateY(-12px) scale(1.02); box-shadow:0 28px 64px rgba(0,0,0,.18), 0 0 0 1.5px var(--rust); z-index:3; }
 /* colored gradient ring that blooms in on hover -- cheap, GPU-friendly (opacity only) */
 .highlight-card::before{
   content:''; position:absolute; inset:0; z-index:4; border-radius:10px; padding:1.6px; pointer-events:none;
@@ -283,7 +283,7 @@ html.dark-mode .nav-logo-img{ filter:invert(1); }
   opacity:0; transition:opacity .4s ease;
 }
 .highlight-card:hover::before{ opacity:1; }
-.highlight-thumb{ position:relative; aspect-ratio:4/3; background-size:cover; background-position:center; display:flex; align-items:center; justify-content:center; overflow:hidden; transition:transform .6s var(--ease-premium, cubic-bezier(.22,1,.36,1)); }
+.highlight-thumb{ position:relative; aspect-ratio:16/10; background-size:cover; background-position:center; display:flex; align-items:center; justify-content:center; overflow:hidden; transition:transform .6s var(--ease-premium, cubic-bezier(.22,1,.36,1)); }
 .highlight-card:hover .highlight-thumb{ transform:scale(1.08) rotate(-.6deg); }
 .highlight-scene{ position:absolute; inset:0; width:100%; height:100%; display:block; z-index:0; transition:transform .8s var(--ease-premium, cubic-bezier(.22,1,.36,1)); }
 .highlight-card:hover .highlight-scene{ transform:scale(1.05); }
@@ -296,17 +296,17 @@ html.dark-mode .nav-logo-img{ filter:invert(1); }
   transform:translateX(-130%); transition:transform .85s cubic-bezier(.2,.8,.2,1);
 }
 .highlight-card:hover .highlight-thumb::before{ transform:translateX(130%); }
-.highlight-play{ position:relative; z-index:2; width:50px; height:50px; border-radius:50%; background:rgba(255,253,246,.94); display:flex; align-items:center; justify-content:center; box-shadow:var(--shadow-md); transition:transform .4s cubic-bezier(.3,1.4,.4,1); }
-.highlight-card:hover .highlight-play{ transform:scale(1.2) rotate(10deg); }
-.highlight-play svg{ width:16px; height:16px; margin-left:1px; color:var(--ink); }
-.highlight-tag{ position:absolute; top:11px; left:11px; z-index:3; background:var(--rust); color:var(--butter); font-size:.66rem; font-weight:800; padding:4px 11px; border-radius:999px; text-transform:uppercase; letter-spacing:.03em; }
+.highlight-play{ position:relative; z-index:2; width:68px; height:68px; border-radius:50%; background:rgba(255,253,246,.96); display:flex; align-items:center; justify-content:center; box-shadow:0 8px 32px rgba(0,0,0,.25); transition:transform .4s cubic-bezier(.3,1.4,.4,1); backdrop-filter:blur(4px); }
+.highlight-card:hover .highlight-play{ transform:scale(1.25) rotate(10deg); box-shadow:0 12px 40px rgba(0,0,0,.3); }
+.highlight-play svg{ width:22px; height:22px; margin-left:2px; color:var(--ink); }
+.highlight-tag{ position:absolute; top:14px; left:14px; z-index:3; background:var(--rust); color:var(--butter); font-size:.68rem; font-weight:800; padding:5px 14px; border-radius:999px; text-transform:uppercase; letter-spacing:.05em; box-shadow:0 2px 12px rgba(0,0,0,.2); }
 .highlight-tag.alt{ background:var(--green-deep); color:var(--butter); }
 /* solid background + a hairline light border, not just a translucent dark chip -- the video
    scenes are hand-illustrated and their corners aren't all equally dark, so a see-through
    pill was blending into the artwork and becoming unreadable on some cards (e.g. a dark
    teacup shadow sitting right under it). This reads clearly against any artwork. */
-.highlight-dur{ position:absolute; right:11px; bottom:11px; z-index:3; background:#141210; box-shadow:0 0 0 1px rgba(243,238,225,.16), 0 2px 6px rgba(0,0,0,.35); color:var(--paper); font-size:.7rem; font-weight:700; padding:4px 9px; border-radius:7px; }
-.highlight-meta{ padding:15px 17px 19px; position:relative; transition:transform .4s var(--ease-premium, cubic-bezier(.22,1,.36,1)); }
+.highlight-dur{ position:absolute; right:14px; bottom:14px; z-index:3; background:#141210; box-shadow:0 0 0 1px rgba(243,238,225,.18), 0 4px 12px rgba(0,0,0,.4); color:var(--paper); font-size:.72rem; font-weight:700; padding:5px 11px; border-radius:9px; letter-spacing:.02em; }
+.highlight-meta{ padding:18px 20px 22px; position:relative; transition:transform .4s cubic-bezier(.22,1,.36,1); }
 .highlight-card:hover .highlight-meta{ transform:translateY(-1px); }
 .highlight-meta b{ display:block; font-family:var(--font-display); font-size:1.08rem; font-weight:700; margin-bottom:3px; line-height:1.28; transition:color .3s; }
 .highlight-card:hover .highlight-meta b{ color:var(--rust-deep); }
@@ -372,7 +372,7 @@ html.dark-mode .nav-logo-img{ filter:invert(1); }
 .highlight-thumb.playing .highlight-tag,
 .highlight-thumb.playing::before,
 .highlight-thumb.playing::after{ opacity:0; pointer-events:none; }
-.highlight-thumb .inline-yt-iframe{ position:absolute; inset:0; z-index:5; width:100%; height:100%; border:0; }
+.highlight-thumb .inline-yt-iframe{ position:absolute; inset:0; z-index:5; width:100%; height:100%; border:0; animation:fadeIn .3s ease; border-radius:0; }
 
 .video-play-btn svg{ width:20px; height:20px; color:var(--ink-fixed); margin-left:2px; }
 .video-dur{
@@ -1520,3 +1520,17 @@ body, p, span, li, a, button, input, textarea, select {
 /* ── Typewriter ── */
 @keyframes twBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 .tw-cursor { display: inline-block; margin-left: 2px; animation: twBlink .7s step-start infinite; color: var(--rust); font-weight: 300; }
+
+/* ── Video oynuyor: kart öne çıksın ── */
+.highlight-card:has(.highlight-thumb.playing) {
+  transform: scale(1.03) !important;
+  box-shadow: 0 32px 80px rgba(0,0,0,.25), 0 0 0 2px var(--rust) !important;
+  z-index: 10 !important;
+}
+.highlight-thumb.playing .highlight-play { display: none; }
+.highlight-thumb.playing::before { display: none; }
+.highlight-thumb.playing::after { display: none; }
+
+/* ── Highlights section başlığı büyük ── */
+.highlights-head { padding: 0 var(--pad) 32px; max-width: var(--wrap); margin: 0 auto; width: 100%; }
+.highlights-sec .split-heading { font-size: clamp(1.8rem, 3.5vw, 2.8rem) !important; }
