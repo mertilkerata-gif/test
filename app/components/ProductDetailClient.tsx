@@ -221,22 +221,76 @@ export default function ProductDetailClient({ product: p, related }: { product: 
             display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '10px', marginTop: '10px',
             animation: mounted ? 'slideUp .6s cubic-bezier(.16,.9,.2,1) .3s both' : 'none',
           }}>
-            {[
-              { icon: '🔒', t: 'Güvenli', s: 'SSL + 3D' },
-              { icon: '🚚', t: 'Ücretsiz', s: '₺200 üzeri' },
-              { icon: '↩️', t: '14 Gün', s: 'Koşulsuz iade' },
-            ].map(b => (
-              <div key={b.t} style={{
-                background: 'var(--paper)', borderRadius: '14px',
-                padding: '12px 8px', textAlign: 'center' as const,
-                border: '1px solid var(--line)',
-                transition: 'transform .2s, box-shadow .2s',
+            {/* Güvence - Güvenli */}
+            <div style={{
+              background:'var(--paper)',borderRadius:'16px',padding:'16px 8px',
+              textAlign:'center',border:'1px solid var(--line)',
+              display:'flex',flexDirection:'column',alignItems:'center',gap:'8px',
+            }}>
+              <div style={{
+                width:44,height:44,borderRadius:'12px',
+                background:'linear-gradient(135deg,#1a7a4a,#26a96a)',
+                display:'flex',alignItems:'center',justifyContent:'center',
+                boxShadow:'0 4px 12px rgba(26,122,74,0.25)',
               }}>
-                <div style={{ fontSize: '1.2rem', marginBottom: '4px' }}>{b.icon}</div>
-                <p style={{ fontWeight: 700, fontSize: '.7rem', margin: '0 0 2px', color: 'var(--ink)' }}>{b.t}</p>
-                <p style={{ fontSize: '.65rem', color: 'var(--ink-faint)', margin: 0 }}>{b.s}</p>
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.35C16.5 22.15 20 17.25 20 12V6L12 2z"/>
+                  <path d="M9 12l2 2 4-4"/>
+                </svg>
               </div>
-            ))}
+              <div>
+                <p style={{fontWeight:800,fontSize:'.72rem',margin:'0 0 2px',color:'var(--ink)',letterSpacing:'.02em'}}>Güvenli</p>
+                <p style={{fontSize:'.65rem',color:'var(--ink-faint)',margin:0}}>SSL + 3D</p>
+              </div>
+            </div>
+
+            {/* Güvence - Ücretsiz Kargo */}
+            <div style={{
+              background:'var(--paper)',borderRadius:'16px',padding:'16px 8px',
+              textAlign:'center',border:'1px solid var(--line)',
+              display:'flex',flexDirection:'column',alignItems:'center',gap:'8px',
+            }}>
+              <div style={{
+                width:44,height:44,borderRadius:'12px',
+                background:'linear-gradient(135deg,#c85a00,#f07030)',
+                display:'flex',alignItems:'center',justifyContent:'center',
+                boxShadow:'0 4px 12px rgba(200,90,0,0.25)',
+              }}>
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="1" y="3" width="15" height="13" rx="2"/>
+                  <path d="M16 8h4l3 4v5h-7V8z"/>
+                  <circle cx="5.5" cy="18.5" r="2.5"/>
+                  <circle cx="18.5" cy="18.5" r="2.5"/>
+                </svg>
+              </div>
+              <div>
+                <p style={{fontWeight:800,fontSize:'.72rem',margin:'0 0 2px',color:'var(--ink)',letterSpacing:'.02em'}}>Ücretsiz</p>
+                <p style={{fontSize:'.65rem',color:'var(--ink-faint)',margin:0}}>₺200 üzeri</p>
+              </div>
+            </div>
+
+            {/* Güvence - 14 Gün İade */}
+            <div style={{
+              background:'var(--paper)',borderRadius:'16px',padding:'16px 8px',
+              textAlign:'center',border:'1px solid var(--line)',
+              display:'flex',flexDirection:'column',alignItems:'center',gap:'8px',
+            }}>
+              <div style={{
+                width:44,height:44,borderRadius:'12px',
+                background:'linear-gradient(135deg,#1565c0,#2196f3)',
+                display:'flex',alignItems:'center',justifyContent:'center',
+                boxShadow:'0 4px 12px rgba(21,101,192,0.25)',
+              }}>
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                  <path d="M3 3v5h5"/>
+                </svg>
+              </div>
+              <div>
+                <p style={{fontWeight:800,fontSize:'.72rem',margin:'0 0 2px',color:'var(--ink)',letterSpacing:'.02em'}}>14 Gün</p>
+                <p style={{fontSize:'.65rem',color:'var(--ink-faint)',margin:0}}>Koşulsuz iade</p>
+              </div>
+            </div>
           </div>
         </div>
 
