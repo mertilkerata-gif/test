@@ -28,135 +28,124 @@ export default function Home() {
 </div>
 
 <!-- ============================================================ -->
-<section class="hero" id="hero">
-  <!-- Parallax blobs -->
-  <div class="section-blob" style="width:480px;height:480px;top:-180px;right:-140px;background:radial-gradient(circle,var(--butter) 0%,transparent 72%);position:absolute;pointer-events:none" aria-hidden="true"></div>
-  <div class="section-blob" style="width:360px;height:360px;bottom:-160px;left:-120px;background:radial-gradient(circle,var(--lav) 0%,transparent 72%);opacity:.3;position:absolute;pointer-events:none" aria-hidden="true"></div>
+<section class="hero" id="hero" style="min-height:92vh;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;padding:80px var(--pad) 60px">
 
-  <div>
+  <!-- Dekoratif arka plan blobs -->
+  <div style="position:absolute;width:500px;height:500px;top:-100px;right:-80px;background:radial-gradient(circle,var(--butter) 0%,transparent 65%);pointer-events:none;opacity:.55" aria-hidden="true"></div>
+  <div style="position:absolute;width:320px;height:320px;bottom:-80px;left:-60px;background:radial-gradient(circle,var(--lav) 0%,transparent 65%);pointer-events:none;opacity:.3" aria-hidden="true"></div>
 
-    <!-- ÜSTTE LIVE BADGE -->
-    <div class="hero-anim-badge" style="margin-bottom:24px">
-      <span class="hero-live-badge"><span class="hero-live-dot"></span>Yeni Bölüm Bugün Yayında</span>
-    </div>
+  <!-- İçerik -->
+  <div style="max-width:var(--wrap);margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 420px;gap:80px;align-items:center" class="hero-2col">
 
-    <!-- 3 KOLON GRID -->
-    <div class="hero-new-grid">
+    <!-- SOL -->
+    <div style="display:flex;flex-direction:column;gap:28px">
 
-      <!-- SOL: Başlık + İstatistikler + CTA -->
-      <div class="hero-head reveal" data-intro-linked style="display:flex;flex-direction:column;gap:20px">
-        <p class="hero-anim-eyebrow" style="font-size:.72rem;letter-spacing:.18em;color:var(--rust);margin:0;font-weight:700">HAFTALIK SOHBET SOFRASI</p>
+      <!-- Eyebrow -->
+      <p style="font-size:.7rem;letter-spacing:.2em;color:var(--rust);margin:0;font-weight:800">HAFTALIK SOHBET SOFRASI</p>
 
-        <h1 class="hero-cycle-head hero-anim-h1" style="font-family:var(--font-display);font-size:clamp(3rem,5vw,5.5rem);line-height:1.1;margin:0" aria-label="İyi bir çay zamanla demlenir.">
-          <span class="typewriter-line" id="tw-line1" style="display:block;min-height:1.1em"></span>
-          <span class="typewriter-line" id="tw-line2" style="display:block;color:var(--lav-deep);font-family:'Caveat',cursive;font-size:clamp(3.5rem,6vw,6rem);min-height:1.1em"></span>
-          <span class="typewriter-line" id="tw-line3" style="display:block;min-height:1.1em"></span>
-        </h1>
+      <!-- Daktilo başlık -->
+      <h1 style="font-family:var(--font-display);font-size:clamp(3.5rem,6vw,6.5rem);line-height:1.0;margin:0" aria-label="İyi bir çay zamanla demlenir.">
+        <span id="tw-line1" style="display:block;min-height:1.05em"></span>
+        <span id="tw-line2" style="display:block;color:var(--lav-deep);font-family:'Caveat',cursive;font-size:clamp(4rem,7vw,7.5rem);min-height:1.05em;line-height:.95"></span>
+        <span id="tw-line3" style="display:block;min-height:1.05em"></span>
+      </h1>
 
-        <!-- İstatistikler -->
-        <div class="hero-anim-stats" style="display:flex;flex-direction:column;gap:10px;padding:20px;background:var(--paper);border-radius:16px;box-shadow:var(--shadow-sm)">
-          <div style="display:flex;align-items:center;gap:12px">
-            <span style="font-family:var(--font-display);font-size:2rem;font-weight:700;color:var(--rust);line-height:1">12.000+</span>
-            <span style="font-size:.85rem;color:var(--ink-soft)">dinleyen</span>
-          </div>
-          <div style="height:1px;background:var(--line)"></div>
-          <div style="display:flex;align-items:center;gap:12px">
-            <span style="font-family:var(--font-display);font-size:2rem;font-weight:700;color:var(--green);line-height:1">84</span>
-            <span style="font-size:.85rem;color:var(--ink-soft)">bölüm yayında</span>
-          </div>
-          <div style="height:1px;background:var(--line)"></div>
-          <div style="display:flex;align-items:center;gap:12px">
-            <span style="font-family:var(--font-display);font-size:2rem;font-weight:700;color:var(--lav-deep);line-height:1">200+</span>
-            <span style="font-size:.85rem;color:var(--ink-soft)">topluluk üyesi</span>
-          </div>
+      <!-- İstatistikler — yatay, tek satır -->
+      <div style="display:flex;gap:32px;align-items:center;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+        <div>
+          <div style="font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:var(--rust);line-height:1">12.000+</div>
+          <div style="font-size:.72rem;color:var(--ink-faint);font-weight:600;letter-spacing:.05em">DİNLEYEN</div>
         </div>
-
-
-        <!-- Demlenme animasyonu - sol kolonda, mobilde de görünür -->
-        <div style="display:flex;align-items:center;gap:14px;padding:12px 16px;background:var(--cream-deep);border-radius:16px;">
-          <svg viewBox="0 0 80 100" width="56" height="70" style="flex-shrink:0">
-            <defs>
-              <linearGradient id="tg2" x1="0" y1="1" x2="0" y2="0">
-                <stop offset="0%" stop-color="#c0392b"/>
-                <stop offset="100%" stop-color="#e74c3c" stop-opacity="0.5"/>
-              </linearGradient>
-            </defs>
-            <path d="M28 12 Q30 6 32 12 Q34 18 36 12" fill="none" stroke="var(--ink)" stroke-width="1.5" stroke-linecap="round" opacity="0.4">
-              <animate attributeName="opacity" values="0.4;0;0.4" dur="2s" repeatCount="indefinite"/>
-            </path>
-            <path d="M42 8 Q44 2 46 8 Q48 14 50 8" fill="none" stroke="var(--ink)" stroke-width="1.5" stroke-linecap="round" opacity="0.3">
-              <animate attributeName="opacity" values="0.3;0;0.3" dur="2.5s" repeatCount="indefinite"/>
-            </path>
-            <path d="M18 18 Q15 55 17 82 L63 82 Q65 55 62 18 Z" fill="white" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/>
-            <clipPath id="cup2"><path d="M18 18 Q15 55 17 82 L63 82 Q65 55 62 18 Z"/></clipPath>
-            <rect x="16" y="18" width="48" height="65" fill="url(#tg2)" clip-path="url(#cup2)">
-              <animate attributeName="y" values="80;40" dur="3s" repeatCount="indefinite"/>
-              <animate attributeName="height" values="4;44" dur="3s" repeatCount="indefinite"/>
-            </rect>
-            <ellipse cx="40" cy="84" rx="28" ry="5" fill="none" stroke="var(--ink)" stroke-width="2"/>
-          </svg>
-          <div>
-            <p style="margin:0;font-size:.72rem;color:var(--rust);font-weight:700;letter-spacing:.06em">ŞU AN</p>
-            <p style="margin:0;font-size:.9rem;font-weight:600;color:var(--ink)">demleniyor...</p>
-          </div>
+        <div style="width:1px;height:36px;background:var(--line)"></div>
+        <div>
+          <div style="font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:var(--green);line-height:1">84</div>
+          <div style="font-size:.72rem;color:var(--ink-faint);font-weight:600;letter-spacing:.05em">BÖLÜM</div>
         </div>
-
-        <!-- CTAs -->
-        <div style="display:flex;gap:12px;flex-wrap:wrap">
-          <a href="https://youtube.com/@demleme" target="_blank" rel="noopener" class="btn btn-ink" style="display:inline-flex;align-items:center;gap:8px">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31 31 0 000 12a31 31 0 00.5 5.8 3 3 0 002.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 002.1-2.1A31 31 0 0024 12a31 31 0 00-.5-5.8zM9.6 15.5V8.5L15.8 12z"/></svg>
-            YouTube'da İzle
-          </a>
-          <a href="/urunler" class="btn btn-outline">Mağazayı Gez</a>
-        </div>
-
-        <!-- Follow -->
-        <div class="hero-follow">
-          <div class="hero-follow-avatars">
-            <div class="avatar" style="background:var(--rust)">SB</div>
-            <div class="avatar" style="background:var(--green)">EK</div>
-            <div class="avatar" style="background:var(--lav-deep)">MY</div>
-            <div class="avatar" style="background:var(--teal)">+</div>
-          </div>
-          <div class="hero-follow-text">12.000+ dinleyen<span>topluluğa katıl</span></div>
+        <div style="width:1px;height:36px;background:var(--line)"></div>
+        <div>
+          <div style="font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:var(--lav-deep);line-height:1">200+</div>
+          <div style="font-size:.72rem;color:var(--ink-faint);font-weight:600;letter-spacing:.05em">TOPLULUK</div>
         </div>
       </div>
 
-      <!-- SAĞ: Çay içen figür + büyük bardak animasyonu -->
-      <div style="display:flex;flex-direction:column;align-items:center;gap:16px;padding-top:10px">
-        <!-- Figür -->
-        <div style="width:100%;max-width:240px;aspect-ratio:1;border-radius:20px;background:var(--cream-deep);overflow:hidden;display:flex;align-items:center;justify-content:center">
-          <img src="/images/cay-icen-figur.png" alt="Çay içen figür" style="width:85%;height:85%;object-fit:contain" />
+      <!-- CTA -->
+      <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+        <a href="https://youtube.com/@demleme" target="_blank" rel="noopener" class="btn btn-ink" style="display:inline-flex;align-items:center;gap:8px">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31 31 0 000 12a31 31 0 00.5 5.8 3 3 0 002.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 002.1-2.1A31 31 0 0024 12a31 31 0 00-.5-5.8zM9.6 15.5V8.5L15.8 12z"/></svg>
+          YouTube'da İzle
+        </a>
+        <a href="/urunler" class="btn btn-outline">Mağazayı Gez</a>
+      </div>
+
+      <!-- Yeni bölüm badge — ALTTA -->
+      <div style="display:inline-flex;align-items:center;gap:10px;padding:10px 18px;background:var(--ink);border-radius:40px;width:fit-content">
+        <span style="width:8px;height:8px;border-radius:50%;background:#ff4a4a;box-shadow:0 0 10px #ff4a4a;animation:heroLivePulse 1.4s ease-in-out infinite;flex-shrink:0"></span>
+        <span style="font-size:.8rem;font-weight:700;color:var(--cream-fixed);letter-spacing:.04em">Yeni Bölüm Bugün Yayında</span>
+      </div>
+    </div>
+
+    <!-- SAĞ — çay içen figür + demlenme -->
+    <div style="display:flex;flex-direction:column;gap:16px" class="hero-right-col">
+
+      <!-- Figür kartı -->
+      <div style="border-radius:24px;background:var(--cream-deep);aspect-ratio:4/3;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative">
+        <img src="/images/cay-icen-figur.png" alt="Çay içen figür" style="width:75%;height:75%;object-fit:contain" />
+        <div style="position:absolute;bottom:14px;left:14px;background:rgba(255,255,255,.88);backdrop-filter:blur(10px);border-radius:12px;padding:8px 14px;display:flex;align-items:center;gap:8px">
+          <span style="width:7px;height:7px;border-radius:50%;background:var(--rust);animation:heroLivePulse 1.6s infinite;flex-shrink:0"></span>
+          <span style="font-size:.75rem;font-weight:700;color:var(--ink)">demleniyor...</span>
         </div>
-        <!-- Büyük bardak SVG animasyonu -->
-        <div style="width:100%;max-width:240px;background:var(--paper);border-radius:20px;padding:20px;display:flex;flex-direction:column;align-items:center;gap:8px;box-shadow:0 4px 20px rgba(0,0,0,.06)">
-          <svg viewBox="0 0 80 100" width="100" height="125">
+      </div>
+
+      <!-- Bardak animasyonu + istatistik yan yana -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div style="background:var(--paper);border-radius:20px;padding:20px 14px;display:flex;flex-direction:column;align-items:center;gap:6px;box-shadow:0 2px 12px rgba(0,0,0,.05)">
+          <svg viewBox="0 0 80 100" width="72" height="90">
             <defs>
               <linearGradient id="tg" x1="0" y1="1" x2="0" y2="0">
                 <stop offset="0%" stop-color="#c0392b"/>
                 <stop offset="100%" stop-color="#e74c3c" stop-opacity="0.4"/>
               </linearGradient>
             </defs>
-            <path d="M28 12 Q30 6 32 12 Q34 18 36 12" fill="none" stroke="var(--rust)" stroke-width="1.5" stroke-linecap="round" opacity="0.5">
-              <animate attributeName="opacity" values="0.5;0;0.5" dur="2s" repeatCount="indefinite"/>
-              <animate attributeName="d" values="M28 12 Q30 6 32 12 Q34 18 36 12;M28 10 Q30 3 32 10 Q34 17 36 10;M28 12 Q30 6 32 12 Q34 18 36 12" dur="2s" repeatCount="indefinite"/>
+            <path d="M28 12 Q30 5 32 12 Q34 19 36 12" fill="none" stroke="var(--rust)" stroke-width="1.8" stroke-linecap="round">
+              <animate attributeName="opacity" values="0.6;0;0.6" dur="2s" repeatCount="indefinite"/>
             </path>
-            <path d="M44 9 Q46 2 48 9 Q50 16 52 9" fill="none" stroke="var(--rust)" stroke-width="1.5" stroke-linecap="round" opacity="0.4">
-              <animate attributeName="opacity" values="0.4;0;0.4" dur="2.5s" begin="0.5s" repeatCount="indefinite"/>
+            <path d="M44 9 Q46 2 48 9 Q50 16 52 9" fill="none" stroke="var(--rust)" stroke-width="1.5" stroke-linecap="round">
+              <animate attributeName="opacity" values="0.4;0;0.4" dur="2.5s" begin=".5s" repeatCount="indefinite"/>
             </path>
-            <path d="M18 18 Q15 55 17 82 L63 82 Q65 55 62 18 Z" fill="var(--cream)" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/>
+            <path d="M18 18 Q15 55 17 82 L63 82 Q65 55 62 18 Z" fill="var(--cream)" stroke="var(--ink)" stroke-width="2"/>
             <clipPath id="cup"><path d="M18 18 Q15 55 17 82 L63 82 Q65 55 62 18 Z"/></clipPath>
             <rect x="16" y="18" width="48" height="65" fill="url(#tg)" clip-path="url(#cup)">
-              <animate attributeName="y" values="80;38" dur="4s" repeatCount="indefinite"/>
-              <animate attributeName="height" values="4;46" dur="4s" repeatCount="indefinite"/>
+              <animate attributeName="y" values="80;36" dur="4s" repeatCount="indefinite"/>
+              <animate attributeName="height" values="4;48" dur="4s" repeatCount="indefinite"/>
             </rect>
             <ellipse cx="40" cy="84" rx="28" ry="5" fill="none" stroke="var(--ink)" stroke-width="2"/>
           </svg>
-          <p style="font-size:.75rem;color:var(--rust);font-weight:700;margin:0;letter-spacing:.06em">demleniyor...</p>
+          <p style="font-size:.7rem;color:var(--rust);font-weight:700;margin:0;letter-spacing:.06em">ŞU AN</p>
+        </div>
+
+        <!-- Topluluk kartı -->
+        <div style="background:var(--ink);border-radius:20px;padding:20px 16px;display:flex;flex-direction:column;justify-content:space-between">
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <span style="font-family:var(--font-display);font-size:2.2rem;font-weight:800;color:var(--cream-fixed);line-height:1">12K+</span>
+            <span style="font-size:.72rem;color:rgba(243,238,225,.5);font-weight:600">kişi dinliyor</span>
+          </div>
+          <div style="display:flex;margin-top:16px">
+            {["SB","EK","MY","+"].map((l,i) => (
+              `<div style="width:28px;height:28px;border-radius:50%;background:${["var(--rust)","var(--green)","var(--lav-deep)","rgba(255,255,255,.2)"][i]};border:2px solid var(--ink);margin-left:${i>0?"-8px":"0"};display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:800;color:#fff">${l}</div>`
+            ))}
+          </div>
+          <a href="#iletisim" style="display:inline-block;margin-top:12px;font-size:.72rem;color:var(--cream-fixed);opacity:.6;text-decoration:none;font-weight:600">Katıl →</a>
         </div>
       </div>
     </div>
   </div>
+
+  <style>
+    @media (max-width: 900px) {
+      .hero-2col { grid-template-columns: 1fr !important; gap: 40px !important; }
+      .hero-right-col { display: none !important; }
+    }
+  </style>
 </section>
 
 <!-- ============================================================ -->
