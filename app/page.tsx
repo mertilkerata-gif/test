@@ -381,22 +381,7 @@ export default function Home() {
 
 <!-- ============================================================ -->
 <div class="zag-divider zag--scallop" style="background:#EFE6EC"></div>
-<section class="signup-sec" id="iletisim">
-  <div class="section-blob parallax" data-speed="0.07" style="width:360px;height:360px;top:-120px;right:-100px;background:radial-gradient(circle,var(--paper) 0%,transparent 72%);opacity:.25" aria-hidden="true"></div>
-  <div class="signup-inner">
-    <svg class="signup-envelope" viewBox="0 0 80 80" fill="none" stroke="var(--ink)" stroke-width="2"><rect x="8" y="18" width="64" height="46" rx="6"/><path d="M10 22l30 24 30-24"/></svg>
-    <div class="signup-copy reveal">
-      <h3>Sofraya davetlisin.</h3>
-      <p>Yeni bölümler, konuk duyuruları ve mağaza yenilikleri e-postana gelsin.</p>
-    </div>
-    <form class="signup-form" id="signupForm">
-      <input type="email" placeholder="e-posta adresin" required aria-label="E-posta adresi">
-      <button type="submit">Katıl
-        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </button>
-    </form>
-  </div>
-</section>
+
 
 <!-- ============================================================ -->
 (poll) -->
@@ -546,6 +531,23 @@ export default function Home() {
       <button class="btn-circle" id="shopPrev" aria-label="Önceki"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button>
       <button class="btn-circle" id="shopNext" aria-label="Sonraki"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button>
     </div>
+  </div>
+</section>
+
+<section class="signup-sec" id="iletisim">
+  <div class="section-blob parallax" data-speed="0.07" style="width:360px;height:360px;top:-120px;right:-100px;background:radial-gradient(circle,var(--paper) 0%,transparent 72%);opacity:.25" aria-hidden="true"></div>
+  <div class="signup-inner">
+    <svg class="signup-envelope" viewBox="0 0 80 80" fill="none" stroke="var(--ink)" stroke-width="2"><rect x="8" y="18" width="64" height="46" rx="6"/><path d="M10 22l30 24 30-24"/></svg>
+    <div class="signup-copy reveal">
+      <h3>Sofraya davetlisin.</h3>
+      <p>Yeni bölümler, konuk duyuruları ve mağaza yenilikleri e-postana gelsin.</p>
+    </div>
+    <form class="signup-form" id="signupForm">
+      <input type="email" placeholder="e-posta adresin" required aria-label="E-posta adresi">
+      <button type="submit">Katıl
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </form>
   </div>
 </section>
 
