@@ -1461,10 +1461,14 @@
     }, lines[0].delay);
   }
 
-  // Sayfa hazır olunca başlat
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', startTypewriter);
-  } else {
-    setTimeout(startTypewriter, 300);
+  // Element var olana kadar tekrar dene (Next.js hydration gecikmesi)
+  function waitAndStart(tries) {
+    var el = document.getElementById('tw-line1');
+    if(el) {
+      startTypewriter();
+    } else if(tries > 0) {
+      setTimeout(function(){ waitAndStart(tries - 1); }, 100);
+    }
   }
+  waitAndStart(30); // max 3 saniye bekle
 })();

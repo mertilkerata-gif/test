@@ -125,52 +125,47 @@ export default function Home() {
         </div>
       </div>
 
-      <!-- ORTA: Çay figürü (daire) -->
-      <div style="display:flex;flex-direction:column;align-items:center;gap:16px;padding-top:20px">
-        <div style="width:260px;height:260px;border-radius:50%;background:var(--cream-deep);display:flex;align-items:center;justify-content:center;position:relative;box-shadow:0 8px 40px rgba(0,0,0,.08);flex-shrink:0">
-          <img src="/images/cay-icon-blue.jpeg" alt="Çay figürü" style="width:60%;height:60%;object-fit:contain;mix-blend-mode:multiply" />
-          <!-- Floating yeşil ikon -->
-          <div style="position:absolute;top:-12px;right:-12px;width:60px;height:60px;border-radius:50%;background:var(--butter);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,.12)">
-            <img src="/images/cay-icon-green.jpeg" alt="" style="width:55%;height:55%;object-fit:contain;mix-blend-mode:multiply" />
+      <!-- ORTA: Büyük çay dairesi -->
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding-top:10px">
+        <div style="width:min(280px,100%);aspect-ratio:1;border-radius:50%;background:var(--cream-deep);display:flex;align-items:center;justify-content:center;position:relative;box-shadow:0 12px 48px rgba(0,0,0,.10);flex-shrink:0">
+          <img src="/images/cay-icon-blue.jpeg" alt="Çay figürü" style="width:65%;height:65%;object-fit:contain;mix-blend-mode:multiply" />
+          <div style="position:absolute;top:-8px;right:-8px;width:64px;height:64px;border-radius:50%;background:var(--butter);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.14)">
+            <img src="/images/cay-icon-green.jpeg" alt="" style="width:60%;height:60%;object-fit:contain;mix-blend-mode:multiply" />
           </div>
         </div>
       </div>
 
-      <!-- SAĞ: Çay içen figür + demlenme animasyonu + sofra -->
-      <div style="display:flex;flex-direction:column;align-items:center;gap:20px;padding-top:20px">
-        <img src="/images/cay-icen-figur.png" alt="Çay içen figür" style="width:200px;height:200px;object-fit:contain" />
-        <!-- Demlenme bardağı SVG -->
-        <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
-          <svg viewBox="0 0 80 100" width="80" height="100">
+      <!-- SAĞ: Çay içen figür + büyük bardak animasyonu -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:16px;padding-top:10px">
+        <!-- Figür -->
+        <div style="width:100%;max-width:240px;aspect-ratio:1;border-radius:20px;background:var(--cream-deep);overflow:hidden;display:flex;align-items:center;justify-content:center">
+          <img src="/images/cay-icen-figur.png" alt="Çay içen figür" style="width:85%;height:85%;object-fit:contain" />
+        </div>
+        <!-- Büyük bardak SVG animasyonu -->
+        <div style="width:100%;max-width:240px;background:var(--paper);border-radius:20px;padding:20px;display:flex;flex-direction:column;align-items:center;gap:8px;box-shadow:0 4px 20px rgba(0,0,0,.06)">
+          <svg viewBox="0 0 80 100" width="100" height="125">
             <defs>
               <linearGradient id="tg" x1="0" y1="1" x2="0" y2="0">
                 <stop offset="0%" stop-color="#c0392b"/>
-                <stop offset="100%" stop-color="#e74c3c" stop-opacity="0.5"/>
+                <stop offset="100%" stop-color="#e74c3c" stop-opacity="0.4"/>
               </linearGradient>
             </defs>
-            <!-- buhar -->
-            <path d="M28 12 Q30 6 32 12 Q34 18 36 12" fill="none" stroke="var(--ink)" stroke-width="1.5" stroke-linecap="round" opacity="0.4">
-              <animate attributeName="opacity" values="0.4;0;0.4" dur="2s" repeatCount="indefinite"/>
+            <path d="M28 12 Q30 6 32 12 Q34 18 36 12" fill="none" stroke="var(--rust)" stroke-width="1.5" stroke-linecap="round" opacity="0.5">
+              <animate attributeName="opacity" values="0.5;0;0.5" dur="2s" repeatCount="indefinite"/>
+              <animate attributeName="d" values="M28 12 Q30 6 32 12 Q34 18 36 12;M28 10 Q30 3 32 10 Q34 17 36 10;M28 12 Q30 6 32 12 Q34 18 36 12" dur="2s" repeatCount="indefinite"/>
             </path>
-            <path d="M42 8 Q44 2 46 8 Q48 14 50 8" fill="none" stroke="var(--ink)" stroke-width="1.5" stroke-linecap="round" opacity="0.3">
-              <animate attributeName="opacity" values="0.3;0;0.3" dur="2.5s" repeatCount="indefinite"/>
+            <path d="M44 9 Q46 2 48 9 Q50 16 52 9" fill="none" stroke="var(--rust)" stroke-width="1.5" stroke-linecap="round" opacity="0.4">
+              <animate attributeName="opacity" values="0.4;0;0.4" dur="2.5s" begin="0.5s" repeatCount="indefinite"/>
             </path>
-            <!-- bardak -->
-            <path d="M18 18 Q15 55 17 82 L63 82 Q65 55 62 18 Z" fill="white" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/>
-            <!-- çay dolumu -->
+            <path d="M18 18 Q15 55 17 82 L63 82 Q65 55 62 18 Z" fill="var(--cream)" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/>
             <clipPath id="cup"><path d="M18 18 Q15 55 17 82 L63 82 Q65 55 62 18 Z"/></clipPath>
             <rect x="16" y="18" width="48" height="65" fill="url(#tg)" clip-path="url(#cup)">
-              <animate attributeName="y" values="80;40" dur="3s" repeatCount="indefinite"/>
-              <animate attributeName="height" values="4;44" dur="3s" repeatCount="indefinite"/>
+              <animate attributeName="y" values="80;38" dur="4s" repeatCount="indefinite"/>
+              <animate attributeName="height" values="4;46" dur="4s" repeatCount="indefinite"/>
             </rect>
-            <!-- tabak -->
             <ellipse cx="40" cy="84" rx="28" ry="5" fill="none" stroke="var(--ink)" stroke-width="2"/>
           </svg>
-          <p style="font-size:.78rem;color:var(--ink-soft);margin:0">demleniyor...</p>
-        </div>
-        <!-- Sofra ikonu -->
-        <div style="background:var(--lav);border-radius:16px;padding:14px;display:flex;align-items:center;justify-content:center">
-          <img src="/images/sofra-blue.png" alt="Sofra" style="width:100px;height:auto;mix-blend-mode:multiply" />
+          <p style="font-size:.75rem;color:var(--rust);font-weight:700;margin:0;letter-spacing:.06em">demleniyor...</p>
         </div>
       </div>
     </div>
