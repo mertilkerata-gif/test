@@ -34,7 +34,7 @@ export default function NavBar() {
   }, []);
 
   const handleCart = useCallback(() => {
-    openDrawer('cartDrawer');
+    window.dispatchEvent(new Event('demleme:open-cart'));
   }, []);
 
   const handleSearch = useCallback(() => {

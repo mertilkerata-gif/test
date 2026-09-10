@@ -494,41 +494,109 @@ export default function ProductDetailClient({ product: p, related }: { product: 
         </div>
       </div>
 
-      {/* İLGİLİ ÜRÜNLER */}
-      <div style={{ background: 'var(--ink)', padding: '60px var(--pad)' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px' }}>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.4rem,3vw,1.9rem)', color: 'var(--cream-fixed)', margin: 0 }}>
-              Bunları da beğenebilirsin
-            </h2>
-            <a href="/urunler" style={{ color: p.color, textDecoration: 'none', fontSize: '.82rem', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '4px' }}>
+      {/* İLGİLİ ÜRÜNLER — yatay kayan kartlar */}
+      <div style={{ background: 'var(--ink)', padding: '52px 0 60px', overflow: 'hidden' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 var(--pad)' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '24px' }}>
+            <div>
+              <p style={{ margin: '0 0 4px', fontSize: '.68rem', letterSpacing: '.18em', color: 'rgba(243,238,225,.35)', fontFamily: 'var(--font-mark)' }}>BUNLARI DA</p>
+              <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.4rem,3vw,2rem)', color: 'var(--cream-fixed)', margin: 0, lineHeight: 1 }}>
+                beğenebilirsin
+              </h2>
+            </div>
+            <a href="/urunler" style={{ color: p.color, textDecoration: 'none', fontSize: '.82rem', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '4px', flexShrink: 0 }}>
               Tümü <svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
             </a>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(190px,1fr))', gap: '14px' }}>
-            {related.map((r, i) => (
-              <a key={r.id} href={`/urunler/${r.slug}`} style={{
-                background: 'rgba(255,255,255,.05)',
-                border: '1px solid rgba(255,255,255,.08)',
-                borderRadius: '18px', overflow: 'hidden',
+        </div>
+
+        {/* Yatay scroll - kenardan taşıyor */}
+        <div style={{
+          display: 'flex', gap: '14px',
+          overflowX: 'auto', paddingLeft: 'var(--pad)', paddingRight: 'var(--pad)',
+          paddingBottom: '8px',
+          scrollbarWidth: 'none' as any,
+          WebkitOverflowScrolling: 'touch' as any,
+        }}>
+          {related.map((r, i) => (
+            <a key={r.id} href={`/urunler/${r.slug}`}
+              style={{
+                flexShrink: 0, width: '200px',
+                background: 'rgba(255,255,255,.06)',
+                border: '1px solid rgba(255,255,255,.1)',
+                borderRadius: '20px', overflow: 'hidden',
                 textDecoration: 'none', display: 'flex', flexDirection: 'column',
                 transition: 'all .3s cubic-bezier(.34,1.56,.64,1)',
-                animation: `slideUp .5s ${i*0.07}s both`,
+                animation: `slideUp .5s ${i*0.1}s both`,
               }}
-                onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'rgba(255,255,255,.1)'; el.style.transform = 'translateY(-5px) scale(1.02)'; }}
-                onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.background = 'rgba(255,255,255,.05)'; el.style.transform = ''; }}
-              >
-                <div style={{ background: `${r.color}22`, padding: '28px', display: 'flex', alignItems: 'center', justifyContent: 'center', aspectRatio: '1' }}>
-                  <span style={{ color: r.color, width: '64px', height: '64px', display: 'block', filter: `drop-shadow(0 4px 16px ${r.color}50)` }}
-                    dangerouslySetInnerHTML={{ __html: r.svgIcon }} />
-                </div>
-                <div style={{ padding: '14px 16px 18px' }}>
-                  <p style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '.9rem', margin: '0 0 4px', color: 'var(--cream-fixed)' }}>{r.name}</p>
-                  <p style={{ color: r.accentColor, fontWeight: 700, fontSize: '.88rem', margin: 0 }}>{r.priceDisplay}</p>
-                </div>
-              </a>
-            ))}
-          </div>
+              onMouseEnter={e => {
+                const el = e.currentTarget as HTMLElement;
+                el.style.background = 'rgba(255,255,255,.12)';
+                el.style.transform = 'translateY(-6px) scale(1.03)';
+                el.style.boxShadow = `0 16px 40px ${r.color}30`;
+                el.style.borderColor = `${r.color}50`;
+              }}
+              onMouseLeave={e => {
+                const el = e.currentTarget as HTMLElement;
+                el.style.background = 'rgba(255,255,255,.06)';
+                el.style.transform = '';
+                el.style.boxShadow = '';
+                el.style.borderColor = 'rgba(255,255,255,.1)';
+              }}
+            >
+              {/* Görsel */}
+              <div style={{
+                background: `linear-gradient(145deg, ${r.color}20, ${r.color}08)`,
+                padding: '32px 24px', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                aspectRatio: '1', position: 'relative', overflow: 'hidden',
+              }}>
+                <div style={{
+                  position: 'absolute', width: '80px', height: '80px', borderRadius: '50%',
+                  background: `radial-gradient(circle, ${r.color}25 0%, transparent 70%)`,
+                }} />
+                <div style={{ color: r.color, width: '72px', height: '72px', position: 'relative', zIndex: 1, filter: `drop-shadow(0 6px 20px ${r.color}50)` }}
+                  dangerouslySetInnerHTML={{ __html: r.svgIcon }} />
+                {r.badge && (
+                  <div style={{
+                    position: 'absolute', top: '10px', left: '10px',
+                    background: r.color, color: '#fff',
+                    fontSize: '.55rem', fontWeight: 800, letterSpacing: '.1em',
+                    padding: '3px 8px', borderRadius: '20px',
+                  }}>{r.badge.toUpperCase()}</div>
+                )}
+              </div>
+              {/* Bilgi */}
+              <div style={{ padding: '14px 16px 18px', flex: 1, display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                <p style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '.92rem', margin: 0, color: 'var(--cream-fixed)', lineHeight: 1.2 }}>{r.name}</p>
+                <p style={{ fontSize: '.78rem', color: 'rgba(243,238,225,.5)', margin: 0, lineHeight: 1.5 }}>{r.description.slice(0, 45)}…</p>
+                <p style={{ color: r.accentColor, fontWeight: 800, fontSize: '.95rem', margin: '4px 0 0', fontFamily: 'var(--font-display)' }}>{r.priceDisplay}</p>
+              </div>
+            </a>
+          ))}
+
+          {/* Tümünü gör kartı */}
+          <a href="/urunler" style={{
+            flexShrink: 0, width: '160px',
+            background: `${p.color}15`,
+            border: `1.5px dashed ${p.color}50`,
+            borderRadius: '20px',
+            textDecoration: 'none', display: 'flex', flexDirection: 'column',
+            alignItems: 'center', justifyContent: 'center', gap: '10px',
+            padding: '24px 16px', color: p.color,
+            transition: 'all .25s',
+            animation: `slideUp .5s ${related.length * 0.1}s both`,
+          }}
+            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = `${p.color}25`; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = `${p.color}15`; }}
+          >
+            <div style={{
+              width: '48px', height: '48px', borderRadius: '50%',
+              background: `${p.color}20`, display: 'flex', alignItems: 'center', justifyContent: 'center',
+            }}>
+              <svg viewBox="0 0 16 16" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </div>
+            <p style={{ margin: 0, fontWeight: 700, fontSize: '.82rem', textAlign: 'center' as const, lineHeight: 1.4 }}>Tüm<br/>ürünler</p>
+          </a>
         </div>
       </div>
 
