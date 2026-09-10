@@ -1634,3 +1634,16 @@ section#hero [data-intro-linked] {
   transform: none !important;
   filter: none !important;
 }
+
+/* ── Typewriter imleci ── */
+@keyframes twBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+.tw-cursor {
+  display: inline-block;
+  margin-left: 2px;
+  animation: twBlink .7s step-start infinite;
+  color: var(--rust);
+  font-weight: 300;
+}

@@ -50,10 +50,10 @@ export default function Home() {
         </a>
         <p class="hero-anim-eyebrow" style="font-size:.72rem;letter-spacing:.18em;color:var(--rust);margin:0;font-weight:700">HAFTALIK SOHBET SOFRASI</p>
 
-        <h1 class="hero-cycle-head hero-anim-h1" style="font-family:var(--font-display);font-size:clamp(3rem,5vw,5.5rem);line-height:1.0;margin:0">
-          <span style="display:block">İyi bir</span>
-          <span style="display:block;color:var(--lav-deep);font-family:'Caveat',cursive;font-size:clamp(3.5rem,6vw,6rem)">zamanla</span>
-          <span style="display:block">demlenir.</span>
+        <h1 class="hero-cycle-head hero-anim-h1" style="font-family:var(--font-display);font-size:clamp(3rem,5vw,5.5rem);line-height:1.1;margin:0" aria-label="İyi bir çay zamanla demlenir.">
+          <span class="typewriter-line" id="tw-line1" style="display:block;min-height:1.1em"></span>
+          <span class="typewriter-line" id="tw-line2" style="display:block;color:var(--lav-deep);font-family:'Caveat',cursive;font-size:clamp(3.5rem,6vw,6rem);min-height:1.1em"></span>
+          <span class="typewriter-line" id="tw-line3" style="display:block;min-height:1.1em"></span>
         </h1>
 
         <!-- İstatistikler -->

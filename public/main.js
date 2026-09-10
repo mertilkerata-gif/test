@@ -1418,3 +1418,60 @@
     });
   });
 })();
+
+/* ── Daktilo (typewriter) animasyonu — hero başlığı ── */
+(function(){
+  var lines = [
+    { id: 'tw-line1', text: 'İyi bir çay', delay: 400 },
+    { id: 'tw-line2', text: 'zamanla',     delay: 0 },
+    { id: 'tw-line3', text: 'demlenir.',   delay: 0 },
+  ];
+
+  var CHAR_SPEED = 55; // ms per char
+  var LINE_GAP   = 320; // ms between lines
+
+  function typeLine(el, text, cb) {
+    el.textContent = '';
+    // İmleç
+    var cursor = document.createElement('span');
+    cursor.className = 'tw-cursor';
+    cursor.textContent = '|';
+    cursor.style.cssText = 'display:inline-block;margin-left:2px;animation:twBlink .7s step-start infinite;color:var(--rust);font-weight:300';
+    el.appendChild(cursor);
+
+    var i = 0;
+    var interval = setInterval(function(){
+      if(i >= text.length){
+        clearInterval(interval);
+        cursor.remove();
+        if(cb) setTimeout(cb, LINE_GAP);
+        return;
+      }
+      // imleçten önce yaz
+      el.insertBefore(document.createTextNode(text[i]), cursor);
+      i++;
+    }, CHAR_SPEED);
+  }
+
+  function startTypewriter() {
+    var el1 = document.getElementById('tw-line1');
+    var el2 = document.getElementById('tw-line2');
+    var el3 = document.getElementById('tw-line3');
+    if(!el1 || !el2 || !el3) return;
+
+    setTimeout(function(){
+      typeLine(el1, lines[0].text, function(){
+        typeLine(el2, lines[1].text, function(){
+          typeLine(el3, lines[2].text, null);
+        });
+      });
+    }, lines[0].delay);
+  }
+
+  // Sayfa hazır olunca başlat
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', startTypewriter);
+  } else {
+    setTimeout(startTypewriter, 300);
+  }
+})();
