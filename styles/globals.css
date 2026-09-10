@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Boogaloo&family=Caveat:wght@600;700&family=Unbounded:wght@600;700&display=swap');
+/* Kodchasan only */
 
 :root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#FCFBF8;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}
 
@@ -45,10 +45,10 @@
   --shadow-sm:  0 8px 18px -10px rgba(22,19,14,.22);
   --shadow-md:  0 22px 44px -20px rgba(22,19,14,.26);
   --shadow-lg:  0 40px 80px -28px rgba(22,19,14,.32);
-  --font-display: 'Boogaloo', 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-display: 'Kodchasan', system-ui, sans-serif;
   --font-body: 'Kodchasan', system-ui, -apple-system, sans-serif;
-  --font-script: 'Caveat', cursive;
-  --font-mark: 'Unbounded', var(--font-display);
+  --font-script: 'Kodchasan', system-ui, sans-serif;
+  --font-mark: 'Kodchasan', system-ui, sans-serif;
   --pad: clamp(20px, 5vw, 64px);
   --wrap: 1280px;
   --ease-premium: cubic-bezier(.22,1,.36,1);
@@ -68,7 +68,7 @@ body{
 img{max-width:100%; display:block;}
 a{color:inherit; text-decoration:none;}
 button{font:inherit; color:inherit; background:none; border:none; cursor:pointer;}
-h1,h2,h3{font-family:var(--font-display); margin:0; letter-spacing:-.01em;}
+h1,h2,h3{font-family:var(--font-display); margin:0; letter-spacing:-.02em; font-weight:700;}
 p{margin:0;}
 .eyebrow{ font-size:.78rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--rust); margin:0 0 10px; }
 .hero-live-badge{ display:inline-flex; align-items:center; gap:8px; background:var(--ink); color:var(--cream-fixed); font-size:.72rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; padding:8px 16px 8px 12px; border-radius:999px; margin-bottom:18px; box-shadow:var(--shadow-sm); }
@@ -1108,7 +1108,7 @@ body, p, span, li, a, button, input, textarea, select {
   font-family: 'Kodchasan', var(--font-body), sans-serif !important;
 }
 .nav-logo-text {
-  font-family: 'Boogaloo', var(--font-display), sans-serif !important;
+  font-family: 'Kodchasan', var(--font-display), sans-serif !important;
   font-size: 1.5rem !important;
   letter-spacing: 0.06em;
 }

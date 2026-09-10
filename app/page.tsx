@@ -46,7 +46,7 @@ export default function Home() {
       <!-- Daktilo başlık -->
       <h1 style="font-family:var(--font-display);font-size:clamp(3.5rem,6vw,6.5rem);line-height:1.0;margin:0" aria-label="İyi bir çay zamanla demlenir.">
         <span id="tw-line1" style="display:block;min-height:1.05em"></span>
-        <span id="tw-line2" style="display:block;color:var(--lav-deep);font-family:'Caveat',cursive;font-size:clamp(4rem,7vw,7.5rem);min-height:1.05em;line-height:.95"></span>
+        <span id="tw-line2" style="display:block;color:var(--lav-deep);font-family:'Kodchasan',sans-serif;font-style:italic;font-size:clamp(4rem,7vw,7.5rem);min-height:1.05em;line-height:.95"></span>
         <span id="tw-line3" style="display:block;min-height:1.05em"></span>
       </h1>
 

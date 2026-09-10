@@ -55,7 +55,7 @@ export default function NavBar() {
               if (el) el.style.display = 'block';
             }}
           />
-          <span style={{display:'none',fontFamily:"'Boogaloo',var(--font-display)",fontSize:'2rem',letterSpacing:'0.05em',color:'var(--ink)'}}>demleme</span>
+          <span style={{display:'none',fontFamily:"'Kodchasan',sans-serif",fontSize:'2rem',letterSpacing:'0.05em',color:'var(--ink)'}}>demleme</span>
         </a>
 
         <ul className="nav-links" style={{listStyle:'none',gap:'28px',margin:0,padding:0,alignItems:'center'}}>
