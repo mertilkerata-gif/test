@@ -161,7 +161,7 @@ export default function CartContent() {
         }}
         onMouseEnter={e => (e.currentTarget as HTMLButtonElement).style.background = 'var(--rust)'}
         onMouseLeave={e => (e.currentTarget as HTMLButtonElement).style.background = 'var(--ink)'}
-        onClick={() => alert('Ödeme sistemi yakında! 🚀')}>
+        onClick={() => window.location.href='/odeme'}>
           <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2">
             <rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/>
           </svg>
