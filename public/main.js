@@ -1149,13 +1149,6 @@
     updateCartCount();
     renderCartDrawer();
   });
-  var cartBtn = document.getElementById('cartBtn');
-  if(cartBtn){
-    cartBtn.addEventListener('click', function(){
-      renderCartDrawer();
-      openModal('cartDrawer');
-    });
-  }
   var cartCheckoutBtn = document.getElementById('cartCheckoutBtn');
   if(cartCheckoutBtn){
     cartCheckoutBtn.addEventListener('click', function(){

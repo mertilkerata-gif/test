@@ -1464,60 +1464,9 @@ body, p, span, li, a, button, input, textarea, select {
   .pm-info-col { padding: 16px 24px 28px; max-height: none; }
 }
 
-/* ═══════════════════════════════════════════
-   HERO — KESIN DÜZELTME
-═══════════════════════════════════════════ */
-section#hero {
-  position: relative !important;
-  display: block !important;
-  min-height: 0 !important;
-  height: auto !important;
-  padding: 0 !important;
-  overflow: visible !important;
-}
-.hero-new-grid {
-  display: grid !important;
-  grid-template-columns: 1fr 260px 280px !important;
-  gap: 48px !important;
-  align-items: start !important;
-  max-width: 1200px !important;
-  margin: 0 auto !important;
-  padding: 40px 40px 64px !important;
-  position: relative !important;
-  z-index: 1 !important;
-  box-sizing: border-box !important;
-}
-@media (max-width: 1100px) {
-  .hero-new-grid {
-    grid-template-columns: 1fr 240px !important;
-    padding: 36px 28px 48px !important;
-    gap: 32px !important;
-  }
-  .hero-new-grid > div:nth-child(3) { display: none !important; }
-}
-@media (max-width: 700px) {
-  .hero-new-grid {
-    grid-template-columns: 1fr !important;
-    padding: 28px 20px 40px !important;
-    gap: 24px !important;
-  }
-  .hero-new-grid > div:nth-child(2),
-  .hero-new-grid > div:nth-child(3) { display: none !important; }
-}
 
-/* ── HERO REVEAL OVERRIDE — JS olmadan görünür ── */
-section#hero .reveal,
-section#hero .reveal-scale,
-section#hero [data-intro-linked] {
-  opacity: 1 !important;
-  transform: none !important;
-  filter: none !important;
-}
-
-/* ── NAV FİXED DÜZELTME ── */
-.site-nav {
-  height: 72px !important;
-}
+/* ── NAV FİXED ── */
+.site-nav { height: 72px !important; }
 .site-nav.scrolled {
   background: rgba(243,238,225,.96) !important;
   backdrop-filter: blur(20px) !important;
@@ -1525,94 +1474,32 @@ section#hero [data-intro-linked] {
   box-shadow: 0 2px 20px rgba(0,0,0,.08) !important;
 }
 
-/* ── HERO ANİMASYONLARI ── */
-@keyframes heroFadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
+/* ── NAV İKON ── */
+.nav-icons button, .nav-icons a {
+  background: none !important; border: none !important; padding: 0 !important;
+  width: 29px !important; height: 29px !important;
+  display: flex !important; align-items: center !important; justify-content: center !important;
+  cursor: pointer; color: var(--ink); position: relative; border-radius: 0 !important;
+  box-shadow: none !important; flex-shrink: 0;
 }
-@keyframes heroFadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-.hero-anim-badge { animation: heroFadeIn .5s ease both; }
-.hero-anim-logo { animation: heroFadeUp .55s cubic-bezier(.16,.9,.2,1) both; animation-delay: .05s; }
-.hero-anim-eyebrow { animation: heroFadeUp .55s cubic-bezier(.16,.9,.2,1) both; animation-delay: .1s; }
-.hero-anim-h1 { animation: heroFadeUp .6s cubic-bezier(.16,.9,.2,1) both; animation-delay: .15s; }
-.hero-anim-stats { animation: heroFadeUp .55s cubic-bezier(.16,.9,.2,1) both; animation-delay: .25s; }
-.hero-anim-cta { animation: heroFadeUp .5s cubic-bezier(.16,.9,.2,1) both; animation-delay: .35s; }
-.hero-anim-follow { animation: heroFadeIn .5s ease both; animation-delay: .45s; }
-.hero-stat-num { display: inline-block; }
-
-/* ── NAV İKON DÜZELTMELERİ ── */
-.nav-icons button,
-.nav-icons a {
-  background: none !important;
-  border: none !important;
-  padding: 0 !important;
-  width: 29px !important;
-  height: 29px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  cursor: pointer;
-  color: var(--ink);
-  position: relative;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  flex-shrink: 0;
-}
-.nav-icons button svg,
-.nav-icons a svg {
-  width: 20px !important;
-  height: 20px !important;
-  display: block;
-}
-/* Sepet badge */
-.nav-icons button span[style*="background:'var(--rust)'"],
+.nav-icons button svg, .nav-icons a svg { width: 20px !important; height: 20px !important; display: block; }
 #cartCount {
-  position: absolute !important;
-  top: -5px !important;
-  right: -5px !important;
-  width: 16px !important;
-  height: 16px !important;
-  font-size: 9px !important;
-  border-radius: 50% !important;
-  background: var(--rust) !important;
-  color: #fff !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  font-weight: 700 !important;
-  line-height: 1 !important;
-  pointer-events: none;
+  position: absolute !important; top: -5px !important; right: -5px !important;
+  width: 16px !important; height: 16px !important; font-size: 9px !important;
+  border-radius: 50% !important; background: var(--rust) !important; color: #fff !important;
+  display: flex !important; align-items: center !important; justify-content: center !important;
+  font-weight: 700 !important; line-height: 1 !important; pointer-events: none;
 }
-/* Hamburger mobilde göster, masaüstünde gizle */
 .nav-hamburger {
-  display: none !important;
-  background: none !important;
-  border: none !important;
-  width: 29px !important;
-  height: 29px !important;
-  padding: 0 !important;
-  cursor: pointer !important;
+  display: none !important; background: none !important; border: none !important;
+  width: 29px !important; height: 29px !important; padding: 0 !important; cursor: pointer !important;
 }
-@media (max-width: 900px) {
-  .nav-hamburger { display: flex !important; }
-}
-
-/* ── LOGO BÜYÜT ── */
+@media (max-width: 900px) { .nav-hamburger { display: flex !important; } }
 .nav-logo img { height: 58px !important; width: auto !important; }
 
-
-/* ── HERO ANİMASYONLARI - Sadece CSS, JS bağımsız ── */
-.hero-anim-badge,
-.hero-anim-logo,
-.hero-anim-eyebrow,
-.hero-anim-h1,
-.hero-anim-stats,
-.hero-anim-cta,
-.hero-anim-follow {
+/* ── HERO ANİMASYONLARI ── */
+.hero-anim-badge, .hero-anim-logo, .hero-anim-eyebrow,
+.hero-anim-h1, .hero-anim-stats, .hero-anim-cta, .hero-anim-follow {
   animation-fill-mode: both !important;
   animation-timing-function: cubic-bezier(.16,.9,.2,1) !important;
   animation-name: heroFadeUp !important;
@@ -1627,23 +1514,9 @@ section#hero [data-intro-linked] {
 .hero-anim-cta      { animation-delay: .3s !important; }
 .hero-anim-follow   { animation-delay: .38s !important; }
 
-/* .reveal ve .reveal-scale - CSS ile görünür, JS scroll ile animasyon güzel */
-.reveal,
-.reveal-scale {
-  opacity: 1 !important;
-  transform: none !important;
-  filter: none !important;
-}
+/* ── REVEAL ── */
+.reveal, .reveal-scale { opacity: 1 !important; transform: none !important; filter: none !important; }
 
-/* ── Typewriter imleci ── */
-@keyframes twBlink {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0; }
-}
-.tw-cursor {
-  display: inline-block;
-  margin-left: 2px;
-  animation: twBlink .7s step-start infinite;
-  color: var(--rust);
-  font-weight: 300;
-}
+/* ── Typewriter ── */
+@keyframes twBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.tw-cursor { display: inline-block; margin-left: 2px; animation: twBlink .7s step-start infinite; color: var(--rust); font-weight: 300; }

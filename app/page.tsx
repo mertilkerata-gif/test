@@ -302,7 +302,13 @@ export default function Home() {
         <button class="fav-btn" data-fav-id="p1" aria-label="Favorilere ekle" type="button"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.35-9.5-8.5C.7 8 2 4.5 5.5 4 8 3.6 10 5 12 7.5 14 5 16 3.6 18.5 4 22 4.5 23.3 8 21.5 11.5 19 15.65 12 20 12 20z"/></svg></button>
         <div class="product-photo zoomable" style="background:var(--cream-deep)">
           <span class="limited-badge">Sınırlı Üretim</span>
-          <svg viewBox="0 0 64 64" fill="none" stroke="var(--ink)" stroke-width="2"><path d="M14 22h30v18a10 10 0 01-10 10H24a10 10 0 01-10-10V22z"/><path d="M44 26h4a6 6 0 010 12h-4"/><path d="M20 14c1-3 3-3 4-6M30 14c1-3 3-3 4-6"/></svg>
+          <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:72px;height:72px">
+  <path d="M22 30 Q20 54 22 66 L58 66 Q60 54 58 30 Z" fill="#b5451b" opacity="0.15" stroke="#b5451b" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M58 38 L64 38 Q72 38 72 48 Q72 58 64 58 L58 58" stroke="#b5451b" stroke-width="2" stroke-linecap="round"/>
+  <path d="M22 30 L58 30" stroke="#b5451b" stroke-width="2" stroke-linecap="round"/>
+  <path d="M30 20 Q31 14 34 18 Q37 22 38 16" stroke="#b5451b" stroke-width="1.8" stroke-linecap="round" fill="none" opacity="0.5"/>
+  <path d="M42 18 Q43 12 46 16 Q49 20 50 14" stroke="#b5451b" stroke-width="1.8" stroke-linecap="round" fill="none" opacity="0.5"/>
+</svg>
         </div>
         <p class="product-name">Demleme Kupası</p>
         <p class="product-price">₺290</p>
@@ -314,7 +320,10 @@ export default function Home() {
       <div class="product-card reveal" data-slug="sofra-tisortu" style="cursor:pointer">
         <button class="fav-btn" data-fav-id="p2" aria-label="Favorilere ekle" type="button"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.35-9.5-8.5C.7 8 2 4.5 5.5 4 8 3.6 10 5 12 7.5 14 5 16 3.6 18.5 4 22 4.5 23.3 8 21.5 11.5 19 15.65 12 20 12 20z"/></svg></button>
         <div class="product-photo zoomable" style="background:var(--cream-deep)">
-          <svg viewBox="0 0 64 64" fill="none" stroke="var(--ink)" stroke-width="2"><path d="M20 10h24l6 12-18 34-18-34z"/><path d="M26 10l6 12 6-12M20 22h24"/></svg>
+          <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:72px;height:72px">
+  <path d="M28 14 L52 14 C56 14 62 18 65 24 L72 28 L64 38 L58 34 L58 66 L22 66 L22 34 L16 38 L8 28 L15 24 C18 18 24 14 28 14 Z" fill="#5b3a8c" opacity="0.12" stroke="#5b3a8c" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M28 14 Q30 22 40 22 Q50 22 52 14" stroke="#5b3a8c" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+</svg>
         </div>
         <p class="product-name">Sofra Tişörtü</p>
         <p class="product-price">₺450</p>
@@ -323,7 +332,14 @@ export default function Home() {
         <button class="fav-btn" data-fav-id="p3" aria-label="Favorilere ekle" type="button"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.35-9.5-8.5C.7 8 2 4.5 5.5 4 8 3.6 10 5 12 7.5 14 5 16 3.6 18.5 4 22 4.5 23.3 8 21.5 11.5 19 15.65 12 20 12 20z"/></svg></button>
         <div class="product-photo zoomable" style="background:var(--cream-deep)">
           <span class="product-tag">Yeni</span>
-          <svg viewBox="0 0 64 64" fill="none" stroke="var(--ink)" stroke-width="2"><rect x="14" y="8" width="36" height="48" rx="4"/><path d="M22 20h20M22 28h20M22 36h12"/></svg>
+          <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:72px;height:72px">
+  <rect x="18" y="10" width="44" height="58" rx="4" fill="#2a7a4b" opacity="0.1" stroke="#2a7a4b" stroke-width="2"/>
+  <rect x="14" y="10" width="8" height="58" rx="3" fill="#2a7a4b" opacity="0.25" stroke="#2a7a4b" stroke-width="1.5"/>
+  <line x1="28" y1="24" x2="54" y2="24" stroke="#2a7a4b" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+  <line x1="28" y1="32" x2="54" y2="32" stroke="#2a7a4b" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+  <line x1="28" y1="40" x2="44" y2="40" stroke="#2a7a4b" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+  <path d="M52 58 L62 48 L66 52 L56 62 Z" fill="#2a7a4b" opacity="0.5"/>
+</svg>
         </div>
         <p class="product-name">Demleme Defteri</p>
         <p class="product-price">₺180</p>
@@ -331,7 +347,14 @@ export default function Home() {
       <div class="product-card reveal" data-slug="mini-cay-seti" style="cursor:pointer">
         <button class="fav-btn" data-fav-id="p4" aria-label="Favorilere ekle" type="button"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.35-9.5-8.5C.7 8 2 4.5 5.5 4 8 3.6 10 5 12 7.5 14 5 16 3.6 18.5 4 22 4.5 23.3 8 21.5 11.5 19 15.65 12 20 12 20z"/></svg></button>
         <div class="product-photo zoomable" style="background:var(--cream-deep)">
-          <svg viewBox="0 0 64 64" fill="none" stroke="var(--ink)" stroke-width="2"><rect x="16" y="24" width="32" height="24" rx="3"/><path d="M48 30h4a5 5 0 010 10h-4M22 24V16a10 10 0 0120 0v8"/></svg>
+          <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:72px;height:72px">
+  <path d="M20 28 Q18 50 20 62 L52 62 Q54 50 52 28 Z" fill="#9a6f1a" opacity="0.12" stroke="#9a6f1a" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M52 36 L58 35 Q67 34 67 45 Q67 56 58 55 L52 54" stroke="#9a6f1a" stroke-width="2" stroke-linecap="round"/>
+  <ellipse cx="36" cy="28" rx="12" ry="3.5" fill="#9a6f1a" opacity="0.2" stroke="#9a6f1a" stroke-width="1.5"/>
+  <path d="M30 16 Q31 11 33 14 Q35 18 37 13" stroke="#9a6f1a" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.45"/>
+  <circle cx="61" cy="68" r="6" fill="#9a6f1a" opacity="0.12" stroke="#9a6f1a" stroke-width="1.5"/>
+  <circle cx="72" cy="68" r="6" fill="#9a6f1a" opacity="0.12" stroke="#9a6f1a" stroke-width="1.5"/>
+</svg>
         </div>
         <p class="product-name">Mini Çay Seti</p>
         <p class="product-price">₺620</p>
@@ -339,7 +362,14 @@ export default function Home() {
       <div class="product-card reveal" data-slug="bolum-posteri" style="cursor:pointer">
         <button class="fav-btn" data-fav-id="p5" aria-label="Favorilere ekle" type="button"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.35-9.5-8.5C.7 8 2 4.5 5.5 4 8 3.6 10 5 12 7.5 14 5 16 3.6 18.5 4 22 4.5 23.3 8 21.5 11.5 19 15.65 12 20 12 20z"/></svg></button>
         <div class="product-photo zoomable" style="background:var(--cream-deep)">
-          <svg viewBox="0 0 64 64" fill="none" stroke="var(--ink)" stroke-width="2"><rect x="12" y="10" width="40" height="44" rx="2"/><path d="M20 24h24M20 32h24M20 40h14"/></svg>
+          <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:72px;height:72px">
+  <rect x="14" y="8" width="52" height="64" rx="3" fill="#1a6e6e" opacity="0.1" stroke="#1a6e6e" stroke-width="2"/>
+  <rect x="20" y="14" width="40" height="26" rx="2" fill="#1a6e6e" opacity="0.18" stroke="#1a6e6e" stroke-width="1.5"/>
+  <circle cx="30" cy="24" r="5" fill="#1a6e6e" opacity="0.3"/>
+  <path d="M26 36 L36 24 L44 32 L50 26 L60 36 Z" fill="#1a6e6e" opacity="0.25"/>
+  <line x1="20" y1="48" x2="60" y2="48" stroke="#1a6e6e" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+  <line x1="20" y1="56" x2="48" y2="56" stroke="#1a6e6e" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+</svg>
         </div>
         <p class="product-name">Bölüm Posteri</p>
         <p class="product-price">₺220</p>
@@ -347,7 +377,16 @@ export default function Home() {
       <div class="product-card reveal" data-slug="kupa-altligi-seti" style="cursor:pointer">
         <button class="fav-btn" data-fav-id="p6" aria-label="Favorilere ekle" type="button"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.35-9.5-8.5C.7 8 2 4.5 5.5 4 8 3.6 10 5 12 7.5 14 5 16 3.6 18.5 4 22 4.5 23.3 8 21.5 11.5 19 15.65 12 20 12 20z"/></svg></button>
         <div class="product-photo zoomable" style="background:var(--cream-deep)">
-          <svg viewBox="0 0 64 64" fill="none" stroke="var(--ink)" stroke-width="2"><circle cx="32" cy="32" r="18"/><path d="M32 20v12l8 6"/></svg>
+          <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:72px;height:72px">
+  <rect x="10" y="10" width="26" height="26" rx="5" fill="#1c4f7a" opacity="0.15" stroke="#1c4f7a" stroke-width="1.8"/>
+  <rect x="44" y="10" width="26" height="26" rx="5" fill="#1c4f7a" opacity="0.15" stroke="#1c4f7a" stroke-width="1.8"/>
+  <rect x="10" y="44" width="26" height="26" rx="5" fill="#1c4f7a" opacity="0.15" stroke="#1c4f7a" stroke-width="1.8"/>
+  <rect x="44" y="44" width="26" height="26" rx="5" fill="#1c4f7a" opacity="0.15" stroke="#1c4f7a" stroke-width="1.8"/>
+  <circle cx="23" cy="23" r="5" fill="#1c4f7a" opacity="0.35"/>
+  <circle cx="57" cy="23" r="5" fill="#1c4f7a" opacity="0.35"/>
+  <circle cx="23" cy="57" r="5" fill="#1c4f7a" opacity="0.35"/>
+  <circle cx="57" cy="57" r="5" fill="#1c4f7a" opacity="0.35"/>
+</svg>
         </div>
         <p class="product-name">Kupa Altlığı Seti</p>
         <p class="product-price">₺140</p>
@@ -355,7 +394,14 @@ export default function Home() {
       <div class="product-card reveal" data-slug="hediye-karti" style="cursor:pointer">
         <button class="fav-btn" data-fav-id="p7" aria-label="Favorilere ekle" type="button"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.35-9.5-8.5C.7 8 2 4.5 5.5 4 8 3.6 10 5 12 7.5 14 5 16 3.6 18.5 4 22 4.5 23.3 8 21.5 11.5 19 15.65 12 20 12 20z"/></svg></button>
         <div class="product-photo zoomable" style="background:var(--cream-deep)">
-          <svg viewBox="0 0 64 64" fill="none" stroke="var(--ink)" stroke-width="2"><rect x="8" y="18" width="48" height="30" rx="4"/><circle cx="32" cy="33" r="8"/><path d="M14 24h4M46 42h4"/></svg>
+          <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:72px;height:72px">
+  <rect x="8" y="22" width="64" height="40" rx="6" fill="#6b3080" opacity="0.1" stroke="#6b3080" stroke-width="2"/>
+  <line x1="8" y1="36" x2="72" y2="36" stroke="#6b3080" stroke-width="1.8" opacity="0.4"/>
+  <path d="M40 22 L40 16 Q40 10 34 10 Q28 10 28 16 Q28 22 34 22 Z" fill="#6b3080" opacity="0.2" stroke="#6b3080" stroke-width="1.5"/>
+  <path d="M40 22 L40 16 Q40 10 46 10 Q52 10 52 16 Q52 22 46 22 Z" fill="#6b3080" opacity="0.2" stroke="#6b3080" stroke-width="1.5"/>
+  <rect x="18" y="47" width="20" height="6" rx="3" fill="#6b3080" opacity="0.25"/>
+  <rect x="18" y="56" width="32" height="4" rx="2" fill="#6b3080" opacity="0.15"/>
+</svg>
         </div>
         <p class="product-name">Hediye Kartı</p>
         <p class="product-price">₺200 – ₺1000</p>
