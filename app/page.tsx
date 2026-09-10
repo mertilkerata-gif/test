@@ -130,9 +130,10 @@ export default function Home() {
             <span style="font-size:.72rem;color:rgba(243,238,225,.5);font-weight:600">kişi dinliyor</span>
           </div>
           <div style="display:flex;margin-top:16px">
-            {["SB","EK","MY","+"].map((l,i) => (
-              `<div style="width:28px;height:28px;border-radius:50%;background:${["var(--rust)","var(--green)","var(--lav-deep)","rgba(255,255,255,.2)"][i]};border:2px solid var(--ink);margin-left:${i>0?"-8px":"0"};display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:800;color:#fff">${l}</div>`
-            ))}
+            <div style="width:28px;height:28px;border-radius:50%;background:var(--rust);border:2px solid var(--ink);display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:800;color:#fff">SB</div>
+            <div style="width:28px;height:28px;border-radius:50%;background:var(--green);border:2px solid var(--ink);margin-left:-8px;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:800;color:#fff">EK</div>
+            <div style="width:28px;height:28px;border-radius:50%;background:var(--lav-deep);border:2px solid var(--ink);margin-left:-8px;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:800;color:#fff">MY</div>
+            <div style="width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.2);border:2px solid var(--ink);margin-left:-8px;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:800;color:#fff">+</div>
           </div>
           <a href="#iletisim" style="display:inline-block;margin-top:12px;font-size:.72rem;color:var(--cream-fixed);opacity:.6;text-decoration:none;font-weight:600">Katıl →</a>
         </div>
