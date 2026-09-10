@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { getCart, CartItem, removeFromCart, updateQty, cartTotal } from '@/lib/cart';
 import { products } from '@/lib/products';
 
@@ -9,16 +9,19 @@ export default function CartToast() {
   const [lastAdded, setLastAdded] = useState<CartItem | null>(null);
   const [showToast, setShowToast] = useState(false);
 
-  const refresh = () => setCart(getCart());
+  const cartRef = useRef<CartItem[]>([]);
 
   useEffect(() => {
-    refresh();
+    const initial = getCart();
+    setCart(initial);
+    cartRef.current = initial;
+
     const onUpdate = () => {
       const newCart = getCart();
-      const old = cart;
+      const prev = cartRef.current;
       // Yeni eklenen ürünü bul
       const added = newCart.find(n => {
-        const o = old.find(c => c.id === n.id);
+        const o = prev.find(c => c.id === n.id);
         return !o || n.qty > o.qty;
       });
       if (added) {
@@ -27,14 +30,24 @@ export default function CartToast() {
         setOpen(true);
         setTimeout(() => setShowToast(false), 3500);
       }
-      setCart(newCart);
+      cartRef.current = newCart;
+      setCart([...newCart]);
     };
+
+    const onOpen = () => {
+      const c = getCart();
+      cartRef.current = c;
+      setCart([...c]);
+      setOpen(true);
+    };
+
     window.addEventListener('cart-updated', onUpdate);
-    window.addEventListener('demleme:open-cart', () => { refresh(); setOpen(true); });
+    window.addEventListener('demleme:open-cart', onOpen);
     return () => {
       window.removeEventListener('cart-updated', onUpdate);
+      window.removeEventListener('demleme:open-cart', onOpen);
     };
-  }, [cart]);
+  }, []);
 
   const total = cartTotal(cart);
   const count = cart.reduce((s, c) => s + c.qty, 0);
