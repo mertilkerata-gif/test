@@ -45,9 +45,6 @@ export default function Home() {
 
       <!-- SOL: Başlık + İstatistikler + CTA -->
       <div class="hero-head reveal" data-intro-linked style="display:flex;flex-direction:column;gap:20px">
-        <a href="/" class="hero-anim-logo" style="display:block;text-decoration:none;margin-bottom:4px">
-          <img src="/images/demleme-logo.png" alt="Demleme" style="height:36px;width:auto" />
-        </a>
         <p class="hero-anim-eyebrow" style="font-size:.72rem;letter-spacing:.18em;color:var(--rust);margin:0;font-weight:700">HAFTALIK SOHBET SOFRASI</p>
 
         <h1 class="hero-cycle-head hero-anim-h1" style="font-family:var(--font-display);font-size:clamp(3rem,5vw,5.5rem);line-height:1.1;margin:0" aria-label="İyi bir çay zamanla demlenir.">
