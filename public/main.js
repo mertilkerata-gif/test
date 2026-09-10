@@ -1154,25 +1154,7 @@
     cartCheckoutBtn.addEventListener('click', function(){
       var cart = getCart();
       if(!cart.length) return;
-      setCart([]);
-      updateCartCount();
-      /* clear the item list but keep the foot (with its checkout button) visible so the
-         confirmation message has somewhere to show -- renderCartDrawer() itself hides the
-         whole foot once the cart is empty, which would hide the message along with it */
-      var list = document.getElementById('cartList');
-      if(list) list.innerHTML = '';
-      cartCheckoutBtn.disabled = true;
-      var msg = document.getElementById('cartCheckoutMsg');
-      if(msg){
-        msg.hidden = false;
-        setTimeout(function(){
-          msg.hidden = true;
-          cartCheckoutBtn.disabled = false;
-          renderCartDrawer();
-        }, 1600);
-      } else {
-        renderCartDrawer();
-      }
+      window.location.href = '/odeme';
     });
   }
   updateCartCount();
