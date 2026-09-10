@@ -259,7 +259,7 @@ export default function Home() {
 
 
 <!-- ============================================================ -->
-<section class="benkimim-sec" id="benkimim">
+<section class="benkimim-sec" id="benkimim" data-secnum="02">
   <div class="benkimim-grid">
     <div class="benkimim-photo-wrap reveal-scale">
       <div class="mk mk-icon-green benkimim-mark-float f1 parallax" data-speed="0.11"></div>
@@ -267,7 +267,7 @@ export default function Home() {
       <div class="mk mk-sofra-teal benkimim-mark-float f2 parallax" data-speed="-0.13"></div>
     </div>
     <div class="benkimim-copy reveal">
-      <span class="sec-num" aria-hidden="true">03</span>
+      <span class="sec-num" aria-hidden="true">02</span>
       <p class="eyebrow">Demleyen Kim?</p>
       <h3>Merhaba, ben Garen.</h3>
       <p>Bu sofrayı yıllar önce, komşularla oturduğumuz sıradan bir çay saatinden çıkardım. Amacım hep aynıydı: <span class="accent">insanları gerçek bir sohbete oturtmak.</span> Kamera olmasa da aynı içtenlikle konuşacağımız hikâyeler arıyorum.</p>
@@ -404,10 +404,10 @@ export default function Home() {
 <div class="zag-divider zag--zigzag" style="background:var(--ink-fixed)"></div>
 
 
-<section class="shop-sec" id="shop">
+<section class="shop-sec" id="shop" data-secnum="03">
   <div class="section-blob parallax" data-speed="0.08" style="width:420px;height:420px;bottom:-140px;left:-110px;background:radial-gradient(circle,var(--butter) 0%,transparent 72%);opacity:.16" aria-hidden="true"></div>
   <div class="sec-head reveal">
-    <span class="sec-num" aria-hidden="true">02</span>
+    <span class="sec-num" aria-hidden="true">03</span>
     <div>
       <p class="eyebrow">Mağaza</p>
       <h2 class="split-heading">Demleme Shop</h2>
