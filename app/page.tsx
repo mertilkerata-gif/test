@@ -341,43 +341,7 @@ export default function Home() {
 </section>
 
 <!-- ============================================================ -->
-<section class="faq-sec" id="sss">
-  <div class="section-blob parallax" data-speed="-0.05" style="width:340px;height:340px;bottom:-120px;right:-90px;background:radial-gradient(circle,var(--rust) 0%,transparent 72%);opacity:.1" aria-hidden="true"></div>
-  <div class="faq-head reveal">
-    <p class="eyebrow">Merak Edilenler</p>
-    <h2 class="split-heading">Sıkça sorulan sorular</h2>
-  </div>
-  <div class="faq-list">
-    <div class="faq-item reveal">
-      <button class="faq-q" type="button">
-        Demleme'nin yeni bölümleri ne zaman yayınlanıyor?
-        <span class="faq-q-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
-      </button>
-      <div class="faq-a"><div class="faq-a-inner"><p>Yeni bölümler her hafta Cuma akşamı YouTube'da yayınlanıyor. Kaçırmamak için topluluk WhatsApp grubuna katılabilir ya da bölümler bölümündeki listeyi takip edebilirsin.</p></div></div>
-    </div>
-    <div class="faq-item reveal">
-      <button class="faq-q" type="button">
-        Demleme Shop ürünleri nereden ve nasıl sipariş edilir?
-        <span class="faq-q-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
-      </button>
-      <div class="faq-a"><div class="faq-a-inner"><p>Ürünlere Mağaza bölümünden göz atabilir, bir ürüne tıklayarak detaylarını ve fiyatını görebilirsin. Sipariş ve kargo süreci için mağaza sayfamız yakında tam entegrasyonla açılıyor.</p></div></div>
-    </div>
-    <div class="faq-item reveal">
-      <button class="faq-q" type="button">
-        Programa konuk olmak ya da iş birliği yapmak istiyorum, nasıl ulaşırım?
-        <span class="faq-q-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
-      </button>
-      <div class="faq-a"><div class="faq-a-inner"><p>merhaba@demleme.com adresine yazabilir ya da aşağıdaki bültene katılıp iletişim formunu kullanabilirsin. Konuk önerilerini ve iş birliği taleplerini buradan değerlendiriyoruz.</p></div></div>
-    </div>
-    <div class="faq-item reveal">
-      <button class="faq-q" type="button">
-        E-posta bültenine katılırsam neler gönderiyorsunuz?
-        <span class="faq-q-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
-      </button>
-      <div class="faq-a"><div class="faq-a-inner"><p>Yeni bölüm duyuruları, konuk açıklamaları ve mağazadaki yeni ürünleri haber veriyoruz. Spam yok — haftada en fazla bir e-posta.</p></div></div>
-    </div>
-  </div>
-</section>
+
 
 <!-- ============================================================ -->
 <div class="zag-divider zag--scallop" style="background:#EFE6EC"></div>
