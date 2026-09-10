@@ -28,7 +28,7 @@ export default function Home() {
 </div>
 
 <!-- ============================================================ -->
-<section class="hero" id="hero" data-secnum="00" style="min-height:92vh;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;padding:80px var(--pad) 60px">
+<section class="hero" id="hero" data-secnum="00" style="display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;padding:80px var(--pad) 60px">
 
   <!-- Dekoratif arka plan blobs -->
   <div style="position:absolute;width:500px;height:500px;top:-100px;right:-80px;background:radial-gradient(circle,var(--butter) 0%,transparent 65%);pointer-events:none;opacity:.55" aria-hidden="true"></div>
