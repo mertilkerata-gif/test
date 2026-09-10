@@ -27,8 +27,7 @@ function ProductCard({ p, index }: { p: Product; index: number }) {
       ref={ref}
       style={{
         opacity: visible ? 1 : 0,
-        transform: visible ? 'translateY(0)' : 'translateY(40px)',
-        transition: `opacity .55s cubic-bezier(.16,.9,.2,1) ${index * 0.07}s, transform .55s cubic-bezier(.16,.9,.2,1) ${index * 0.07}s`,
+        transition: `opacity .55s cubic-bezier(.16,.9,.2,1) ${index * 0.07}s, transform .55s cubic-bezier(.16,.9,.2,1) ${index * 0.07}s, box-shadow .3s`,
         background: 'var(--paper)',
         borderRadius: '20px',
         overflow: 'hidden',
