@@ -54,7 +54,7 @@ export const products: Product[] = [
       { q: 'İade koşulları nedir?', a: '14 gün içinde koşulsuz iade. Hasarlı veya yanlış ürünlerde kargo bedeli bize aittir.' },
       { q: 'Hediye paketi mevcut mu?', a: 'Evet, sipariş notuna "hediye paketi" yazarsanız özel kutuda gönderilir.' },
     ],
-    images: ['/images/cay-icon-blue.jpeg'],
+    images: ['/images/demleme-kupasi.webp'],
     svgIcon: `<svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M22 30 Q20 54 22 66 L58 66 Q60 54 58 30 Z" fill="currentColor" opacity="0.12"/>
   <path d="M22 30 Q20 54 22 66 L58 66 Q60 54 58 30 Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="none"/>
@@ -96,7 +96,7 @@ export const products: Product[] = [
       { q: 'Beden nasıl seçmeliyim?', a: 'Oversize kalıp olduğu için bir beden küçük almanızı öneririz.' },
       { q: 'Yıkamada solar mı?', a: 'Su bazlı baskılar düşük ısıda ve ters çevrilerek yıkandığında uzun yıllar dayanır.' },
     ],
-    images: [],
+    images: ['/images/sofra-tisortu.webp']
     svgIcon: `<svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M28 14 L52 14 L52 14 C56 14 62 18 65 24 L72 28 L64 38 L58 34 L58 66 L22 66 L22 34 L16 38 L8 28 L15 24 C18 18 24 14 28 14 Z" fill="currentColor" opacity="0.12" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
   <path d="M28 14 Q30 22 40 22 Q50 22 52 14" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/>
@@ -133,7 +133,7 @@ export const products: Product[] = [
     faq: [
       { q: 'Dolma kalem uyumlu mu?', a: 'Evet, 90g kağıt dolma kalem için uygundur, geçirme yapmaz.' },
     ],
-    images: [],
+    images: ['/images/demleme-defteri.webp']
     svgIcon: `<svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
   <rect x="18" y="10" width="44" height="58" rx="4" fill="currentColor" opacity="0.1" stroke="currentColor" stroke-width="2"/>
   <rect x="14" y="10" width="8" height="58" rx="3" fill="currentColor" opacity="0.25" stroke="currentColor" stroke-width="1.5"/>
@@ -220,7 +220,7 @@ export const products: Product[] = [
       { q: 'Hangi bölümü seçebilirim?', a: 'Tüm yayınlanmış bölümler mevcut. Sipariş notuna bölüm adı veya numarasını yazın.' },
       { q: 'Kaç günde gelir?', a: 'Baskı + kargo toplam 3-5 iş günü.' },
     ],
-    images: [],
+    images: ['/images/bolum-posteri.webp']
     svgIcon: `<svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
   <rect x="14" y="8" width="52" height="64" rx="3" fill="currentColor" opacity="0.1" stroke="currentColor" stroke-width="2"/>
   <rect x="20" y="14" width="40" height="26" rx="2" fill="currentColor" opacity="0.18" stroke="currentColor" stroke-width="1.5"/>
@@ -258,7 +258,7 @@ export const products: Product[] = [
     faq: [
       { q: 'Islak silinebilir mi?', a: 'Evet, nemli bez ile silebilirsiniz. Uzun süre ıslatmayın.' },
     ],
-    images: [],
+    images: ['/images/kupa-altligi.webp']
     svgIcon: `<svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
   <rect x="10" y="10" width="26" height="26" rx="5" fill="currentColor" opacity="0.15" stroke="currentColor" stroke-width="1.8"/>
   <rect x="44" y="10" width="26" height="26" rx="5" fill="currentColor" opacity="0.15" stroke="currentColor" stroke-width="1.8"/>
@@ -295,7 +295,7 @@ export const products: Product[] = [
       { q: 'Ne zaman teslim edilir?', a: 'Satın alma sonrası anında e-posta ile gönderilir.' },
       { q: 'Bakiye kalırsa ne olur?', a: 'Kalan bakiye bir sonraki alışverişte kullanılabilir.' },
     ],
-    images: [],
+    images: ['/images/hediye-karti.webp']
     svgIcon: `<svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
   <rect x="8" y="22" width="64" height="40" rx="6" fill="currentColor" opacity="0.1" stroke="currentColor" stroke-width="2"/>
   <line x1="8" y1="36" x2="72" y2="36" stroke="currentColor" stroke-width="1.8" opacity="0.4"/>
