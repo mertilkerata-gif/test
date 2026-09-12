@@ -96,7 +96,7 @@ export const products: Product[] = [
       { q: 'Beden nasıl seçmeliyim?', a: 'Oversize kalıp olduğu için bir beden küçük almanızı öneririz.' },
       { q: 'Yıkamada solar mı?', a: 'Su bazlı baskılar düşük ısıda ve ters çevrilerek yıkandığında uzun yıllar dayanır.' },
     ],
-    images: ['/images/sofra-tisortu.webp']
+    images: ['/images/sofra-tisortu.webp'],
     svgIcon: `<svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M28 14 L52 14 L52 14 C56 14 62 18 65 24 L72 28 L64 38 L58 34 L58 66 L22 66 L22 34 L16 38 L8 28 L15 24 C18 18 24 14 28 14 Z" fill="currentColor" opacity="0.12" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
   <path d="M28 14 Q30 22 40 22 Q50 22 52 14" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/>
