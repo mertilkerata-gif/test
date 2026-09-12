@@ -133,7 +133,7 @@ export const products: Product[] = [
     faq: [
       { q: 'Dolma kalem uyumlu mu?', a: 'Evet, 90g kağıt dolma kalem için uygundur, geçirme yapmaz.' },
     ],
-    images: ['/images/demleme-defteri.webp']
+    images: ['/images/demleme-defteri.webp'],
     svgIcon: `<svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
   <rect x="18" y="10" width="44" height="58" rx="4" fill="currentColor" opacity="0.1" stroke="currentColor" stroke-width="2"/>
   <rect x="14" y="10" width="8" height="58" rx="3" fill="currentColor" opacity="0.25" stroke="currentColor" stroke-width="1.5"/>
@@ -220,7 +220,7 @@ export const products: Product[] = [
       { q: 'Hangi bölümü seçebilirim?', a: 'Tüm yayınlanmış bölümler mevcut. Sipariş notuna bölüm adı veya numarasını yazın.' },
       { q: 'Kaç günde gelir?', a: 'Baskı + kargo toplam 3-5 iş günü.' },
     ],
-    images: ['/images/bolum-posteri.webp']
+    images: ['/images/bolum-posteri.webp'],
     svgIcon: `<svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
   <rect x="14" y="8" width="52" height="64" rx="3" fill="currentColor" opacity="0.1" stroke="currentColor" stroke-width="2"/>
   <rect x="20" y="14" width="40" height="26" rx="2" fill="currentColor" opacity="0.18" stroke="currentColor" stroke-width="1.5"/>
@@ -258,7 +258,7 @@ export const products: Product[] = [
     faq: [
       { q: 'Islak silinebilir mi?', a: 'Evet, nemli bez ile silebilirsiniz. Uzun süre ıslatmayın.' },
     ],
-    images: ['/images/kupa-altligi.webp']
+    images: ['/images/kupa-altligi.webp'],
     svgIcon: `<svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
   <rect x="10" y="10" width="26" height="26" rx="5" fill="currentColor" opacity="0.15" stroke="currentColor" stroke-width="1.8"/>
   <rect x="44" y="10" width="26" height="26" rx="5" fill="currentColor" opacity="0.15" stroke="currentColor" stroke-width="1.8"/>
@@ -295,7 +295,7 @@ export const products: Product[] = [
       { q: 'Ne zaman teslim edilir?', a: 'Satın alma sonrası anında e-posta ile gönderilir.' },
       { q: 'Bakiye kalırsa ne olur?', a: 'Kalan bakiye bir sonraki alışverişte kullanılabilir.' },
     ],
-    images: ['/images/hediye-karti.webp']
+    images: ['/images/hediye-karti.webp'],
     svgIcon: `<svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
   <rect x="8" y="22" width="64" height="40" rx="6" fill="currentColor" opacity="0.1" stroke="currentColor" stroke-width="2"/>
   <line x1="8" y1="36" x2="72" y2="36" stroke="currentColor" stroke-width="1.8" opacity="0.4"/>
