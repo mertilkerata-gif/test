@@ -76,7 +76,7 @@ export default function NavBar() {
             type="button"
             style={{position:'relative',background:'none',border:'none',cursor:'pointer',padding:0,width:'29px',height:'29px',display:'flex',alignItems:'center',justifyContent:'center',color:'var(--ink)',flexShrink:0}}
           >
-            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M7 8V6.5a5 5 0 0110 0V8h2.3a1 1 0 01.99.86l1.2 8.4A2 2 0 0119.52 20H4.48a2 2 0 01-1.97-2.74l1.2-8.4A1 1 0 014.7 8H7zm2 0h6V6.5a3 3 0 00-6 0V8z"/></svg>
+            <img src="/images/sepet-ikonu.png" width="22" height="22" alt="Sepet" style={{objectFit:'contain'}} />
             {count > 0 && (
               <span style={{position:'absolute',top:'-5px',right:'-5px',background:'var(--rust)',color:'#fff',borderRadius:'50%',width:'16px',height:'16px',fontSize:'9px',display:'flex',alignItems:'center',justifyContent:'center',fontWeight:700,lineHeight:1,pointerEvents:'none'}}>{count}</span>
             )}
@@ -126,7 +126,7 @@ export default function NavBar() {
 
           {/* Instagram */}
           <a className="nav-icon-btn" href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" style={{display:'flex',alignItems:'center',justifyContent:'center',color:'var(--ink)',width:'29px',height:'29px',flexShrink:0}}>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" width="20" height="20"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1"/></svg>
+            <img src="/images/ig-siyah.png" width="22" height="22" alt="Instagram" style={{objectFit:'contain'}} />
           </a>
 
           {/* Hamburger */}
