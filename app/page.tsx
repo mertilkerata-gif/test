@@ -18,39 +18,75 @@ export default function Home() {
 <!-- 1. HERO                                                      -->
 <!-- ═══════════════════════════════════════════════════════════ -->
 <style>
-  /* ── Hero grid responsive ── */
+  /* ── GLOBAL ── */
+  *, *::before, *::after { box-sizing:border-box; }
+
+  /* ── Hero ── */
   .hero-2col { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
-  @media(max-width:700px){
-    .hero-2col { grid-template-columns:1fr; gap:0; }
-    .hero-right { order:-1; margin-bottom:8px; }
-    .hero-right img { max-width:180px !important; margin:0 auto; display:block; }
-  }
 
   /* ── Giriş animasyonları ── */
   .hero-anim { opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease; }
   .hero-anim.visible { opacity:1; transform:translateY(0); }
-  .hero-anim-delay1 { transition-delay:.1s; }
-  .hero-anim-delay2 { transition-delay:.22s; }
-  .hero-anim-delay3 { transition-delay:.36s; }
-  .hero-anim-delay4 { transition-delay:.5s; }
+  .hero-anim-delay1 { transition-delay:.12s; }
+  .hero-anim-delay2 { transition-delay:.24s; }
+  .hero-anim-delay3 { transition-delay:.38s; }
 
-  /* ── Shop grid responsive ── */
+  /* ── Reveal sections ── */
+  .reveal-section { opacity:0; transform:translateY(30px); transition:opacity .8s ease, transform .8s ease; }
+  .reveal-section.visible { opacity:1; transform:translateY(0); }
+
+  /* ── Stats ── */
+  .stats-grid { display:grid; grid-template-columns:repeat(3,1fr); width:100%; }
+
+  /* ── Shop ── */
   .shop-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
-  @media(max-width:900px){ .shop-grid { grid-template-columns:repeat(2,1fr); } }
-  @media(max-width:480px){ .shop-grid { grid-template-columns:repeat(2,1fr); gap:12px; } }
 
-  /* ── Demleyen kim responsive ── */
+  /* ── Demleyen ── */
   .two-col { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
-  @media(max-width:700px){ .two-col { grid-template-columns:1fr; gap:32px; } }
 
-  /* ── Episode main responsive ── */
-  .episode-main { display:grid; grid-template-columns:1.2fr 1fr; }
-  @media(max-width:700px){ .episode-main { grid-template-columns:1fr; } }
+  /* ── Episode ── */
+  .episode-main { display:grid; grid-template-columns:1.2fr 1fr; border-radius:24px; overflow:hidden; margin-bottom:32px; background:var(--cream-deep); }
 
-  /* ── Stats responsive ── */
-  .stats-grid { display:grid; grid-template-columns:1fr 1fr 1fr; width:100%; }
-  @media(max-width:600px){ .stats-grid { grid-template-columns:1fr; } }
-  @media(max-width:600px){ .stats-grid > div { border-right:none !important; border-bottom:1px solid var(--line); } }
+  /* ── Konuklar şerit ── */
+  .guests-strip { display:flex; gap:20px; overflow-x:auto; padding-bottom:12px; -webkit-overflow-scrolling:touch; scroll-snap-type:x mandatory; }
+  .episodes-strip { display:flex; gap:16px; overflow-x:auto; padding-bottom:12px; -webkit-overflow-scrolling:touch; scroll-snap-type:x mandatory; }
+
+  /* ── Tablet (≤900px) ── */
+  @media(max-width:900px){
+    .shop-grid { grid-template-columns:repeat(2,1fr); gap:16px; }
+  }
+
+  /* ── Mobil (≤640px) ── */
+  @media(max-width:640px){
+    /* Hero */
+    .hero-2col { grid-template-columns:1fr; gap:24px; }
+    .hero-right { order:-1; }
+    .hero-right img { max-width:200px !important; margin:0 auto; display:block; }
+
+    /* Stats */
+    .stats-grid { grid-template-columns:1fr; }
+    .stats-grid > div { border-right:none !important; border-bottom:1px solid var(--line); padding:32px 24px !important; }
+    .stats-grid > div:last-child { border-bottom:none; }
+
+    /* Shop */
+    .shop-grid { grid-template-columns:repeat(2,1fr); gap:12px; }
+    .shop-grid a > div:first-child { aspect-ratio:1; padding:16px !important; }
+    .shop-grid a > div:last-child { padding:12px !important; }
+    .shop-grid a > div:last-child > div:first-child { font-size:.8rem !important; }
+
+    /* Demleyen */
+    .two-col { grid-template-columns:1fr; gap:32px; }
+
+    /* Episode */
+    .episode-main { grid-template-columns:1fr; }
+    .episode-main > div:last-child { padding:24px !important; }
+
+    /* Sections padding */
+    #demleyen, #shop, #bu-hafta, #konuklar, #anket { padding:72px 20px !important; }
+    #stats { }
+  }
+
+  @keyframes heroArrow{ 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }
 </style>
 
 <section id="hero" style="min-height:90svh;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;padding:80px var(--pad) 40px">
@@ -101,7 +137,7 @@ export default function Home() {
 <!-- ═══════════════════════════════════════════════════════════ -->
 <!-- 2. İSTATİSTİKLER — tam genişlik, scroll reveal             -->
 <!-- ═══════════════════════════════════════════════════════════ -->
-<section id="stats" class="reveal-section" style="width:100%;border-top:1px solid var(--line);border-bottom:1px solid var(--line);opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease">
+<section id="stats" class="reveal-section">
   <div style="max-width:var(--wrap);margin:0 auto;width:100%" class="stats-grid">
 
     <div style="padding:60px 40px;display:flex;flex-direction:column;align-items:center;gap:8px;border-right:1px solid var(--line)">
@@ -125,7 +161,7 @@ export default function Home() {
 <!-- ═══════════════════════════════════════════════════════════ -->
 <!-- 3. DEMLEYEN KİM                                             -->
 <!-- ═══════════════════════════════════════════════════════════ -->
-<section id="demleyen" class="reveal-section" style="padding:120px var(--pad);opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease">
+<section id="demleyen" class="reveal-section">
   <div style="max-width:var(--wrap);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center" class="two-col">
 
     <div>
@@ -152,7 +188,7 @@ export default function Home() {
 <!-- ═══════════════════════════════════════════════════════════ -->
 <!-- 4. DEMLEME SHOP                                             -->
 <!-- ═══════════════════════════════════════════════════════════ -->
-<section id="shop" class="reveal-section" style="padding:120px var(--pad);background:var(--cream-deep);opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease">
+<section id="shop" class="reveal-section">
   <div style="max-width:var(--wrap);margin:0 auto">
 
     <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px" class="sec-head">
@@ -255,7 +291,7 @@ export default function Home() {
 <!-- ═══════════════════════════════════════════════════════════ -->
 <!-- 5. BU HAFTAKİ BÖLÜM                                         -->
 <!-- ═══════════════════════════════════════════════════════════ -->
-<section id="bu-hafta" class="reveal-section" style="padding:120px var(--pad);opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease">
+<section id="bu-hafta" class="reveal-section">
   <div style="max-width:var(--wrap);margin:0 auto">
 
     <div style="margin-bottom:56px">
@@ -338,7 +374,7 @@ export default function Home() {
 <!-- ═══════════════════════════════════════════════════════════ -->
 <!-- 6. KONUKLAR                                                  -->
 <!-- ═══════════════════════════════════════════════════════════ -->
-<section id="konuklar" class="reveal-section" style="padding:120px var(--pad);background:var(--ink);opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease">
+<section id="konuklar" class="reveal-section">
   <div style="max-width:var(--wrap);margin:0 auto">
 
     <div style="margin-bottom:56px">
@@ -369,7 +405,7 @@ export default function Home() {
 <!-- ═══════════════════════════════════════════════════════════ -->
 <!-- 7. ANKET                                                     -->
 <!-- ═══════════════════════════════════════════════════════════ -->
-<section id="anket" class="reveal-section" style="padding:120px var(--pad);opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease">
+<section id="anket" class="reveal-section">
   <div style="max-width:600px;margin:0 auto;text-align:center;display:flex;flex-direction:column;gap:32px">
 
     <div>
@@ -487,8 +523,7 @@ export default function Home() {
   var obs = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
       if(e.isIntersecting){
-        e.target.style.opacity='1';
-        e.target.style.transform='translateY(0)';
+        e.target.classList.add('visible');
         // Sayaç animasyonu
         e.target.querySelectorAll('.stat-count').forEach(function(el){
           var target = parseInt(el.getAttribute('data-target'));
@@ -505,7 +540,7 @@ export default function Home() {
         obs.unobserve(e.target);
       }
     });
-  },{threshold:0.15});
+  },{threshold:0.12});
   sections.forEach(function(s){ obs.observe(s); });
 })();
 
@@ -526,4 +561,5 @@ function demlemeVote(btn, choice){
     </>
   );
 }
+
 
