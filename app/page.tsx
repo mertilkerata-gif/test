@@ -88,7 +88,7 @@ export default function Home() {
     <div style="display:flex;flex-direction:column;gap:16px" class="hero-right-col">
 
       <!-- Figür kartı -->
-      <div style="border-radius:24px;background:var(--cream-deep);aspect-ratio:4/3;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative">
+      <div style="border-radius:24px;background:transparent;aspect-ratio:4/3;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative">
         <img src="/images/cay-animasyon.webp" alt="Çay animasyonu" style="width:85%;height:85%;object-fit:contain" />
         <div style="position:absolute;bottom:14px;left:14px;background:rgba(255,255,255,.88);backdrop-filter:blur(10px);border-radius:12px;padding:8px 14px;display:flex;align-items:center;gap:8px">
           <span style="width:7px;height:7px;border-radius:50%;background:var(--rust);animation:heroLivePulse 1.6s infinite;flex-shrink:0"></span>
