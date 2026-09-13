@@ -747,3 +747,19 @@ body::after {
   transition: transform .6s cubic-bezier(.16,1,.3,1);
 }
 .odometer-digit span { display: block; }
+
+/* ══ NAV DESKTOP LINKS ══ */
+.nav-links-desktop { display:flex; }
+@media(max-width:768px){
+  .nav-links-desktop { display:none !important; }
+}
+
+/* ══ HERO MOBİL ══ */
+@media(max-width:640px){
+  .hero-2col { grid-template-columns:1fr !important; gap:8px !important; }
+  .hero-left { order:2 !important; }
+  .hero-right { order:1 !important; }
+  .hero-right img { max-width:180px !important; margin:0 auto; display:block; }
+  #hero { padding:24px 20px 40px !important; }
+  #hero h1 { font-size:clamp(3.5rem,16vw,5rem) !important; }
+}
