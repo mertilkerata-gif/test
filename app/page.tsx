@@ -10,198 +10,193 @@ export default function Home() {
   return (
     <>
       <NavBar />
-      <div
-        dangerouslySetInnerHTML={{
-        __html: `
+      <div dangerouslySetInnerHTML={{ __html: `
 
-<!-- ═══════════════════════════════════════════════════════════ -->
-<!-- 1. HERO                                                      -->
-<!-- ═══════════════════════════════════════════════════════════ -->
-<section id="hero" style="min-height:calc(100svh - 60px);display:flex;flex-direction:column;justify-content:center;padding:40px var(--pad);position:relative">
-  <div style="max-width:var(--wrap);margin:0 auto;width:100%">
+<!-- ══ PRELOADER ══ -->
+<div id="preloader" style="position:fixed;inset:0;z-index:9000;background:var(--ink);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0">
+  <div id="preloader-text" style="overflow:hidden;display:flex;gap:0">
+    <span class="pre-char" style="font-family:'Kodchasan',sans-serif;font-size:clamp(2rem,6vw,4rem);font-weight:700;letter-spacing:.12em;color:var(--cream-fixed);transform:translateY(100%);display:inline-block;transition:transform .6s cubic-bezier(.16,1,.3,1)">d</span>
+    <span class="pre-char" style="font-family:'Kodchasan',sans-serif;font-size:clamp(2rem,6vw,4rem);font-weight:700;letter-spacing:.12em;color:var(--cream-fixed);transform:translateY(100%);display:inline-block;transition:transform .6s cubic-bezier(.16,1,.3,1);transition-delay:.06s">e</span>
+    <span class="pre-char" style="font-family:'Kodchasan',sans-serif;font-size:clamp(2rem,6vw,4rem);font-weight:700;letter-spacing:.12em;color:var(--cream-fixed);transform:translateY(100%);display:inline-block;transition:transform .6s cubic-bezier(.16,1,.3,1);transition-delay:.12s">m</span>
+    <span class="pre-char" style="font-family:'Kodchasan',sans-serif;font-size:clamp(2rem,6vw,4rem);font-weight:700;letter-spacing:.12em;color:var(--cream-fixed);transform:translateY(100%);display:inline-block;transition:transform .6s cubic-bezier(.16,1,.3,1);transition-delay:.18s">l</span>
+    <span class="pre-char" style="font-family:'Kodchasan',sans-serif;font-size:clamp(2rem,6vw,4rem);font-weight:700;letter-spacing:.12em;color:var(--cream-fixed);transform:translateY(100%);display:inline-block;transition:transform .6s cubic-bezier(.16,1,.3,1);transition-delay:.24s">e</span>
+    <span class="pre-char" style="font-family:'Kodchasan',sans-serif;font-size:clamp(2rem,6vw,4rem);font-weight:700;letter-spacing:.12em;color:var(--cream-fixed);transform:translateY(100%);display:inline-block;transition:transform .6s cubic-bezier(.16,1,.3,1);transition-delay:.30s">m</span>
+    <span class="pre-char" style="font-family:'Kodchasan',sans-serif;font-size:clamp(2rem,6vw,4rem);font-weight:700;letter-spacing:.12em;color:var(--cream-fixed);transform:translateY(100%);display:inline-block;transition:transform .6s cubic-bezier(.16,1,.3,1);transition-delay:.36s">e</span>
+  </div>
+  <div id="preloader-line" style="width:0;height:2px;background:var(--rust);margin-top:16px;transition:width 1s ease .8s;max-width:200px"></div>
+</div>
 
-    <!-- Mobil: gif üstte, yazı altta | Desktop: yan yana -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center" class="hero-2col">
+<!-- ══ CUSTOM CURSOR ══ -->
+<div id="cursor" style="position:fixed;pointer-events:none;z-index:8999;width:20px;height:20px;border-radius:50%;background:var(--rust);mix-blend-mode:multiply;transform:translate(-50%,-50%);transition:transform .15s ease,width .3s ease,height .3s ease,opacity .3s ease;opacity:0;top:0;left:0"></div>
+<div id="cursor-follower" style="position:fixed;pointer-events:none;z-index:8998;width:40px;height:40px;border-radius:50%;border:1.5px solid var(--rust);transform:translate(-50%,-50%);transition:top .12s ease,left .12s ease,width .3s ease,height .3s ease,opacity .3s ease;opacity:0;top:0;left:0"></div>
 
-      <!-- SOL: Yazı -->
-      <div style="display:flex;flex-direction:column;gap:24px;order:2" class="hero-left">
+<!-- ══ WRAPPER ══ -->
+<div id="smooth-wrapper">
+<div id="smooth-content">
 
-        <h1 style="font-family:'Bebas Neue','Arial Black',sans-serif;font-size:clamp(4rem,11vw,10rem);line-height:0.88;margin:0;letter-spacing:-.01em">
-          <span style="display:block" class="hero-anim split-target">MASAYA</span>
-          <span style="display:block;color:var(--rust)" class="hero-anim hero-anim-delay1 split-target">HOŞGELDİN</span>
-        </h1>
+<!-- ══════════════════════════════════════════════
+     1. HERO — kinetic tipografi
+══════════════════════════════════════════════ -->
+<section id="hero" style="height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 var(--pad) 60px;position:relative;overflow:hidden;background:var(--cream)">
 
-        <p class="hero-anim hero-anim-delay2" style="font-size:1rem;color:var(--ink-faint);max-width:380px;margin:0;line-height:1.65">
-          Her hafta yeni bir sohbet, bir çay ve sofraya oturacak biri. Demleme'ye katıl.
-        </p>
+  <!-- Büyük arka plan yazısı -->
+  <div id="hero-bg-text" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Kodchasan',sans-serif;font-size:clamp(8rem,22vw,22rem);font-weight:800;color:rgba(26,18,8,.04);white-space:nowrap;pointer-events:none;line-height:1;user-select:none">
+    DEMLEME
+  </div>
 
-        <div class="hero-anim hero-anim-delay3" style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
-          <a href="https://youtube.com/@demleme" target="_blank" rel="noopener" class="btn-magnetic"
-            style="display:inline-flex;align-items:center;gap:10px;padding:14px 24px;background:var(--ink);color:var(--cream-fixed);border-radius:40px;font-weight:700;font-size:.9rem;text-decoration:none">
-            <svg viewBox="0 0 24 24" fill="var(--cream-fixed)" width="18" height="18"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31 31 0 000 12a31 31 0 00.5 5.8 3 3 0 002.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 002.1-2.1A31 31 0 0024 12a31 31 0 00-.5-5.8zM9.6 15.5V8.5L15.8 12z"/></svg>
-            YouTube'da İzle
-          </a>
-          <a href="/urunler" class="btn-magnetic"
-            style="display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border:2px solid var(--ink);color:var(--ink);border-radius:40px;font-weight:700;font-size:.9rem;text-decoration:none">
-            <svg viewBox="0 0 24 24" fill="none" stroke="var(--ink)" strokeWidth="1.8" width="18" height="18"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-            Mağaza
-          </a>
-        </div>
+  <!-- Çay animasyonu — sağ üst -->
+  <div id="hero-gif" style="position:absolute;top:0;right:0;width:55%;height:100%;display:flex;align-items:center;justify-content:center;pointer-events:none">
+    <img src="/images/cay-animasyon.webp" alt="" style="width:90%;max-width:520px;object-fit:contain;transform:translateY(20px);opacity:0;transition:transform 1.2s cubic-bezier(.16,1,.3,1) .4s,opacity 1s ease .4s" id="hero-gif-img">
+  </div>
 
-      </div>
-
-      <!-- SAĞ: GIF — mobilde üstte -->
-      <div style="display:flex;align-items:center;justify-content:center;order:1" class="hero-right">
-        <img src="/images/cay-animasyon.webp" alt="Çay animasyonu"
-          style="width:100%;max-width:400px;object-fit:contain" class="hero-anim hero-anim-delay1" />
-      </div>
-
+  <!-- Sol içerik -->
+  <div style="position:relative;z-index:2;max-width:600px">
+    <div style="overflow:hidden;margin-bottom:8px">
+      <p id="hero-eyebrow" style="font-size:.7rem;letter-spacing:.25em;color:var(--rust);font-weight:800;margin:0;transform:translateY(100%);transition:transform .8s cubic-bezier(.16,1,.3,1)">MASAYA HOŞGELDİN</p>
+    </div>
+    <div style="overflow:hidden">
+      <h1 id="hero-h1" style="font-family:'Kodchasan',sans-serif;font-size:clamp(3.5rem,9vw,8rem);font-weight:800;line-height:.92;margin:0 0 32px;transform:translateY(110%);transition:transform 1s cubic-bezier(.16,1,.3,1) .1s">
+        İyi bir çay,<br><em style="color:var(--rust);font-style:italic">zamanla</em><br>demlenir.
+      </h1>
+    </div>
+    <div id="hero-cta" style="display:flex;gap:12px;flex-wrap:wrap;opacity:0;transform:translateY(20px);transition:opacity .8s ease .5s,transform .8s ease .5s">
+      <a href="https://youtube.com/@demleme" target="_blank" rel="noopener"
+        style="display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--ink);color:var(--cream-fixed);border-radius:40px;font-weight:700;font-size:.9rem;text-decoration:none">
+        <img src="/images/yt-kirmizi.png" width="20" height="14" alt="" style="object-fit:contain">
+        YouTube'da İzle
+      </a>
+      <a href="/urunler"
+        style="display:inline-flex;align-items:center;gap:10px;padding:14px 28px;border:2px solid var(--ink);color:var(--ink);border-radius:40px;font-weight:700;font-size:.9rem;text-decoration:none">
+        Mağaza
+      </a>
     </div>
   </div>
 
-  <!-- Scroll ok -->
-  <div style="position:absolute;bottom:24px;left:50%;transform:translateX(-50%);opacity:.3;animation:heroArrow 2s ease-in-out infinite">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
-      <path d="M12 5v14M5 12l7 7 7-7"/>
-    </svg>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════ -->
-<!-- 2. İSTATİSTİKLER — tam genişlik, scroll reveal             -->
-<!-- ═══════════════════════════════════════════════════════════ -->
-<section id="stats" class="reveal-section">
-  <div style="max-width:var(--wrap);margin:0 auto;width:100%" class="stats-grid">
-
-    <div style="padding:60px 40px;display:flex;flex-direction:column;align-items:center;gap:8px;border-right:1px solid var(--line)">
-      <div class="stat-count" data-target="11999" style="font-family:'Bebas Neue',var(--font-display);font-size:clamp(3.5rem,6vw,6rem);color:var(--rust);line-height:1;font-weight:400">0</div>
-      <div style="font-size:.7rem;letter-spacing:.15em;color:var(--ink-faint);font-weight:700">DİNLEYEN</div>
-    </div>
-
-    <div style="padding:60px 40px;display:flex;flex-direction:column;align-items:center;gap:8px;border-right:1px solid var(--line)">
-      <div class="stat-count" data-target="84" style="font-family:'Bebas Neue',var(--font-display);font-size:clamp(3.5rem,6vw,6rem);color:var(--ink);line-height:1;font-weight:400">0</div>
-      <div style="font-size:.7rem;letter-spacing:.15em;color:var(--ink-faint);font-weight:700">BÖLÜM</div>
-    </div>
-
-    <div style="padding:60px 40px;display:flex;flex-direction:column;align-items:center;gap:8px">
-      <div class="stat-count" data-target="199" style="font-family:'Bebas Neue',var(--font-display);font-size:clamp(3.5rem,6vw,6rem);color:var(--lav-deep);line-height:1;font-weight:400">0</div>
-      <div style="font-size:.7rem;letter-spacing:.15em;color:var(--ink-faint);font-weight:700">TOPLULUK</div>
-    </div>
-
+  <!-- Scroll hint -->
+  <div style="position:absolute;bottom:28px;right:var(--pad);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:.4" id="scroll-hint">
+    <span style="font-size:.65rem;letter-spacing:.15em;writing-mode:vertical-rl">SCROLL</span>
+    <div style="width:1px;height:48px;background:var(--ink);transform-origin:top;animation:scrollLine 1.8s ease-in-out infinite"></div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════ -->
-<!-- 3. DEMLEYEN KİM                                             -->
-<!-- ═══════════════════════════════════════════════════════════ -->
-<section id="demleyen" class="reveal-section">
-  <div style="max-width:var(--wrap);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center" class="two-col">
+<!-- ══════════════════════════════════════════════
+     2. İSTATİSTİKLER — full width pinned
+══════════════════════════════════════════════ -->
+<section id="stats" style="background:var(--cream-deep);border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden">
+  <div style="max-width:var(--wrap);margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);width:100%" class="stats-grid">
+    <div style="padding:64px 40px;display:flex;flex-direction:column;align-items:center;gap:8px;border-right:1px solid var(--line)">
+      <div class="stat-count" data-target="11999" style="font-family:'Kodchasan',sans-serif;font-size:clamp(3rem,6vw,6rem);font-weight:800;color:var(--rust);line-height:1">0</div>
+      <div style="font-size:.65rem;letter-spacing:.18em;color:var(--ink-faint);font-weight:700">DİNLEYEN</div>
+    </div>
+    <div style="padding:64px 40px;display:flex;flex-direction:column;align-items:center;gap:8px;border-right:1px solid var(--line)">
+      <div class="stat-count" data-target="84" style="font-family:'Kodchasan',sans-serif;font-size:clamp(3rem,6vw,6rem);font-weight:800;color:var(--ink);line-height:1">0</div>
+      <div style="font-size:.65rem;letter-spacing:.18em;color:var(--ink-faint);font-weight:700">BÖLÜM</div>
+    </div>
+    <div style="padding:64px 40px;display:flex;flex-direction:column;align-items:center;gap:8px">
+      <div class="stat-count" data-target="199" style="font-family:'Kodchasan',sans-serif;font-size:clamp(3rem,6vw,6rem);font-weight:800;color:var(--lav-deep);line-height:1">0</div>
+      <div style="font-size:.65rem;letter-spacing:.18em;color:var(--ink-faint);font-weight:700">TOPLULUK</div>
+    </div>
+  </div>
+</section>
 
-    <div class="slide-left">
+<!-- ══════════════════════════════════════════════
+     3. DEMLEYEN KİM — clip reveal
+══════════════════════════════════════════════ -->
+<section id="demleyen" style="min-height:100svh;display:flex;align-items:center;padding:100px var(--pad);background:var(--cream);overflow:hidden;position:relative">
+  <div style="max-width:var(--wrap);margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center" class="two-col">
+
+    <div class="reveal-section" style="position:relative">
       <img src="/images/garen-foto.png" alt="Garen Kösedağ"
         style="width:100%;border-radius:24px;object-fit:cover;aspect-ratio:4/5" />
+      <div style="position:absolute;bottom:-20px;right:-20px;background:var(--rust);color:var(--cream-fixed);padding:16px 24px;border-radius:16px;font-family:'Kodchasan',sans-serif;font-weight:800;font-size:1rem">
+        84 Bölüm
+      </div>
     </div>
 
-    <div style="display:flex;flex-direction:column;gap:24px">
-      <p style="font-size:.7rem;letter-spacing:.2em;color:var(--rust);font-weight:800;margin:0">DEMLEYEN KİM</p>
-      <h2 style="font-family:'Bebas Neue',var(--font-display);font-size:clamp(3rem,5vw,5.5rem);line-height:.9;margin:0">
-        GAREN<br>KÖSEDAĞ
-      </h2>
-      <p style="font-size:1rem;color:var(--ink-faint);line-height:1.7;margin:0">
+    <div class="reveal-section" style="display:flex;flex-direction:column;gap:28px">
+      <div style="overflow:hidden">
+        <p style="font-size:.65rem;letter-spacing:.22em;color:var(--rust);font-weight:800;margin:0" class="clip-reveal">DEMLEYEN KİM</p>
+      </div>
+      <div style="overflow:hidden">
+        <h2 style="font-family:'Kodchasan',sans-serif;font-size:clamp(2.5rem,5vw,5rem);font-weight:800;line-height:.9;margin:0" class="clip-reveal">GAREN<br>KÖSEDAĞ</h2>
+      </div>
+      <p style="font-size:1rem;color:var(--ink-faint);line-height:1.7;margin:0" class="clip-reveal">
         İçeriği bu hafta geliyor. Garen'in hikâyesi, sofrası ve demlemesi burada olacak.
       </p>
-      <a href="/ben-kimim" style="display:inline-flex;align-items:center;gap:8px;font-weight:700;color:var(--rust);text-decoration:none;font-size:.9rem">
+      <a href="/ben-kimim" style="display:inline-flex;align-items:center;gap:8px;font-weight:700;color:var(--rust);text-decoration:none;font-size:.9rem" class="clip-reveal">
         Daha fazla oku →
       </a>
     </div>
-
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════ -->
-<!-- 4. DEMLEME SHOP                                             -->
-<!-- ═══════════════════════════════════════════════════════════ -->
-<section id="shop" class="reveal-section" style="padding:100px 0 80px">
-  <div style="max-width:var(--wrap);margin:0 auto;padding:0 var(--pad)">
-    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px">
-      <div>
-        <p style="font-size:.65rem;letter-spacing:.22em;color:var(--rust);font-weight:800;margin:0 0 10px">DEMLEME SHOP</p>
-        <h2 style="font-family:'Bebas Neue','Arial Black',sans-serif;font-size:clamp(2.8rem,6vw,5rem);margin:0;line-height:.88">SOFRADAN<br>GELİYOR</h2>
-      </div>
-      <a href="/urunler" style="font-weight:700;color:var(--ink);text-decoration:none;font-size:.82rem;letter-spacing:.06em;white-space:nowrap">Tümünü Gör →</a>
+<!-- ══════════════════════════════════════════════
+     4. SHOP — horizontal scroll pinned
+══════════════════════════════════════════════ -->
+<section id="shop-pin" style="background:var(--cream-deep);padding:80px 0 0;overflow:hidden">
+  <div style="max-width:var(--wrap);margin:0 auto;padding:0 var(--pad);display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px">
+    <div>
+      <p style="font-size:.65rem;letter-spacing:.22em;color:var(--rust);font-weight:800;margin:0 0 10px">DEMLEME SHOP</p>
+      <h2 style="font-family:'Kodchasan',sans-serif;font-size:clamp(2.5rem,5vw,5rem);font-weight:800;margin:0;line-height:.9">SOFRADAN<br>GELİYOR</h2>
     </div>
+    <a href="/urunler" style="font-weight:700;color:var(--ink);text-decoration:none;font-size:.82rem;letter-spacing:.06em;white-space:nowrap">Tümünü Gör →</a>
   </div>
 
-  <div class="shop-strip" style="padding-left:var(--pad);padding-right:var(--pad)">
-
-    <a href="/urunler/demleme-kupasi" class="shop-card shop-card-cream scale-up tilt-card">
+  <div class="shop-strip" style="padding:0 var(--pad) 60px;gap:20px">
+    <a href="/urunler/demleme-kupasi" class="shop-card shop-card-cream tilt-card">
       <div class="shop-card-img"><img src="/images/demleme-kupasi.webp" alt="Demleme Kupası" style="width:100%;height:100%;object-fit:contain"></div>
       <div class="shop-card-info"><div class="shop-card-name">Demleme Kupası</div><div class="shop-card-price">₺290</div></div>
     </a>
-
-    <a href="/urunler/sofra-tisortu" class="shop-card shop-card-lav scale-up tilt-card">
+    <a href="/urunler/sofra-tisortu" class="shop-card shop-card-lav tilt-card">
       <span class="shop-new-badge">YENİ</span>
       <div class="shop-card-img"><img src="/images/sofra-tisortu.webp" alt="Sofra Tişörtü" style="width:100%;height:100%;object-fit:contain"></div>
       <div class="shop-card-info"><div class="shop-card-name">Sofra Tişörtü</div><div class="shop-card-price">₺450</div></div>
     </a>
-
-    <a href="/urunler/mini-cay-seti" class="shop-card shop-card-rust scale-up tilt-card">
+    <a href="/urunler/mini-cay-seti" class="shop-card shop-card-rust tilt-card">
       <div class="shop-card-img"><img src="/images/mini-cay-seti.webp" alt="Mini Çay Seti" style="width:100%;height:100%;object-fit:contain"></div>
       <div class="shop-card-info"><div class="shop-card-name">Mini Çay Seti</div><div class="shop-card-price">₺620</div></div>
     </a>
-
-    <a href="/urunler/demleme-defteri" class="shop-card shop-card-green scale-up tilt-card">
+    <a href="/urunler/demleme-defteri" class="shop-card shop-card-green tilt-card">
       <div class="shop-card-img"><img src="/images/demleme-defteri.webp" alt="Demleme Defteri" style="width:100%;height:100%;object-fit:contain"></div>
       <div class="shop-card-info"><div class="shop-card-name">Demleme Defteri</div><div class="shop-card-price">₺180</div></div>
     </a>
-
-    <a href="/urunler/kupa-altligi-seti" class="shop-card shop-card-cream">
+    <a href="/urunler/kupa-altligi-seti" class="shop-card shop-card-cream tilt-card">
       <div class="shop-card-img"><img src="/images/kupa-altligi.webp" alt="Kupa Altlığı" style="width:100%;height:100%;object-fit:contain"></div>
       <div class="shop-card-info"><div class="shop-card-name">Kupa Altlığı Seti</div><div class="shop-card-price">₺140</div></div>
     </a>
-
-    <a href="/urunler/bolum-posteri" class="shop-card shop-card-lav">
+    <a href="/urunler/bolum-posteri" class="shop-card shop-card-lav tilt-card">
       <div class="shop-card-img"><img src="/images/bolum-posteri.webp" alt="Bölüm Posteri" style="width:100%;height:100%;object-fit:contain"></div>
       <div class="shop-card-info"><div class="shop-card-name">Bölüm Posteri</div><div class="shop-card-price">₺120</div></div>
     </a>
-
-    <a href="/urunler/hediye-karti" class="shop-card shop-card-rust">
+    <a href="/urunler/hediye-karti" class="shop-card shop-card-rust tilt-card">
       <div class="shop-card-img"><img src="/images/hediye-karti.webp" alt="Hediye Kartı" style="width:100%;height:100%;object-fit:contain"></div>
       <div class="shop-card-info"><div class="shop-card-name">Hediye Kartı</div><div class="shop-card-price">₺100+</div></div>
     </a>
-
-    <a href="/urunler" class="shop-card shop-card-dark" style="min-height:260px">
-      <div style="font-family:'Bebas Neue','Arial Black',sans-serif;font-size:2rem;color:var(--cream-fixed);text-align:center;line-height:1;padding:24px">TÜMÜNÜ<br>GÖR</div>
-      <div style="color:rgba(243,238,225,.35);font-size:1.4rem">→</div>
+    <a href="/urunler" class="shop-card shop-card-dark" style="min-height:260px;align-items:center;justify-content:center">
+      <div style="font-family:'Kodchasan',sans-serif;font-size:1.8rem;font-weight:800;color:var(--cream-fixed);text-align:center;line-height:1;padding:20px">TÜMÜNÜ<br>GÖR</div>
+      <div style="color:rgba(243,238,225,.35);font-size:1.4rem;margin-top:8px">→</div>
     </a>
-
   </div>
 </section>
 
-<section id="bu-hafta" class="reveal-section">
-  <div style="max-width:var(--wrap);margin:0 auto">
-
-    <div style="margin-bottom:56px">
-      <p style="font-size:.7rem;letter-spacing:.2em;color:var(--rust);font-weight:800;margin:0 0 12px">BU HAFTAKİ BÖLÜM</p>
-      <h2 style="font-family:'Bebas Neue',var(--font-display);font-size:clamp(2.5rem,5vw,5rem);margin:0;line-height:.9">KULAKLĞINI TAK,<br><span style="color:var(--rust)">SOFRAYA OTUR</span></h2>
+<!-- ══════════════════════════════════════════════
+     5. BU HAFTAKİ BÖLÜM
+══════════════════════════════════════════════ -->
+<section id="bu-hafta" style="min-height:100svh;padding:100px var(--pad);background:var(--cream);display:flex;align-items:center">
+  <div style="max-width:var(--wrap);margin:0 auto;width:100%">
+    <div style="margin-bottom:56px" class="reveal-section">
+      <p style="font-size:.65rem;letter-spacing:.22em;color:var(--rust);font-weight:800;margin:0 0 12px">BU HAFTAKİ BÖLÜM</p>
+      <h2 style="font-family:'Kodchasan',sans-serif;font-size:clamp(2.5rem,6vw,6rem);font-weight:800;margin:0;line-height:.88">KULAKLĞINI TAK,<br><span style="color:var(--rust);font-style:italic">SOFRAYA OTUR</span></h2>
     </div>
 
-    <!-- Son bölüm — büyük kart -->
-    <div style="background:var(--cream-deep);border-radius:24px;overflow:hidden;display:grid;grid-template-columns:1.2fr 1fr;margin-bottom:32px" class="episode-main">
+    <div class="episode-main reveal-section">
       <div style="position:relative;aspect-ratio:16/9;background:#000">
-        <iframe
-          src="https://www.youtube.com/embed/aK_btqNLtE0"
-          title="Yine Olsa Yine Yapardım — Bölüm 84"
-          frameborder="0"
-          allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture"
-          allowfullscreen
-          style="width:100%;height:100%;position:absolute;top:0;left:0">
-        </iframe>
+        <iframe src="https://www.youtube.com/embed/aK_btqNLtE0" title="Bölüm 84" frameborder="0" allowfullscreen style="width:100%;height:100%;position:absolute;top:0;left:0"></iframe>
       </div>
-      <div style="padding:40px;display:flex;flex-direction:column;justify-content:center;gap:16px">
-        <span style="font-size:.7rem;letter-spacing:.15em;color:var(--rust);font-weight:800">SON BÖLÜM</span>
-        <h3 style="font-family:'Bebas Neue',var(--font-display);font-size:clamp(2rem,3vw,3rem);margin:0;line-height:.95">YİNE OLSA<br>YİNE YAPARDIM</h3>
-        <p style="color:var(--ink-faint);font-size:.9rem;margin:0;line-height:1.6">Bölüm 84 · 42 dk</p>
+      <div style="padding:40px;display:flex;flex-direction:column;justify-content:center;gap:16px;background:var(--cream-deep)">
+        <span style="font-size:.65rem;letter-spacing:.15em;color:var(--rust);font-weight:800">SON BÖLÜM</span>
+        <h3 style="font-family:'Kodchasan',sans-serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:800;margin:0;line-height:.95">YİNE OLSA<br>YİNE YAPARDIM</h3>
+        <p style="color:var(--ink-faint);font-size:.9rem;margin:0">Bölüm 84 · 42 dk</p>
         <a href="https://youtube.com/@demleme" target="_blank" rel="noopener"
           style="display:inline-flex;align-items:center;gap:8px;padding:12px 20px;background:var(--ink);color:var(--cream-fixed);border-radius:40px;font-weight:700;font-size:.85rem;text-decoration:none;width:fit-content">
           YouTube'da İzle
@@ -209,179 +204,96 @@ export default function Home() {
       </div>
     </div>
 
-    <!-- Eski bölümler şerit -->
-    <p style="font-size:.7rem;letter-spacing:.15em;color:var(--ink-faint);font-weight:700;margin:0 0 20px">ESKİ BÖLÜMLER</p>
-    <div style="display:flex;gap:16px;overflow-x:auto;padding-bottom:12px;scroll-snap-type:x mandatory" class="episodes-strip">
-
+    <p style="font-size:.65rem;letter-spacing:.15em;color:var(--ink-faint);font-weight:700;margin:40px 0 20px">ESKİ BÖLÜMLER</p>
+    <div class="episodes-strip">
       <div style="flex:0 0 280px;scroll-snap-align:start;background:var(--cream-deep);border-radius:16px;overflow:hidden">
         <div style="position:relative;aspect-ratio:16/9;background:#000">
           <iframe src="https://www.youtube.com/embed/R_2epNt1xi4" title="Bölüm 83" frameborder="0" allowfullscreen style="width:100%;height:100%;position:absolute;top:0;left:0"></iframe>
         </div>
-        <div style="padding:14px">
-          <div style="font-weight:700;font-size:.85rem;margin-bottom:4px">Hangi İlin İnsanı Nasıl?</div>
-          <div style="color:var(--ink-faint);font-size:.75rem">Bölüm 83 · 38 dk</div>
-        </div>
+        <div style="padding:14px"><div style="font-weight:700;font-size:.85rem;margin-bottom:4px">Hangi İlin İnsanı Nasıl?</div><div style="color:var(--ink-faint);font-size:.75rem">Bölüm 83 · 38 dk</div></div>
       </div>
-
       <div style="flex:0 0 280px;scroll-snap-align:start;background:var(--cream-deep);border-radius:16px;overflow:hidden">
         <div style="position:relative;aspect-ratio:16/9;background:#000">
           <iframe src="https://www.youtube.com/embed/dsgQ1lz4hRU" title="Bölüm 82" frameborder="0" allowfullscreen style="width:100%;height:100%;position:absolute;top:0;left:0"></iframe>
         </div>
-        <div style="padding:14px">
-          <div style="font-weight:700;font-size:.85rem;margin-bottom:4px">Düğün Hazırlığı Zor İş</div>
-          <div style="color:var(--ink-faint);font-size:.75rem">Bölüm 82 · 51 dk</div>
-        </div>
+        <div style="padding:14px"><div style="font-weight:700;font-size:.85rem;margin-bottom:4px">Düğün Hazırlığı Zor İş</div><div style="color:var(--ink-faint);font-size:.75rem">Bölüm 82 · 51 dk</div></div>
       </div>
-
       <div style="flex:0 0 280px;scroll-snap-align:start;background:var(--cream-deep);border-radius:16px;overflow:hidden">
-        <div style="position:relative;aspect-ratio:16/9;background:#000">
-          <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" title="Bölüm 81" frameborder="0" allowfullscreen style="width:100%;height:100%;position:absolute;top:0;left:0"></iframe>
+        <div style="position:relative;aspect-ratio:16/9;background:#111;display:flex;align-items:center;justify-content:center">
+          <span style="color:rgba(255,255,255,.3);font-size:.8rem">Yakında</span>
         </div>
-        <div style="padding:14px">
-          <div style="font-weight:700;font-size:.85rem;margin-bottom:4px">Bölüm Başlığı</div>
-          <div style="color:var(--ink-faint);font-size:.75rem">Bölüm 81 · — dk</div>
-        </div>
+        <div style="padding:14px"><div style="font-weight:700;font-size:.85rem;margin-bottom:4px">Bölüm 81</div><div style="color:var(--ink-faint);font-size:.75rem">— dk</div></div>
       </div>
-
-      <div style="flex:0 0 280px;scroll-snap-align:start;background:var(--cream-deep);border-radius:16px;overflow:hidden">
-        <div style="position:relative;aspect-ratio:16/9;background:#000">
-          <iframe src="https://www.youtube.com/embed/VIDEO_ID_4" title="Bölüm 80" frameborder="0" allowfullscreen style="width:100%;height:100%;position:absolute;top:0;left:0"></iframe>
-        </div>
-        <div style="padding:14px">
-          <div style="font-weight:700;font-size:.85rem;margin-bottom:4px">Bölüm Başlığı</div>
-          <div style="color:var(--ink-faint);font-size:.75rem">Bölüm 80 · — dk</div>
-        </div>
-      </div>
-
     </div>
-
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════ -->
-<!-- 6. KONUKLAR                                                  -->
-<!-- ═══════════════════════════════════════════════════════════ -->
-<section id="konuklar" class="reveal-section" style="padding:100px var(--pad);background:var(--cream-deep)">
+<!-- ══════════════════════════════════════════════
+     6. KONUKLAR
+══════════════════════════════════════════════ -->
+<section id="konuklar" style="padding:100px var(--pad);background:var(--cream-deep)">
   <div style="max-width:var(--wrap);margin:0 auto">
-
-    <div style="margin-bottom:48px">
+    <div style="margin-bottom:48px" class="reveal-section">
       <p style="font-size:.65rem;letter-spacing:.22em;color:var(--rust);font-weight:800;margin:0 0 10px">SOFRADAKI KONUKLAR</p>
-      <h2 style="font-family:'Bebas Neue','Arial Black',sans-serif;font-size:clamp(2.5rem,5vw,5rem);margin:0;line-height:.9">SOFRAYA<br>HERKES DAVETLİ</h2>
+      <h2 style="font-family:'Kodchasan',sans-serif;font-size:clamp(2.5rem,5vw,5rem);font-weight:800;margin:0;line-height:.9">SOFRAYA<br>HERKES DAVETLİ</h2>
     </div>
-
     <div class="guests-strip">
-
+      ${[1,2,3,4,5,6].map(i => `
       <div style="flex:0 0 160px;scroll-snap-align:start;display:flex;flex-direction:column;align-items:center;gap:12px">
         <div style="width:120px;height:120px;border-radius:50%;background:var(--cream);border:2px solid var(--line);display:flex;align-items:center;justify-content:center">
           <svg viewBox="0 0 40 40" fill="none" width="36" height="36"><circle cx="20" cy="16" r="8" stroke="var(--ink-faint)" stroke-width="1.5"/><path d="M6 36c0-7.7 6.3-14 14-14s14 6.3 14 14" stroke="var(--ink-faint)" stroke-width="1.5"/></svg>
         </div>
-        <div style="text-align:center"><div style="font-weight:700;font-size:.88rem">Konuk 1</div><div style="color:var(--ink-faint);font-size:.75rem">Bölüm 84</div></div>
-      </div>
-
-      <div style="flex:0 0 160px;scroll-snap-align:start;display:flex;flex-direction:column;align-items:center;gap:12px">
-        <div style="width:120px;height:120px;border-radius:50%;background:var(--cream);border:2px solid var(--line);display:flex;align-items:center;justify-content:center">
-          <svg viewBox="0 0 40 40" fill="none" width="36" height="36"><circle cx="20" cy="16" r="8" stroke="var(--ink-faint)" stroke-width="1.5"/><path d="M6 36c0-7.7 6.3-14 14-14s14 6.3 14 14" stroke="var(--ink-faint)" stroke-width="1.5"/></svg>
-        </div>
-        <div style="text-align:center"><div style="font-weight:700;font-size:.88rem">Konuk 2</div><div style="color:var(--ink-faint);font-size:.75rem">Bölüm 83</div></div>
-      </div>
-
-      <div style="flex:0 0 160px;scroll-snap-align:start;display:flex;flex-direction:column;align-items:center;gap:12px">
-        <div style="width:120px;height:120px;border-radius:50%;background:var(--cream);border:2px solid var(--line);display:flex;align-items:center;justify-content:center">
-          <svg viewBox="0 0 40 40" fill="none" width="36" height="36"><circle cx="20" cy="16" r="8" stroke="var(--ink-faint)" stroke-width="1.5"/><path d="M6 36c0-7.7 6.3-14 14-14s14 6.3 14 14" stroke="var(--ink-faint)" stroke-width="1.5"/></svg>
-        </div>
-        <div style="text-align:center"><div style="font-weight:700;font-size:.88rem">Konuk 3</div><div style="color:var(--ink-faint);font-size:.75rem">Bölüm 82</div></div>
-      </div>
-
-      <div style="flex:0 0 160px;scroll-snap-align:start;display:flex;flex-direction:column;align-items:center;gap:12px">
-        <div style="width:120px;height:120px;border-radius:50%;background:var(--cream);border:2px solid var(--line);display:flex;align-items:center;justify-content:center">
-          <svg viewBox="0 0 40 40" fill="none" width="36" height="36"><circle cx="20" cy="16" r="8" stroke="var(--ink-faint)" stroke-width="1.5"/><path d="M6 36c0-7.7 6.3-14 14-14s14 6.3 14 14" stroke="var(--ink-faint)" stroke-width="1.5"/></svg>
-        </div>
-        <div style="text-align:center"><div style="font-weight:700;font-size:.88rem">Konuk 4</div><div style="color:var(--ink-faint);font-size:.75rem">Bölüm 81</div></div>
-      </div>
-
-      <div style="flex:0 0 160px;scroll-snap-align:start;display:flex;flex-direction:column;align-items:center;gap:12px">
-        <div style="width:120px;height:120px;border-radius:50%;background:var(--cream);border:2px solid var(--line);display:flex;align-items:center;justify-content:center">
-          <svg viewBox="0 0 40 40" fill="none" width="36" height="36"><circle cx="20" cy="16" r="8" stroke="var(--ink-faint)" stroke-width="1.5"/><path d="M6 36c0-7.7 6.3-14 14-14s14 6.3 14 14" stroke="var(--ink-faint)" stroke-width="1.5"/></svg>
-        </div>
-        <div style="text-align:center"><div style="font-weight:700;font-size:.88rem">Konuk 5</div><div style="color:var(--ink-faint);font-size:.75rem">Bölüm 80</div></div>
-      </div>
-
-      <div style="flex:0 0 160px;scroll-snap-align:start;display:flex;flex-direction:column;align-items:center;gap:12px">
-        <div style="width:120px;height:120px;border-radius:50%;background:var(--cream);border:2px solid var(--line);display:flex;align-items:center;justify-content:center">
-          <svg viewBox="0 0 40 40" fill="none" width="36" height="36"><circle cx="20" cy="16" r="8" stroke="var(--ink-faint)" stroke-width="1.5"/><path d="M6 36c0-7.7 6.3-14 14-14s14 6.3 14 14" stroke="var(--ink-faint)" stroke-width="1.5"/></svg>
-        </div>
-        <div style="text-align:center"><div style="font-weight:700;font-size:.88rem">Konuk 6</div><div style="color:var(--ink-faint);font-size:.75rem">Bölüm 79</div></div>
-      </div>
-
+        <div style="text-align:center"><div style="font-weight:700;font-size:.88rem">Konuk ${i}</div><div style="color:var(--ink-faint);font-size:.75rem">Bölüm ${85-i}</div></div>
+      </div>`).join('')}
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════ -->
-<!-- 7. ANKET                                                     -->
-<!-- ═══════════════════════════════════════════════════════════ -->
-<section id="anket" class="reveal-section">
-  <div style="max-width:600px;margin:0 auto;text-align:center;display:flex;flex-direction:column;gap:32px">
-
+<!-- ══════════════════════════════════════════════
+     7. ANKET
+══════════════════════════════════════════════ -->
+<section id="anket" style="padding:120px var(--pad);background:var(--cream)">
+  <div style="max-width:600px;margin:0 auto;text-align:center;display:flex;flex-direction:column;gap:32px" class="reveal-section">
     <div>
-      <p style="font-size:.7rem;letter-spacing:.2em;color:var(--rust);font-weight:800;margin:0 0 12px">SOFRA ANKETİ</p>
-      <h2 style="font-family:'Bebas Neue',var(--font-display);font-size:clamp(2.5rem,5vw,4.5rem);margin:0;line-height:.9">BİR SONRAKI BÖLÜM<br>NE OLSUN?</h2>
+      <p style="font-size:.65rem;letter-spacing:.22em;color:var(--rust);font-weight:800;margin:0 0 12px">SOFRA ANKETİ</p>
+      <h2 style="font-family:'Kodchasan',sans-serif;font-size:clamp(2rem,5vw,4rem);font-weight:800;margin:0;line-height:.9">BİR SONRAKI<br>BÖLÜM NE OLSUN?</h2>
     </div>
-
     <div style="display:flex;flex-direction:column;gap:12px" id="pollOptions">
-      <button onclick="demlemeVote(this,'Yemek kültürü')" style="padding:16px 24px;border:1.5px solid var(--line);border-radius:40px;background:transparent;cursor:pointer;font-size:.95rem;font-weight:600;font-family:var(--font-body);text-align:left;display:flex;justify-content:space-between;align-items:center;transition:all .2s">
-        Yemek kültürü <span class="poll-pct">—</span>
-      </button>
-      <button onclick="demlemeVote(this,'Çocukluk anıları')" style="padding:16px 24px;border:1.5px solid var(--line);border-radius:40px;background:transparent;cursor:pointer;font-size:.95rem;font-weight:600;font-family:var(--font-body);text-align:left;display:flex;justify-content:space-between;align-items:center;transition:all .2s">
-        Çocukluk anıları <span class="poll-pct">—</span>
-      </button>
-      <button onclick="demlemeVote(this,'İş hayatı')" style="padding:16px 24px;border:1.5px solid var(--line);border-radius:40px;background:transparent;cursor:pointer;font-size:.95rem;font-weight:600;font-family:var(--font-body);text-align:left;display:flex;justify-content:space-between;align-items:center;transition:all .2s">
-        İş hayatı <span class="poll-pct">—</span>
-      </button>
-      <button onclick="demlemeVote(this,'Aşk ve ilişkiler')" style="padding:16px 24px;border:1.5px solid var(--line);border-radius:40px;background:transparent;cursor:pointer;font-size:.95rem;font-weight:600;font-family:var(--font-body);text-align:left;display:flex;justify-content:space-between;align-items:center;transition:all .2s">
-        Aşk ve ilişkiler <span class="poll-pct">—</span>
-      </button>
+      <button onclick="demlemeVote(this)" style="padding:16px 24px;border:1.5px solid var(--line);border-radius:40px;background:transparent;cursor:pointer;font-size:.95rem;font-weight:600;font-family:var(--font-body);text-align:left;display:flex;justify-content:space-between;align-items:center;transition:all .2s">Yemek kültürü <span>—</span></button>
+      <button onclick="demlemeVote(this)" style="padding:16px 24px;border:1.5px solid var(--line);border-radius:40px;background:transparent;cursor:pointer;font-size:.95rem;font-weight:600;font-family:var(--font-body);text-align:left;display:flex;justify-content:space-between;align-items:center;transition:all .2s">Çocukluk anıları <span>—</span></button>
+      <button onclick="demlemeVote(this)" style="padding:16px 24px;border:1.5px solid var(--line);border-radius:40px;background:transparent;cursor:pointer;font-size:.95rem;font-weight:600;font-family:var(--font-body);text-align:left;display:flex;justify-content:space-between;align-items:center;transition:all .2s">İş hayatı <span>—</span></button>
+      <button onclick="demlemeVote(this)" style="padding:16px 24px;border:1.5px solid var(--line);border-radius:40px;background:transparent;cursor:pointer;font-size:.95rem;font-weight:600;font-family:var(--font-body);text-align:left;display:flex;justify-content:space-between;align-items:center;transition:all .2s">Aşk ve ilişkiler <span>—</span></button>
     </div>
-
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════ -->
-<!-- FOOTER                                                       -->
-<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- ══════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════ -->
 <footer>
   <div class="footer-watermark parallax" data-speed="0.06"><div class="mk mk-sofra-rust"></div></div>
   <div class="footer-grid">
     <div class="footer-brand">
-      <a href="#hero" class="footer-logo"><img class="footer-logo-img" src="/images/demleme-logo.png" alt="Demleme" width="150" height="24" style="height:52px;width:auto;object-fit:contain"></a>
+      <a href="#hero" class="footer-logo"><img class="footer-logo-img" src="/images/demleme-logo.png" alt="Demleme" style="height:52px;width:auto;object-fit:contain"></a>
       <p>İyi bir sohbet, iyi bir dünyaya katkı olsun.</p>
       <div class="footer-social">
-        <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube">
+        <a href="https://youtube.com/@demleme" target="_blank" rel="noopener" aria-label="YouTube">
           <img src="/images/yt-footer.png" width="28" height="20" alt="YouTube" style="object-fit:contain">
         </a>
-        <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
+        <a href="https://instagram.com/demleme" target="_blank" rel="noopener" aria-label="Instagram">
           <img src="/images/ig-beyaz.png" width="22" height="22" alt="Instagram" style="object-fit:contain">
         </a>
-        <a href="mailto:merhaba@demleme.com" aria-label="E-posta" title="E-posta">
+        <a href="mailto:merhaba@demleme.com" aria-label="E-posta">
           <img src="/images/mail-beyaz.png" width="24" height="20" alt="Mail" style="object-fit:contain;opacity:.8">
-        </a>
-        <a href="https://tiktok.com" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok">
-          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
-        </a>
-        <a href="https://open.spotify.com" target="_blank" rel="noopener" aria-label="Spotify" title="Spotify">
-          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.6 14.4c-.2.3-.6.4-.9.2-2.5-1.5-5.7-1.9-9.4-1-.4.1-.7-.1-.8-.5-.1-.4.1-.7.5-.8 4.1-.9 7.6-.5 10.4 1.1.3.2.4.6.2 1zm1.2-2.8c-.2.4-.7.5-1.1.3-2.9-1.8-7.2-2.3-10.6-1.2-.4.1-.9-.1-1-.5-.1-.4.1-.9.5-1 3.8-1.2 8.6-.6 11.9 1.4.4.2.5.7.3 1zm.1-2.8C14.4 8.9 8.8 8.7 5.6 9.7c-.5.2-1-.2-1.1-.7-.2-.5.2-1 .7-1.1 3.7-1.1 9.8-.9 13.6 1.4.5.3.6.9.3 1.4-.3.4-.9.6-1.3.3z"/></svg>
-        </a>
-        <a href="#" target="_blank" rel="noopener" aria-label="Podcast" title="Podcast">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><circle cx="12" cy="11" r="4"/><path d="M12 15v4M8 19h8"/><path d="M5 11a7 7 0 0014 0" stroke-linecap="round"/></svg>
         </a>
       </div>
     </div>
     <div class="footer-col">
       <h5>Keşfet</h5>
       <ul>
-        <li><a href="#hero">Ana Sayfa</a></li>
-        <li><a href="#bu-hafta">YouTube</a></li>
-        <li><a href="#demleyen">Hakkımızda</a></li>
+        <li><a href="/">Ana Sayfa</a></li>
+        <li><a href="/#bu-hafta">YouTube</a></li>
+        <li><a href="/#demleyen">Hakkımızda</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -391,14 +303,13 @@ export default function Home() {
         <li><a href="/urunler">Tişört</a></li>
         <li><a href="/urunler">Kupa</a></li>
         <li><a href="/urunler">Çay Seti</a></li>
-        <li><a href="/urunler">Defter</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h5>Yardım</h5>
       <ul>
-        <li><a href="#">Kargo &amp; Teslimat</a></li>
-        <li><a href="#">İade &amp; Değişim</a></li>
+        <li><a href="#">Kargo & Teslimat</a></li>
+        <li><a href="#">İade & Değişim</a></li>
         <li><a href="/iletisim">İletişim</a></li>
       </ul>
     </div>
@@ -406,10 +317,9 @@ export default function Home() {
       <h4>Demleme. Her Yerde.</h4>
       <p>Uygulamamızı indir, içeriklere kolayca ulaş.</p>
       <div class="footer-app-btns">
-        <a href="#" class="footer-app-btn"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v13m0 0l-4-4m4 4l4-4"/><path d="M5 21h14"/></svg> App Store</a>
-        <a href="#" class="footer-app-btn"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v13m0 0l-4-4m4 4l4-4"/><path d="M5 21h14"/></svg> Google Play</a>
+        <a href="#" class="footer-app-btn">↓ App Store</a>
+        <a href="#" class="footer-app-btn">↓ Google Play</a>
       </div>
-      <div class="footer-app-deco" aria-hidden="true"><span></span></div>
     </div>
   </div>
   <div class="footer-bottom">
@@ -422,173 +332,150 @@ export default function Home() {
   </div>
 </footer>
 
+</div><!-- smooth-content -->
+</div><!-- smooth-wrapper -->
+
+<style>
+@keyframes scrollLine { 0%{transform:scaleY(0);transform-origin:top} 50%{transform:scaleY(1);transform-origin:top} 51%{transform-origin:bottom} 100%{transform:scaleY(0);transform-origin:bottom} }
+
+/* Clip reveal */
+.clip-reveal { display:block; transform:translateY(110%); transition:transform .9s cubic-bezier(.16,1,.3,1); }
+.clip-reveal.in { transform:translateY(0); }
+
+/* Reveal section */
+.reveal-section { opacity:0; transform:translateY(40px); transition:opacity .9s ease, transform .9s cubic-bezier(.16,1,.3,1); }
+.reveal-section.in { opacity:1; transform:translateY(0); }
+</style>
+
 <script>
-
-// ══ FX: SPLIT TEXT ══
+// ══ PRELOADER ══
 (function(){
-  function splitAndReveal(el, baseDelay){
-    var original = el.innerHTML;
-    // Sadece text node'larını split et
-    var text = el.textContent.trim();
-    el.innerHTML = '';
-    text.split('').forEach(function(char, i){
-      var s = document.createElement('span');
-      s.className = 'split-char';
-      s.textContent = char === ' ' ? '\u00A0' : char;
-      s.style.transitionDelay = (baseDelay + i * 40) + 'ms';
-      el.appendChild(s);
-    });
-    setTimeout(function(){
-      el.querySelectorAll('.split-char').forEach(function(c){ c.classList.add('in'); });
-    }, 50);
-  }
+  var pre = document.getElementById('preloader');
+  var chars = document.querySelectorAll('.pre-char');
+  var line = document.getElementById('preloader-line');
 
-  function initSplit(){
-    var targets = document.querySelectorAll('.split-target');
-    targets.forEach(function(el, i){
-      splitAndReveal(el, 80 + i * 200);
-    });
-  }
+  // Harfleri göster
+  setTimeout(function(){
+    chars.forEach(function(c){ c.style.transform = 'translateY(0)'; });
+    line.style.width = '160px';
+  }, 100);
 
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', function(){ setTimeout(initSplit, 300); });
-  } else { setTimeout(initSplit, 300); }
+  // Preloader kaldır
+  setTimeout(function(){
+    pre.style.transition = 'opacity .6s ease, transform .6s ease';
+    pre.style.opacity = '0';
+    pre.style.transform = 'translateY(-100%)';
+    setTimeout(function(){ pre.style.display = 'none'; }, 600);
+    // Hero animasyonları başlat
+    initHero();
+  }, 2200);
 })();
 
-// ══ FX: PARALLAX ══
-(function(){
-  function onScroll(){
-    var sy = window.scrollY;
-    var heroImg = document.querySelector('#hero .hero-right img');
-    if(heroImg) heroImg.style.transform = 'translateY(' + (sy * 0.12) + 'px)';
-  }
-  window.addEventListener('scroll', onScroll, {passive:true});
-})();
+// ══ HERO REVEAL ══
+function initHero(){
+  var eyebrow = document.getElementById('hero-eyebrow');
+  var h1 = document.getElementById('hero-h1');
+  var cta = document.getElementById('hero-cta');
+  var gif = document.getElementById('hero-gif-img');
+  if(eyebrow){ eyebrow.style.transform = 'translateY(0)'; }
+  if(h1){ h1.style.transform = 'translateY(0)'; }
+  if(cta){ cta.style.opacity = '1'; cta.style.transform = 'translateY(0)'; }
+  if(gif){ gif.style.transform = 'translateY(0)'; gif.style.opacity = '1'; }
+}
 
-// ══ FX: MAGNETIC BUTTONS ══
+// ══ CUSTOM CURSOR ══
 (function(){
-  function initMagnetic(){
-    document.querySelectorAll('.btn-magnetic').forEach(function(btn){
-      btn.addEventListener('mousemove', function(e){
-        var r = btn.getBoundingClientRect();
-        var x = (e.clientX - r.left - r.width/2) * 0.3;
-        var y = (e.clientY - r.top - r.height/2) * 0.3;
-        btn.style.transform = 'translate(' + x + 'px,' + y + 'px) scale(1.04)';
-      });
-      btn.addEventListener('mouseleave', function(){
-        btn.style.transform = '';
-      });
-    });
-  }
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', initMagnetic);
-  } else { initMagnetic(); }
-})();
+  var cursor = document.getElementById('cursor');
+  var follower = document.getElementById('cursor-follower');
+  if(!cursor || !follower) return;
+  if('ontouchstart' in window) return; // mobile'da kapat
 
+  var mx = 0, my = 0, fx = 0, fy = 0;
+  cursor.style.opacity = '1'; follower.style.opacity = '1';
 
-// ══ SCROLL ANİMASYONLARI ══
-(function(){
-    // Tilt 3D
-  document.querySelectorAll('.tilt-card').forEach(function(card){
-    card.addEventListener('mousemove', function(e){
-      var r = card.getBoundingClientRect();
-      var x = (e.clientX - r.left) / r.width - 0.5;
-      var y = (e.clientY - r.top) / r.height - 0.5;
-      card.style.transform = 'perspective(500px) rotateY('+(x*14)+'deg) rotateX('+(-y*14)+'deg) scale(1.04)';
-    });
-    card.addEventListener('mouseleave', function(){
-      card.style.transform = '';
-    });
+  document.addEventListener('mousemove', function(e){
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
   });
 
-  // IntersectionObserver — tüm animasyonlar
-  var targets = document.querySelectorAll('.clip-reveal,.blur-in,.slide-left,.slide-right,.scale-up,.stagger,.reveal-section');
+  // Follower smooth
+  (function loop(){
+    fx += (mx - fx) * 0.12; fy += (my - fy) * 0.12;
+    follower.style.left = fx + 'px'; follower.style.top = fy + 'px';
+    requestAnimationFrame(loop);
+  })();
+
+  // Hover efektleri
+  document.querySelectorAll('a,button').forEach(function(el){
+    el.addEventListener('mouseenter', function(){
+      cursor.style.width = '12px'; cursor.style.height = '12px';
+      follower.style.width = '60px'; follower.style.height = '60px';
+    });
+    el.addEventListener('mouseleave', function(){
+      cursor.style.width = '20px'; cursor.style.height = '20px';
+      follower.style.width = '40px'; follower.style.height = '40px';
+    });
+  });
+})();
+
+// ══ SCROLL REVEAL (IntersectionObserver) ══
+(function(){
   var obs = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
       if(!e.isIntersecting) return;
-      var el = e.target;
-      el.classList.add('in');
-      if(el.classList.contains('reveal-section')) el.classList.add('visible');
-      // stat-count
-      el.querySelectorAll('.stat-count').forEach(function(cnt){
+      e.target.classList.add('in');
+      // stat-count animasyonu
+      e.target.querySelectorAll('.stat-count').forEach(function(cnt){
         var tgt = parseInt(cnt.getAttribute('data-target'));
-        var dur = 1600, t0 = performance.now();
+        var t0 = performance.now();
         (function tick(now){
-          var p = Math.min((now-t0)/dur,1), ease = 1-Math.pow(1-p,3);
+          var p = Math.min((now-t0)/1600,1), ease = 1-Math.pow(1-p,3);
           cnt.textContent = Math.round(ease*tgt).toLocaleString('tr-TR');
           if(p<1) requestAnimationFrame(tick);
         })(t0);
       });
-      obs.unobserve(el);
+      obs.unobserve(e.target);
     });
-  },{threshold:0.08, rootMargin:'0px 0px -20px 0px'});
-  targets.forEach(function(el){ obs.observe(el); });
+  },{threshold:0.12, rootMargin:'0px 0px -30px 0px'});
+
+  document.querySelectorAll('.reveal-section,.clip-reveal,.stat-count').forEach(function(el){
+    obs.observe(el);
+  });
 })();
 
-// Hero giriş animasyonu
+// ══ PARALLAX ══
 (function(){
-  function runHero(){
-    var els = document.querySelectorAll('.hero-anim');
-    els.forEach(function(el, i){
-      setTimeout(function(){ el.classList.add('visible'); }, 80 + i*140);
-    });
-  }
-  if(document.readyState==='loading'){
-    document.addEventListener('DOMContentLoaded', function(){ setTimeout(runHero, 100); });
-  } else {
-    setTimeout(runHero, 100);
-  }
+  var heroBg = document.getElementById('hero-bg-text');
+  window.addEventListener('scroll', function(){
+    var sy = window.scrollY;
+    if(heroBg) heroBg.style.transform = 'translate(-50%,calc(-50% + ' + (sy*0.2) + 'px))';
+  }, {passive:true});
 })();
 
-// Scroll reveal
+// ══ TILT CARDS ══
 (function(){
-  function revealSection(el){
-    el.classList.add('visible');
-    el.querySelectorAll('.stat-count').forEach(function(counter){
-      var target = parseInt(counter.getAttribute('data-target'));
-      var duration = 1600;
-      var start = performance.now();
-      function tick(now){
-        var p = Math.min((now-start)/duration,1);
-        var ease = 1-Math.pow(1-p,3);
-        counter.textContent = Math.round(ease*target).toLocaleString('tr-TR');
-        if(p<1) requestAnimationFrame(tick);
-      }
-      requestAnimationFrame(tick);
+  document.querySelectorAll('.tilt-card').forEach(function(card){
+    card.addEventListener('mousemove', function(e){
+      var r = card.getBoundingClientRect();
+      var x = (e.clientX-r.left)/r.width - .5;
+      var y = (e.clientY-r.top)/r.height - .5;
+      card.style.transform = 'perspective(500px) rotateY('+(x*14)+'deg) rotateX('+(-y*14)+'deg) scale(1.04)';
     });
-  }
-
-  var sections = document.querySelectorAll('.reveal-section');
-
-  if('IntersectionObserver' in window){
-    var obs = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if(e.isIntersecting){ revealSection(e.target); obs.unobserve(e.target); }
-      });
-    },{threshold:0.05, rootMargin:'0px 0px -40px 0px'});
-    sections.forEach(function(s){ obs.observe(s); });
-  } else {
-    // Fallback: hepsini göster
-    sections.forEach(function(s){ revealSection(s); });
-  }
+    card.addEventListener('mouseleave', function(){ card.style.transform = ''; });
+  });
 })();
 
-// Anket
-function demlemeVote(btn, choice){
-  var btns = document.querySelectorAll('#pollOptions button');
-  btns.forEach(function(b){ b.disabled=true; b.style.opacity='.5'; });
-  btn.style.opacity='1';
-  btn.style.background='var(--ink)';
-  btn.style.color='var(--cream-fixed)';
-  btn.style.borderColor='var(--ink)';
-  btn.querySelector('.poll-pct').textContent = '✓';
+// ══ ANKET ══
+function demlemeVote(btn){
+  document.querySelectorAll('#pollOptions button').forEach(function(b){
+    b.disabled=true; b.style.opacity='.5';
+  });
+  btn.style.opacity='1'; btn.style.background='var(--ink)';
+  btn.style.color='var(--cream-fixed)'; btn.style.borderColor='var(--ink)';
+  btn.querySelector('span').textContent = '✓';
 }
 </script>
-`
-        }}
-      />
+` }} />
     </>
   );
 }
-
-
