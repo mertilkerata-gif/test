@@ -387,6 +387,68 @@ export default function Home() {
 
 <script>
 
+// ══ FX: SPLIT TEXT ══
+(function(){
+  function splitAndReveal(el, baseDelay){
+    var original = el.innerHTML;
+    // Sadece text node'larını split et
+    var text = el.textContent.trim();
+    el.innerHTML = '';
+    text.split('').forEach(function(char, i){
+      var s = document.createElement('span');
+      s.className = 'split-char';
+      s.textContent = char === ' ' ? '\u00A0' : char;
+      s.style.transitionDelay = (baseDelay + i * 40) + 'ms';
+      el.appendChild(s);
+    });
+    setTimeout(function(){
+      el.querySelectorAll('.split-char').forEach(function(c){ c.classList.add('in'); });
+    }, 50);
+  }
+
+  function initSplit(){
+    var targets = document.querySelectorAll('.split-target');
+    targets.forEach(function(el, i){
+      splitAndReveal(el, 80 + i * 200);
+    });
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){ setTimeout(initSplit, 300); });
+  } else { setTimeout(initSplit, 300); }
+})();
+
+// ══ FX: PARALLAX ══
+(function(){
+  function onScroll(){
+    var sy = window.scrollY;
+    var heroImg = document.querySelector('#hero .hero-right img');
+    if(heroImg) heroImg.style.transform = 'translateY(' + (sy * 0.12) + 'px)';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+})();
+
+// ══ FX: MAGNETIC BUTTONS ══
+(function(){
+  function initMagnetic(){
+    document.querySelectorAll('.btn-magnetic').forEach(function(btn){
+      btn.addEventListener('mousemove', function(e){
+        var r = btn.getBoundingClientRect();
+        var x = (e.clientX - r.left - r.width/2) * 0.3;
+        var y = (e.clientY - r.top - r.height/2) * 0.3;
+        btn.style.transform = 'translate(' + x + 'px,' + y + 'px) scale(1.04)';
+      });
+      btn.addEventListener('mouseleave', function(){
+        btn.style.transform = '';
+      });
+    });
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', initMagnetic);
+  } else { initMagnetic(); }
+})();
+
+
 // ══ SCROLL ANİMASYONLARI ══
 (function(){
     // Tilt 3D
