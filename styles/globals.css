@@ -631,12 +631,7 @@ footer {
 }
 .scale-up.in { opacity: 1; transform: scale(1); }
 
-/* Color shift — body bg */
-body { transition: background-color .8s ease; }
-body.bg-cream { background-color: var(--cream); }
-body.bg-cream-deep { background-color: var(--cream-deep); }
-body.bg-ink { background-color: var(--ink); }
-body.bg-lav { background-color: #ede8f8; }
+
 
 /* Tilt card */
 .tilt-card { transform-style: preserve-3d; transition: transform .15s ease; will-change: transform; }
