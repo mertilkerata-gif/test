@@ -357,7 +357,7 @@ export default function Home() {
       <p>İyi bir sohbet, iyi bir dünyaya katkı olsun.</p>
       <div class="footer-social">
         <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube">
-          <img src="/images/yt-kirmizi.png" width="28" height="20" alt="YouTube" style="object-fit:contain">
+          <img src="/images/yt-footer.png" width="28" height="20" alt="YouTube" style="object-fit:contain">
         </a>
         <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
           <img src="/images/ig-beyaz.png" width="22" height="22" alt="Instagram" style="object-fit:contain">
