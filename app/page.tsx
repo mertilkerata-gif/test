@@ -24,8 +24,8 @@ export default function Home() {
     <div style="display:flex;flex-direction:column;gap:24px">
 
       <h1 style="font-family:'Bebas Neue','Arial Black',sans-serif;font-size:clamp(4rem,12vw,10rem);line-height:0.9;margin:0;letter-spacing:-.01em">
-        <span style="display:block" class="hero-anim">MASAYA</span>
-        <span style="display:block;color:var(--rust)" class="hero-anim hero-anim-delay1">HOŞGELDİN</span>
+        <span style="display:block" class="hero-anim split-target">MASAYA</span>
+        <span style="display:block;color:var(--rust)" class="hero-anim hero-anim-delay1 split-target">HOŞGELDİN</span>
       </h1>
 
       <p class="hero-anim hero-anim-delay2" style="font-size:1rem;color:var(--ink-faint);max-width:380px;margin:0;line-height:1.65">
@@ -34,7 +34,7 @@ export default function Home() {
 
       <div class="hero-anim hero-anim-delay3" style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
         <a href="https://youtube.com/@demleme" target="_blank" rel="noopener"
-          style="display:inline-flex;align-items:center;gap:10px;padding:14px 24px;background:var(--ink);color:var(--cream-fixed);border-radius:40px;font-weight:700;font-size:.9rem;text-decoration:none">
+          class="btn-magnetic" style="display:inline-flex;align-items:center;gap:10px;padding:14px 24px;background:var(--ink);color:var(--cream-fixed);border-radius:40px;font-weight:700;font-size:.9rem;text-decoration:none">
           <img src="/images/yt-kirmizi.png" width="22" height="16" alt="YT" style="object-fit:contain;flex-shrink:0">
           YouTube'da İzle
         </a>
