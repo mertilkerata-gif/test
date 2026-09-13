@@ -95,7 +95,7 @@ export default function Home() {
 
     <div style="display:flex;flex-direction:column;gap:28px">
 
-      <h1 class="hero-anim" style="font-family:'Bebas Neue','Arial Black',sans-serif;font-size:clamp(4.5rem,12vw,11rem);line-height:0.88;margin:0;letter-spacing:-.01em">
+      <h1 class="hero-anim" style="font-family:'Bebas Neue','Arial Black',sans-serif;font-size:clamp(3rem,13vw,11rem);line-height:0.88;margin:0;letter-spacing:-.01em;overflow-wrap:break-word">
         MASAYA<br><span style="color:var(--rust)">HOŞGELDİN</span>
       </h1>
 
