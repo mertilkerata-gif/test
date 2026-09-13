@@ -18,7 +18,7 @@ export default function Home() {
 <section class="hero" id="hero" data-secnum="00" style="display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;padding:80px var(--pad) 60px">
 
   <!-- Dekoratif arka plan blobs -->
-  <div style="position:absolute;width:500px;height:500px;top:-100px;right:-80px;background:radial-gradient(circle,var(--butter) 0%,transparent 65%);pointer-events:none;opacity:.55" aria-hidden="true"></div>
+  
   <div style="position:absolute;width:320px;height:320px;bottom:-80px;left:-60px;background:radial-gradient(circle,var(--lav) 0%,transparent 65%);pointer-events:none;opacity:.3" aria-hidden="true"></div>
 
   <!-- İçerik -->
@@ -28,32 +28,14 @@ export default function Home() {
     <div style="display:flex;flex-direction:column;gap:28px">
 
       <!-- Eyebrow -->
-      <p style="font-size:.7rem;letter-spacing:.2em;color:var(--rust);margin:0;font-weight:800">MASAYA HOŞGELDİN</p>
+      
 
       <!-- Daktilo başlık -->
-      <h1 style="font-family:var(--font-display);font-size:clamp(3.5rem,6vw,6.5rem);line-height:1.0;margin:0" aria-label="İyi bir çay zamanla demlenir.">
-        <span id="tw-line1" style="display:block;min-height:1.05em"></span>
-        <span id="tw-line2" style="display:block;color:var(--lav-deep);font-family:'Kodchasan',sans-serif;font-style:italic;font-size:clamp(4rem,7vw,7.5rem);min-height:1.05em;line-height:.95"></span>
-        <span id="tw-line3" style="display:block;min-height:1.05em"></span>
+      <h1 style="font-family:'Bebas Neue',var(--font-display);font-size:clamp(4rem,8vw,9rem);line-height:0.9;margin:0;letter-spacing:-.02em" aria-label="Masaya Hoşgeldin">
+        MASAYA<br/><span style="color:var(--rust)">HOŞGELDİN</span>
       </h1>
 
-      <!-- İstatistikler — yatay, sayaç animasyonlu -->
-      <div id="hero-stats" style="display:flex;gap:32px;align-items:center;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
-        <div>
-          <div id="stat-dinleyen" style="font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:var(--rust);line-height:1">0</div>
-          <div style="font-size:.72rem;color:var(--ink-faint);font-weight:600;letter-spacing:.05em">DİNLEYEN</div>
-        </div>
-        <div style="width:1px;height:36px;background:var(--line)"></div>
-        <div>
-          <div id="stat-bolum" style="font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:var(--green);line-height:1">0</div>
-          <div style="font-size:.72rem;color:var(--ink-faint);font-weight:600;letter-spacing:.05em">BÖLÜM</div>
-        </div>
-        <div style="width:1px;height:36px;background:var(--line)"></div>
-        <div>
-          <div id="stat-topluluk" style="font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:var(--lav-deep);line-height:1">0</div>
-          <div style="font-size:.72rem;color:var(--ink-faint);font-weight:600;letter-spacing:.05em">TOPLULUK</div>
-        </div>
-      </div>
+      
 
       <!-- CTA -->
       <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
@@ -63,24 +45,14 @@ export default function Home() {
         </a>
         <a href="/urunler" class="btn btn-outline">Mağazayı Gez</a>
       </div>
-
-      <!-- Yeni bölüm badge — ALTTA -->
-      <div style="display:inline-flex;align-items:center;gap:10px;padding:10px 18px;background:var(--ink);border-radius:40px;width:fit-content">
-        <span style="width:8px;height:8px;border-radius:50%;background:#ff4a4a;box-shadow:0 0 10px #ff4a4a;animation:heroLivePulse 1.4s ease-in-out infinite;flex-shrink:0"></span>
-        <span style="font-size:.8rem;font-weight:700;color:var(--cream-fixed);letter-spacing:.04em">Yeni Bölüm Bugün Yayında</span>
-      </div>
-    </div>
+</div>
 
     <!-- SAĞ — çay içen figür + demlenme -->
     <div style="display:flex;flex-direction:column;gap:16px" class="hero-right-col">
 
       <!-- Figür kartı -->
-      <div style="border-radius:24px;background:transparent;aspect-ratio:4/3;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative">
-        <img src="/images/cay-animasyon.webp" alt="Çay animasyonu" style="width:85%;height:85%;object-fit:contain" />
-        <div style="position:absolute;bottom:14px;left:14px;background:rgba(255,255,255,.88);backdrop-filter:blur(10px);border-radius:12px;padding:8px 14px;display:flex;align-items:center;gap:8px">
-          <span style="width:7px;height:7px;border-radius:50%;background:var(--rust);animation:heroLivePulse 1.6s infinite;flex-shrink:0"></span>
-          <span style="font-size:.75rem;font-weight:700;color:var(--ink)">demleniyor...</span>
-        </div>
+      <div style="border-radius:24px;background:transparent;aspect-ratio:3/4;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative">
+        <img src="/images/cay-animasyon.webp" alt="Çay animasyonu" style="width:100%;height:100%;object-fit:contain" />
       </div>
 
       <!-- Bardak animasyonu + istatistik yan yana -->
@@ -134,6 +106,24 @@ export default function Home() {
       .hero-right-col { display: none !important; }
     }
   </style>
+</section>
+
+<!-- ============================================================ -->
+<section id="stats-section" style="max-width:var(--wrap);margin:0 auto;width:100%;padding:80px var(--pad);opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease" class="stats-reveal">
+  <div style="display:flex;gap:0;align-items:stretch;justify-content:center;width:100%">
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;padding:40px 24px;border-right:1px solid var(--line)">
+      <div id="stat-dinleyen" style="font-family:'Bebas Neue',var(--font-display);font-size:clamp(3rem,5vw,5rem);font-weight:800;color:var(--rust);line-height:1">0</div>
+      <div style="font-size:.75rem;color:var(--ink-faint);font-weight:700;letter-spacing:.1em">DİNLEYEN</div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;padding:40px 24px;border-right:1px solid var(--line)">
+      <div id="stat-bolum" style="font-family:'Bebas Neue',var(--font-display);font-size:clamp(3rem,5vw,5rem);font-weight:800;color:var(--green);line-height:1">0</div>
+      <div style="font-size:.75rem;color:var(--ink-faint);font-weight:700;letter-spacing:.1em">BÖLÜM</div>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;padding:40px 24px">
+      <div id="stat-topluluk" style="font-family:'Bebas Neue',var(--font-display);font-size:clamp(3rem,5vw,5rem);font-weight:800;color:var(--lav-deep);line-height:1">0</div>
+      <div style="font-size:.75rem;color:var(--ink-faint);font-weight:700;letter-spacing:.1em">TOPLULUK</div>
+    </div>
+  </div>
 </section>
 
 <!-- ============================================================ -->
@@ -775,9 +765,27 @@ export default function Home() {
   </div>
 </div>
 
+
+<script>
+(function(){
+  var el = document.querySelector('.stats-reveal');
+  if(!el) return;
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.style.opacity='1';
+        e.target.style.transform='translateY(0)';
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:0.2});
+  obs.observe(el);
+})();
+</script>
 `
       }}
     />
     </>
   );
 }
+
