@@ -41,7 +41,7 @@ export default function Home() {
     <div style="display:flex;flex-direction:column;gap:28px">
 
       <!-- Eyebrow -->
-      <p style="font-size:.7rem;letter-spacing:.2em;color:var(--rust);margin:0;font-weight:800">HAFTALIK SOHBET SOFRASI</p>
+      <p style="font-size:.7rem;letter-spacing:.2em;color:var(--rust);margin:0;font-weight:800">MASAYA HOŞGELDİN</p>
 
       <!-- Daktilo başlık -->
       <h1 style="font-family:var(--font-display);font-size:clamp(3.5rem,6vw,6.5rem);line-height:1.0;margin:0" aria-label="İyi bir çay zamanla demlenir.">
