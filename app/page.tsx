@@ -188,109 +188,83 @@ export default function Home() {
 <!-- ═══════════════════════════════════════════════════════════ -->
 <!-- 4. DEMLEME SHOP                                             -->
 <!-- ═══════════════════════════════════════════════════════════ -->
-<section id="shop" class="reveal-section">
-  <div style="max-width:var(--wrap);margin:0 auto">
+<style>
+  .shop-strip{display:flex;gap:16px;overflow-x:auto;padding:4px 0 20px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .shop-strip::-webkit-scrollbar{display:none}
+  .shop-card{flex:0 0 200px;scroll-snap-align:start;text-decoration:none;color:inherit;border-radius:20px;overflow:hidden;display:flex;flex-direction:column;position:relative;transition:transform .18s}
+  .shop-card:active{transform:scale(.97)}
+  .shop-card-img{aspect-ratio:1;display:flex;align-items:center;justify-content:center;padding:24px}
+  .shop-card-info{padding:14px 16px 18px}
+  .shop-card-name{font-weight:700;font-size:.88rem;margin-bottom:6px;line-height:1.3}
+  .shop-card-price{color:var(--rust);font-weight:800;font-size:.95rem}
+  .shop-card-cream{background:var(--paper)}.shop-card-cream .shop-card-img{background:var(--cream)}
+  .shop-card-lav{background:#f0edf8}.shop-card-lav .shop-card-img{background:#e6e0f5}
+  .shop-card-green{background:#e8f4ed}.shop-card-green .shop-card-img{background:#d6ecde}
+  .shop-card-rust{background:#fdf0eb}.shop-card-rust .shop-card-img{background:#f8e0d4}
+  .shop-card-dark{background:var(--ink);align-items:center;justify-content:center}
+  .shop-card-dark .shop-card-name{color:var(--cream-fixed)}
+  .shop-card-dark .shop-card-price{color:#f0a07a}
+  .shop-new-badge{position:absolute;top:10px;right:10px;background:var(--rust);color:#fff;font-size:.58rem;font-weight:800;letter-spacing:.1em;padding:3px 8px;border-radius:20px}
+  @media(max-width:640px){.shop-card{flex:0 0 155px}.shop-card-img{padding:16px!important}}
+</style>
 
-    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px" class="sec-head">
+<section id="shop" class="reveal-section" style="padding:100px 0 80px">
+  <div style="max-width:var(--wrap);margin:0 auto;padding:0 var(--pad)">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px">
       <div>
-        <p style="font-size:.7rem;letter-spacing:.2em;color:var(--rust);font-weight:800;margin:0 0 12px">DEMLEME SHOP</p>
-        <h2 style="font-family:'Bebas Neue',var(--font-display);font-size:clamp(2.5rem,4vw,4.5rem);margin:0;line-height:.9">SOFRADAN<br>GELİYOR</h2>
+        <p style="font-size:.65rem;letter-spacing:.22em;color:var(--rust);font-weight:800;margin:0 0 10px">DEMLEME SHOP</p>
+        <h2 style="font-family:'Bebas Neue','Arial Black',sans-serif;font-size:clamp(2.8rem,6vw,5rem);margin:0;line-height:.88">SOFRADAN<br>GELİYOR</h2>
       </div>
-      <a href="/urunler" style="font-weight:700;color:var(--ink);text-decoration:none;font-size:.85rem;letter-spacing:.05em">Tümünü Gör →</a>
+      <a href="/urunler" style="font-weight:700;color:var(--ink);text-decoration:none;font-size:.82rem;letter-spacing:.06em;white-space:nowrap">Tümünü Gör →</a>
     </div>
+  </div>
 
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px" class="shop-grid">
+  <div class="shop-strip" style="padding-left:var(--pad);padding-right:var(--pad)">
 
-      <!-- Ürün 1 -->
-      <a href="/urunler/demleme-kupasi" style="text-decoration:none;color:inherit;background:var(--paper);border-radius:20px;overflow:hidden;display:flex;flex-direction:column">
-        <div style="aspect-ratio:1;background:var(--cream);display:flex;align-items:center;justify-content:center;padding:24px">
-          <img src="/images/demleme-kupasi.webp" alt="Demleme Kupası" style="width:100%;height:100%;object-fit:contain">
-        </div>
-        <div style="padding:16px">
-          <div style="font-weight:700;font-size:.9rem;margin-bottom:4px">Demleme Kupası</div>
-          <div style="color:var(--rust);font-weight:800;font-size:.95rem">₺290</div>
-        </div>
-      </a>
+    <a href="/urunler/demleme-kupasi" class="shop-card shop-card-cream">
+      <div class="shop-card-img"><img src="/images/demleme-kupasi.webp" alt="Demleme Kupası" style="width:100%;height:100%;object-fit:contain"></div>
+      <div class="shop-card-info"><div class="shop-card-name">Demleme Kupası</div><div class="shop-card-price">₺290</div></div>
+    </a>
 
-      <!-- Ürün 2 -->
-      <a href="/urunler/sofra-tisortu" style="text-decoration:none;color:inherit;background:var(--paper);border-radius:20px;overflow:hidden;display:flex;flex-direction:column">
-        <div style="aspect-ratio:1;background:var(--cream);display:flex;align-items:center;justify-content:center;padding:24px">
-          <img src="/images/sofra-tisortu.webp" alt="Sofra Tişörtü" style="width:100%;height:100%;object-fit:contain">
-        </div>
-        <div style="padding:16px">
-          <div style="font-weight:700;font-size:.9rem;margin-bottom:4px">Sofra Tişörtü</div>
-          <div style="color:var(--rust);font-weight:800;font-size:.95rem">₺450</div>
-        </div>
-      </a>
+    <a href="/urunler/sofra-tisortu" class="shop-card shop-card-lav">
+      <span class="shop-new-badge">YENİ</span>
+      <div class="shop-card-img"><img src="/images/sofra-tisortu.webp" alt="Sofra Tişörtü" style="width:100%;height:100%;object-fit:contain"></div>
+      <div class="shop-card-info"><div class="shop-card-name">Sofra Tişörtü</div><div class="shop-card-price">₺450</div></div>
+    </a>
 
-      <!-- Ürün 3 -->
-      <a href="/urunler/demleme-defteri" style="text-decoration:none;color:inherit;background:var(--paper);border-radius:20px;overflow:hidden;display:flex;flex-direction:column">
-        <div style="aspect-ratio:1;background:var(--cream);display:flex;align-items:center;justify-content:center;padding:24px">
-          <img src="/images/demleme-defteri.webp" alt="Demleme Defteri" style="width:100%;height:100%;object-fit:contain">
-        </div>
-        <div style="padding:16px">
-          <div style="font-weight:700;font-size:.9rem;margin-bottom:4px">Demleme Defteri</div>
-          <div style="color:var(--rust);font-weight:800;font-size:.95rem">₺180</div>
-        </div>
-      </a>
+    <a href="/urunler/mini-cay-seti" class="shop-card shop-card-rust">
+      <div class="shop-card-img"><img src="/images/mini-cay-seti.webp" alt="Mini Çay Seti" style="width:100%;height:100%;object-fit:contain"></div>
+      <div class="shop-card-info"><div class="shop-card-name">Mini Çay Seti</div><div class="shop-card-price">₺620</div></div>
+    </a>
 
-      <!-- Ürün 4 -->
-      <a href="/urunler/mini-cay-seti" style="text-decoration:none;color:inherit;background:var(--paper);border-radius:20px;overflow:hidden;display:flex;flex-direction:column">
-        <div style="aspect-ratio:1;background:var(--cream);display:flex;align-items:center;justify-content:center;padding:24px">
-          <img src="/images/mini-cay-seti.webp" alt="Mini Çay Seti" style="width:100%;height:100%;object-fit:contain">
-        </div>
-        <div style="padding:16px">
-          <div style="font-weight:700;font-size:.9rem;margin-bottom:4px">Mini Çay Seti</div>
-          <div style="color:var(--rust);font-weight:800;font-size:.95rem">₺620</div>
-        </div>
-      </a>
+    <a href="/urunler/demleme-defteri" class="shop-card shop-card-green">
+      <div class="shop-card-img"><img src="/images/demleme-defteri.webp" alt="Demleme Defteri" style="width:100%;height:100%;object-fit:contain"></div>
+      <div class="shop-card-info"><div class="shop-card-name">Demleme Defteri</div><div class="shop-card-price">₺180</div></div>
+    </a>
 
-      <!-- Ürün 5 -->
-      <a href="/urunler/kupa-altligi-seti" style="text-decoration:none;color:inherit;background:var(--paper);border-radius:20px;overflow:hidden;display:flex;flex-direction:column">
-        <div style="aspect-ratio:1;background:var(--cream);display:flex;align-items:center;justify-content:center;padding:24px">
-          <img src="/images/kupa-altligi.webp" alt="Kupa Altlığı Seti" style="width:100%;height:100%;object-fit:contain">
-        </div>
-        <div style="padding:16px">
-          <div style="font-weight:700;font-size:.9rem;margin-bottom:4px">Kupa Altlığı Seti</div>
-          <div style="color:var(--rust);font-weight:800;font-size:.95rem">₺140</div>
-        </div>
-      </a>
+    <a href="/urunler/kupa-altligi-seti" class="shop-card shop-card-cream">
+      <div class="shop-card-img"><img src="/images/kupa-altligi.webp" alt="Kupa Altlığı" style="width:100%;height:100%;object-fit:contain"></div>
+      <div class="shop-card-info"><div class="shop-card-name">Kupa Altlığı Seti</div><div class="shop-card-price">₺140</div></div>
+    </a>
 
-      <!-- Ürün 6 -->
-      <a href="/urunler/hediye-karti" style="text-decoration:none;color:inherit;background:var(--paper);border-radius:20px;overflow:hidden;display:flex;flex-direction:column">
-        <div style="aspect-ratio:1;background:var(--cream);display:flex;align-items:center;justify-content:center;padding:24px">
-          <img src="/images/hediye-karti.webp" alt="Hediye Kartı" style="width:100%;height:100%;object-fit:contain">
-        </div>
-        <div style="padding:16px">
-          <div style="font-weight:700;font-size:.9rem;margin-bottom:4px">Hediye Kartı</div>
-          <div style="color:var(--rust);font-weight:800;font-size:.95rem">₺100+</div>
-        </div>
-      </a>
+    <a href="/urunler/bolum-posteri" class="shop-card shop-card-lav">
+      <div class="shop-card-img"><img src="/images/bolum-posteri.webp" alt="Bölüm Posteri" style="width:100%;height:100%;object-fit:contain"></div>
+      <div class="shop-card-info"><div class="shop-card-name">Bölüm Posteri</div><div class="shop-card-price">₺120</div></div>
+    </a>
 
-      <!-- Ürün 7 -->
-      <a href="/urunler/bolum-posteri" style="text-decoration:none;color:inherit;background:var(--paper);border-radius:20px;overflow:hidden;display:flex;flex-direction:column">
-        <div style="aspect-ratio:1;background:var(--cream);display:flex;align-items:center;justify-content:center;padding:24px">
-          <img src="/images/bolum-posteri.webp" alt="Bölüm Posteri" style="width:100%;height:100%;object-fit:contain">
-        </div>
-        <div style="padding:16px">
-          <div style="font-weight:700;font-size:.9rem;margin-bottom:4px">Bölüm Posteri</div>
-          <div style="color:var(--rust);font-weight:800;font-size:.95rem">₺120</div>
-        </div>
-      </a>
+    <a href="/urunler/hediye-karti" class="shop-card shop-card-rust">
+      <div class="shop-card-img"><img src="/images/hediye-karti.webp" alt="Hediye Kartı" style="width:100%;height:100%;object-fit:contain"></div>
+      <div class="shop-card-info"><div class="shop-card-name">Hediye Kartı</div><div class="shop-card-price">₺100+</div></div>
+    </a>
 
-      <!-- Ürün 8 placeholder -->
-      <a href="/urunler" style="text-decoration:none;color:inherit;background:var(--ink);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;aspect-ratio:auto;min-height:200px">
-        <div style="color:var(--cream-fixed);font-family:'Bebas Neue',var(--font-display);font-size:1.8rem;text-align:center;padding:24px;line-height:1.1">TÜMÜNÜ<br>GÖR</div>
-        <div style="color:rgba(243,238,225,.5);font-size:.8rem">→</div>
-      </a>
+    <a href="/urunler" class="shop-card shop-card-dark" style="min-height:260px">
+      <div style="font-family:'Bebas Neue','Arial Black',sans-serif;font-size:2rem;color:var(--cream-fixed);text-align:center;line-height:1;padding:24px">TÜMÜNÜ<br>GÖR</div>
+      <div style="color:rgba(243,238,225,.35);font-size:1.4rem">→</div>
+    </a>
 
-    </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════ -->
-<!-- 5. BU HAFTAKİ BÖLÜM                                         -->
-<!-- ═══════════════════════════════════════════════════════════ -->
 <section id="bu-hafta" class="reveal-section">
   <div style="max-width:var(--wrap);margin:0 auto">
 
