@@ -89,7 +89,7 @@ export default function Home() {
 
       <!-- Figür kartı -->
       <div style="border-radius:24px;background:var(--cream-deep);aspect-ratio:4/3;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative">
-        <img src="/images/cay-icen-figur.png" alt="Çay içen figür" style="width:75%;height:75%;object-fit:contain" />
+        <img src="/images/cay-animasyon.webp" alt="Çay animasyonu" style="width:85%;height:85%;object-fit:contain" />
         <div style="position:absolute;bottom:14px;left:14px;background:rgba(255,255,255,.88);backdrop-filter:blur(10px);border-radius:12px;padding:8px 14px;display:flex;align-items:center;gap:8px">
           <span style="width:7px;height:7px;border-radius:50%;background:var(--rust);animation:heroLivePulse 1.6s infinite;flex-shrink:0"></span>
           <span style="font-size:.75rem;font-weight:700;color:var(--ink)">demleniyor...</span>
