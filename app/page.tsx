@@ -12,20 +12,7 @@ export default function Home() {
       <NavBar />
       <div
         dangerouslySetInnerHTML={{
-        __html: `<div class="ticker-bar" aria-hidden="true">
-  <div class="ticker-track">
-    <span class="ticker-item">DEMLEME</span>
-    <span class="ticker-item">YENİ BÖLÜM HER HAFTA</span>
-    <span class="ticker-item">SOFRAYA HERKES DAVETLİ</span>
-    <span class="ticker-item ticker-clock">SAAT --:--</span>
-    <span class="ticker-item ticker-countdown">ÇAY SAATİ HESAPLANIYOR…</span>
-    <span class="ticker-item">DEMLEME</span>
-    <span class="ticker-item">YENİ BÖLÜM HER HAFTA</span>
-    <span class="ticker-item">SOFRAYA HERKES DAVETLİ</span>
-    <span class="ticker-item ticker-clock">SAAT --:--</span>
-    <span class="ticker-item ticker-countdown">ÇAY SAATİ HESAPLANIYOR…</span>
-  </div>
-</div>
+        __html: `
 
 <!-- ============================================================ -->
 <section class="hero" id="hero" data-secnum="00" style="display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;padding:80px var(--pad) 60px">
