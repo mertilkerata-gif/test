@@ -89,7 +89,7 @@ export default function Home() {
   @keyframes heroArrow{ 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }
 </style>
 
-<section id="hero" style="min-height:90svh;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;padding:80px var(--pad) 40px">
+<section id="hero" style="min-height:90svh;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:visible;padding:80px var(--pad) 40px">
 
   <div style="max-width:var(--wrap);margin:0 auto;width:100%" class="hero-2col">
 
@@ -508,13 +508,16 @@ export default function Home() {
 // Hero giriş animasyonu
 (function(){
   function runHero(){
-    document.querySelectorAll('.hero-anim').forEach(function(el){
-      el.classList.add('visible');
+    var els = document.querySelectorAll('.hero-anim');
+    els.forEach(function(el, i){
+      setTimeout(function(){ el.classList.add('visible'); }, 80 + i*140);
     });
   }
   if(document.readyState==='loading'){
-    document.addEventListener('DOMContentLoaded', runHero);
-  } else { runHero(); }
+    document.addEventListener('DOMContentLoaded', function(){ setTimeout(runHero, 100); });
+  } else {
+    setTimeout(runHero, 100);
+  }
 })();
 
 // Scroll reveal
