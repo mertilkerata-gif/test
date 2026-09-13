@@ -364,25 +364,73 @@ export default function Home() {
 <!-- ═══════════════════════════════════════════════════════════ -->
 <!-- FOOTER                                                       -->
 <!-- ═══════════════════════════════════════════════════════════ -->
-<footer style="padding:60px var(--pad);border-top:1px solid var(--line)">
-  <div style="max-width:var(--wrap);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px">
-
-    <div style="font-family:'Bebas Neue',var(--font-display);font-size:2rem;letter-spacing:.02em">DEMLEME</div>
-
-    <div style="display:flex;gap:20px;align-items:center">
-      <a href="https://youtube.com/@demleme" target="_blank" rel="noopener" aria-label="YouTube">
-        <img src="/images/yt-kirmizi.png" width="28" height="20" alt="YouTube" style="object-fit:contain;opacity:.7">
-      </a>
-      <a href="https://instagram.com/demleme" target="_blank" rel="noopener" aria-label="Instagram">
-        <img src="/images/ig-siyah.png" width="22" height="22" alt="Instagram" style="object-fit:contain;opacity:.7">
-      </a>
-      <a href="mailto:merhaba@demleme.com" aria-label="E-posta">
-        <img src="/images/mail-ikonu.png" width="24" height="20" alt="Mail" style="object-fit:contain;opacity:.7">
-      </a>
+<footer>
+  <div class="footer-watermark parallax" data-speed="0.06"><div class="mk mk-sofra-rust"></div></div>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#hero" class="footer-logo"><img class="footer-logo-img" src="/images/demleme-logo.png" alt="Demleme" width="150" height="24" style="height:52px;width:auto;object-fit:contain"></a>
+      <p>İyi bir sohbet, iyi bir dünyaya katkı olsun.</p>
+      <div class="footer-social">
+        <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube">
+          <img src="/images/yt-kirmizi.png" width="28" height="20" alt="YouTube" style="object-fit:contain">
+        </a>
+        <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
+          <img src="/images/ig-beyaz.png" width="22" height="22" alt="Instagram" style="object-fit:contain">
+        </a>
+        <a href="https://tiktok.com" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+        </a>
+        <a href="https://open.spotify.com" target="_blank" rel="noopener" aria-label="Spotify" title="Spotify">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.6 14.4c-.2.3-.6.4-.9.2-2.5-1.5-5.7-1.9-9.4-1-.4.1-.7-.1-.8-.5-.1-.4.1-.7.5-.8 4.1-.9 7.6-.5 10.4 1.1.3.2.4.6.2 1zm1.2-2.8c-.2.4-.7.5-1.1.3-2.9-1.8-7.2-2.3-10.6-1.2-.4.1-.9-.1-1-.5-.1-.4.1-.9.5-1 3.8-1.2 8.6-.6 11.9 1.4.4.2.5.7.3 1zm.1-2.8C14.4 8.9 8.8 8.7 5.6 9.7c-.5.2-1-.2-1.1-.7-.2-.5.2-1 .7-1.1 3.7-1.1 9.8-.9 13.6 1.4.5.3.6.9.3 1.4-.3.4-.9.6-1.3.3z"/></svg>
+        </a>
+        <a href="#" target="_blank" rel="noopener" aria-label="Podcast" title="Podcast">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><circle cx="12" cy="11" r="4"/><path d="M12 15v4M8 19h8"/><path d="M5 11a7 7 0 0014 0" stroke-linecap="round"/></svg>
+        </a>
+      </div>
     </div>
-
-    <div style="font-size:.8rem;color:var(--ink-faint)">© 2025 Demleme</div>
-
+    <div class="footer-col">
+      <h5>Keşfet</h5>
+      <ul>
+        <li><a href="#hero">Ana Sayfa</a></li>
+        <li><a href="#bu-hafta">YouTube</a></li>
+        <li><a href="#demleyen">Hakkımızda</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Mağaza</h5>
+      <ul>
+        <li><a href="/urunler">Tüm Ürünler</a></li>
+        <li><a href="/urunler">Tişört</a></li>
+        <li><a href="/urunler">Kupa</a></li>
+        <li><a href="/urunler">Çay Seti</a></li>
+        <li><a href="/urunler">Defter</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Yardım</h5>
+      <ul>
+        <li><a href="#">Kargo &amp; Teslimat</a></li>
+        <li><a href="#">İade &amp; Değişim</a></li>
+        <li><a href="/iletisim">İletişim</a></li>
+      </ul>
+    </div>
+    <div class="footer-app-card">
+      <h4>Demleme. Her Yerde.</h4>
+      <p>Uygulamamızı indir, içeriklere kolayca ulaş.</p>
+      <div class="footer-app-btns">
+        <a href="#" class="footer-app-btn"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v13m0 0l-4-4m4 4l4-4"/><path d="M5 21h14"/></svg> App Store</a>
+        <a href="#" class="footer-app-btn"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v13m0 0l-4-4m4 4l4-4"/><path d="M5 21h14"/></svg> Google Play</a>
+      </div>
+      <div class="footer-app-deco" aria-hidden="true"><span></span></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 Demleme. Tüm hakları saklıdır.</p>
+    <div class="footer-legal">
+      <a href="#">KVKK</a>
+      <a href="#">Kullanım Şartları</a>
+      <a href="#">Gizlilik Politikası</a>
+    </div>
   </div>
 </footer>
 
