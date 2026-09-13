@@ -64,7 +64,7 @@ export default function Home() {
 <!-- ═══════════════════════════════════════════════════════════ -->
 <!-- 2. İSTATİSTİKLER — tam genişlik, scroll reveal             -->
 <!-- ═══════════════════════════════════════════════════════════ -->
-<section id="stats" class="reveal-section" data-bg="bg-cream-deep">
+<section id="stats" class="reveal-section">
   <div style="max-width:var(--wrap);margin:0 auto;width:100%" class="stats-grid">
 
     <div style="padding:60px 40px;display:flex;flex-direction:column;align-items:center;gap:8px;border-right:1px solid var(--line)">
@@ -88,7 +88,7 @@ export default function Home() {
 <!-- ═══════════════════════════════════════════════════════════ -->
 <!-- 3. DEMLEYEN KİM                                             -->
 <!-- ═══════════════════════════════════════════════════════════ -->
-<section id="demleyen" class="reveal-section" data-bg="bg-cream">
+<section id="demleyen" class="reveal-section">
   <div style="max-width:var(--wrap);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center" class="two-col">
 
     <div class="slide-left">
@@ -115,7 +115,7 @@ export default function Home() {
 <!-- ═══════════════════════════════════════════════════════════ -->
 <!-- 4. DEMLEME SHOP                                             -->
 <!-- ═══════════════════════════════════════════════════════════ -->
-<section id="shop" class="reveal-section" data-bg="bg-cream-deep" style="padding:100px 0 80px">
+<section id="shop" class="reveal-section" style="padding:100px 0 80px">
   <div style="max-width:var(--wrap);margin:0 auto;padding:0 var(--pad)">
     <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px">
       <div>
@@ -172,7 +172,7 @@ export default function Home() {
   </div>
 </section>
 
-<section id="bu-hafta" class="reveal-section" data-bg="bg-cream">
+<section id="bu-hafta" class="reveal-section">
   <div style="max-width:var(--wrap);margin:0 auto">
 
     <div style="margin-bottom:56px">
@@ -255,7 +255,7 @@ export default function Home() {
 <!-- ═══════════════════════════════════════════════════════════ -->
 <!-- 6. KONUKLAR                                                  -->
 <!-- ═══════════════════════════════════════════════════════════ -->
-<section id="konuklar" class="reveal-section" data-bg="bg-ink" style="background:var(--ink)">
+<section id="konuklar" class="reveal-section" >
   <div style="max-width:var(--wrap);margin:0 auto">
 
     <div style="margin-bottom:56px">
@@ -286,7 +286,7 @@ export default function Home() {
 <!-- ═══════════════════════════════════════════════════════════ -->
 <!-- 7. ANKET                                                     -->
 <!-- ═══════════════════════════════════════════════════════════ -->
-<section id="anket" class="reveal-section" data-bg="bg-lav">
+<section id="anket" class="reveal-section">
   <div style="max-width:600px;margin:0 auto;text-align:center;display:flex;flex-direction:column;gap:32px">
 
     <div>
@@ -389,25 +389,7 @@ export default function Home() {
 
 // ══ SCROLL ANİMASYONLARI ══
 (function(){
-  // Color shift
-  var colorSections = document.querySelectorAll('[data-bg]');
-  var bodyEl = document.body;
-  var allBgs = ['bg-cream','bg-cream-deep','bg-ink','bg-lav'];
-
-  function updateBg(){
-    var mid = window.scrollY + window.innerHeight * 0.45;
-    var active = '';
-    colorSections.forEach(function(s){
-      var top = s.getBoundingClientRect().top + window.scrollY;
-      if(top <= mid) active = s.getAttribute('data-bg') || '';
-    });
-    allBgs.forEach(function(c){ bodyEl.classList.remove(c); });
-    if(active) bodyEl.classList.add(active);
-  }
-  window.addEventListener('scroll', updateBg, {passive:true});
-  updateBg();
-
-  // Tilt 3D
+    // Tilt 3D
   document.querySelectorAll('.tilt-card').forEach(function(card){
     card.addEventListener('mousemove', function(e){
       var r = card.getBoundingClientRect();
