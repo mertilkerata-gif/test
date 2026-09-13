@@ -3,23 +3,11 @@ import { useEffect, useState, useCallback } from 'react';
 import { getCart, cartCount } from '@/lib/cart';
 import { getUser, logout } from '@/lib/auth';
 
-function openDrawer(id: string) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  el.classList.add('open');
-  el.setAttribute('aria-hidden', 'false');
-  document.body.style.overflow = 'hidden';
-  // main.js renderCartDrawer'ı tetikle
-  if (id === 'cartDrawer') {
-    const ev = new CustomEvent('demleme:open-cart');
-    window.dispatchEvent(ev);
-  }
-}
-
 export default function NavBar() {
   const [count, setCount] = useState(0);
   const [user, setUser] = useState<{ name: string } | null>(null);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   useEffect(() => {
     const updateCart = () => setCount(cartCount(getCart()));
@@ -33,130 +21,151 @@ export default function NavBar() {
     };
   }, []);
 
-  const handleCart = useCallback(() => {
+  const openCart = useCallback(() => {
     window.dispatchEvent(new Event('demleme:open-cart'));
   }, []);
 
-  const handleSearch = useCallback(() => {
-    openDrawer('searchOverlay');
-  }, []);
+  const closeDrawer = () => setDrawerOpen(false);
 
   return (
     <>
-      <nav className="site-nav" id="siteNav">
-        <a href="/" className="nav-logo" style={{display:'flex',alignItems:'center',textDecoration:'none'}}>
-          <img
-            src="/images/demleme-logo.png"
-            alt="Demleme"
-            style={{height:'58px',width:'auto',display:'block',objectFit:'contain'}}
-            onError={(e) => {
-              e.currentTarget.style.display = 'none';
-              const el = e.currentTarget.nextElementSibling as HTMLElement;
-              if (el) el.style.display = 'block';
-            }}
-          />
-          <span style={{display:'none',fontFamily:"'Kodchasan',sans-serif",fontSize:'2rem',letterSpacing:'0.05em',color:'var(--ink)'}}>demleme</span>
+      <nav style={{
+        position:'sticky', top:0, zIndex:300,
+        background:'var(--cream)', borderBottom:'1px solid var(--line)',
+        display:'flex', alignItems:'center', justifyContent:'space-between',
+        padding:'0 20px', height:'60px', gap:'12px',
+      }}>
+        {/* Logo */}
+        <a href="/" style={{display:'flex',alignItems:'center',textDecoration:'none',flexShrink:0}}>
+          <span style={{fontFamily:"'Kodchasan',sans-serif",fontSize:'1.4rem',fontWeight:700,letterSpacing:'0.05em',color:'var(--ink)'}}>demleme</span>
         </a>
 
-        <ul className="nav-links" style={{listStyle:'none',display:'flex',flexWrap:'nowrap',gap:'28px',margin:0,padding:0,alignItems:'center'}}>
-          <li><a href="/" style={{textDecoration:'none',color:'var(--ink)',fontWeight:600,fontSize:'.9rem'}}>Ana Sayfa</a></li>
-          <li><a href="/#videos" style={{textDecoration:'none',color:'var(--ink)',fontWeight:600,fontSize:'.9rem'}}>YouTube</a></li>
-          <li><a href="/urunler" style={{textDecoration:'none',color:'var(--ink)',fontWeight:600,fontSize:'.9rem'}}>Ürünler</a></li>
-          <li><a href="/#benkimim" style={{textDecoration:'none',color:'var(--ink)',fontWeight:600,fontSize:'.9rem'}}>Ben Kimim</a></li>
-          <li><a href="/#iletisim" style={{textDecoration:'none',color:'var(--ink)',fontWeight:600,fontSize:'.9rem'}}>İletişim</a></li>
+        {/* Desktop links */}
+        <ul style={{display:'flex',listStyle:'none',gap:'20px',margin:0,padding:0,alignItems:'center'}} className="nav-links-desktop">
+          <li><a href="/" style={{textDecoration:'none',color:'var(--ink)',fontWeight:600,fontSize:'.85rem',opacity:.75}}>Ana Sayfa</a></li>
+          <li><a href="/#bu-hafta" style={{textDecoration:'none',color:'var(--ink)',fontWeight:600,fontSize:'.85rem',opacity:.75}}>YouTube</a></li>
+          <li><a href="/urunler" style={{textDecoration:'none',color:'var(--ink)',fontWeight:600,fontSize:'.85rem',opacity:.75}}>Ürünler</a></li>
+          <li><a href="/#demleyen" style={{textDecoration:'none',color:'var(--ink)',fontWeight:600,fontSize:'.85rem',opacity:.75}}>Ben Kimim</a></li>
+          <li><a href="/#anket" style={{textDecoration:'none',color:'var(--ink)',fontWeight:600,fontSize:'.85rem',opacity:.75}}>İletişim</a></li>
         </ul>
 
-        <div className="nav-icons" style={{display:'flex',alignItems:'center',gap:'4px'}}>
+        {/* Sağ ikonlar */}
+        <div style={{display:'flex',alignItems:'center',gap:'6px',flexShrink:0}}>
+
           {/* Sepet */}
-          <button
-            id="cartBtn"
-            className="nav-icon-btn"
-            aria-label="Sepetim"
-            onClick={handleCart}
-            type="button"
-            style={{position:'relative',background:'none',border:'none',cursor:'pointer',padding:0,width:'29px',height:'29px',display:'flex',alignItems:'center',justifyContent:'center',color:'var(--ink)',flexShrink:0}}
-          >
-            <img src="/images/sepet-ikonu.png" width="22" height="22" alt="Sepet" style={{objectFit:'contain'}} />
+          <button onClick={openCart} type="button" aria-label="Sepet"
+            style={{background:'none',border:'none',cursor:'pointer',width:'36px',height:'36px',display:'flex',alignItems:'center',justifyContent:'center',position:'relative',flexShrink:0}}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--ink)" strokeWidth="1.8" width="20" height="20">
+              <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+              <line x1="3" y1="6" x2="21" y2="6"/>
+              <path d="M16 10a4 4 0 01-8 0"/>
+            </svg>
             {count > 0 && (
-              <span style={{position:'absolute',top:'-5px',right:'-5px',background:'var(--rust)',color:'#fff',borderRadius:'50%',width:'16px',height:'16px',fontSize:'9px',display:'flex',alignItems:'center',justifyContent:'center',fontWeight:700,lineHeight:1,pointerEvents:'none'}}>{count}</span>
+              <span style={{position:'absolute',top:'2px',right:'2px',background:'var(--rust)',color:'#fff',borderRadius:'50%',width:'16px',height:'16px',fontSize:'9px',display:'flex',alignItems:'center',justifyContent:'center',fontWeight:700}}>
+                {count}
+              </span>
             )}
           </button>
 
-          {/* Favori */}
-          <button id="favBtn" className="nav-icon-btn" aria-label="Favorilerim" type="button"
-            style={{background:'none',border:'none',cursor:'pointer',display:'flex',alignItems:'center',justifyContent:'center',position:'relative',padding:0,width:'29px',height:'29px',color:'var(--ink)',flexShrink:0}}>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" width="20" height="20"><path d="M12 20s-7-4.35-9.5-8.5C.7 8 2 4.5 5.5 4 8 3.6 10 5 12 7.5 14 5 16 3.6 18.5 4 22 4.5 23.3 8 21.5 11.5 19 15.65 12 20 12 20z"/></svg>
-            <span id="favCount" hidden style={{position:'absolute',top:'-5px',right:'-5px',background:'var(--lav-deep)',color:'#fff',borderRadius:'50%',width:'16px',height:'16px',fontSize:'9px',display:'flex',alignItems:'center',justifyContent:'center',fontWeight:700}}>0</span>
-          </button>
-
           {/* Arama */}
-          <button id="searchBtn" className="nav-icon-btn" aria-label="Ara" type="button"
-            onClick={handleSearch}
-            style={{background:'none',border:'none',cursor:'pointer',display:'flex',alignItems:'center',justifyContent:'center',padding:0,width:'29px',height:'29px',color:'var(--ink)',flexShrink:0}}>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" width="20" height="20"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          <button onClick={() => setSearchOpen(true)} type="button" aria-label="Ara"
+            style={{background:'none',border:'none',cursor:'pointer',width:'36px',height:'36px',display:'flex',alignItems:'center',justifyContent:'center',flexShrink:0}}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--ink)" strokeWidth="1.8" width="20" height="20">
+              <circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>
+            </svg>
           </button>
-
-          {/* Dark mode */}
-          <button className="theme-toggle" id="themeToggle" aria-label="Karanlık mod" type="button"
-            style={{background:'none',border:'none',cursor:'pointer',display:'flex',alignItems:'center',justifyContent:'center',padding:0,width:'29px',height:'29px',color:'var(--ink)',flexShrink:0}}>
-            <svg className="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" width="20" height="20"><circle cx="12" cy="12" r="4.5"/><path d="M12 3v2M12 19v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M3 12h2M19 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>
-            <svg className="moon" viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
-          </button>
-
-          {/* Hesap */}
-          {user ? (
-            <div style={{position:'relative'}}>
-              <button type="button" style={{display:'flex',alignItems:'center',gap:'6px',background:'none',border:'none',cursor:'pointer',fontFamily:'var(--font-body)',fontSize:'.85rem',fontWeight:600,color:'var(--ink)',padding:'4px 8px',borderRadius:'40px'}} onClick={() => setMenuOpen(o=>!o)}>
-                <span style={{width:'28px',height:'28px',borderRadius:'50%',background:'var(--rust)',color:'#fff',display:'flex',alignItems:'center',justifyContent:'center',fontWeight:700,fontSize:'.8rem'}}>{user.name[0].toUpperCase()}</span>
-              </button>
-              {menuOpen && (
-                <div style={{position:'absolute',right:0,top:'calc(100% + 8px)',background:'var(--paper)',borderRadius:'14px',boxShadow:'var(--shadow-md)',minWidth:'160px',zIndex:200,overflow:'hidden',border:'1px solid var(--line)'}}>
-                  <a href="/hesap" style={{display:'block',padding:'12px 18px',textDecoration:'none',color:'var(--ink)',fontSize:'.88rem',fontWeight:600}} onClick={()=>setMenuOpen(false)}>Hesabım</a>
-                  <a href="/hesap/siparisler" style={{display:'block',padding:'12px 18px',textDecoration:'none',color:'var(--ink)',fontSize:'.88rem'}} onClick={()=>setMenuOpen(false)}>Siparişlerim</a>
-                  <div style={{borderTop:'1px solid var(--line)'}}/>
-                  <button type="button" style={{display:'block',width:'100%',textAlign:'left',padding:'12px 18px',background:'none',border:'none',cursor:'pointer',color:'var(--rust)',fontSize:'.88rem',fontFamily:'var(--font-body)'}} onClick={()=>{logout();setMenuOpen(false);}}>Çıkış Yap</button>
-                </div>
-              )}
-            </div>
-          ) : (
-            <a href="/giris" className="nav-icon-btn" aria-label="Giriş Yap" style={{display:'flex',alignItems:'center',justifyContent:'center',color:'var(--ink)',width:'29px',height:'29px',flexShrink:0}}>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" width="20" height="20"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-            </a>
-          )}
 
           {/* Instagram */}
-          <a className="nav-icon-btn" href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" style={{display:'flex',alignItems:'center',justifyContent:'center',color:'var(--ink)',width:'29px',height:'29px',flexShrink:0}}>
-            <img src="/images/ig-siyah.png" width="22" height="22" alt="Instagram" style={{objectFit:'contain'}} />
+          <a href="https://instagram.com/demleme" target="_blank" rel="noopener" aria-label="Instagram"
+            style={{display:'flex',alignItems:'center',justifyContent:'center',width:'36px',height:'36px',flexShrink:0}}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--ink)" strokeWidth="1.8" width="20" height="20">
+              <rect x="2" y="2" width="20" height="20" rx="5"/>
+              <circle cx="12" cy="12" r="5"/>
+              <circle cx="17.5" cy="6.5" r="1" fill="var(--ink)" stroke="none"/>
+            </svg>
           </a>
 
           {/* Hamburger */}
-          <button className="nav-hamburger" type="button" aria-label="Menü" onClick={()=>{
-            document.getElementById('navDrawer')?.classList.toggle('open');
-            document.getElementById('navBackdrop')?.classList.toggle('open');
-          }}>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" width="22" height="22"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+          <button onClick={() => setDrawerOpen(true)} type="button" aria-label="Menü"
+            style={{background:'var(--ink)',border:'none',cursor:'pointer',width:'40px',height:'40px',borderRadius:'10px',display:'flex',alignItems:'center',justifyContent:'center',flexShrink:0}}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--cream-fixed)" strokeWidth="2.2" strokeLinecap="round" width="20" height="20">
+              <line x1="3" y1="7" x2="21" y2="7"/>
+              <line x1="3" y1="12" x2="21" y2="12"/>
+              <line x1="3" y1="17" x2="21" y2="17"/>
+            </svg>
           </button>
         </div>
       </nav>
 
       {/* Mobil drawer */}
-      <div className="nav-drawer" id="navDrawer">
-        <button className="nav-drawer-close" type="button" aria-label="Kapat" onClick={()=>{
-          document.getElementById('navDrawer')?.classList.remove('open');
-          document.getElementById('navBackdrop')?.classList.remove('open');
-        }}>✕</button>
-        <ul className="nav-links" style={{listStyle:'none',padding:0,margin:0}}>
-          <li><a href="/">Ana Sayfa</a></li>
-          <li><a href="/#videos">YouTube</a></li>
-          <li><a href="/urunler">Ürünler</a></li>
-          <li><a href="/#benkimim">Ben Kimim</a></li>
-          <li><a href="/#iletisim">İletişim</a></li>
-        </ul>
-      </div>
-      <div className="nav-backdrop" id="navBackdrop" onClick={()=>{
-        document.getElementById('navDrawer')?.classList.remove('open');
-        document.getElementById('navBackdrop')?.classList.remove('open');
-      }}/>
+      {drawerOpen && (
+        <div style={{position:'fixed',inset:0,zIndex:500,display:'flex'}}>
+          {/* Backdrop */}
+          <div onClick={closeDrawer} style={{position:'absolute',inset:0,background:'rgba(0,0,0,.45)'}} />
+
+          {/* Panel */}
+          <div style={{
+            position:'absolute', right:0, top:0, bottom:0,
+            width:'min(300px,85vw)', background:'var(--cream)',
+            display:'flex', flexDirection:'column', padding:'24px 28px',
+            boxShadow:'-8px 0 40px rgba(0,0,0,.2)',
+          }}>
+            <button onClick={closeDrawer} type="button" aria-label="Kapat"
+              style={{alignSelf:'flex-end',background:'none',border:'1.5px solid var(--line)',borderRadius:'50%',width:'36px',height:'36px',cursor:'pointer',fontSize:'1.1rem',marginBottom:'32px',display:'flex',alignItems:'center',justifyContent:'center'}}>
+              ✕
+            </button>
+
+            <nav style={{display:'flex',flexDirection:'column',gap:'4px'}}>
+              {[
+                {href:'/',label:'Ana Sayfa'},
+                {href:'/#bu-hafta',label:'YouTube'},
+                {href:'/urunler',label:'Ürünler'},
+                {href:'/#demleyen',label:'Ben Kimim'},
+                {href:'/#anket',label:'İletişim'},
+              ].map(({href,label}) => (
+                <a key={label} href={href} onClick={closeDrawer}
+                  style={{display:'block',padding:'14px 0',borderBottom:'1px solid var(--line)',textDecoration:'none',color:'var(--ink)',fontWeight:700,fontSize:'1.1rem'}}>
+                  {label}
+                </a>
+              ))}
+            </nav>
+
+            <div style={{marginTop:'auto',display:'flex',gap:'16px',paddingTop:'24px'}}>
+              <a href="https://youtube.com/@demleme" target="_blank" rel="noopener"
+                style={{display:'flex',alignItems:'center',gap:'8px',color:'var(--ink)',textDecoration:'none',fontSize:'.85rem',fontWeight:600}}>
+                <svg viewBox="0 0 24 24" fill="var(--ink)" width="18" height="18"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31 31 0 000 12a31 31 0 00.5 5.8 3 3 0 002.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 002.1-2.1A31 31 0 0024 12a31 31 0 00-.5-5.8zM9.6 15.5V8.5L15.8 12z"/></svg>
+                YouTube
+              </a>
+              <a href="https://instagram.com/demleme" target="_blank" rel="noopener"
+                style={{display:'flex',alignItems:'center',gap:'8px',color:'var(--ink)',textDecoration:'none',fontSize:'.85rem',fontWeight:600}}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--ink)" strokeWidth="1.8" width="18" height="18"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg>
+                Instagram
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Search overlay */}
+      {searchOpen && (
+        <div style={{position:'fixed',inset:0,zIndex:500,background:'rgba(26,18,8,.55)',backdropFilter:'blur(6px)',display:'flex',alignItems:'flex-start',justifyContent:'center',padding:'80px 20px 20px'}}
+          onClick={(e) => { if(e.target === e.currentTarget) setSearchOpen(false); }}>
+          <div style={{background:'var(--paper)',borderRadius:'20px',width:'100%',maxWidth:'560px',padding:'28px',position:'relative',boxShadow:'0 24px 80px rgba(0,0,0,.25)'}}>
+            <button onClick={() => setSearchOpen(false)} type="button"
+              style={{position:'absolute',top:'16px',right:'16px',background:'var(--cream-deep)',border:'none',borderRadius:'50%',width:'32px',height:'32px',cursor:'pointer',fontSize:'1rem',fontWeight:700,display:'flex',alignItems:'center',justifyContent:'center'}}>
+              ✕
+            </button>
+            <div style={{display:'flex',alignItems:'center',gap:'12px',borderBottom:'1.5px solid var(--line)',paddingBottom:'16px',marginBottom:'16px',marginTop:'4px'}}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" width="20" height="20" style={{opacity:.4,flexShrink:0}}>
+                <circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>
+              </svg>
+              <input autoFocus type="text" placeholder="Bölüm, ürün ya da konu ara…"
+                style={{flex:1,border:'none',outline:'none',fontSize:'1rem',fontFamily:'var(--font-body)',background:'transparent',color:'var(--ink)'}} />
+            </div>
+            <p style={{color:'var(--ink-faint)',fontSize:'.88rem',margin:0}}>Yazmaya başla — bölümlerde ve ürünlerde arama yapılır.</p>
+          </div>
+        </div>
+      )}
     </>
   );
 }
