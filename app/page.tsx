@@ -17,45 +17,51 @@ export default function Home() {
 <!-- ═══════════════════════════════════════════════════════════ -->
 <!-- 1. HERO                                                      -->
 <!-- ═══════════════════════════════════════════════════════════ -->
-<section id="hero" style="min-height:calc(100svh - 64px);display:flex;align-items:center;padding:40px var(--pad)">
-  <div style="max-width:var(--wrap);margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center" class="hero-2col">
+<section id="hero" style="min-height:calc(100svh - 60px);display:flex;flex-direction:column;justify-content:center;padding:40px var(--pad);position:relative">
+  <div style="max-width:var(--wrap);margin:0 auto;width:100%">
 
-    <!-- SOL -->
-    <div style="display:flex;flex-direction:column;gap:24px">
+    <!-- Mobil: gif üstte, yazı altta | Desktop: yan yana -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center" class="hero-2col">
 
-      <h1 style="font-family:'Bebas Neue','Arial Black',sans-serif;font-size:clamp(4rem,12vw,10rem);line-height:0.9;margin:0;letter-spacing:-.01em">
-        <span style="display:block" class="hero-anim split-target">MASAYA</span>
-        <span style="display:block;color:var(--rust)" class="hero-anim hero-anim-delay1 split-target">HOŞGELDİN</span>
-      </h1>
+      <!-- SOL: Yazı -->
+      <div style="display:flex;flex-direction:column;gap:24px;order:2" class="hero-left">
 
-      <p class="hero-anim hero-anim-delay2" style="font-size:1rem;color:var(--ink-faint);max-width:380px;margin:0;line-height:1.65">
-        Her hafta yeni bir sohbet, bir çay ve sofraya oturacak biri. Demleme'ye katıl.
-      </p>
+        <h1 style="font-family:'Bebas Neue','Arial Black',sans-serif;font-size:clamp(4rem,11vw,10rem);line-height:0.88;margin:0;letter-spacing:-.01em">
+          <span style="display:block" class="hero-anim split-target">MASAYA</span>
+          <span style="display:block;color:var(--rust)" class="hero-anim hero-anim-delay1 split-target">HOŞGELDİN</span>
+        </h1>
 
-      <div class="hero-anim hero-anim-delay3" style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
-        <a href="https://youtube.com/@demleme" target="_blank" rel="noopener"
-          class="btn-magnetic" style="display:inline-flex;align-items:center;gap:10px;padding:14px 24px;background:var(--ink);color:var(--cream-fixed);border-radius:40px;font-weight:700;font-size:.9rem;text-decoration:none">
-          <img src="/images/yt-kirmizi.png" width="22" height="16" alt="YT" style="object-fit:contain;flex-shrink:0">
-          YouTube'da İzle
-        </a>
-        <a href="/urunler"
-          style="display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border:2px solid var(--ink);color:var(--ink);border-radius:40px;font-weight:700;font-size:.9rem;text-decoration:none">
-          <img src="/images/sepet-ikonu.png" width="20" height="20" alt="Sepet" style="object-fit:contain;flex-shrink:0">
-          Mağaza
-        </a>
+        <p class="hero-anim hero-anim-delay2" style="font-size:1rem;color:var(--ink-faint);max-width:380px;margin:0;line-height:1.65">
+          Her hafta yeni bir sohbet, bir çay ve sofraya oturacak biri. Demleme'ye katıl.
+        </p>
+
+        <div class="hero-anim hero-anim-delay3" style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+          <a href="https://youtube.com/@demleme" target="_blank" rel="noopener" class="btn-magnetic"
+            style="display:inline-flex;align-items:center;gap:10px;padding:14px 24px;background:var(--ink);color:var(--cream-fixed);border-radius:40px;font-weight:700;font-size:.9rem;text-decoration:none">
+            <svg viewBox="0 0 24 24" fill="var(--cream-fixed)" width="18" height="18"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31 31 0 000 12a31 31 0 00.5 5.8 3 3 0 002.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 002.1-2.1A31 31 0 0024 12a31 31 0 00-.5-5.8zM9.6 15.5V8.5L15.8 12z"/></svg>
+            YouTube'da İzle
+          </a>
+          <a href="/urunler" class="btn-magnetic"
+            style="display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border:2px solid var(--ink);color:var(--ink);border-radius:40px;font-weight:700;font-size:.9rem;text-decoration:none">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--ink)" strokeWidth="1.8" width="18" height="18"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+            Mağaza
+          </a>
+        </div>
+
+      </div>
+
+      <!-- SAĞ: GIF — mobilde üstte -->
+      <div style="display:flex;align-items:center;justify-content:center;order:1" class="hero-right">
+        <img src="/images/cay-animasyon.webp" alt="Çay animasyonu"
+          style="width:100%;max-width:400px;object-fit:contain" class="hero-anim hero-anim-delay1" />
       </div>
 
     </div>
-
-    <!-- SAĞ -->
-    <div class="hero-right hero-anim hero-anim-delay2" style="display:flex;align-items:center;justify-content:center">
-      <img src="/images/cay-animasyon.webp" alt="Çay animasyonu" style="width:100%;max-width:420px;object-fit:contain" />
-    </div>
-
   </div>
 
-  <div style="position:absolute;bottom:20px;left:50%;transform:translateX(-50%);opacity:.3;animation:heroArrow 2s ease-in-out infinite">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+  <!-- Scroll ok -->
+  <div style="position:absolute;bottom:24px;left:50%;transform:translateX(-50%);opacity:.3;animation:heroArrow 2s ease-in-out infinite">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="18" height="18">
       <path d="M12 5v14M5 12l7 7 7-7"/>
     </svg>
   </div>
