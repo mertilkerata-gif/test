@@ -17,47 +17,50 @@ export default function Home() {
 <!-- ═══════════════════════════════════════════════════════════ -->
 <!-- 1. HERO                                                      -->
 <!-- ═══════════════════════════════════════════════════════════ -->
-<section id="hero" style="min-height:90svh;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:visible;padding:80px var(--pad) 40px">
+<section id="hero" style="min-height:calc(100svh - 64px);display:flex;align-items:center;padding:40px var(--pad)">
+  <div style="max-width:var(--wrap);margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center" class="hero-2col">
 
-  <div style="max-width:var(--wrap);margin:0 auto;width:100%" class="hero-2col">
+    <!-- SOL -->
+    <div style="display:flex;flex-direction:column;gap:24px">
 
-    <div style="display:flex;flex-direction:column;gap:28px">
+      <h1 style="font-family:'Bebas Neue','Arial Black',sans-serif;font-size:clamp(4rem,12vw,10rem);line-height:0.9;margin:0;letter-spacing:-.01em">
+        <span style="display:block" class="hero-anim">MASAYA</span>
+        <span style="display:block;color:var(--rust)" class="hero-anim hero-anim-delay1">HOŞGELDİN</span>
+      </h1>
 
-      <h1 style="font-family:'Bebas Neue','Arial Black',sans-serif;font-size:clamp(3rem,13vw,11rem);line-height:0.88;margin:0;letter-spacing:-.01em;overflow-wrap:break-word"><span class="clip-reveal-wrap"><span class="clip-reveal hero-anim">MASAYA</span></span><br><span class="clip-reveal-wrap"><span class="clip-reveal hero-anim hero-anim-delay1" style="color:var(--rust)">HOŞGELDİN</span></span></h1>
-
-      <p class="hero-anim hero-anim-delay1" style="font-size:1rem;color:var(--ink-faint);max-width:400px;margin:0;line-height:1.65">
+      <p class="hero-anim hero-anim-delay2" style="font-size:1rem;color:var(--ink-faint);max-width:380px;margin:0;line-height:1.65">
         Her hafta yeni bir sohbet, bir çay ve sofraya oturacak biri. Demleme'ye katıl.
       </p>
 
-      <div class="hero-anim hero-anim-delay2" style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+      <div class="hero-anim hero-anim-delay3" style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
         <a href="https://youtube.com/@demleme" target="_blank" rel="noopener"
           style="display:inline-flex;align-items:center;gap:10px;padding:14px 24px;background:var(--ink);color:var(--cream-fixed);border-radius:40px;font-weight:700;font-size:.9rem;text-decoration:none">
-          <img src="/images/yt-kirmizi.png" width="22" height="16" alt="YT" style="object-fit:contain">
+          <img src="/images/yt-kirmizi.png" width="22" height="16" alt="YT" style="object-fit:contain;flex-shrink:0">
           YouTube'da İzle
         </a>
         <a href="/urunler"
           style="display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border:2px solid var(--ink);color:var(--ink);border-radius:40px;font-weight:700;font-size:.9rem;text-decoration:none">
-          <img src="/images/sepet-ikonu.png" width="20" height="20" alt="Sepet" style="object-fit:contain">
+          <img src="/images/sepet-ikonu.png" width="20" height="20" alt="Sepet" style="object-fit:contain;flex-shrink:0">
           Mağaza
         </a>
       </div>
 
     </div>
 
-    <div class="hero-right hero-anim hero-anim-delay3" style="display:flex;align-items:center;justify-content:center">
-      <img src="/images/cay-animasyon.webp" alt="Çay animasyonu"
-        style="width:100%;max-width:460px;object-fit:contain" />
+    <!-- SAĞ -->
+    <div class="hero-right hero-anim hero-anim-delay2" style="display:flex;align-items:center;justify-content:center">
+      <img src="/images/cay-animasyon.webp" alt="Çay animasyonu" style="width:100%;max-width:420px;object-fit:contain" />
     </div>
 
   </div>
 
-  <div style="position:absolute;bottom:24px;left:50%;transform:translateX(-50%);opacity:.35;animation:heroArrow 1.8s ease-in-out infinite">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+  <div style="position:absolute;bottom:20px;left:50%;transform:translateX(-50%);opacity:.3;animation:heroArrow 2s ease-in-out infinite">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
       <path d="M12 5v14M5 12l7 7 7-7"/>
     </svg>
   </div>
-
 </section>
+
 <!-- ═══════════════════════════════════════════════════════════ -->
 <!-- 2. İSTATİSTİKLER — tam genişlik, scroll reveal             -->
 <!-- ═══════════════════════════════════════════════════════════ -->
