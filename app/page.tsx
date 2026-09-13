@@ -255,29 +255,57 @@ export default function Home() {
 <!-- ═══════════════════════════════════════════════════════════ -->
 <!-- 6. KONUKLAR                                                  -->
 <!-- ═══════════════════════════════════════════════════════════ -->
-<section id="konuklar" class="reveal-section" >
+<section id="konuklar" class="reveal-section" style="padding:100px var(--pad);background:var(--cream-deep)">
   <div style="max-width:var(--wrap);margin:0 auto">
 
-    <div style="margin-bottom:56px">
-      <p style="font-size:.7rem;letter-spacing:.2em;color:rgba(243,238,225,.4);font-weight:800;margin:0 0 12px">SOFRADAKI KONUKLAR</p>
-      <h2 style="font-family:'Bebas Neue',var(--font-display);font-size:clamp(2.5rem,5vw,5rem);margin:0;line-height:.9;color:var(--cream-fixed)">SOFRAYA<br>HERKES DAVETLİ</h2>
+    <div style="margin-bottom:48px">
+      <p style="font-size:.65rem;letter-spacing:.22em;color:var(--rust);font-weight:800;margin:0 0 10px">SOFRADAKI KONUKLAR</p>
+      <h2 style="font-family:'Bebas Neue','Arial Black',sans-serif;font-size:clamp(2.5rem,5vw,5rem);margin:0;line-height:.9">SOFRAYA<br>HERKES DAVETLİ</h2>
     </div>
 
-    <div style="display:flex;gap:20px;overflow-x:auto;padding-bottom:12px;scroll-snap-type:x mandatory" class="guests-strip">
+    <div class="guests-strip">
 
-      ${[1,2,3,4,5,6].map(i => `
-      <div style="flex:0 0 200px;scroll-snap-align:start;display:flex;flex-direction:column;align-items:center;gap:12px">
-        <div style="width:140px;height:140px;border-radius:50%;background:rgba(243,238,225,.08);border:2px solid rgba(243,238,225,.12);display:flex;align-items:center;justify-content:center">
-          <svg viewBox="0 0 40 40" fill="none" width="40" height="40">
-            <circle cx="20" cy="16" r="8" stroke="rgba(243,238,225,.3)" stroke-width="1.5"/>
-            <path d="M6 36c0-7.7 6.3-14 14-14s14 6.3 14 14" stroke="rgba(243,238,225,.3)" stroke-width="1.5"/>
-          </svg>
+      <div style="flex:0 0 160px;scroll-snap-align:start;display:flex;flex-direction:column;align-items:center;gap:12px">
+        <div style="width:120px;height:120px;border-radius:50%;background:var(--cream);border:2px solid var(--line);display:flex;align-items:center;justify-content:center">
+          <svg viewBox="0 0 40 40" fill="none" width="36" height="36"><circle cx="20" cy="16" r="8" stroke="var(--ink-faint)" stroke-width="1.5"/><path d="M6 36c0-7.7 6.3-14 14-14s14 6.3 14 14" stroke="var(--ink-faint)" stroke-width="1.5"/></svg>
         </div>
-        <div style="text-align:center">
-          <div style="color:var(--cream-fixed);font-weight:700;font-size:.9rem">Konuk ${i}</div>
-          <div style="color:rgba(243,238,225,.4);font-size:.75rem">Bölüm ${85-i}</div>
+        <div style="text-align:center"><div style="font-weight:700;font-size:.88rem">Konuk 1</div><div style="color:var(--ink-faint);font-size:.75rem">Bölüm 84</div></div>
+      </div>
+
+      <div style="flex:0 0 160px;scroll-snap-align:start;display:flex;flex-direction:column;align-items:center;gap:12px">
+        <div style="width:120px;height:120px;border-radius:50%;background:var(--cream);border:2px solid var(--line);display:flex;align-items:center;justify-content:center">
+          <svg viewBox="0 0 40 40" fill="none" width="36" height="36"><circle cx="20" cy="16" r="8" stroke="var(--ink-faint)" stroke-width="1.5"/><path d="M6 36c0-7.7 6.3-14 14-14s14 6.3 14 14" stroke="var(--ink-faint)" stroke-width="1.5"/></svg>
         </div>
-      </div>`).join('')}
+        <div style="text-align:center"><div style="font-weight:700;font-size:.88rem">Konuk 2</div><div style="color:var(--ink-faint);font-size:.75rem">Bölüm 83</div></div>
+      </div>
+
+      <div style="flex:0 0 160px;scroll-snap-align:start;display:flex;flex-direction:column;align-items:center;gap:12px">
+        <div style="width:120px;height:120px;border-radius:50%;background:var(--cream);border:2px solid var(--line);display:flex;align-items:center;justify-content:center">
+          <svg viewBox="0 0 40 40" fill="none" width="36" height="36"><circle cx="20" cy="16" r="8" stroke="var(--ink-faint)" stroke-width="1.5"/><path d="M6 36c0-7.7 6.3-14 14-14s14 6.3 14 14" stroke="var(--ink-faint)" stroke-width="1.5"/></svg>
+        </div>
+        <div style="text-align:center"><div style="font-weight:700;font-size:.88rem">Konuk 3</div><div style="color:var(--ink-faint);font-size:.75rem">Bölüm 82</div></div>
+      </div>
+
+      <div style="flex:0 0 160px;scroll-snap-align:start;display:flex;flex-direction:column;align-items:center;gap:12px">
+        <div style="width:120px;height:120px;border-radius:50%;background:var(--cream);border:2px solid var(--line);display:flex;align-items:center;justify-content:center">
+          <svg viewBox="0 0 40 40" fill="none" width="36" height="36"><circle cx="20" cy="16" r="8" stroke="var(--ink-faint)" stroke-width="1.5"/><path d="M6 36c0-7.7 6.3-14 14-14s14 6.3 14 14" stroke="var(--ink-faint)" stroke-width="1.5"/></svg>
+        </div>
+        <div style="text-align:center"><div style="font-weight:700;font-size:.88rem">Konuk 4</div><div style="color:var(--ink-faint);font-size:.75rem">Bölüm 81</div></div>
+      </div>
+
+      <div style="flex:0 0 160px;scroll-snap-align:start;display:flex;flex-direction:column;align-items:center;gap:12px">
+        <div style="width:120px;height:120px;border-radius:50%;background:var(--cream);border:2px solid var(--line);display:flex;align-items:center;justify-content:center">
+          <svg viewBox="0 0 40 40" fill="none" width="36" height="36"><circle cx="20" cy="16" r="8" stroke="var(--ink-faint)" stroke-width="1.5"/><path d="M6 36c0-7.7 6.3-14 14-14s14 6.3 14 14" stroke="var(--ink-faint)" stroke-width="1.5"/></svg>
+        </div>
+        <div style="text-align:center"><div style="font-weight:700;font-size:.88rem">Konuk 5</div><div style="color:var(--ink-faint);font-size:.75rem">Bölüm 80</div></div>
+      </div>
+
+      <div style="flex:0 0 160px;scroll-snap-align:start;display:flex;flex-direction:column;align-items:center;gap:12px">
+        <div style="width:120px;height:120px;border-radius:50%;background:var(--cream);border:2px solid var(--line);display:flex;align-items:center;justify-content:center">
+          <svg viewBox="0 0 40 40" fill="none" width="36" height="36"><circle cx="20" cy="16" r="8" stroke="var(--ink-faint)" stroke-width="1.5"/><path d="M6 36c0-7.7 6.3-14 14-14s14 6.3 14 14" stroke="var(--ink-faint)" stroke-width="1.5"/></svg>
+        </div>
+        <div style="text-align:center"><div style="font-weight:700;font-size:.88rem">Konuk 6</div><div style="color:var(--ink-faint);font-size:.75rem">Bölüm 79</div></div>
+      </div>
 
     </div>
   </div>
