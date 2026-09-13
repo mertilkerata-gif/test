@@ -32,8 +32,8 @@ export default function Home() {
   .hero-anim-delay3 { transition-delay:.38s; }
 
   /* ── Reveal sections ── */
-  .reveal-section { opacity:0; transform:translateY(30px); transition:opacity .8s ease, transform .8s ease; }
-  .reveal-section.visible { opacity:1; transform:translateY(0); }
+  .reveal-section { opacity:0 !important; transform:translateY(30px) !important; transition:opacity .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1); }
+  .reveal-section.visible { opacity:1 !important; transform:translateY(0) !important; }
 
   /* ── Stats ── */
   .stats-grid { display:grid; grid-template-columns:repeat(3,1fr); width:100%; }
@@ -348,7 +348,7 @@ export default function Home() {
 <!-- ═══════════════════════════════════════════════════════════ -->
 <!-- 6. KONUKLAR                                                  -->
 <!-- ═══════════════════════════════════════════════════════════ -->
-<section id="konuklar" class="reveal-section">
+<section id="konuklar" class="reveal-section" style="background:var(--ink)">
   <div style="max-width:var(--wrap);margin:0 auto">
 
     <div style="margin-bottom:56px">
@@ -496,29 +496,35 @@ export default function Home() {
 
 // Scroll reveal
 (function(){
-  var sections = document.querySelectorAll('.reveal-section');
-  var obs = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){
-        e.target.classList.add('visible');
-        // Sayaç animasyonu
-        e.target.querySelectorAll('.stat-count').forEach(function(el){
-          var target = parseInt(el.getAttribute('data-target'));
-          var duration = 1600;
-          var start = performance.now();
-          function tick(now){
-            var p = Math.min((now-start)/duration,1);
-            var ease = 1-Math.pow(1-p,3);
-            el.textContent = Math.round(ease*target).toLocaleString('tr-TR');
-            if(p<1) requestAnimationFrame(tick);
-          }
-          requestAnimationFrame(tick);
-        });
-        obs.unobserve(e.target);
+  function revealSection(el){
+    el.classList.add('visible');
+    el.querySelectorAll('.stat-count').forEach(function(counter){
+      var target = parseInt(counter.getAttribute('data-target'));
+      var duration = 1600;
+      var start = performance.now();
+      function tick(now){
+        var p = Math.min((now-start)/duration,1);
+        var ease = 1-Math.pow(1-p,3);
+        counter.textContent = Math.round(ease*target).toLocaleString('tr-TR');
+        if(p<1) requestAnimationFrame(tick);
       }
+      requestAnimationFrame(tick);
     });
-  },{threshold:0.12});
-  sections.forEach(function(s){ obs.observe(s); });
+  }
+
+  var sections = document.querySelectorAll('.reveal-section');
+
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ revealSection(e.target); obs.unobserve(e.target); }
+      });
+    },{threshold:0.05, rootMargin:'0px 0px -40px 0px'});
+    sections.forEach(function(s){ obs.observe(s); });
+  } else {
+    // Fallback: hepsini göster
+    sections.forEach(function(s){ revealSection(s); });
+  }
 })();
 
 // Anket
