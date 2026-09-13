@@ -23,9 +23,7 @@ export default function Home() {
 
     <div style="display:flex;flex-direction:column;gap:28px">
 
-      <h1 class="hero-anim" style="font-family:'Bebas Neue','Arial Black',sans-serif;font-size:clamp(3rem,13vw,11rem);line-height:0.88;margin:0;letter-spacing:-.01em;overflow-wrap:break-word">
-        MASAYA<br><span style="color:var(--rust)">HOŞGELDİN</span>
-      </h1>
+      <h1 style="font-family:'Bebas Neue','Arial Black',sans-serif;font-size:clamp(3rem,13vw,11rem);line-height:0.88;margin:0;letter-spacing:-.01em;overflow-wrap:break-word"><span class="clip-reveal-wrap"><span class="clip-reveal hero-anim">MASAYA</span></span><br><span class="clip-reveal-wrap"><span class="clip-reveal hero-anim hero-anim-delay1" style="color:var(--rust)">HOŞGELDİN</span></span></h1>
 
       <p class="hero-anim hero-anim-delay1" style="font-size:1rem;color:var(--ink-faint);max-width:400px;margin:0;line-height:1.65">
         Her hafta yeni bir sohbet, bir çay ve sofraya oturacak biri. Demleme'ye katıl.
@@ -63,7 +61,7 @@ export default function Home() {
 <!-- ═══════════════════════════════════════════════════════════ -->
 <!-- 2. İSTATİSTİKLER — tam genişlik, scroll reveal             -->
 <!-- ═══════════════════════════════════════════════════════════ -->
-<section id="stats" class="reveal-section">
+<section id="stats" class="reveal-section" data-bg="bg-cream-deep">
   <div style="max-width:var(--wrap);margin:0 auto;width:100%" class="stats-grid">
 
     <div style="padding:60px 40px;display:flex;flex-direction:column;align-items:center;gap:8px;border-right:1px solid var(--line)">
@@ -87,10 +85,10 @@ export default function Home() {
 <!-- ═══════════════════════════════════════════════════════════ -->
 <!-- 3. DEMLEYEN KİM                                             -->
 <!-- ═══════════════════════════════════════════════════════════ -->
-<section id="demleyen" class="reveal-section">
+<section id="demleyen" class="reveal-section" data-bg="bg-cream">
   <div style="max-width:var(--wrap);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center" class="two-col">
 
-    <div>
+    <div class="slide-left">
       <img src="/images/garen-foto.png" alt="Garen Kösedağ"
         style="width:100%;border-radius:24px;object-fit:cover;aspect-ratio:4/5" />
     </div>
@@ -114,7 +112,7 @@ export default function Home() {
 <!-- ═══════════════════════════════════════════════════════════ -->
 <!-- 4. DEMLEME SHOP                                             -->
 <!-- ═══════════════════════════════════════════════════════════ -->
-<section id="shop" class="reveal-section" style="padding:100px 0 80px">
+<section id="shop" class="reveal-section" data-bg="bg-cream-deep" style="padding:100px 0 80px">
   <div style="max-width:var(--wrap);margin:0 auto;padding:0 var(--pad)">
     <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px">
       <div>
@@ -127,23 +125,23 @@ export default function Home() {
 
   <div class="shop-strip" style="padding-left:var(--pad);padding-right:var(--pad)">
 
-    <a href="/urunler/demleme-kupasi" class="shop-card shop-card-cream">
+    <a href="/urunler/demleme-kupasi" class="shop-card shop-card-cream scale-up tilt-card">
       <div class="shop-card-img"><img src="/images/demleme-kupasi.webp" alt="Demleme Kupası" style="width:100%;height:100%;object-fit:contain"></div>
       <div class="shop-card-info"><div class="shop-card-name">Demleme Kupası</div><div class="shop-card-price">₺290</div></div>
     </a>
 
-    <a href="/urunler/sofra-tisortu" class="shop-card shop-card-lav">
+    <a href="/urunler/sofra-tisortu" class="shop-card shop-card-lav scale-up tilt-card">
       <span class="shop-new-badge">YENİ</span>
       <div class="shop-card-img"><img src="/images/sofra-tisortu.webp" alt="Sofra Tişörtü" style="width:100%;height:100%;object-fit:contain"></div>
       <div class="shop-card-info"><div class="shop-card-name">Sofra Tişörtü</div><div class="shop-card-price">₺450</div></div>
     </a>
 
-    <a href="/urunler/mini-cay-seti" class="shop-card shop-card-rust">
+    <a href="/urunler/mini-cay-seti" class="shop-card shop-card-rust scale-up tilt-card">
       <div class="shop-card-img"><img src="/images/mini-cay-seti.webp" alt="Mini Çay Seti" style="width:100%;height:100%;object-fit:contain"></div>
       <div class="shop-card-info"><div class="shop-card-name">Mini Çay Seti</div><div class="shop-card-price">₺620</div></div>
     </a>
 
-    <a href="/urunler/demleme-defteri" class="shop-card shop-card-green">
+    <a href="/urunler/demleme-defteri" class="shop-card shop-card-green scale-up tilt-card">
       <div class="shop-card-img"><img src="/images/demleme-defteri.webp" alt="Demleme Defteri" style="width:100%;height:100%;object-fit:contain"></div>
       <div class="shop-card-info"><div class="shop-card-name">Demleme Defteri</div><div class="shop-card-price">₺180</div></div>
     </a>
@@ -171,7 +169,7 @@ export default function Home() {
   </div>
 </section>
 
-<section id="bu-hafta" class="reveal-section">
+<section id="bu-hafta" class="reveal-section" data-bg="bg-cream">
   <div style="max-width:var(--wrap);margin:0 auto">
 
     <div style="margin-bottom:56px">
@@ -254,7 +252,7 @@ export default function Home() {
 <!-- ═══════════════════════════════════════════════════════════ -->
 <!-- 6. KONUKLAR                                                  -->
 <!-- ═══════════════════════════════════════════════════════════ -->
-<section id="konuklar" class="reveal-section" style="background:var(--ink)">
+<section id="konuklar" class="reveal-section" data-bg="bg-ink" style="background:var(--ink)">
   <div style="max-width:var(--wrap);margin:0 auto">
 
     <div style="margin-bottom:56px">
@@ -285,7 +283,7 @@ export default function Home() {
 <!-- ═══════════════════════════════════════════════════════════ -->
 <!-- 7. ANKET                                                     -->
 <!-- ═══════════════════════════════════════════════════════════ -->
-<section id="anket" class="reveal-section">
+<section id="anket" class="reveal-section" data-bg="bg-lav">
   <div style="max-width:600px;margin:0 auto;text-align:center;display:flex;flex-direction:column;gap:32px">
 
     <div>
@@ -385,6 +383,64 @@ export default function Home() {
 </footer>
 
 <script>
+
+// ══ SCROLL ANİMASYONLARI ══
+(function(){
+  // Color shift
+  var colorSections = document.querySelectorAll('[data-bg]');
+  var bodyEl = document.body;
+  var allBgs = ['bg-cream','bg-cream-deep','bg-ink','bg-lav'];
+
+  function updateBg(){
+    var mid = window.scrollY + window.innerHeight * 0.45;
+    var active = '';
+    colorSections.forEach(function(s){
+      var top = s.getBoundingClientRect().top + window.scrollY;
+      if(top <= mid) active = s.getAttribute('data-bg') || '';
+    });
+    allBgs.forEach(function(c){ bodyEl.classList.remove(c); });
+    if(active) bodyEl.classList.add(active);
+  }
+  window.addEventListener('scroll', updateBg, {passive:true});
+  updateBg();
+
+  // Tilt 3D
+  document.querySelectorAll('.tilt-card').forEach(function(card){
+    card.addEventListener('mousemove', function(e){
+      var r = card.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width - 0.5;
+      var y = (e.clientY - r.top) / r.height - 0.5;
+      card.style.transform = 'perspective(500px) rotateY('+(x*14)+'deg) rotateX('+(-y*14)+'deg) scale(1.04)';
+    });
+    card.addEventListener('mouseleave', function(){
+      card.style.transform = '';
+    });
+  });
+
+  // IntersectionObserver — tüm animasyonlar
+  var targets = document.querySelectorAll('.clip-reveal,.blur-in,.slide-left,.slide-right,.scale-up,.stagger,.reveal-section');
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var el = e.target;
+      el.classList.add('in');
+      if(el.classList.contains('reveal-section')) el.classList.add('visible');
+      // stat-count
+      el.querySelectorAll('.stat-count').forEach(function(cnt){
+        var tgt = parseInt(cnt.getAttribute('data-target'));
+        var dur = 1600, t0 = performance.now();
+        (function tick(now){
+          var p = Math.min((now-t0)/dur,1), ease = 1-Math.pow(1-p,3);
+          cnt.textContent = Math.round(ease*tgt).toLocaleString('tr-TR');
+          if(p<1) requestAnimationFrame(tick);
+        })(t0);
+      });
+      obs.unobserve(el);
+    });
+  },{threshold:0.08, rootMargin:'0px 0px -20px 0px'});
+  targets.forEach(function(el){ obs.observe(el); });
+})();
+
 // Hero giriş animasyonu
 (function(){
   function runHero(){
