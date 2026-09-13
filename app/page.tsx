@@ -17,29 +17,64 @@ export default function Home() {
 <!-- ═══════════════════════════════════════════════════════════ -->
 <!-- 1. HERO                                                      -->
 <!-- ═══════════════════════════════════════════════════════════ -->
-<section id="hero" style="min-height:100svh;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;padding:100px var(--pad) 60px">
+<style>
+  /* ── Hero grid responsive ── */
+  .hero-2col { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+  @media(max-width:700px){
+    .hero-2col { grid-template-columns:1fr; gap:0; }
+    .hero-right { order:-1; margin-bottom:8px; }
+    .hero-right img { max-width:180px !important; margin:0 auto; display:block; }
+  }
 
-  <!-- Sol içerik -->
-  <div style="max-width:var(--wrap);margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center" class="hero-2col">
+  /* ── Giriş animasyonları ── */
+  .hero-anim { opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease; }
+  .hero-anim.visible { opacity:1; transform:translateY(0); }
+  .hero-anim-delay1 { transition-delay:.1s; }
+  .hero-anim-delay2 { transition-delay:.22s; }
+  .hero-anim-delay3 { transition-delay:.36s; }
+  .hero-anim-delay4 { transition-delay:.5s; }
 
-    <div style="display:flex;flex-direction:column;gap:32px">
+  /* ── Shop grid responsive ── */
+  .shop-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+  @media(max-width:900px){ .shop-grid { grid-template-columns:repeat(2,1fr); } }
+  @media(max-width:480px){ .shop-grid { grid-template-columns:repeat(2,1fr); gap:12px; } }
 
-      <h1 style="font-family:'Bebas Neue',var(--font-display);font-size:clamp(5rem,10vw,11rem);line-height:0.88;margin:0;letter-spacing:-.01em">
+  /* ── Demleyen kim responsive ── */
+  .two-col { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+  @media(max-width:700px){ .two-col { grid-template-columns:1fr; gap:32px; } }
+
+  /* ── Episode main responsive ── */
+  .episode-main { display:grid; grid-template-columns:1.2fr 1fr; }
+  @media(max-width:700px){ .episode-main { grid-template-columns:1fr; } }
+
+  /* ── Stats responsive ── */
+  .stats-grid { display:grid; grid-template-columns:1fr 1fr 1fr; width:100%; }
+  @media(max-width:600px){ .stats-grid { grid-template-columns:1fr; } }
+  @media(max-width:600px){ .stats-grid > div { border-right:none !important; border-bottom:1px solid var(--line); } }
+</style>
+
+<section id="hero" style="min-height:90svh;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;padding:80px var(--pad) 40px">
+
+  <div style="max-width:var(--wrap);margin:0 auto;width:100%" class="hero-2col">
+
+    <div style="display:flex;flex-direction:column;gap:28px">
+
+      <h1 class="hero-anim" style="font-family:'Bebas Neue','Arial Black',sans-serif;font-size:clamp(4.5rem,12vw,11rem);line-height:0.88;margin:0;letter-spacing:-.01em">
         MASAYA<br><span style="color:var(--rust)">HOŞGELDİN</span>
       </h1>
 
-      <p style="font-size:1.05rem;color:var(--ink-faint);max-width:420px;margin:0;line-height:1.6">
+      <p class="hero-anim hero-anim-delay1" style="font-size:1rem;color:var(--ink-faint);max-width:400px;margin:0;line-height:1.65">
         Her hafta yeni bir sohbet, bir çay ve sofraya oturacak biri. Demleme'ye katıl.
       </p>
 
-      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+      <div class="hero-anim hero-anim-delay2" style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
         <a href="https://youtube.com/@demleme" target="_blank" rel="noopener"
-          style="display:inline-flex;align-items:center;gap:10px;padding:14px 24px;background:var(--ink);color:var(--cream-fixed);border-radius:40px;font-weight:700;font-size:.9rem;text-decoration:none;letter-spacing:.03em">
+          style="display:inline-flex;align-items:center;gap:10px;padding:14px 24px;background:var(--ink);color:var(--cream-fixed);border-radius:40px;font-weight:700;font-size:.9rem;text-decoration:none">
           <img src="/images/yt-kirmizi.png" width="22" height="16" alt="YT" style="object-fit:contain">
           YouTube'da İzle
         </a>
         <a href="/urunler"
-          style="display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border:2px solid var(--ink);color:var(--ink);border-radius:40px;font-weight:700;font-size:.9rem;text-decoration:none;letter-spacing:.03em">
+          style="display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border:2px solid var(--ink);color:var(--ink);border-radius:40px;font-weight:700;font-size:.9rem;text-decoration:none">
           <img src="/images/sepet-ikonu.png" width="20" height="20" alt="Sepet" style="object-fit:contain">
           Mağaza
         </a>
@@ -47,28 +82,27 @@ export default function Home() {
 
     </div>
 
-    <!-- Sağ — animasyonlu çay -->
-    <div style="display:flex;align-items:center;justify-content:center">
+    <div class="hero-right hero-anim hero-anim-delay3" style="display:flex;align-items:center;justify-content:center">
       <img src="/images/cay-animasyon.webp" alt="Çay animasyonu"
         style="width:100%;max-width:460px;object-fit:contain" />
     </div>
 
   </div>
 
-  <!-- Aşağı kaydır ok -->
-  <div style="position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;opacity:.4">
+  <div style="position:absolute;bottom:24px;left:50%;transform:translateX(-50%);opacity:.35;animation:heroArrow 1.8s ease-in-out infinite">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
       <path d="M12 5v14M5 12l7 7 7-7"/>
     </svg>
   </div>
 
 </section>
+<style>@keyframes heroArrow{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}</style>
 
 <!-- ═══════════════════════════════════════════════════════════ -->
 <!-- 2. İSTATİSTİKLER — tam genişlik, scroll reveal             -->
 <!-- ═══════════════════════════════════════════════════════════ -->
 <section id="stats" class="reveal-section" style="width:100%;border-top:1px solid var(--line);border-bottom:1px solid var(--line);opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease">
-  <div style="max-width:var(--wrap);margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;width:100%">
+  <div style="max-width:var(--wrap);margin:0 auto;width:100%" class="stats-grid">
 
     <div style="padding:60px 40px;display:flex;flex-direction:column;align-items:center;gap:8px;border-right:1px solid var(--line)">
       <div class="stat-count" data-target="11999" style="font-family:'Bebas Neue',var(--font-display);font-size:clamp(3.5rem,6vw,6rem);color:var(--rust);line-height:1;font-weight:400">0</div>
@@ -435,6 +469,18 @@ export default function Home() {
 </footer>
 
 <script>
+// Hero giriş animasyonu
+(function(){
+  function runHero(){
+    document.querySelectorAll('.hero-anim').forEach(function(el){
+      el.classList.add('visible');
+    });
+  }
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded', runHero);
+  } else { runHero(); }
+})();
+
 // Scroll reveal
 (function(){
   var sections = document.querySelectorAll('.reveal-section');
@@ -480,3 +526,4 @@ function demlemeVote(btn, choice){
     </>
   );
 }
+
