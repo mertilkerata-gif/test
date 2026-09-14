@@ -45,7 +45,7 @@ export default function Home() {
   </div>
 
   <!-- Çay animasyonu — sağ üst -->
-  <div id="hero-gif" style="position:absolute;top:0;right:0;width:55%;height:100%;display:flex;align-items:center;justify-content:center;pointer-events:none">
+  <div id="hero-gif" style="position:absolute;top:-60px;right:-20px;width:50%;height:55%;display:flex;align-items:flex-start;justify-content:center;pointer-events:none">
     <img src="/images/cay-animasyon.webp" alt="" style="width:90%;max-width:520px;object-fit:contain;transform:translateY(20px);opacity:0;transition:transform 1.2s cubic-bezier(.16,1,.3,1) .4s,opacity 1s ease .4s" id="hero-gif-img">
   </div>
 
