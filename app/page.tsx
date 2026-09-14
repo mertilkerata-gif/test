@@ -58,7 +58,7 @@ export default function Home() {
       <p id="hero-eyebrow" style="font-size:.7rem;letter-spacing:.25em;color:var(--rust);font-weight:800;margin:0;transform:translateY(100%);transition:transform .8s cubic-bezier(.16,1,.3,1)">MASAYA HOŞGELDİN</p>
     </div>
     <div style="overflow:hidden">
-      <h1 id="hero-h1" style="font-family:'Kodchasan',sans-serif;font-size:clamp(2.8rem,6.5vw,6rem);font-weight:800;line-height:.9;margin:0 0 32px;transform:translateY(110%);transition:transform 1s cubic-bezier(.16,1,.3,1) .1s">
+      <h1 id="hero-h1" style="font-family:'Kodchasan',sans-serif;font-size:clamp(2.8rem,6.5vw,6rem);font-weight:800;line-height:.9;margin:0 0 32px">
         MASAYA<br><em style="color:var(--rust);font-style:normal">HOŞGELDİN</em>
       </h1>
     </div>
@@ -483,133 +483,62 @@ function initHero(){
   });
 })();
 
-// ══ GSAP SCROLL EFEKTLERİ ══
+// ══ GSAP — SADECE SMOOTH SCROLL + SAYAÇ ══
 (function(){
   function initGSAP(){
-    if(typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined'){
-      setTimeout(initGSAP, 200);
-      return;
-    }
+    if(typeof gsap === 'undefined'){ setTimeout(initGSAP, 200); return; }
 
-    gsap.registerPlugin(ScrollTrigger);
-
-    // ── Lenis smooth scroll
-    if(typeof Lenis !== 'undefined'){
-      var lenis = new Lenis({ duration:1.4, easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t));} });
+    // Lenis smooth scroll
+    if(typeof Lenis !== 'undefined' && typeof ScrollTrigger !== 'undefined'){
+      gsap.registerPlugin(ScrollTrigger);
+      var lenis = new Lenis({ duration:1.2, easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t));} });
       lenis.on('scroll', ScrollTrigger.update);
       gsap.ticker.add(function(time){ lenis.raf(time*1000); });
       gsap.ticker.lagSmoothing(0);
     }
 
-    // ── 1. KİNETİK TİPOGRAFİ: MASAYA büyükten küçüğe
-    var h1 = document.querySelector('#hero h1');
-    if(h1){
-      gsap.fromTo(h1,
-        { fontSize: 'clamp(8rem,22vw,20rem)', opacity:0, y:60 },
-        { fontSize: 'clamp(2.8rem,6.5vw,6rem)', opacity:1, y:0,
-          ease: 'power2.out',
-          scrollTrigger:{
-            trigger: '#hero',
-            start: 'top top',
-            end: 'bottom top',
-            scrub: 1.5,
+    // Stat sayaçlar
+    if(typeof ScrollTrigger !== 'undefined'){
+      document.querySelectorAll('.stat-count').forEach(function(el){
+        var target = parseInt(el.getAttribute('data-target'));
+        if(!target) return;
+        var triggered = false;
+        ScrollTrigger.create({
+          trigger: el,
+          start: 'top 90%',
+          onEnter: function(){
+            if(triggered) return;
+            triggered = true;
+            var obj = {val:0};
+            gsap.to(obj, {
+              val: target, duration:2, ease:'power2.out',
+              onUpdate: function(){
+                el.textContent = Math.round(obj.val).toLocaleString('tr-TR');
+              }
+            });
           }
-        }
-      );
-    }
-
-    // ── 2. HERO parallax — gif
-    var gif = document.getElementById('teapot-gif');
-    if(gif){
-      gsap.to(gif, {
-        y: -120,
-        ease: 'none',
-        scrollTrigger:{
-          trigger: '#hero',
-          start: 'top top',
-          end: 'bottom top',
-          scrub: true,
-        }
+        });
       });
     }
-
-    // ── 3. FULL-SCREEN SECTIONS — clip mask reveal
-    var sections = ['#stats','#demleyen','#shop-pin','#bu-hafta','#konuklar','#anket'];
-    sections.forEach(function(sel, i){
-      var el = document.querySelector(sel);
-      if(!el) return;
-
-      // Clip-path ile alttan açılır
-      gsap.fromTo(el,
-        { clipPath: 'inset(100% 0% 0% 0%)' },
-        { clipPath: 'inset(0% 0% 0% 0%)',
-          ease: 'power2.inOut',
-          scrollTrigger:{
-            trigger: el,
-            start: 'top 90%',
-            end: 'top 10%',
-            scrub: 1,
-          }
-        }
-      );
-    });
-
-    // ── 4. İSTATİSTİK SAYAÇLARI — GSAP ile
-    document.querySelectorAll('.stat-count').forEach(function(el){
-      var target = parseInt(el.getAttribute('data-target'));
-      ScrollTrigger.create({
-        trigger: el,
-        start: 'top 85%',
-        onEnter: function(){
-          gsap.to({val:0},{
-            val: target,
-            duration: 2,
-            ease: 'power2.out',
-            onUpdate: function(){
-              el.textContent = Math.round(this.targets()[0].val).toLocaleString('tr-TR');
-            }
-          });
-        },
-        once: true,
-      });
-    });
-
-    // ── 5. REVEAL animasyonları — GSAP ile yönet
-    document.querySelectorAll('.reveal-section').forEach(function(el){
-      gsap.fromTo(el,
-        { opacity:0, y:50 },
-        { opacity:1, y:0, duration:1, ease:'power2.out',
-          scrollTrigger:{
-            trigger: el,
-            start: 'top 80%',
-            toggleActions: 'play none none none',
-          }
-        }
-      );
-    });
-
-    // ── 6. GİF EĞİLME — scroll ile
-    if(gif){
-      gsap.to(gif, {
-        rotate: -30,
-        ease: 'none',
-        scrollTrigger:{
-          trigger: '#hero',
-          start: 'top top',
-          end: '70% top',
-          scrub: 2,
-        }
-      });
-    }
-
-    console.log('GSAP ScrollTrigger ready ✓');
   }
 
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', function(){ setTimeout(initGSAP, 300); });
-  } else {
-    setTimeout(initGSAP, 300);
-  }
+  setTimeout(initGSAP, 400);
+})();
+
+// ══ ÇAY GİF EĞİLME ══
+(function(){
+  var gif = document.getElementById('teapot-gif');
+  if(!gif) return;
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(ticking) return;
+    ticking = true;
+    requestAnimationFrame(function(){
+      var p = Math.max(0, Math.min(window.scrollY / (window.innerHeight * 0.7), 1));
+      gif.style.transform = 'rotate(' + (p * -28) + 'deg)';
+      ticking = false;
+    });
+  }, {passive:true});
 })();
 
 // ══ ANKET ══
