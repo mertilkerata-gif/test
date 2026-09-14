@@ -59,16 +59,18 @@ export default function Home() {
         MASAYA<br><em style="color:var(--rust);font-style:normal">HOŞGELDİN</em>
       </h1>
     </div>
-    <div id="hero-cta" style="display:flex;gap:12px;flex-wrap:wrap;opacity:0;transform:translateY(20px);transition:opacity .8s ease .5s,transform .8s ease .5s">
-      <a href="https://youtube.com/@demleme" target="_blank" rel="noopener"
-        style="display:inline-flex;align-items:center;gap:10px;padding:12px 24px;background:var(--ink);color:var(--cream-fixed);border-radius:40px;font-weight:700;font-size:.9rem;text-decoration:none">
-        <img src="/images/yt-btn.png" width="32" height="24" alt="YouTube" style="object-fit:contain;flex-shrink:0">
-        YouTube'da İzle
+    <div id="hero-cta" style="display:flex;gap:20px;align-items:center;opacity:0;transform:translateY(20px);transition:opacity .8s ease .5s,transform .8s ease .5s">
+      <a href="https://youtube.com/@demleme" target="_blank" rel="noopener" aria-label="YouTube'da İzle"
+        style="display:block;transition:transform .2s"
+        onmouseover="this.style.transform='scale(1.1) rotate(-3deg)'"
+        onmouseout="this.style.transform='scale(1)'">
+        <img src="/images/yt-btn.png" width="72" height="54" alt="YouTube" style="object-fit:contain;display:block">
       </a>
-      <a href="/urunler"
-        style="display:inline-flex;align-items:center;gap:10px;padding:12px 24px;border:2px solid var(--ink);color:var(--ink);border-radius:40px;font-weight:700;font-size:.9rem;text-decoration:none">
-        <img src="/images/sepet-btn.png" width="28" height="28" alt="Mağaza" style="object-fit:contain;flex-shrink:0">
-        Mağaza
+      <a href="/urunler" aria-label="Mağaza"
+        style="display:block;transition:transform .2s"
+        onmouseover="this.style.transform='scale(1.1) rotate(3deg)'"
+        onmouseout="this.style.transform='scale(1)'">
+        <img src="/images/sepet-btn.png" width="60" height="60" alt="Mağaza" style="object-fit:contain;display:block">
       </a>
     </div>
   </div>
