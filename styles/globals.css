@@ -796,3 +796,22 @@ body::after {
   #demleyen, #bu-hafta, #konuklar, #anket { padding:60px 20px !important; }
   #shop-pin { padding:60px 0 0 !important; }
 }
+
+/* ══ HERO ÜSTÜ BOŞLUK ══ */
+#smooth-wrapper, #smooth-content { overflow: visible; }
+
+/* ══ STATS SAYAÇ — her zaman görünür, sayı animasyonla değişir ══ */
+.stat-count { display:block; }
+
+/* ══ DEMLEYENKİM MOBİL ══ */
+@media(max-width:640px){
+  #demleyen { padding:60px 20px !important; }
+  #demleyen .two-col { grid-template-columns:1fr !important; gap:28px !important; }
+  #demleyen img { aspect-ratio:4/3 !important; max-height:280px; }
+}
+
+/* ══ HERO MOBİL BOŞLUK DÜZELT ══ */
+@media(max-width:640px){
+  #hero { padding:60px 20px 40px !important; min-height:calc(100svh - 60px) !important; }
+  #hero-gif { width:80% !important; height:45% !important; right:-10% !important; opacity:.5 !important; }
+}
