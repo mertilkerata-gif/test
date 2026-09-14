@@ -44,45 +44,13 @@ export default function Home() {
     DEMLEME
   </div>
 
-  <!-- Çaydanlık SVG — scroll ile eğilir -->
+  <!-- Animasyonlu çay gif — scroll ile eğilir -->
   <div id="teapot-wrap" style="position:absolute;top:0;right:0;width:52%;height:100%;display:flex;align-items:center;justify-content:center;pointer-events:none">
-    <svg id="teapot-svg" viewBox="0 0 320 320" width="min(380px,45vw)" fill="none" xmlns="http://www.w3.org/2000/svg" style="transform-origin:160px 185px">
-      <!-- Gövde -->
-      <ellipse cx="160" cy="190" rx="100" ry="82" stroke="#1a1208" stroke-width="4.5" stroke-linecap="round"/>
-      <!-- Gövde dolgu (çay rengi) -->
-      <ellipse cx="160" cy="218" rx="90" ry="45" fill="#a63e1a" opacity="0.12"/>
-      <!-- Kapak -->
-      <ellipse cx="160" cy="108" rx="62" ry="14" stroke="#1a1208" stroke-width="4"/>
-      <ellipse cx="160" cy="94" rx="44" ry="12" stroke="#1a1208" stroke-width="4"/>
-      <!-- Tutacak üst -->
-      <ellipse cx="160" cy="78" rx="14" ry="9" stroke="#1a1208" stroke-width="3.5" fill="#1a1208"/>
-      <!-- Emzik -->
-      <path d="M260 168 Q295 155 300 138 Q305 122 288 114" stroke="#1a1208" stroke-width="5" stroke-linecap="round" fill="none"/>
-      <!-- Emzik ucu deliği -->
-      <circle cx="288" cy="113" r="4" fill="#1a1208"/>
-      <!-- Kulp -->
-      <path d="M62 158 Q18 158 16 188 Q14 218 62 218" stroke="#1a1208" stroke-width="5" stroke-linecap="round" fill="none"/>
-      <!-- Buhar çizgileri -->
-      <path d="M138 100 Q132 84 138 68 Q144 52 138 36" stroke="#1a1208" stroke-width="3" stroke-linecap="round" opacity="0.35" fill="none"/>
-      <path d="M160 96 Q154 80 160 64 Q166 48 160 32" stroke="#1a1208" stroke-width="3" stroke-linecap="round" opacity="0.35" fill="none"/>
-      <path d="M182 100 Q176 84 182 68 Q188 52 182 36" stroke="#1a1208" stroke-width="3" stroke-linecap="round" opacity="0.35" fill="none"/>
-    </svg>
+    <img id="teapot-gif" src="/images/cay-animasyon.webp" alt=""
+      style="width:min(380px,48vw);object-fit:contain;transform-origin:center 60%;will-change:transform" />
   </div>
 
-  <!-- Çay akışı — emzik ucundan akan ince çizgi -->
-  <div id="tea-stream-container" style="position:absolute;top:0;right:0;width:52%;height:100%;pointer-events:none;overflow:visible">
-    <svg id="tea-stream-svg" style="position:absolute;top:0;left:0;width:100%;height:100%;overflow:visible" viewBox="0 0 300 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path id="tea-stream-path"
-        d="M 288 185 Q 295 220 285 270 Q 270 330 240 390 Q 210 450 180 520"
-        stroke="#a63e1a"
-        stroke-width="5"
-        stroke-linecap="round"
-        fill="none"
-        opacity="0.8"
-        pathLength="1"
-        style="stroke-dasharray:1;stroke-dashoffset:1"/>
-    </svg>
-  </div>
+  
 
   <!-- Sol içerik -->
   <div style="position:relative;z-index:2;max-width:600px">
@@ -158,25 +126,7 @@ export default function Home() {
         <div style="position:absolute;bottom:16px;left:16px;background:var(--rust);color:var(--cream-fixed);padding:12px 18px;border-radius:12px;font-weight:800;font-size:.9rem">
           84 Bölüm
         </div>
-        <!-- Bardak SVG overlay - scroll ile dolar -->
-        <div id="cup-overlay" style="position:absolute;bottom:-30px;right:-20px;width:120px;height:140px;opacity:0;transition:opacity .6s ease">
-          <svg viewBox="0 0 120 140" width="120" height="140" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <clipPath id="cup-clip">
-                <path d="M28 30 Q24 95 34 112 Q44 128 60 128 Q76 128 86 112 Q96 95 92 30 Z"/>
-              </clipPath>
-            </defs>
-            <!-- Çay dolumu -->
-            <rect id="cup-tea-fill" x="20" y="128" width="80" height="100" fill="#a63e1a" opacity="0.75" clip-path="url(#cup-clip)"/>
-            <!-- Bardak gövdesi -->
-            <path d="M28 30 Q24 95 34 112 Q44 128 60 128 Q76 128 86 112 Q96 95 92 30 Z"
-              stroke="#1a1208" stroke-width="3" fill="white" fill-opacity="0.1"/>
-            <!-- Tabak -->
-            <ellipse cx="60" cy="132" rx="48" ry="8" stroke="#1a1208" stroke-width="2.5" fill="none"/>
-            <!-- Şeker küp -->
-            <rect x="50" y="122" width="20" height="10" rx="2" fill="#f5e6a3" stroke="#1a1208" stroke-width="1.5"/>
-          </svg>
-        </div>
+
       </div>
 
       <!-- Yazı -->
@@ -453,7 +403,7 @@ function initHero(){
   if(eyebrow){ eyebrow.style.transform = 'translateY(0)'; }
   if(h1){ h1.style.transform = 'translateY(0)'; }
   if(cta){ cta.style.opacity = '1'; cta.style.transform = 'translateY(0)'; }
-  // teapot scroll ile yönetiliyor
+  // gif scroll JS'de yönetiliyor
 }
 
 // ══ CUSTOM CURSOR ══
@@ -491,65 +441,22 @@ function initHero(){
   });
 })();
 
-// ══ ÇAYDANLIK & BARDAK ANİMASYONU ══
+// ══ ÇAY GIF EĞİLME ANİMASYONU ══
 (function(){
-  function init(){
-    var teapot = document.getElementById('teapot-svg');
-    var stream = document.getElementById('tea-stream-path');
-    var cup = document.getElementById('cup-overlay');
-    var cupFill = document.getElementById('cup-tea-fill');
-
-    if(!teapot){ console.warn('teapot-svg not found'); return; }
-    if(!stream){ console.warn('tea-stream-path not found'); return; }
-
-    // Başlangıçta görünür
-    teapot.style.opacity = '1';
-
-    // stream başlangıç
-    stream.style.strokeDasharray = '1';
-    stream.style.strokeDashoffset = '1';
-
-    var ticking = false;
-
-    function update(){
+  var gif = document.getElementById('teapot-gif');
+  if(!gif) return;
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(ticking) return;
+    ticking = true;
+    requestAnimationFrame(function(){
       var sy = window.scrollY;
       var vh = window.innerHeight;
-
-      // 1. Eğilme: 0 → vh*0.7
-      var tilt = Math.max(0, Math.min(sy / (vh * 0.7), 1));
-      teapot.style.transform = 'rotate(' + (tilt * -40) + 'deg)';
-
-      // 2. Akış: vh*0.15 → vh*0.85
-      var sp = Math.max(0, Math.min((sy - vh*0.15) / (vh*0.7), 1));
-      stream.style.strokeDashoffset = String(1 - sp);
-
-      // 3. Bardak: demleyen görününce
-      if(cup && cupFill){
-        var dem = document.getElementById('demleyen');
-        if(dem){
-          var dt = dem.getBoundingClientRect().top;
-          var cp = Math.max(0, Math.min(1 - dt/vh, 1));
-          cup.style.opacity = cp > 0.1 ? '1' : '0';
-          cupFill.setAttribute('y', String(128 - cp * 100));
-        }
-      }
-
+      var p = Math.max(0, Math.min(sy / (vh * 0.7), 1));
+      gif.style.transform = 'rotate(' + (p * -30) + 'deg)';
       ticking = false;
-    }
-
-    window.addEventListener('scroll', function(){
-      if(!ticking){ requestAnimationFrame(update); ticking=true; }
-    }, {passive:true});
-
-    update();
-    console.log('Teapot animation ready');
-  }
-
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', function(){ setTimeout(init, 500); });
-  } else {
-    setTimeout(init, 500);
-  }
+    });
+  }, {passive:true});
 })();
 
 // ══ SCROLL REVEAL ══
