@@ -55,8 +55,8 @@ export default function Home() {
       <p id="hero-eyebrow" style="font-size:.7rem;letter-spacing:.25em;color:var(--rust);font-weight:800;margin:0;transform:translateY(100%);transition:transform .8s cubic-bezier(.16,1,.3,1)">MASAYA HOŞGELDİN</p>
     </div>
     <div style="overflow:hidden">
-      <h1 id="hero-h1" style="font-family:'Kodchasan',sans-serif;font-size:clamp(3.5rem,9vw,8rem);font-weight:800;line-height:.92;margin:0 0 32px;transform:translateY(110%);transition:transform 1s cubic-bezier(.16,1,.3,1) .1s">
-        İyi bir çay,<br><em style="color:var(--rust);font-style:italic">zamanla</em><br>demlenir.
+      <h1 id="hero-h1" style="font-family:'Kodchasan',sans-serif;font-size:clamp(3.5rem,9vw,8rem);font-weight:800;line-height:.88;margin:0 0 32px;transform:translateY(110%);transition:transform 1s cubic-bezier(.16,1,.3,1) .1s">
+        MASAYA<br><em style="color:var(--rust);font-style:normal">HOŞGELDİN</em>
       </h1>
     </div>
     <div id="hero-cta" style="display:flex;gap:12px;flex-wrap:wrap;opacity:0;transform:translateY(20px);transition:opacity .8s ease .5s,transform .8s ease .5s">
