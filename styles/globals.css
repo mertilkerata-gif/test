@@ -392,8 +392,8 @@ ul { margin: 0; padding: 0; }
 .hero-anim-delay3 { transition-delay:.38s; }
 
 /* ── Scroll reveal ── */
-.reveal-section { opacity:0; transform:translateY(30px); transition:opacity .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1); }
-.reveal-section.visible { opacity:1; transform:translateY(0); }
+/* reveal-section — GSAP ScrollTrigger ile yönetiliyor */
+.reveal-section { }
 
 /* ── Stats ── */
 .stats-grid { display:grid; grid-template-columns:repeat(3,1fr); width:100%; }
@@ -814,4 +814,9 @@ body::after {
 @media(max-width:640px){
   #hero { padding:60px 20px 40px !important; min-height:calc(100svh - 60px) !important; }
   #hero-gif { width:80% !important; height:45% !important; right:-10% !important; opacity:.5 !important; }
+}
+
+/* ══ GSAP CLIP SECTIONS ══ */
+#stats, #demleyen, #shop-pin, #bu-hafta, #konuklar, #anket {
+  clip-path: inset(0% 0% 0% 0%);
 }
