@@ -37,48 +37,46 @@ export default function Home() {
 <!-- ══════════════════════════════════════════════
      1. HERO
 ══════════════════════════════════════════════ -->
-<section id="hero" style="min-height:100svh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:80px var(--pad) 60px;position:relative;overflow:hidden;background:var(--cream);gap:40px">
+<section id="hero" style="min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:80px var(--pad) 60px;position:relative;overflow:hidden;background:var(--cream)">
 
   <!-- Büyük arka plan yazısı -->
-  <div id="hero-bg-text" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Kodchasan',sans-serif;font-size:clamp(8rem,22vw,22rem);font-weight:800;color:rgba(26,18,8,.04);white-space:nowrap;pointer-events:none;line-height:1;user-select:none">DEMLEME</div>
+  <div id="hero-bg-text" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Kodchasan',sans-serif;font-size:clamp(8rem,22vw,22rem);font-weight:800;color:rgba(26,18,8,.04);white-space:nowrap;pointer-events:none;line-height:1;user-select:none">
+    DEMLEME
+  </div>
 
-  <!-- Sol: metin -->
-  <div style="position:relative;z-index:2">
+  <!-- Çay animasyonu — sağ üst -->
+  <div id="hero-gif" style="position:absolute;top:-60px;right:-20px;width:50%;height:55%;display:flex;align-items:flex-start;justify-content:center;pointer-events:none">
+    <img src="/images/cay-animasyon.webp" alt="" style="width:90%;max-width:520px;object-fit:contain;transform:translateY(20px);opacity:0;transition:transform 1.2s cubic-bezier(.16,1,.3,1) .4s,opacity 1s ease .4s" id="hero-gif-img">
+  </div>
+
+  <!-- Sol içerik -->
+  <div style="position:relative;z-index:2;max-width:600px">
     <div style="overflow:hidden;margin-bottom:8px">
       <p id="hero-eyebrow" style="font-size:.7rem;letter-spacing:.25em;color:var(--rust);font-weight:800;margin:0;transform:translateY(100%);transition:transform .8s cubic-bezier(.16,1,.3,1)">MASAYA HOŞGELDİN</p>
     </div>
-    <div style="overflow:hidden;margin-bottom:32px">
-      <h1 id="hero-h1" style="font-family:'Kodchasan',sans-serif;font-size:clamp(3rem,6.5vw,7rem);font-weight:800;line-height:.88;margin:0;transform:translateY(110%);transition:transform 1s cubic-bezier(.16,1,.3,1) .1s">
+    <div style="overflow:hidden">
+      <h1 id="hero-h1" style="font-family:'Kodchasan',sans-serif;font-size:clamp(2.8rem,6.5vw,6rem);font-weight:800;line-height:.9;margin:0 0 32px;transform:translateY(110%);transition:transform 1s cubic-bezier(.16,1,.3,1) .1s">
         MASAYA<br><em style="color:var(--rust);font-style:normal">HOŞGELDİN</em>
       </h1>
     </div>
-    <p id="hero-sub" style="font-size:clamp(.95rem,1.4vw,1.1rem);color:var(--ink-faint);line-height:1.7;max-width:400px;margin:0 0 36px;opacity:0;transition:opacity .8s ease .3s">
-      Sohbetin, çayın ve hikâyenin<br>yavaş yavaş demlendiği bir masa.
-    </p>
     <div id="hero-cta" style="display:flex;gap:20px;align-items:center;opacity:0;transform:translateY(20px);transition:opacity .8s ease .5s,transform .8s ease .5s">
       <a href="https://youtube.com/@demleme" target="_blank" rel="noopener" aria-label="YouTube'da İzle"
         style="display:block;transition:transform .2s"
         onmouseover="this.style.transform='scale(1.1) rotate(-3deg)'"
         onmouseout="this.style.transform='scale(1)'">
-        <img src="/images/yt-btn.png" width="80" height="60" alt="YouTube" style="object-fit:contain;display:block">
+        <img src="/images/yt-btn.png" width="72" height="54" alt="YouTube" style="object-fit:contain;display:block">
       </a>
       <a href="/urunler" aria-label="Mağaza"
         style="display:block;transition:transform .2s"
         onmouseover="this.style.transform='scale(1.1) rotate(3deg)'"
         onmouseout="this.style.transform='scale(1)'">
-        <img src="/images/cart_icon.png" width="56" height="56" alt="Mağaza" style="object-fit:contain;display:block">
+        <img src="/images/sepet-btn.png" width="60" height="60" alt="Mağaza" style="object-fit:contain;display:block">
       </a>
     </div>
   </div>
 
-  <!-- Sağ: loop.webp ana figür -->
-  <div id="hero-visual" style="position:relative;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(30px) scale(.96);transition:opacity 1s ease .4s,transform 1.2s cubic-bezier(.16,1,.3,1) .4s">
-    <img src="/images/loop.webp" alt="Çay içen figür"
-      style="width:90%;max-width:520px;object-fit:contain;display:block;filter:drop-shadow(0 20px 60px rgba(166,62,26,.12))">
-  </div>
-
   <!-- Scroll hint -->
-  <div style="position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:.4" id="scroll-hint">
+  <div style="position:absolute;bottom:28px;right:var(--pad);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:.4" id="scroll-hint">
     <span style="font-size:.65rem;letter-spacing:.15em;writing-mode:vertical-rl">SCROLL</span>
     <div style="width:1px;height:48px;background:var(--ink);transform-origin:top;animation:scrollLine 1.8s ease-in-out infinite"></div>
   </div>
