@@ -44,13 +44,10 @@ export default function Home() {
     DEMLEME
   </div>
 
-  <!-- Animasyonlu çay gif — scroll ile eğilir -->
-  <div id="teapot-wrap" style="position:absolute;top:0;right:0;width:52%;height:100%;display:flex;align-items:center;justify-content:center;pointer-events:none">
-    <img id="teapot-gif" src="/images/cay-animasyon.webp" alt=""
-      style="width:min(380px,48vw);object-fit:contain;transform-origin:center 60%;will-change:transform" />
+  <!-- Çay animasyonu — sağ üst -->
+  <div id="hero-gif" style="position:absolute;top:-60px;right:-20px;width:50%;height:55%;display:flex;align-items:flex-start;justify-content:center;pointer-events:none">
+    <img src="/images/cay-animasyon.webp" alt="" style="width:90%;max-width:520px;object-fit:contain;transform:translateY(20px);opacity:0;transition:transform 1.2s cubic-bezier(.16,1,.3,1) .4s,opacity 1s ease .4s" id="hero-gif-img">
   </div>
-
-  
 
   <!-- Sol içerik -->
   <div style="position:relative;z-index:2;max-width:600px">
@@ -58,7 +55,7 @@ export default function Home() {
       <p id="hero-eyebrow" style="font-size:.7rem;letter-spacing:.25em;color:var(--rust);font-weight:800;margin:0;transform:translateY(100%);transition:transform .8s cubic-bezier(.16,1,.3,1)">MASAYA HOŞGELDİN</p>
     </div>
     <div style="overflow:hidden">
-      <h1 id="hero-h1" style="font-family:'Kodchasan',sans-serif;font-size:clamp(2.8rem,6.5vw,6rem);font-weight:800;line-height:.9;margin:0 0 32px">
+      <h1 id="hero-h1" style="font-family:'Kodchasan',sans-serif;font-size:clamp(2.8rem,6.5vw,6rem);font-weight:800;line-height:.9;margin:0 0 32px;transform:translateY(110%);transition:transform 1s cubic-bezier(.16,1,.3,1) .1s">
         MASAYA<br><em style="color:var(--rust);font-style:normal">HOŞGELDİN</em>
       </h1>
     </div>
@@ -126,7 +123,6 @@ export default function Home() {
         <div style="position:absolute;bottom:16px;left:16px;background:var(--rust);color:var(--cream-fixed);padding:12px 18px;border-radius:12px;font-weight:800;font-size:.9rem">
           84 Bölüm
         </div>
-
       </div>
 
       <!-- Yazı -->
@@ -403,7 +399,7 @@ function initHero(){
   if(eyebrow){ eyebrow.style.transform = 'translateY(0)'; }
   if(h1){ h1.style.transform = 'translateY(0)'; }
   if(cta){ cta.style.opacity = '1'; cta.style.transform = 'translateY(0)'; }
-  // gif scroll JS'de yönetiliyor
+  if(gif){ gif.style.transform = 'translateY(0)'; gif.style.opacity = '1'; }
 }
 
 // ══ CUSTOM CURSOR ══
@@ -441,25 +437,35 @@ function initHero(){
   });
 })();
 
-// ══ ÇAY GIF EĞİLME ANİMASYONU ══
+// ══ SCROLL REVEAL ══
 (function(){
-  var gif = document.getElementById('teapot-gif');
-  if(!gif) return;
-  var ticking = false;
-  window.addEventListener('scroll', function(){
-    if(ticking) return;
-    ticking = true;
-    requestAnimationFrame(function(){
-      var sy = window.scrollY;
-      var vh = window.innerHeight;
-      var p = Math.max(0, Math.min(sy / (vh * 0.7), 1));
-      gif.style.transform = 'rotate(' + (p * -30) + 'deg)';
-      ticking = false;
+  // Genel reveal
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting) return;
+      e.target.classList.add('in');
+      obs.unobserve(e.target);
     });
-  }, {passive:true});
-})();
+  },{threshold:0.1, rootMargin:'0px 0px -20px 0px'});
+  document.querySelectorAll('.reveal-section,.clip-reveal').forEach(function(el){ obs.observe(el); });
 
-// Scroll reveal → GSAP ile yönetiliyor
+  // Stat sayaç - ayrı observer, daha düşük threshold
+  var statObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var cnt = e.target;
+      var tgt = parseInt(cnt.getAttribute('data-target'));
+      var t0 = performance.now();
+      (function tick(now){
+        var p = Math.min((now-t0)/1800,1), ease = 1-Math.pow(1-p,3);
+        cnt.textContent = Math.round(ease*tgt).toLocaleString('tr-TR');
+        if(p<1) requestAnimationFrame(tick);
+      })(t0);
+      statObs.unobserve(cnt);
+    });
+  },{threshold:0.05});
+  document.querySelectorAll('.stat-count').forEach(function(el){ statObs.observe(el); });
+})();
 
 // ══ PARALLAX ══
 (function(){
@@ -481,64 +487,6 @@ function initHero(){
     });
     card.addEventListener('mouseleave', function(){ card.style.transform = ''; });
   });
-})();
-
-// ══ GSAP — SADECE SMOOTH SCROLL + SAYAÇ ══
-(function(){
-  function initGSAP(){
-    if(typeof gsap === 'undefined'){ setTimeout(initGSAP, 200); return; }
-
-    // Lenis smooth scroll
-    if(typeof Lenis !== 'undefined' && typeof ScrollTrigger !== 'undefined'){
-      gsap.registerPlugin(ScrollTrigger);
-      var lenis = new Lenis({ duration:1.2, easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t));} });
-      lenis.on('scroll', ScrollTrigger.update);
-      gsap.ticker.add(function(time){ lenis.raf(time*1000); });
-      gsap.ticker.lagSmoothing(0);
-    }
-
-    // Stat sayaçlar
-    if(typeof ScrollTrigger !== 'undefined'){
-      document.querySelectorAll('.stat-count').forEach(function(el){
-        var target = parseInt(el.getAttribute('data-target'));
-        if(!target) return;
-        var triggered = false;
-        ScrollTrigger.create({
-          trigger: el,
-          start: 'top 90%',
-          onEnter: function(){
-            if(triggered) return;
-            triggered = true;
-            var obj = {val:0};
-            gsap.to(obj, {
-              val: target, duration:2, ease:'power2.out',
-              onUpdate: function(){
-                el.textContent = Math.round(obj.val).toLocaleString('tr-TR');
-              }
-            });
-          }
-        });
-      });
-    }
-  }
-
-  setTimeout(initGSAP, 400);
-})();
-
-// ══ ÇAY GİF EĞİLME ══
-(function(){
-  var gif = document.getElementById('teapot-gif');
-  if(!gif) return;
-  var ticking = false;
-  window.addEventListener('scroll', function(){
-    if(ticking) return;
-    ticking = true;
-    requestAnimationFrame(function(){
-      var p = Math.max(0, Math.min(window.scrollY / (window.innerHeight * 0.7), 1));
-      gif.style.transform = 'rotate(' + (p * -28) + 'deg)';
-      ticking = false;
-    });
-  }, {passive:true});
 })();
 
 // ══ ANKET ══
