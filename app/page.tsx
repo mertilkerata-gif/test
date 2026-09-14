@@ -61,12 +61,13 @@ export default function Home() {
     </div>
     <div id="hero-cta" style="display:flex;gap:12px;flex-wrap:wrap;opacity:0;transform:translateY(20px);transition:opacity .8s ease .5s,transform .8s ease .5s">
       <a href="https://youtube.com/@demleme" target="_blank" rel="noopener"
-        style="display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--ink);color:var(--cream-fixed);border-radius:40px;font-weight:700;font-size:.9rem;text-decoration:none">
-        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" style="flex-shrink:0"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31 31 0 000 12a31 31 0 00.5 5.8 3 3 0 002.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 002.1-2.1A31 31 0 0024 12a31 31 0 00-.5-5.8zM9.6 15.5V8.5L15.8 12z"/></svg>
+        style="display:inline-flex;align-items:center;gap:10px;padding:12px 24px;background:var(--ink);color:var(--cream-fixed);border-radius:40px;font-weight:700;font-size:.9rem;text-decoration:none">
+        <img src="/images/yt-btn.png" width="32" height="24" alt="YouTube" style="object-fit:contain;flex-shrink:0">
         YouTube'da İzle
       </a>
       <a href="/urunler"
-        style="display:inline-flex;align-items:center;gap:10px;padding:14px 28px;border:2px solid var(--ink);color:var(--ink);border-radius:40px;font-weight:700;font-size:.9rem;text-decoration:none">
+        style="display:inline-flex;align-items:center;gap:10px;padding:12px 24px;border:2px solid var(--ink);color:var(--ink);border-radius:40px;font-weight:700;font-size:.9rem;text-decoration:none">
+        <img src="/images/sepet-btn.png" width="28" height="28" alt="Mağaza" style="object-fit:contain;flex-shrink:0">
         Mağaza
       </a>
     </div>
