@@ -62,7 +62,7 @@ export default function Home() {
     <div id="hero-cta" style="display:flex;gap:12px;flex-wrap:wrap;opacity:0;transform:translateY(20px);transition:opacity .8s ease .5s,transform .8s ease .5s">
       <a href="https://youtube.com/@demleme" target="_blank" rel="noopener"
         style="display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--ink);color:var(--cream-fixed);border-radius:40px;font-weight:700;font-size:.9rem;text-decoration:none">
-        <img src="/images/yt-kirmizi.png" width="20" height="14" alt="" style="object-fit:contain">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" style="flex-shrink:0"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31 31 0 000 12a31 31 0 00.5 5.8 3 3 0 002.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 002.1-2.1A31 31 0 0024 12a31 31 0 00-.5-5.8zM9.6 15.5V8.5L15.8 12z"/></svg>
         YouTube'da İzle
       </a>
       <a href="/urunler"
@@ -361,14 +361,20 @@ export default function Home() {
   }, 100);
 
   // Preloader kaldır
-  setTimeout(function(){
-    pre.style.transition = 'opacity .6s ease, transform .6s ease';
+  function hidePreloader(){
+    pre.style.transition = 'opacity .7s ease, transform .7s ease';
     pre.style.opacity = '0';
-    pre.style.transform = 'translateY(-100%)';
-    setTimeout(function(){ pre.style.display = 'none'; }, 600);
-    // Hero animasyonları başlat
-    initHero();
-  }, 2200);
+    pre.style.transform = 'translateY(-4%)';
+    setTimeout(function(){ 
+      pre.style.display = 'none';
+      initHero();
+    }, 700);
+  }
+  setTimeout(hidePreloader, 2000);
+  // Yavaş bağlantı fallback
+  window.addEventListener('load', function(){
+    setTimeout(hidePreloader, 500);
+  });
 })();
 
 // ══ HERO REVEAL ══
@@ -418,29 +424,34 @@ function initHero(){
   });
 })();
 
-// ══ SCROLL REVEAL (IntersectionObserver) ══
+// ══ SCROLL REVEAL ══
 (function(){
+  // Genel reveal
   var obs = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
       if(!e.isIntersecting) return;
       e.target.classList.add('in');
-      // stat-count animasyonu
-      e.target.querySelectorAll('.stat-count').forEach(function(cnt){
-        var tgt = parseInt(cnt.getAttribute('data-target'));
-        var t0 = performance.now();
-        (function tick(now){
-          var p = Math.min((now-t0)/1600,1), ease = 1-Math.pow(1-p,3);
-          cnt.textContent = Math.round(ease*tgt).toLocaleString('tr-TR');
-          if(p<1) requestAnimationFrame(tick);
-        })(t0);
-      });
       obs.unobserve(e.target);
     });
-  },{threshold:0.12, rootMargin:'0px 0px -30px 0px'});
+  },{threshold:0.1, rootMargin:'0px 0px -20px 0px'});
+  document.querySelectorAll('.reveal-section,.clip-reveal').forEach(function(el){ obs.observe(el); });
 
-  document.querySelectorAll('.reveal-section,.clip-reveal,.stat-count').forEach(function(el){
-    obs.observe(el);
-  });
+  // Stat sayaç - ayrı observer, daha düşük threshold
+  var statObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var cnt = e.target;
+      var tgt = parseInt(cnt.getAttribute('data-target'));
+      var t0 = performance.now();
+      (function tick(now){
+        var p = Math.min((now-t0)/1800,1), ease = 1-Math.pow(1-p,3);
+        cnt.textContent = Math.round(ease*tgt).toLocaleString('tr-TR');
+        if(p<1) requestAnimationFrame(tick);
+      })(t0);
+      statObs.unobserve(cnt);
+    });
+  },{threshold:0.05});
+  document.querySelectorAll('.stat-count').forEach(function(el){ statObs.observe(el); });
 })();
 
 // ══ PARALLAX ══
