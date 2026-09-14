@@ -46,7 +46,7 @@ export default function Home() {
 
   <!-- Çaydanlık SVG — scroll ile eğilir -->
   <div id="teapot-wrap" style="position:absolute;top:0;right:0;width:52%;height:100%;display:flex;align-items:center;justify-content:center;pointer-events:none">
-    <svg id="teapot-svg" viewBox="0 0 320 320" width="min(420px,50vw)" fill="none" xmlns="http://www.w3.org/2000/svg" style="transform-origin:160px 185px;transition:transform .05s linear;opacity:0;transition:opacity .8s ease .3s" id="hero-gif-img">
+    <svg id="teapot-svg" viewBox="0 0 320 320" width="min(380px,45vw)" fill="none" xmlns="http://www.w3.org/2000/svg" style="transform-origin:160px 185px">
       <!-- Gövde -->
       <ellipse cx="160" cy="190" rx="100" ry="82" stroke="#1a1208" stroke-width="4.5" stroke-linecap="round"/>
       <!-- Gövde dolgu (çay rengi) -->
@@ -460,7 +460,7 @@ function initHero(){
   if(eyebrow){ eyebrow.style.transform = 'translateY(0)'; }
   if(h1){ h1.style.transform = 'translateY(0)'; }
   if(cta){ cta.style.opacity = '1'; cta.style.transform = 'translateY(0)'; }
-  if(gif){ gif.style.opacity = '1'; }
+  // teapot scroll ile yönetiliyor
 }
 
 // ══ CUSTOM CURSOR ══
@@ -500,72 +500,63 @@ function initHero(){
 
 // ══ ÇAYDANLIK & BARDAK ANİMASYONU ══
 (function(){
-  var teapot = document.getElementById('teapot-svg');
-  var streamPath = document.getElementById('tea-stream-path');
-  var drop1 = document.getElementById('drop1');
-  var drop2 = document.getElementById('drop2');
-  var cup = document.getElementById('cup-overlay');
-  var cupFill = document.getElementById('cup-tea-fill');
+  function init(){
+    var teapot = document.getElementById('teapot-svg');
+    var stream = document.getElementById('tea-stream-path');
+    var cup = document.getElementById('cup-overlay');
+    var cupFill = document.getElementById('cup-tea-fill');
 
-  if(!teapot || !streamPath) return;
+    if(!teapot){ console.warn('teapot-svg not found'); return; }
+    if(!stream){ console.warn('tea-stream-path not found'); return; }
 
-  // Stream path uzunluğu normalize
-  streamPath.style.strokeDasharray = '1';
-  streamPath.style.strokeDashoffset = '1';
+    // Başlangıçta görünür
+    teapot.style.opacity = '1';
 
-  var lastScroll = -1;
-  var ticking = false;
+    // stream başlangıç
+    stream.style.strokeDasharray = '1';
+    stream.style.strokeDashoffset = '1';
 
-  function update(){
-    var scrollY = window.scrollY;
-    var vh = window.innerHeight;
-    var demleyen = document.getElementById('demleyen');
-    var demTop = demleyen ? demleyen.getBoundingClientRect().top + scrollY : vh * 2;
+    var ticking = false;
 
-    // ── 1. Çaydanlık eğilmesi (scroll 0 → vh*0.8)
-    var tiltP = Math.max(0, Math.min(scrollY / (vh * 0.8), 1));
-    var rotation = tiltP * -38;
-    teapot.style.transform = 'rotate(' + rotation + 'deg)';
+    function update(){
+      var sy = window.scrollY;
+      var vh = window.innerHeight;
 
-    // ── 2. Çay akışı (scroll vh*0.2 → vh*0.9)
-    var streamStart = vh * 0.2;
-    var streamEnd = vh * 0.9;
-    var streamP = Math.max(0, Math.min((scrollY - streamStart) / (streamEnd - streamStart), 1));
-    streamPath.style.strokeDashoffset = String(1 - streamP);
+      // 1. Eğilme: 0 → vh*0.7
+      var tilt = Math.max(0, Math.min(sy / (vh * 0.7), 1));
+      teapot.style.transform = 'rotate(' + (tilt * -40) + 'deg)';
 
-    // Damlalar
-    if(streamP > 0.85){
-      drop1.style.opacity = String((streamP - 0.85) / 0.15);
-      drop2.style.opacity = String(Math.max(0,(streamP - 0.92) / 0.08));
-    } else {
-      drop1.style.opacity = '0';
-      drop2.style.opacity = '0';
-    }
+      // 2. Akış: vh*0.15 → vh*0.85
+      var sp = Math.max(0, Math.min((sy - vh*0.15) / (vh*0.7), 1));
+      stream.style.strokeDashoffset = String(1 - sp);
 
-    // ── 3. Bardak dolumu (demleyen section yaklaşınca)
-    if(cup){
-      var cupStart = demTop - vh * 0.6;
-      var cupEnd = demTop - vh * 0.1;
-      var cupP = Math.max(0, Math.min((scrollY - cupStart) / (cupEnd - cupStart), 1));
-
-      cup.style.opacity = cupP > 0.05 ? '1' : '0';
-
-      if(cupFill){
-        // y=128 (boş) → y=28 (dolu) → 100px fark
-        var fillY = 128 - cupP * 100;
-        cupFill.setAttribute('y', String(fillY));
+      // 3. Bardak: demleyen görününce
+      if(cup && cupFill){
+        var dem = document.getElementById('demleyen');
+        if(dem){
+          var dt = dem.getBoundingClientRect().top;
+          var cp = Math.max(0, Math.min(1 - dt/vh, 1));
+          cup.style.opacity = cp > 0.1 ? '1' : '0';
+          cupFill.setAttribute('y', String(128 - cp * 100));
+        }
       }
+
+      ticking = false;
     }
 
-    ticking = false;
+    window.addEventListener('scroll', function(){
+      if(!ticking){ requestAnimationFrame(update); ticking=true; }
+    }, {passive:true});
+
+    update();
+    console.log('Teapot animation ready');
   }
 
-  window.addEventListener('scroll', function(){
-    if(!ticking){ requestAnimationFrame(update); ticking=true; }
-  }, {passive:true});
-
-  // İlk render
-  setTimeout(update, 100);
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){ setTimeout(init, 500); });
+  } else {
+    setTimeout(init, 500);
+  }
 })();
 
 // ══ SCROLL REVEAL ══
