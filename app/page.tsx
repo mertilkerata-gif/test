@@ -37,7 +37,7 @@ export default function Home() {
 <!-- ══════════════════════════════════════════════
      1. HERO — kinetic tipografi
 ══════════════════════════════════════════════ -->
-<section id="hero" style="height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 var(--pad) 60px;position:relative;overflow:hidden;background:var(--cream)">
+<section id="hero" style="min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:80px var(--pad) 60px;position:relative;overflow:hidden;background:var(--cream)">
 
   <!-- Büyük arka plan yazısı -->
   <div id="hero-bg-text" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Kodchasan',sans-serif;font-size:clamp(8rem,22vw,22rem);font-weight:800;color:rgba(26,18,8,.04);white-space:nowrap;pointer-events:none;line-height:1;user-select:none">
@@ -102,31 +102,37 @@ export default function Home() {
 <!-- ══════════════════════════════════════════════
      3. DEMLEYEN KİM — clip reveal
 ══════════════════════════════════════════════ -->
-<section id="demleyen" style="min-height:100svh;display:flex;align-items:center;padding:100px var(--pad);background:var(--cream);overflow:hidden;position:relative">
-  <div style="max-width:var(--wrap);margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center" class="two-col">
+<section id="demleyen" style="padding:100px var(--pad);background:var(--cream);overflow:hidden">
+  <div style="max-width:var(--wrap);margin:0 auto;width:100%">
 
-    <div class="reveal-section" style="position:relative">
-      <img src="/images/garen-foto.png" alt="Garen Kösedağ"
-        style="width:100%;border-radius:24px;object-fit:cover;aspect-ratio:4/5" />
-      <div style="position:absolute;bottom:-20px;right:-20px;background:var(--rust);color:var(--cream-fixed);padding:16px 24px;border-radius:16px;font-family:'Kodchasan',sans-serif;font-weight:800;font-size:1rem">
-        84 Bölüm
+    <!-- Başlık -->
+    <div class="reveal-section" style="margin-bottom:60px">
+      <p style="font-size:.65rem;letter-spacing:.22em;color:var(--rust);font-weight:800;margin:0 0 12px">DEMLEYEN KİM</p>
+      <h2 style="font-family:'Kodchasan',sans-serif;font-size:clamp(2.5rem,6vw,5rem);font-weight:800;line-height:.9;margin:0">GAREN<br>KÖSEDAĞ</h2>
+    </div>
+
+    <!-- İçerik grid -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start" class="two-col">
+      <!-- Fotoğraf -->
+      <div class="reveal-section" style="position:relative">
+        <img src="/images/garen-foto.png" alt="Garen Kösedağ"
+          style="width:100%;border-radius:20px;object-fit:cover;aspect-ratio:3/4;display:block" />
+        <div style="position:absolute;bottom:16px;left:16px;background:var(--rust);color:var(--cream-fixed);padding:12px 18px;border-radius:12px;font-weight:800;font-size:.9rem">
+          84 Bölüm
+        </div>
+      </div>
+
+      <!-- Yazı -->
+      <div class="reveal-section" style="display:flex;flex-direction:column;gap:24px;padding-top:20px">
+        <p style="font-size:1rem;color:var(--ink-faint);line-height:1.8;margin:0">
+          İçeriği bu hafta geliyor. Garen'in hikâyesi, sofrası ve demlemesi burada olacak.
+        </p>
+        <a href="/ben-kimim" style="display:inline-flex;align-items:center;gap:8px;font-weight:700;color:var(--rust);text-decoration:none;font-size:.9rem">
+          Daha fazla oku →
+        </a>
       </div>
     </div>
 
-    <div class="reveal-section" style="display:flex;flex-direction:column;gap:28px">
-      <div style="overflow:hidden">
-        <p style="font-size:.65rem;letter-spacing:.22em;color:var(--rust);font-weight:800;margin:0" class="clip-reveal">DEMLEYEN KİM</p>
-      </div>
-      <div style="overflow:hidden">
-        <h2 style="font-family:'Kodchasan',sans-serif;font-size:clamp(2.5rem,5vw,5rem);font-weight:800;line-height:.9;margin:0" class="clip-reveal">GAREN<br>KÖSEDAĞ</h2>
-      </div>
-      <p style="font-size:1rem;color:var(--ink-faint);line-height:1.7;margin:0" class="clip-reveal">
-        İçeriği bu hafta geliyor. Garen'in hikâyesi, sofrası ve demlemesi burada olacak.
-      </p>
-      <a href="/ben-kimim" style="display:inline-flex;align-items:center;gap:8px;font-weight:700;color:var(--rust);text-decoration:none;font-size:.9rem" class="clip-reveal">
-        Daha fazla oku →
-      </a>
-    </div>
   </div>
 </section>
 
