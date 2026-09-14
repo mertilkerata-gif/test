@@ -459,35 +459,7 @@ function initHero(){
   }, {passive:true});
 })();
 
-// ══ SCROLL REVEAL ══
-(function(){
-  // Genel reveal
-  var obs = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(!e.isIntersecting) return;
-      e.target.classList.add('in');
-      obs.unobserve(e.target);
-    });
-  },{threshold:0.1, rootMargin:'0px 0px -20px 0px'});
-  document.querySelectorAll('.reveal-section,.clip-reveal').forEach(function(el){ obs.observe(el); });
-
-  // Stat sayaç - ayrı observer, daha düşük threshold
-  var statObs = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(!e.isIntersecting) return;
-      var cnt = e.target;
-      var tgt = parseInt(cnt.getAttribute('data-target'));
-      var t0 = performance.now();
-      (function tick(now){
-        var p = Math.min((now-t0)/1800,1), ease = 1-Math.pow(1-p,3);
-        cnt.textContent = Math.round(ease*tgt).toLocaleString('tr-TR');
-        if(p<1) requestAnimationFrame(tick);
-      })(t0);
-      statObs.unobserve(cnt);
-    });
-  },{threshold:0.05});
-  document.querySelectorAll('.stat-count').forEach(function(el){ statObs.observe(el); });
-})();
+// Scroll reveal → GSAP ile yönetiliyor
 
 // ══ PARALLAX ══
 (function(){
@@ -509,6 +481,135 @@ function initHero(){
     });
     card.addEventListener('mouseleave', function(){ card.style.transform = ''; });
   });
+})();
+
+// ══ GSAP SCROLL EFEKTLERİ ══
+(function(){
+  function initGSAP(){
+    if(typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined'){
+      setTimeout(initGSAP, 200);
+      return;
+    }
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    // ── Lenis smooth scroll
+    if(typeof Lenis !== 'undefined'){
+      var lenis = new Lenis({ duration:1.4, easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t));} });
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add(function(time){ lenis.raf(time*1000); });
+      gsap.ticker.lagSmoothing(0);
+    }
+
+    // ── 1. KİNETİK TİPOGRAFİ: MASAYA büyükten küçüğe
+    var h1 = document.querySelector('#hero h1');
+    if(h1){
+      gsap.fromTo(h1,
+        { fontSize: 'clamp(8rem,22vw,20rem)', opacity:0, y:60 },
+        { fontSize: 'clamp(2.8rem,6.5vw,6rem)', opacity:1, y:0,
+          ease: 'power2.out',
+          scrollTrigger:{
+            trigger: '#hero',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1.5,
+          }
+        }
+      );
+    }
+
+    // ── 2. HERO parallax — gif
+    var gif = document.getElementById('teapot-gif');
+    if(gif){
+      gsap.to(gif, {
+        y: -120,
+        ease: 'none',
+        scrollTrigger:{
+          trigger: '#hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true,
+        }
+      });
+    }
+
+    // ── 3. FULL-SCREEN SECTIONS — clip mask reveal
+    var sections = ['#stats','#demleyen','#shop-pin','#bu-hafta','#konuklar','#anket'];
+    sections.forEach(function(sel, i){
+      var el = document.querySelector(sel);
+      if(!el) return;
+
+      // Clip-path ile alttan açılır
+      gsap.fromTo(el,
+        { clipPath: 'inset(100% 0% 0% 0%)' },
+        { clipPath: 'inset(0% 0% 0% 0%)',
+          ease: 'power2.inOut',
+          scrollTrigger:{
+            trigger: el,
+            start: 'top 90%',
+            end: 'top 10%',
+            scrub: 1,
+          }
+        }
+      );
+    });
+
+    // ── 4. İSTATİSTİK SAYAÇLARI — GSAP ile
+    document.querySelectorAll('.stat-count').forEach(function(el){
+      var target = parseInt(el.getAttribute('data-target'));
+      ScrollTrigger.create({
+        trigger: el,
+        start: 'top 85%',
+        onEnter: function(){
+          gsap.to({val:0},{
+            val: target,
+            duration: 2,
+            ease: 'power2.out',
+            onUpdate: function(){
+              el.textContent = Math.round(this.targets()[0].val).toLocaleString('tr-TR');
+            }
+          });
+        },
+        once: true,
+      });
+    });
+
+    // ── 5. REVEAL animasyonları — GSAP ile yönet
+    document.querySelectorAll('.reveal-section').forEach(function(el){
+      gsap.fromTo(el,
+        { opacity:0, y:50 },
+        { opacity:1, y:0, duration:1, ease:'power2.out',
+          scrollTrigger:{
+            trigger: el,
+            start: 'top 80%',
+            toggleActions: 'play none none none',
+          }
+        }
+      );
+    });
+
+    // ── 6. GİF EĞİLME — scroll ile
+    if(gif){
+      gsap.to(gif, {
+        rotate: -30,
+        ease: 'none',
+        scrollTrigger:{
+          trigger: '#hero',
+          start: 'top top',
+          end: '70% top',
+          scrub: 2,
+        }
+      });
+    }
+
+    console.log('GSAP ScrollTrigger ready ✓');
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){ setTimeout(initGSAP, 300); });
+  } else {
+    setTimeout(initGSAP, 300);
+  }
 })();
 
 // ══ ANKET ══
