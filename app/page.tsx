@@ -456,6 +456,8 @@ function initHero(){
   if(sub){ sub.style.opacity = '1'; }
   if(cta){ cta.style.opacity = '1'; cta.style.transform = 'translateY(0)'; }
   if(visual){ visual.style.opacity = '1'; visual.style.transform = 'translateY(0) scale(1)'; }
+  var gif = document.getElementById('hero-gif-img');
+  if(gif){ gif.style.transform = 'translateY(0)'; gif.style.opacity = '1'; }
   // Scene image parallax başlat
   var sk = document.getElementById('scene-kitchen-img');
   var st = document.getElementById('scene-table-img');
