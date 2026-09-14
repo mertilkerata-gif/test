@@ -360,21 +360,25 @@ export default function Home() {
     line.style.width = '160px';
   }, 100);
 
-  // Preloader kaldır
+  // Preloader kaldır - tek seferde
+  var preHidden = false;
   function hidePreloader(){
-    pre.style.transition = 'opacity .7s ease, transform .7s ease';
+    if(preHidden) return;
+    preHidden = true;
+    pre.style.transition = 'opacity .7s ease';
     pre.style.opacity = '0';
-    pre.style.transform = 'translateY(-4%)';
     setTimeout(function(){ 
       pre.style.display = 'none';
       initHero();
     }, 700);
   }
-  setTimeout(hidePreloader, 2000);
-  // Yavaş bağlantı fallback
-  window.addEventListener('load', function(){
-    setTimeout(hidePreloader, 500);
-  });
+  // 2.2sn sonra kaldır, ya da sayfa yüklenince (hangisi önce gelirse)
+  setTimeout(hidePreloader, 2200);
+  if(document.readyState === 'complete'){
+    setTimeout(hidePreloader, 300);
+  } else {
+    window.addEventListener('load', function(){ setTimeout(hidePreloader, 300); });
+  }
 })();
 
 // ══ HERO REVEAL ══
