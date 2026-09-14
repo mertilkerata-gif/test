@@ -44,10 +44,52 @@ export default function Home() {
     DEMLEME
   </div>
 
-  <!-- Çay animasyonu — sağ üst -->
-  <div id="hero-gif" style="position:absolute;top:-60px;right:-20px;width:50%;height:55%;display:flex;align-items:flex-start;justify-content:center;pointer-events:none">
-    <img src="/images/cay-animasyon.webp" alt="" style="width:90%;max-width:520px;object-fit:contain;transform:translateY(20px);opacity:0;transition:transform 1.2s cubic-bezier(.16,1,.3,1) .4s,opacity 1s ease .4s" id="hero-gif-img">
+  <!-- Çaydanlık SVG — scroll ile eğilir -->
+  <div id="teapot-wrap" style="position:absolute;top:0;right:0;width:52%;height:100%;display:flex;align-items:center;justify-content:center;pointer-events:none">
+    <svg id="teapot-svg" viewBox="0 0 320 320" width="min(420px,50vw)" fill="none" xmlns="http://www.w3.org/2000/svg" style="transform-origin:160px 185px;transition:transform .05s linear;opacity:0;transition:opacity .8s ease .3s" id="hero-gif-img">
+      <!-- Gövde -->
+      <ellipse cx="160" cy="190" rx="100" ry="82" stroke="#1a1208" stroke-width="4.5" stroke-linecap="round"/>
+      <!-- Gövde dolgu (çay rengi) -->
+      <ellipse cx="160" cy="218" rx="90" ry="45" fill="#a63e1a" opacity="0.12"/>
+      <!-- Kapak -->
+      <ellipse cx="160" cy="108" rx="62" ry="14" stroke="#1a1208" stroke-width="4"/>
+      <ellipse cx="160" cy="94" rx="44" ry="12" stroke="#1a1208" stroke-width="4"/>
+      <!-- Tutacak üst -->
+      <ellipse cx="160" cy="78" rx="14" ry="9" stroke="#1a1208" stroke-width="3.5" fill="#1a1208"/>
+      <!-- Emzik -->
+      <path d="M260 168 Q295 155 300 138 Q305 122 288 114" stroke="#1a1208" stroke-width="5" stroke-linecap="round" fill="none"/>
+      <!-- Emzik ucu deliği -->
+      <circle cx="288" cy="113" r="4" fill="#1a1208"/>
+      <!-- Kulp -->
+      <path d="M62 158 Q18 158 16 188 Q14 218 62 218" stroke="#1a1208" stroke-width="5" stroke-linecap="round" fill="none"/>
+      <!-- Buhar çizgileri -->
+      <path d="M138 100 Q132 84 138 68 Q144 52 138 36" stroke="#1a1208" stroke-width="3" stroke-linecap="round" opacity="0.35" fill="none"/>
+      <path d="M160 96 Q154 80 160 64 Q166 48 160 32" stroke="#1a1208" stroke-width="3" stroke-linecap="round" opacity="0.35" fill="none"/>
+      <path d="M182 100 Q176 84 182 68 Q188 52 182 36" stroke="#1a1208" stroke-width="3" stroke-linecap="round" opacity="0.35" fill="none"/>
+    </svg>
   </div>
+
+  <!-- Çay akış SVG — scroll ile çizilir -->
+  <svg id="tea-stream-svg" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:5;overflow:visible" viewBox="0 0 100 100" preserveAspectRatio="none">
+    <defs>
+      <filter id="blur-stream">
+        <feGaussianBlur stdDeviation="0.3"/>
+      </filter>
+    </defs>
+    <path id="tea-stream-path"
+      d="M 72 35 Q 75 45 72 58 Q 68 72 60 82 Q 50 92 40 98"
+      stroke="#a63e1a"
+      stroke-width="0.8"
+      stroke-linecap="round"
+      fill="none"
+      opacity="0.85"
+      filter="url(#blur-stream)"
+      style="stroke-dasharray:1;stroke-dashoffset:1;transition:none"
+      pathLength="1"/>
+    <!-- Damlalar -->
+    <circle id="drop1" cx="40" cy="98" r="0.8" fill="#a63e1a" opacity="0"/>
+    <circle id="drop2" cx="38" cy="101" r="0.5" fill="#a63e1a" opacity="0"/>
+  </svg>
 
   <!-- Sol içerik -->
   <div style="position:relative;z-index:2;max-width:600px">
@@ -122,6 +164,25 @@ export default function Home() {
           style="width:100%;border-radius:20px;object-fit:cover;aspect-ratio:3/4;display:block" />
         <div style="position:absolute;bottom:16px;left:16px;background:var(--rust);color:var(--cream-fixed);padding:12px 18px;border-radius:12px;font-weight:800;font-size:.9rem">
           84 Bölüm
+        </div>
+        <!-- Bardak SVG overlay - scroll ile dolar -->
+        <div id="cup-overlay" style="position:absolute;bottom:-30px;right:-20px;width:120px;height:140px;opacity:0;transition:opacity .6s ease">
+          <svg viewBox="0 0 120 140" width="120" height="140" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <clipPath id="cup-clip">
+                <path d="M28 30 Q24 95 34 112 Q44 128 60 128 Q76 128 86 112 Q96 95 92 30 Z"/>
+              </clipPath>
+            </defs>
+            <!-- Çay dolumu -->
+            <rect id="cup-tea-fill" x="20" y="128" width="80" height="100" fill="#a63e1a" opacity="0.75" clip-path="url(#cup-clip)"/>
+            <!-- Bardak gövdesi -->
+            <path d="M28 30 Q24 95 34 112 Q44 128 60 128 Q76 128 86 112 Q96 95 92 30 Z"
+              stroke="#1a1208" stroke-width="3" fill="white" fill-opacity="0.1"/>
+            <!-- Tabak -->
+            <ellipse cx="60" cy="132" rx="48" ry="8" stroke="#1a1208" stroke-width="2.5" fill="none"/>
+            <!-- Şeker küp -->
+            <rect x="50" y="122" width="20" height="10" rx="2" fill="#f5e6a3" stroke="#1a1208" stroke-width="1.5"/>
+          </svg>
         </div>
       </div>
 
@@ -399,7 +460,7 @@ function initHero(){
   if(eyebrow){ eyebrow.style.transform = 'translateY(0)'; }
   if(h1){ h1.style.transform = 'translateY(0)'; }
   if(cta){ cta.style.opacity = '1'; cta.style.transform = 'translateY(0)'; }
-  if(gif){ gif.style.transform = 'translateY(0)'; gif.style.opacity = '1'; }
+  if(gif){ gif.style.opacity = '1'; }
 }
 
 // ══ CUSTOM CURSOR ══
@@ -435,6 +496,76 @@ function initHero(){
       follower.style.width = '40px'; follower.style.height = '40px';
     });
   });
+})();
+
+// ══ ÇAYDANLIK & BARDAK ANİMASYONU ══
+(function(){
+  var teapot = document.getElementById('teapot-svg');
+  var streamPath = document.getElementById('tea-stream-path');
+  var drop1 = document.getElementById('drop1');
+  var drop2 = document.getElementById('drop2');
+  var cup = document.getElementById('cup-overlay');
+  var cupFill = document.getElementById('cup-tea-fill');
+
+  if(!teapot || !streamPath) return;
+
+  // Stream path uzunluğu normalize
+  streamPath.style.strokeDasharray = '1';
+  streamPath.style.strokeDashoffset = '1';
+
+  var lastScroll = -1;
+  var ticking = false;
+
+  function update(){
+    var scrollY = window.scrollY;
+    var vh = window.innerHeight;
+    var demleyen = document.getElementById('demleyen');
+    var demTop = demleyen ? demleyen.getBoundingClientRect().top + scrollY : vh * 2;
+
+    // ── 1. Çaydanlık eğilmesi (scroll 0 → vh*0.8)
+    var tiltP = Math.max(0, Math.min(scrollY / (vh * 0.8), 1));
+    var rotation = tiltP * -38;
+    teapot.style.transform = 'rotate(' + rotation + 'deg)';
+
+    // ── 2. Çay akışı (scroll vh*0.2 → vh*0.9)
+    var streamStart = vh * 0.2;
+    var streamEnd = vh * 0.9;
+    var streamP = Math.max(0, Math.min((scrollY - streamStart) / (streamEnd - streamStart), 1));
+    streamPath.style.strokeDashoffset = String(1 - streamP);
+
+    // Damlalar
+    if(streamP > 0.85){
+      drop1.style.opacity = String((streamP - 0.85) / 0.15);
+      drop2.style.opacity = String(Math.max(0,(streamP - 0.92) / 0.08));
+    } else {
+      drop1.style.opacity = '0';
+      drop2.style.opacity = '0';
+    }
+
+    // ── 3. Bardak dolumu (demleyen section yaklaşınca)
+    if(cup){
+      var cupStart = demTop - vh * 0.6;
+      var cupEnd = demTop - vh * 0.1;
+      var cupP = Math.max(0, Math.min((scrollY - cupStart) / (cupEnd - cupStart), 1));
+
+      cup.style.opacity = cupP > 0.05 ? '1' : '0';
+
+      if(cupFill){
+        // y=128 (boş) → y=28 (dolu) → 100px fark
+        var fillY = 128 - cupP * 100;
+        cupFill.setAttribute('y', String(fillY));
+      }
+    }
+
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', function(){
+    if(!ticking){ requestAnimationFrame(update); ticking=true; }
+  }, {passive:true});
+
+  // İlk render
+  setTimeout(update, 100);
 })();
 
 // ══ SCROLL REVEAL ══
