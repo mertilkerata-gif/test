@@ -69,27 +69,20 @@ export default function Home() {
     </svg>
   </div>
 
-  <!-- Çay akış SVG — scroll ile çizilir -->
-  <svg id="tea-stream-svg" style="position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:5;overflow:visible" viewBox="0 0 100 100" preserveAspectRatio="none">
-    <defs>
-      <filter id="blur-stream">
-        <feGaussianBlur stdDeviation="0.3"/>
-      </filter>
-    </defs>
-    <path id="tea-stream-path"
-      d="M 72 35 Q 75 45 72 58 Q 68 72 60 82 Q 50 92 40 98"
-      stroke="#a63e1a"
-      stroke-width="0.8"
-      stroke-linecap="round"
-      fill="none"
-      opacity="0.85"
-      filter="url(#blur-stream)"
-      style="stroke-dasharray:1;stroke-dashoffset:1;transition:none"
-      pathLength="1"/>
-    <!-- Damlalar -->
-    <circle id="drop1" cx="40" cy="98" r="0.8" fill="#a63e1a" opacity="0"/>
-    <circle id="drop2" cx="38" cy="101" r="0.5" fill="#a63e1a" opacity="0"/>
-  </svg>
+  <!-- Çay akışı — emzik ucundan akan ince çizgi -->
+  <div id="tea-stream-container" style="position:absolute;top:0;right:0;width:52%;height:100%;pointer-events:none;overflow:visible">
+    <svg id="tea-stream-svg" style="position:absolute;top:0;left:0;width:100%;height:100%;overflow:visible" viewBox="0 0 300 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path id="tea-stream-path"
+        d="M 288 185 Q 295 220 285 270 Q 270 330 240 390 Q 210 450 180 520"
+        stroke="#a63e1a"
+        stroke-width="5"
+        stroke-linecap="round"
+        fill="none"
+        opacity="0.8"
+        pathLength="1"
+        style="stroke-dasharray:1;stroke-dashoffset:1"/>
+    </svg>
+  </div>
 
   <!-- Sol içerik -->
   <div style="position:relative;z-index:2;max-width:600px">
