@@ -136,32 +136,36 @@ export default function Home() {
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px" class="gif-grid">
 
       <div class="gif-card reveal-section" style="position:relative;overflow:hidden;border-radius:20px;background:var(--cream-deep)">
-        <img src="/images/demleme_mutfak_640.gif" alt="Mutfakta demleme"
-          style="width:100%;display:block;object-fit:cover">
+        <video autoplay loop muted playsinline style="width:100%;display:block;object-fit:cover">
+          <source src="/images/demleme_mutfak_640.webm" type="video/webm">
+        </video>
         <div style="position:absolute;bottom:0;left:0;right:0;padding:20px 24px;background:linear-gradient(to top,rgba(26,18,8,.7) 0%,transparent 100%)">
           <p style="margin:0;font-family:'Kodchasan',sans-serif;font-size:1.1rem;font-weight:700;color:var(--cream-fixed)">Mutfakta</p>
         </div>
       </div>
 
       <div class="gif-card reveal-section" style="position:relative;overflow:hidden;border-radius:20px;background:var(--cream-deep)">
-        <img src="/images/demleme_kalabalik_2s_640.gif" alt="Kalabalık sofra"
-          style="width:100%;display:block;object-fit:cover">
+        <video autoplay loop muted playsinline style="width:100%;display:block;object-fit:cover">
+          <source src="/images/demleme_kalabalik_2s_640.webm" type="video/webm">
+        </video>
         <div style="position:absolute;bottom:0;left:0;right:0;padding:20px 24px;background:linear-gradient(to top,rgba(26,18,8,.7) 0%,transparent 100%)">
           <p style="margin:0;font-family:'Kodchasan',sans-serif;font-size:1.1rem;font-weight:700;color:var(--cream-fixed)">Sofrada</p>
         </div>
       </div>
 
       <div class="gif-card reveal-section" style="position:relative;overflow:hidden;border-radius:20px;background:var(--cream-deep)">
-        <img src="/images/demleme_araba_640.gif" alt="Arabada sohbet"
-          style="width:100%;display:block;object-fit:cover">
+        <video autoplay loop muted playsinline style="width:100%;display:block;object-fit:cover">
+          <source src="/images/demleme_araba_640.webm" type="video/webm">
+        </video>
         <div style="position:absolute;bottom:0;left:0;right:0;padding:20px 24px;background:linear-gradient(to top,rgba(26,18,8,.7) 0%,transparent 100%)">
           <p style="margin:0;font-family:'Kodchasan',sans-serif;font-size:1.1rem;font-weight:700;color:var(--cream-fixed)">Yolda</p>
         </div>
       </div>
 
       <div class="gif-card reveal-section" style="position:relative;overflow:hidden;border-radius:20px;background:var(--cream-deep)">
-        <img src="/images/demleme_cay_loop10s_720.gif" alt="Çay içen"
-          style="width:100%;display:block;object-fit:cover">
+        <video autoplay loop muted playsinline style="width:100%;display:block;object-fit:cover">
+          <source src="/images/demleme_cay_loop10s_720.webm" type="video/webm">
+        </video>
         <div style="position:absolute;bottom:0;left:0;right:0;padding:20px 24px;background:linear-gradient(to top,rgba(26,18,8,.7) 0%,transparent 100%)">
           <p style="margin:0;font-family:'Kodchasan',sans-serif;font-size:1.1rem;font-weight:700;color:var(--cream-fixed)">Demlerken</p>
         </div>
