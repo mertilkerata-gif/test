@@ -763,3 +763,36 @@ body::after {
   #hero { padding:24px 20px 40px !important; }
   #hero h1 { font-size:clamp(3.5rem,16vw,5rem) !important; }
 }
+
+/* ══ PRELOADER ══ */
+#preloader { position:fixed; inset:0; z-index:9000; background:var(--ink); display:flex; align-items:center; justify-content:center; flex-direction:column; }
+#preloader-line { max-width:200px; }
+
+/* ══ CUSTOM CURSOR ══ */
+@media(pointer:coarse){ #cursor, #cursor-follower { display:none !important; } }
+
+/* ══ HERO SCROLL HINT ══ */
+@media(max-width:640px){ #scroll-hint { display:none !important; } }
+
+/* ══ HERO BG TEXT ══ */
+#hero-bg-text { user-select:none; will-change:transform; }
+
+/* ══ HERO GIF MOBİL ══ */
+@media(max-width:640px){
+  #hero-gif { width:100%; height:50%; top:0; right:0; opacity:.6; }
+  #hero-gif img { max-width:220px !important; }
+  #hero h1 { font-size:clamp(3rem,14vw,5rem) !important; }
+}
+
+/* ══ STATS MOBİL ══ */
+@media(max-width:480px){
+  .stats-grid { grid-template-columns:1fr !important; }
+  .stats-grid > div { border-right:none !important; border-bottom:1px solid var(--line); padding:40px 20px !important; }
+  .stats-grid > div:last-child { border-bottom:none; }
+}
+
+/* ══ SECTION MOBİL PADDING ══ */
+@media(max-width:640px){
+  #demleyen, #bu-hafta, #konuklar, #anket { padding:60px 20px !important; }
+  #shop-pin { padding:60px 0 0 !important; }
+}
